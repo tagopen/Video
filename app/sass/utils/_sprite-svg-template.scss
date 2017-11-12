@@ -1,0 +1,16 @@
+{{#shapes}}
+// {{base}}
+$svg-{{base}}-name: "{{base}}";
+$svg-{{base}}-width: em({{width.inner}});
+$svg-{{base}}-height: em({{height.inner}});
+$svg-{{base}}-offset-x: {{position.absolute.x}}px;
+$svg-{{base}}-offset-y: {{position.absolute.y}}px;
+$svg-{{base}}-image: "../img/sprite.svg";
+$svg-{{base}}: ( "{{base}}", em({{width.inner}}), em({{height.inner}}), {{position.absolute.x}}px, {{position.absolute.y}}px, "../img/sprite.svg" );
+
+{{/shapes}}
+
+$svg-spritesheet-width: {{spriteWidth}}px;
+$svg-spritesheet-height: {{spriteHeight}}px;
+$svg-spritesheet-image: "../img/sprite.svg";
+$svg-spritesheet-sprites: ({{#shapes}} $svg-{{base}}, {{/shapes}} );

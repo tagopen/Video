@@ -1,0 +1,86 @@
+- var page = {}
+- var hostname = "/" //- site domen name
+
+- 
+  var content = 
+    {
+      site: {
+        hostname: hostname, //- site domen name
+        author: "Tagopen",
+        meta: {
+          charset: "utf-8",
+          favicon: "favicon.png",
+          appleTouchIcon: "apple-touch-icon.png",
+          description: "",
+          keywords: "",
+          title: "Workflow",
+          openGraph: {
+            title: "Site name",
+            description: "Описание сайта",
+            type: "website",
+            locale: "ru_RU",
+            image:  hostname + "img/logo/microformat.png",
+            "image:type": "image/png",
+            url: hostname
+          },
+          twitter: {
+            card: "summary",
+            site: "@flickr",
+            title: "My Site",
+            description: "My Site is cool",
+            image: hostname + "img/logo/microformat.png"
+          }
+        },
+        nav: {
+          links: [
+            {
+              href: "/link1",
+              displayName: "Link 1"
+            },
+
+            {
+              href: "/link2",
+              displayName: "Link 2"
+            }
+          ]
+        },
+        navRight: {
+          links: [
+            {
+              href: "/link3",
+              displayName: "Link 3"
+            },
+
+            {
+              href: "/link4",
+              displayName: "Link 4"
+            },
+          ]
+        }
+      }, //- site
+      index: {
+        hostname: "index.html",
+        title: "Главная страница",
+        meta: {
+          description: "",
+          keywords: "",
+          openGraph: {
+            title: "Site name",
+            description: "Описание сайта",
+            type: "website",
+            locale: "ru_RU",
+            image:  hostname + "img/logo/microformat.png",
+            "image:type": "image/png",
+            url: hostname
+          },
+          twitter: {
+            card: "summary",
+            site: "@flickr",
+            title: "My Site",
+            description: "My Site is cool",
+            image: hostname + "img/logo/microformat.png"
+          }
+        }
+      }, //- index
+
+    }

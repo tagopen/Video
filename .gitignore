@@ -1,0 +1,24 @@
+# Files archive
+*.rar
+*.zip
+
+# sass cache
+app/.sass-cache
+
+# Folders to ignore
+bower_components
+node_modules
+dist
+temp
+
+# bower libs
+app/libs
+
+#gulp setting
+settings.js
+
+# git
+*.orig
+
+# npm
+package-lock.json

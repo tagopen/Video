@@ -1,0 +1,53 @@
++comment('general style')
+
++cm('png icons')
++ic
+@if (global-variable-exists(spritesheet-sprites))
+  @each $sprite in $spritesheet-sprites
+    .ic--#{nth($sprite, 10)}
+      &:before
+        +bs($sprite)
++cm('svg icons')
++svg
+@if (global-variable-exists(svg-spritesheet-sprites))
+  @each $sprite in $svg-spritesheet-sprites
+    .svg--#{nth($sprite, 1)}
+      +svgi($sprite)
++cm('form')
+.text-danger
+  color: $text-danger
+  text-align: left
+.form-group.has-error
+  .form-control 
+    border-color: $form-control-error-border-color
+[type=submit]:disabled
+  animation: progress-bar-stripes 2s linear infinite
+  background-image: $btn-submit-loading-bg
+  background-size: 40px 40px
+@keyframes progress-bar-stripes
+  from
+    background-position: 40px 0
+  to
+    background-position: 0 0
++cm('modal')
+.modal
+  -webkit-overflow-scrolling: touch
+  transform: translateZ(0)
+.modal.show 
+  display: flex !important
+  align-items: center
+.modal-dialog
+  position: relative
+  margin: auto
+.html, 
+.body
+  display: flex
+  margin: 0
+.body
+  flex-direction: column
+  flex: 0 0 100%
+  max-width: 100%
+  min-height: 100vh
+.main
+  flex-grow: 1
++comment("home page style")

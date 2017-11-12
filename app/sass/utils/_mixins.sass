@@ -1,0 +1,217 @@
+
+// Media Query width
+=r($min-width, $max-width: null)
+  $units: 1px !default
+
+  @if ($max-width)
+    @media only screen and (min-width: if(unitless($min-width), $min-width * $units, $min-width)) and (max-width: if(unitless($max-width), $max-width * $units, $max-width))
+      @content
+  @else
+    @media only screen and (min-width: if(unitless($min-width), $min-width * $units, $min-width))
+      @content
+=rx($max-width)
+  $units: 1px !default
+
+  @media only screen and (max-width: if(unitless($max-width), $max-width * $units, $max-width))
+    @content
+
+// Media Query height
+=rh($min-height, $max-height: null)
+  $units: 1px !default
+
+  @if ($max-height)
+    @media only screen and (min-height: if(unitless($min-height), $min-height * $units, $min-height)) and (max-height: if(unitless($max-height), $max-height * $units, $max-height))
+      @content
+  @else
+    @media only screen and (min-height: if(unitless($min-height), $min-height * $units, $min-height))
+      @content
+
+=rhx($max-height)
+  $units: 1px !default
+
+  @media only screen and (max-height: if(unitless($max-height), $max-height * $units, $max-height))
+    @content
+
+// Обрезание текста с 3 точиями
+=text-overflow
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+=coverdiv
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+// retina, also available as +hdpi
+=retina
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+    @content
+
+=box
+  box-sizing: border-box
+
+=hide-text
+  font: 0/0 a
+  text-shadow: none
+  color: transparent
+
+=hidetext
+  +hide-text
+
+=cls  
+  &:before,     
+  &:after     
+    content: " "      
+    display: table      
+  &:after,      
+    clear: both
+
+=placeholder
+  &::placeholder
+    @content
+
+=prevent-text
+  word-break: break-all
+  word-break: break-word
+  hyphens: auto
+
+=col($value, $grid-cols: 24)
+  position: relative
+  min-height: 1px
+  padding-left: $columns-margin
+  padding-right: $columns-margin
+  float: left
+  width: 100% * $value / $grid-cols
+
+=offset($value, $grid-cols: 24)
+  margin-left: 100% * $value / $grid-cols
+
+=ic
+  .ic
+    display: inline-block
+    vertical-align: top
+    font: normal normal normal 16px/1 inherit
+    font-size: inherit
+    text-rendering: auto
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    &:before
+      content: ''
+      display: inline-block
+      vertical-align: middle
+=ica
+  &:before
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    margin: auto
+=svg
+  .svg
+    display: inline-block
+    vertical-align: top
+    font-weight: normal 
+    line-height: 1
+    font-size: 16px
+    text-rendering: auto
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    width: 1em
+    height: 1em
+    fill: currentColor
+
+//sprite mixin
+=bs($sprite)
+  $sprite-offset-x: nth($sprite, 3)
+  $sprite-offset-y: nth($sprite, 4)
+  $sprite-width: nth($sprite, 5)
+  $sprite-height: nth($sprite, 6)
+  $sprite-image: nth($sprite, 9)
+  $sprite-name: nth($sprite, 10)
+
+  width: $sprite-width
+  height: $sprite-height
+  background: url(../img/#{$sprite-image}) $sprite-offset-x $sprite-offset-y no-repeat
+//sprite mixin
+
+=bsvg($sprite)
+  $sprite-offset-x: nth($sprite, 4) - 5
+  $sprite-offset-y: nth($sprite, 5) - 5
+  $sprite-width: nth($sprite, 2)
+  $sprite-height: nth($sprite, 3)
+  $sprite-image: nth($sprite, 6)
+  $sprite-name: nth($sprite, 1)
+
+  width: $sprite-width
+  height: $sprite-height
+  background: url(#{$sprite-image}) $sprite-offset-x $sprite-offset-y no-repeat
+
+//sprite mixin inline symbols
+=svgi($sprite)
+  $sprite-width: nth($sprite, 2)
+  $sprite-height: nth($sprite, 3)
+  $sprite-image: nth($sprite, 4)
+  $sprite-name: nth($sprite, 1)
+
+  width: $sprite-width
+  height: $sprite-height
+
+=debug
+  *
+    outline: 2px dotted red !important
+    *
+      outline: 2px dotted green !important
+      *
+        outline: 2px dotted orange !important
+        *
+          outline: 2px dotted blue !important
+          *
+            outline: 1px solid red !important
+            *
+              outline: 1px solid green !important
+              *
+                outline: 1px solid orange !important
+                *
+                  outline: 1px solid blue !important
+
+@function append-str ($string, $statement)
+  $text: $string + $statement + ' '
+  @return $text
+
+=comment($text)
+  $string: to_upper_case("#{$text}")
+  $length: str-length($string)
+  $list: ''
+  $separator: ''
+  @for $i from 1 through $length
+    $current_char: str-slice($string, $i, $i)
+    @if $current_char == ' '
+      $list: append-str($list, '  ')
+    @else
+      $list: append-str($list, $current_char)
+
+  $list_length: str-length($list)
+  $separator_length: 40
+  @if $list_length < 40
+    @for $i from 1 through 40 - $list_length
+      $list: append-str($list, '')
+  @else if $list_length < 80
+    $separator_length: $list_length
+  // generate separator line
+
+  @for $i from 1 through $separator_length
+    $separator: $separator + '-' 
+  /* #{$separator} */
+  /* #{$list}
+  /* #{$separator} */
+
+=cm($comment)
+  /* #{$comment} */
+
+//px to em
+@function em($pixels, $context: 16)
+  @return #{$pixels/$context}em

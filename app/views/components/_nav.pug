@@ -1,0 +1,18 @@
+nav.navbar.navbar-toggleable-md
+  button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  a.navbar-brand(href='#') Navbar
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.nav.nav-navbar.mr-auto
+      each value, i in content.site.nav.links
+        li.nav-navbar__item(class= {"nav-navbar__item--active": i === 0})
+          a.nav-navbar__link(href= value.href)!= value.displayName
+            if (i === 0)
+              span.sr-only (current)
+
+    ul.nav.nav-navbar.ml-auto
+      each value, i in content.site.navRight.links
+        li.nav-navbar__item(class= {"nav-navbar__item--active": i === 0})
+          a.nav-navbar__link(href= value.href)!= value.displayName
+            if (i === 0)
+              span.sr-only (current)

@@ -1,0 +1,93 @@
+include ../../../node_modules/bemto.pug/bemto.pug
+include ../utils/_variables.pug
+include ../utils/_mixins.pug
+each value, key in content
+  if (relativePath === key)
+    - page = value
+unless (page.meta)
+  - page.meta = content.site.meta
+block variables
+
+doctype html
+html.html(lang='ru' prefix='og: http://ogp.me/ns#')
+  head
+    title= page.title
+    meta(http-equiv='Content-Type' content='text/html;charset=' + content.site.meta.charset)/
+
+    // Meta SEO - Description, Keywords, Title
+    meta(name='title' content=page.title ? page.title  : relativePath + " - " + content.site.meta.title)/
+    meta(name='description' content=page.meta.description ? page.meta.description : relativePath + content.site.meta.description)/
+    meta(name='keywords' content= page.meta.keywords ? page.meta.keywords : relativePath + " - " + content.site.meta.keywords)/
+
+    // Multilanguage localization
+    link(rel='alternate' href='/' hreflang='x-default')/
+    //- link(rel='alternate' href='/en/' hreflang='en')/
+    //- link(rel='alternate' href='/ru/' hreflang='ru')/
+    
+    // Mobile viewport optimization
+    meta(name='viewport' content='width=device-width, initial-scale=1')/
+    meta(name='HandheldFriendly' content='true')/
+    meta(name='MobileOptimized' content='320')/
+    //[if IEMobile]><meta http-equiv='cleartype' content='on' /><![endif]
+
+    // Replace favicon.ico and apple-touch-icon.png
+    link(rel='shortcut icon' type='image/png' href='img/logo/' + content.site.meta.favicon)
+    link(rel='apple-touch-icon' type='image/png' href='img/logo/' + content.site.meta.appleTouchIcon)
+
+    // Disables automatic  of possible phone numbers and address in Safari on iOS
+    meta(name='format-detection' content='telephone=no')/
+    meta(name='format-detection' content='address=no')/
+
+    // Microformats Open Graph
+    each value, key in (page.meta.openGraph ? page.meta.openGraph : content.site.meta.openGraph)
+      meta(property='og:' + key, content=value)/
+    
+    // Microformats Twitter Cards
+    each value, key in (page.meta.twitter ? page.meta.twitter : content.site.meta.twitter)
+      meta(name='twitter:' + key, content= value)/
+    
+    // build:css css/bundle.min.css
+    
+    // Fonts CSS
+    link(rel='stylesheet' href='css/fonts.css')
+    // Bootstrap CSS
+    link(rel='stylesheet' href='css/bootstrap.css')
+    // Font-Awesome CSS
+    link(rel='stylesheet' href='css/font-awesome.css')
+    block styles
+    // Custom CSS 
+    link(rel='stylesheet' href='css/style.css')
+
+    // endbuild
+
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  body.body
+    block header
+    main.main
+      block content
+    block footer
+    block modal
+
+    // build:js js/bundle.min.js
+
+    // Popper JavaScript
+    script(src='js/popper.js')
+    // jQuery
+    script(src='js/jquery.js')
+    // Bootstrap JavaScript
+    script(src='js/bootstrap.js')
+    // Old browsers reject JavaScript
+    script(src='js/jquery.reject.js')
+    block scripts
+    //- Slick-Slider JavaScript
+    //- script(src='js/slick.js')
+    // Custom JavaScript
+    script(src='js/main.js')
+
+    // endbuild
