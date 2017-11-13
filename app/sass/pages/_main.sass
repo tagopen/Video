@@ -66,6 +66,84 @@ button
   &--white
     color: #fff
 
++cm("button")
+a,
+button
+  outline: none
+  &:hover,
+  &:focus
+    outline: none
+%btn-clear
+  padding: 0
+  box-shadow: none
+  background: transparent
+  border: 0 none
+  cursor: pointer
+%tdn
+  text-decoration: none
+  &:hover,
+  &:focus
+    text-decoration: none
+.btn
+  position: relative
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  margin-bottom: 25px
+  padding: 10px 22px
+  @extend %btn-clear
+  min-height: 61px
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29)
+  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%)
+  background-position: 50% 0%
+  border-radius: 61px
+  @extend %tdn
+  font: 700 18px/24px $main-font
+  text-shadow: 0 1px 0 #853e09, 0 0 29px rgba(255, 255, 255, 0.35);
+  color: #fff
+  transition: all .3s ease-out
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    margin: auto
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    height: 100%
+    border-radius: inherit
+    transition: all .15s ease-out
+    z-index: -1
+  &:before
+    bottom: -10px
+    width: 100%
+    box-shadow: 0 1px 21px rgba(0, 0, 0, 0.13)
+    border: 1px solid #c47b54
+    background-color: #d28743
+  &:after
+    bottom: -10px
+    width: calc(100% - 15px)
+    box-shadow: 0 15px 51px rgba(250, 182, 85, 0.7)
+    z-index: -2
+  &:hover,
+  &:focus
+    background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%) !important
+    background-position: 50% 100%
+    box-shadow: none
+  &:active
+    &:before,
+    &:after
+      transform: translateY(-3px)
+  &--size
+    width: 100%
+  &--sm
+    max-width: 220px
++r(768)
+  .btn
+    font-size: 20px
+    line-height: 26px
+
 +comment("home page style")
 +comment("section header style")
 .header
