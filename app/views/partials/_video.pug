@@ -1,0 +1,15 @@
+section.video
+  .video__bg
+  .container         
+    .row.justify-content-center
+      .col-24.col-lg-20
+        .video__box
+          .video__image
+            img.img-fluid(src!= page.video.img.src, alt!= page.video.img.alt)
+          .video__descr
+            .row.video__row.d-flex.align-items-center
+              .col-24.col-md-12.text-center
+                a.video__play(href="#")
+                  i.fa.fa-play.video__icon(aria-hidden="true")
+              .col-24.col-md-12.hidden-sm-down.d-none.d-md-block 
+                .video__text!= page.video.text

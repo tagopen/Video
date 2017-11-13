@@ -50,7 +50,12 @@
   min-height: 100vh
 .main
   flex-grow: 1
-
+a,
+button
+  outline: none !important
+  &:hover,
+  &:focus
+    outline: none !important
 +cm("heading")
 .heading
   font: 500 28px/40px $main-font
@@ -62,7 +67,208 @@
     color: #fff
 
 +comment("home page style")
-
++comment("section header style")
+.header
+  position: relative
+  background: url(../img/headerbg.jpg) no-repeat
+  background-size: cover
+.menu
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  padding-top: 15px
+.logo
+  &__image
+    text-align: center 
+    margin-bottom: 10px 
+  &__img
+    display: inline-block 
+  &__text
+    font: 400 14px/21px $main-font
+    color: #fff 
+    text-align: center
+.h-call
+  margin-bottom: 15px
+  &__number
+    display: inline-block
+    font: 400 22px/24px $main-font
+    color: #fff
+    text-decoration: none
+    transition: all .3s ease
+    &:hover,
+    &:focus
+      text-decoration: none
+      color: #fab655
+  &__button
+    display: inline-block  
+    font: 500 17px/21px $main-font
+    text-shadow: 0 0 10px rgba(250, 182, 85, 0.4)
+    color: #fab655
+    text-decoration: underline
+    transition: all .3s ease 
+.h-content
+  padding-top: 180px
+  &__box
+    padding-top: 15px
+  &__image
+    text-align: center
+  &__img
+    display: inline-block
+  &__subtitle
+    font: 300 italic 28px/40px $main-font
+    color: #fff
+    text-align: center
+    margin: 0 0 25px
+  &__title
+    font: 500 28px/45px $main-font 
+    color: #fff
+    text-align: center
+    margin-bottom: 20px
+.h-list
+  list-style-type: none
+  &__item
+    position: relative
+    color: #fff
+    font: 400 14px/21px $main-font
+    margin-bottom: 20px   
+  &__icon
+    position: absolute
+    top: 0
+    left: -30px  
++r(768)
+  .header
+    &__box
+      height: 100vh
+      min-height: 760px
+  .menu
+    padding-top: 10px
+  .logo
+    &__col
+      display: flex !important
+    &__text
+      text-align: left
+      position: relative
+      left: -15px   
+    &__image
+      margin-bottom: 0  
+  .h-call
+    &__number
+      font: 400 24px/24px $main-font 
+    &__button
+      font: 500 19px/24px $main-font 
+  .h-content
+    padding-top: 100px
+    height: 100%
+    &__subtitle
+      margin-bottom: 10px
+    &__title
+      font: 500 35px/54px $main-font
+      margin-bottom: 30px
+  .h-list
+    &__item
+      font: 400 24px/24px $main-font
+      margin-bottom: 25px       
++r(992)
+  .h-content
+    padding-top: 150px
+    &__subtitle
+      text-align: left  
+      font: 300 italic 26px/40px $main-font 
+    &__title
+      text-align: left   
+      font: 500 31px/54px $main-font   
+    &__image
+      position: relative
+    &__img
+      position: absolute
+      left: 0
+      top: 0
+      margin-top: -120px
+      margin-left: -100px
+      max-width: none         
+  .h-list
+    padding-left: 75px     
++r(1200)
+  .h-content
+    &__img
+      margin-left: -75px      
+    &__subtitle
+      font: 300 italic 30px/40px $main-font 
+    &__title
+      text-align: left   
+      font: 500 38px/54px $main-font     
++comment("section video style")  
+.video
+  position: relative
+  background: url(../img/sugrob1.png) no-repeat
+  background-size: contain
+  background-position: 50% bottom
+  padding-bottom: 140px
+  &:before
+    display: block
+    content: ''
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    height: 140px
+    z-index: 5
+    background: #fff
+  &__bg
+    position: absolute
+    display: inline-block
+    width: 100%
+    height: 279px
+    bottom: 0
+    left: 0
+    background: url(../img/sugrob2.png) no-repeat
+    background-size: cover
+    z-index: 20
+  &__row
+    height: 100%  
+  &-text 
+    padding-top: 30px
+    font: 400 28px/40px $main-font 
+    color: #fff
+    margin-bottom: 20px
+    text-align: center
+  &__box
+    position: relative  
+  &__descr
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%  
+  &__text
+    font: 400 28px/40px $main-font 
+    color: #fff
+    margin-bottom: 20px
+  &__play
+    position: relative
+    z-index: 30
+    display: inline-block
+    height: 84px
+    width: 84px
+    border-radius: 50%
+    background-color: #f7d68f
+    box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35)  
+    text-align: center
+  &__icon
+    color: #814f06 
+    font-size: 22px
+    line-height: 82px 
+    position: relative
+    right: -4px
++r(768)
+  .video
+    padding-top: 110px
+    &__text
+      padding-right: 30px   
++r(992)
+  .video
+    padding-top: 40px
 +comment("section discount style")
 .discount
   &__heading
