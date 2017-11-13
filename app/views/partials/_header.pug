@@ -34,7 +34,7 @@ header.header
                     each item, i in page.header.content.list
                       li.h-list__item!= item.text
                         i.ic.ic--check.h-list__icon
-              .btn-groups
+              .btn-groups.text-center.text-lg-left
                 a.btn.btn--default.h-content__btn(href!= page.header.content.btn.target)!= page.header.content.btn.text
-              .video-text.d-md-none!= page.video.text            
+                .video-text.d-md-none!= page.video.text
   include ../partials/_video.pug            

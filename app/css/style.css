@@ -376,6 +376,12 @@ button:focus {
   }
 }
 
+  .btn {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
 /* ---------------------------------------- */
 /* H O M E    P A G E    S T Y L E          */
 /* ---------------------------------------- */
@@ -469,8 +475,13 @@ button:focus {
   margin-bottom: 20px;
 }
 
+.h-content__btn {
+  text-align: center;
+}
+
 .h-list {
   list-style-type: none;
+  margin-bottom: 35px;
 }
 
 .h-list__item {
