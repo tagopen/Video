@@ -257,6 +257,125 @@ button:focus {
   color: #fff;
 }
 
+/* button */
+a,
+button {
+  outline: none;
+}
+
+a:hover, a:focus,
+button:hover,
+button:focus {
+  outline: none;
+}
+
+.btn {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 25px;
+  padding: 10px 22px;
+  border: 0 none;
+  min-height: 61px;
+  -webkit-box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+          box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#bc692b), color-stop(35%, #cf752f), color-stop(78%, #f4ab59), to(#fcd29d));
+  background-image: -webkit-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  background-position: 50% 0%;
+  -webkit-border-radius: 61px;
+          border-radius: 61px;
+  white-space: normal;
+  font: 700 18px/24px "PF Din Text Pro", sans-serif;
+  text-shadow: 0 1px 0 #853e09, 0 0 29px rgba(255, 255, 255, 0.35);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+
+.btn:before, .btn:after {
+  content: '';
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  -webkit-border-radius: inherit;
+          border-radius: inherit;
+  -webkit-transition: all .15s ease-out;
+  transition: all .15s ease-out;
+  z-index: -1;
+}
+
+.btn:before {
+  bottom: -10px;
+  width: 100%;
+  -webkit-box-shadow: 0 1px 21px rgba(0, 0, 0, 0.13);
+          box-shadow: 0 1px 21px rgba(0, 0, 0, 0.13);
+  border: 1px solid #c47b54;
+  background-color: #d28743;
+}
+
+.btn:after {
+  bottom: -10px;
+  width: -webkit-calc(100% - 15px);
+  width: calc(100% - 15px);
+  -webkit-box-shadow: 0 15px 51px rgba(250, 182, 85, 0.7);
+          box-shadow: 0 15px 51px rgba(250, 182, 85, 0.7);
+  z-index: -2;
+}
+
+.btn:hover, .btn:focus {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#bc692b), color-stop(35%, #cf752f), color-stop(78%, #f4ab59), to(#fcd29d)) !important;
+  background-image: -webkit-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%) !important;
+  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%) !important;
+  background-position: 50% 100%;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn:active:before, .btn:active:after {
+  -webkit-transform: translateY(-3px);
+      -ms-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+.btn--size {
+  width: 100%;
+}
+
+.btn--sm {
+  max-width: 220px;
+}
+
+.btn-groups {
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .btn {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
 /* ---------------------------------------- */
 /* H O M E    P A G E    S T Y L E          */
 /* ---------------------------------------- */

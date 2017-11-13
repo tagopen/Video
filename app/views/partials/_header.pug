@@ -1,5 +1,5 @@
 header.header
-  .header__box
+  section.header__box
     .header__menu.menu
       .container
         .row.flex-md-row-reverse.justify-content-between
@@ -34,6 +34,7 @@ header.header
                     each item, i in page.header.content.list
                       li.h-list__item!= item.text
                         i.ic.ic--check.h-list__icon
-              a.button.h-button(href!= page.header.content.btn.target)!= page.header.content.btn.text
+              .btn-groups
+                a.btn.btn--default.h-content__btn(href!= page.header.content.btn.target)!= page.header.content.btn.text
               .video-text.d-md-none!= page.video.text            
   include ../partials/_video.pug            

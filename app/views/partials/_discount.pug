@@ -20,7 +20,8 @@ section.discount
               .timer__time!= timer.minutes.number
               .timer__text!= timer.minutes.text
         p.notify.discount__notify!= page.discount.notify
-        button.btn.btn--default.btn--size.discount__btn!= page.discount.btn.text
+        .btn-groups
+          button.btn.btn--default.btn--size.discount__btn!= page.discount.btn.text
       .col-24
         .price
           each item, i in page.discount.price
