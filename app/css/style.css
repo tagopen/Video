@@ -229,6 +229,20 @@
           flex-grow: 1;
 }
 
+/* heading */
+.heading {
+  font: 500 28px/40px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  text-align: center;
+}
+
+.heading--white {
+  color: #fff;
+}
+
 /* ---------------------------------------- */
 /* H O M E    P A G E    S T Y L E          */
 /* ---------------------------------------- */
+/* ---------------------------------------------- */
+/* S E C T I O N    D I S C O U N T    S T Y L E  */
+/* ---------------------------------------------- */
