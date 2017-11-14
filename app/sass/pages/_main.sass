@@ -536,21 +536,36 @@ button
 .sv-item
   text-align: center
   margin-bottom: 35px
-  &__photo
-    position: relative
-    height: 128px
-    margin-bottom: 15px
   &__bg
     position: absolute
     top: 0
     left: 50%  
     margin-left: -81.5px
-  &__icon
-    color: #be8739
+  &__photo
     position: relative
-    z-index: 10
-    margin-top: 34px
+    display: flex
+    justify-content: center
+    align-items: center
+    margin: 0 auto 17px
+    width: 128px
+    height: 128px
+    border-radius: 20px
+    background-color: #feb959
+    &:before
+      content: ''
+      position: absolute
+      display: block
+      width: 130%
+      height: 0
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+      box-shadow: 0 0 18px 3px #f5bc5e
+  &__icon
+    position: relative
     font-size: 26px
+    color: #be8739
+    z-index: 10
   &__text
     font: 400 18px/27px $main-font
     color: #212121
