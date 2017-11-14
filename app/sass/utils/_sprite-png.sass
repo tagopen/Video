@@ -8,22 +8,33 @@
 //
 // At the bottom of this section, we provide information about the spritesheet itself
 // $spritesheet: width height image $spritesheet-sprites
+$box-name: 'box'
+$box-x: 0px
+$box-y: 0px
+$box-offset-x: 0px
+$box-offset-y: 0px
+$box-width: 163px
+$box-height: 128px
+$box-total-width: 163px
+$box-total-height: 155px
+$box-image: 'sprite.png'
+$box: (0px, 0px, 0px, 0px, 163px, 128px, 163px, 155px, 'sprite.png', 'box', )
 $check-name: 'check'
 $check-x: 0px
-$check-y: 0px
+$check-y: 138px
 $check-offset-x: 0px
-$check-offset-y: 0px
+$check-offset-y: -138px
 $check-width: 22px
 $check-height: 17px
-$check-total-width: 22px
-$check-total-height: 17px
+$check-total-width: 163px
+$check-total-height: 155px
 $check-image: 'sprite.png'
-$check: (0px, 0px, 0px, 0px, 22px, 17px, 22px, 17px, 'sprite.png', 'check', )
-$spritesheet-width: 22px
-$spritesheet-height: 17px
+$check: (0px, 138px, 0px, -138px, 22px, 17px, 163px, 155px, 'sprite.png', 'check', )
+$spritesheet-width: 163px
+$spritesheet-height: 155px
 $spritesheet-image: 'sprite.png'
-$spritesheet-sprites: ($check, )
-$spritesheet: (22px, 17px, 'sprite.png', $spritesheet-sprites, )
+$spritesheet-sprites: ($box, $check, )
+$spritesheet: (163px, 155px, 'sprite.png', $spritesheet-sprites, )
 
 // The provided mixins are intended to be used with the array-like variables
 //

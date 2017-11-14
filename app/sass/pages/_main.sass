@@ -526,7 +526,38 @@ button
       margin-bottom: 65px
 
 +comment("section service style")
+.double
+  background: url(../img/doublebg.png) no-repeat
+  background-size: cover
 .service
+  padding-top: 100px
+  &__heading
+    margin-bottom: 45px
 .sv-item
+  text-align: center
+  margin-bottom: 35px
+  &__photo
+    position: relative
+    height: 128px
+    margin-bottom: 15px
+  &__bg
+    position: absolute
+    top: 0
+    left: 50%  
+    margin-left: -81.5px
   &__icon
     color: #be8739
+    position: relative
+    z-index: 10
+    margin-top: 34px
+    font-size: 26px
+  &__text
+    font: 400 18px/27px $main-font
+    color: #212121
+    margin: 0
++r(768)    
+  .service
+    padding-bottom: 100px
+    &__heading
+      margin-bottom: 65px
+

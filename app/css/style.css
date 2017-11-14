@@ -125,10 +125,16 @@
   vertical-align: middle;
 }
 
+.ic--box:before {
+  width: 163px;
+  height: 128px;
+  background: url(../img/sprite.png) 0px 0px no-repeat;
+}
+
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) 0px 0px no-repeat;
+  background: url(../img/sprite.png) 0px -138px no-repeat;
 }
 
 /* svg icons */
@@ -994,6 +1000,56 @@ button:focus {
 /* -------------------------------------------- */
 /* S E C T I O N    S E R V I C E    S T Y L E  */
 /* -------------------------------------------- */
+.double {
+  background: url(../img/doublebg.png) no-repeat;
+  background-size: cover;
+}
+
+.service {
+  padding-top: 100px;
+}
+
+.service__heading {
+  margin-bottom: 45px;
+}
+
+.sv-item {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.sv-item__photo {
+  position: relative;
+  height: 128px;
+  margin-bottom: 15px;
+}
+
+.sv-item__bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -81.5px;
+}
+
 .sv-item__icon {
   color: #be8739;
+  position: relative;
+  z-index: 10;
+  margin-top: 34px;
+  font-size: 26px;
+}
+
+.sv-item__text {
+  font: 400 18px/27px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .service {
+    padding-bottom: 100px;
+  }
+  .service__heading {
+    margin-bottom: 65px;
+  }
 }

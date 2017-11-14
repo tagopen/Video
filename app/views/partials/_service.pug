@@ -3,10 +3,13 @@ section.service
     .row
       .col-24
         h2.heading.heading--curl.service__heading!= page.service.heading
-    .row.justify-content-center.align-items-center
-      each item in page.service.items
-        .col-24.col-sm-10.col-lg-8
-          .sv-item.service__item
-            .sv-item__photo
-              +svg(item.icon)(class="sv-item__icon")
-            p.sv-item__text!= item.text
+    .row.justify-content-center
+      .col-24.col-xl-20
+        .row.justify-content-center.align-items-center
+          each item in page.service.items
+            .col-24.col-sm-12.col-md-8.col-lg-8
+              .sv-item.service__item
+                .sv-item__photo
+                  +svg(item.icon)(class="sv-item__icon")
+                  i.ic.ic--box.sv-item__bg
+                p.sv-item__text!= item.text

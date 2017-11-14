@@ -51,5 +51,14 @@
       + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'));
   });
 
+  if( $( window ).width() >= 576 ) {
+
+    $('.sv-item__text').matchHeight({
+      byRow: true,
+      property: 'height',
+      target: null,
+      remove: false
+    });
+  };
 
 })(jQuery); // End of use strict
