@@ -372,6 +372,75 @@ button
   .video
     padding-top: 40px
 
++comment("section gift style")
+.gift
+  padding: 50px 0 150px
+  overflow: hidden
+.package
+  &__box
+    display: inline-block
+    background: url(../img/packagebg.png) no-repeat
+    background-position: center center
+    height: 739px
+    width: 320px
+    margin: 0 -15px
+  &__content
+    position: relative
+    padding-top: 85px
+    width: 290px
+    margin: 0 auto
+    text-align: center
+  &__img
+    position: relative
+    left: -142px
+    margin-top: -30px
+    max-width: none  
+  &__type
+    position: relative
+    display: inline-block
+    font: 500 24px/30px $font-neumann
+    color: #212121
+    margin-bottom: 20px
+  &__icon
+    position: absolute 
+    top: 0
+    &--left
+      left: -70px
+    &--right
+      right: -70px  
+  &__info
+    font: 400 18px/27px $main-font
+    color: #212121    
+    margin-bottom: 30px
+  &__cost
+    font: 500 18px/27px $main-font
+    color: #fab655
+    margin-bottom: 10px
+    text-transform: uppercase  
+  &__price  
+    font: 400 24px/30px $font-neumann
+    color: #212121
+    margin-bottom: 25px  
+  &__candy
+    position: absolute
+    left: -110px
+    top: 300px
+  &__confetti
+    position: absolute
+    right: -85px
+    top: 380px
++r(576)
+  .package
+    background: url(../img/giftbg.png) no-repeat
+    background-size: contain
+    background-position: center 160px
+    &__content
+      width: 300px  
+    &__box  
+      width: 523px    
++r(768)   
+  .package
+    background-size: cover 
 +comment("section discount style")
 
 .discount
@@ -578,10 +647,18 @@ button
 
 +comment("section faq style")
 .faq
-  padding-top: 60px  
-  padding-bottom: 200px
+  position: relative
+  margin-top: -50px
+  z-index: 15
+  padding-top: 100px  
+  padding-bottom: 25px
+  background: url(../img/faqbg320.png) no-repeat
+  background-size: cover 
+  background-position: center center     
   &__heading
     margin-bottom: 45px
+#accordion
+  min-height: 700px          
 .panel
   box-shadow: none
   background: transparent
@@ -600,13 +677,13 @@ button
   &__link
     position: relative
     display: block
-    color: #000
+    color: #fff
     font: 400 20px/27px $main-font  
     padding-right: 30px
     &:hover,
     &:focus
       text-decoration: none
-      color: #000
+      color: #fff
   &__text  
     color: #000
     font: 400 16px/24px $main-font 
@@ -627,5 +704,17 @@ button
       transform: rotate(180deg)   
 +r(768)
   .faq
+    padding-bottom: 250px
     &__heading
-      margin-bottom: 65px    
+      margin-bottom: 65px
+  #accordion
+    min-height: 450px              
++r(992)
+  .faq
+    padding-top: 160px
+    margin-top: -150px
+    background: url(../img/faqbg.png) no-repeat
+    background-size: cover 
+    background-position: center center 
+  #accordion
+    min-height: 500px      

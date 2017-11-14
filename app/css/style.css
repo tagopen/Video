@@ -131,10 +131,28 @@
   background: url(../img/sprite.png) 0px 0px no-repeat;
 }
 
+.ic--candy:before {
+  width: 109px;
+  height: 134px;
+  background: url(../img/sprite.png) -173px 0px no-repeat;
+}
+
 .ic--check:before {
   width: 22px;
   height: 17px;
+  background: url(../img/sprite.png) -173px -162px no-repeat;
+}
+
+.ic--confetti:before {
+  width: 105px;
+  height: 187px;
   background: url(../img/sprite.png) 0px -138px no-repeat;
+}
+
+.ic--linear:before {
+  width: 45px;
+  height: 8px;
+  background: url(../img/sprite.png) -173px -144px no-repeat;
 }
 
 /* svg icons */
@@ -745,6 +763,110 @@ button:focus {
   }
 }
 
+/* ---------------------------------------- */
+/* S E C T I O N    G I F T    S T Y L E    */
+/* ---------------------------------------- */
+.gift {
+  padding: 50px 0 150px;
+  overflow: hidden;
+}
+
+.package__box {
+  display: inline-block;
+  background: url(../img/packagebg.png) no-repeat;
+  background-position: center center;
+  height: 739px;
+  width: 320px;
+  margin: 0 -15px;
+}
+
+.package__content {
+  position: relative;
+  padding-top: 85px;
+  width: 290px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.package__img {
+  position: relative;
+  left: -142px;
+  margin-top: -30px;
+  max-width: none;
+}
+
+.package__type {
+  position: relative;
+  display: inline-block;
+  font: 500 24px/30px "Neumann", sans-serif;
+  color: #212121;
+  margin-bottom: 20px;
+}
+
+.package__icon {
+  position: absolute;
+  top: 0;
+}
+
+.package__icon--left {
+  left: -70px;
+}
+
+.package__icon--right {
+  right: -70px;
+}
+
+.package__info {
+  font: 400 18px/27px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  margin-bottom: 30px;
+}
+
+.package__cost {
+  font: 500 18px/27px "PF Din Text Pro", sans-serif;
+  color: #fab655;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.package__price {
+  font: 400 24px/30px "Neumann", sans-serif;
+  color: #212121;
+  margin-bottom: 25px;
+}
+
+.package__candy {
+  position: absolute;
+  left: -110px;
+  top: 300px;
+}
+
+.package__confetti {
+  position: absolute;
+  right: -85px;
+  top: 380px;
+}
+
+@media only screen and (min-width: 576px) {
+  .package {
+    background: url(../img/giftbg.png) no-repeat;
+    background-size: contain;
+    background-position: center 160px;
+  }
+  .package__content {
+    width: 300px;
+  }
+  .package__box {
+    width: 523px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .package {
+    background-size: cover;
+  }
+}
+
 /* ---------------------------------------------- */
 /* S E C T I O N    D I S C O U N T    S T Y L E  */
 /* ---------------------------------------------- */
@@ -1088,12 +1210,22 @@ button:focus {
 /* S E C T I O N    F A Q    S T Y L E      */
 /* ---------------------------------------- */
 .faq {
-  padding-top: 60px;
-  padding-bottom: 200px;
+  position: relative;
+  margin-top: -50px;
+  z-index: 15;
+  padding-top: 100px;
+  padding-bottom: 25px;
+  background: url(../img/faqbg320.png) no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 .faq__heading {
   margin-bottom: 45px;
+}
+
+#accordion {
+  min-height: 700px;
 }
 
 .panel {
@@ -1125,14 +1257,14 @@ button:focus {
 .panel__link {
   position: relative;
   display: block;
-  color: #000;
+  color: #fff;
   font: 400 20px/27px "PF Din Text Pro", sans-serif;
   padding-right: 30px;
 }
 
 .panel__link:hover, .panel__link:focus {
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
 .panel__text {
@@ -1165,7 +1297,26 @@ button:focus {
 }
 
 @media only screen and (min-width: 768px) {
+  .faq {
+    padding-bottom: 250px;
+  }
   .faq__heading {
     margin-bottom: 65px;
+  }
+  #accordion {
+    min-height: 450px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .faq {
+    padding-top: 160px;
+    margin-top: -150px;
+    background: url(../img/faqbg.png) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  #accordion {
+    min-height: 500px;
   }
 }
