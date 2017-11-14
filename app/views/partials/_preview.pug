@@ -1,0 +1,39 @@
+section.preview
+  .container
+    .row.justify-content-center
+      .col-24
+        h2.heading.heading--curl.preview__heading!= page.preview.heading
+    .row.justify-content-center.align-items-center
+      .d-none.d-lg-block.col-8
+        - var img = page.preview.img
+        img.preview__img(src=img.src, alt=img.alt)
+      .col-24.col-md-19.col-lg-10.col-lg-10
+        - var form = page.preview.form
+        form.form.js-form(action="mail/mail.php", method="post")
+          fieldset.form-group
+            .row.justify-content-around
+              .d-inline-flex.pl-2.pr-2
+                .radio-btn
+                  input#rbtn11.radio-btn__control(type='radio', name='gender')
+                  label.radio-btn__box(for='rbtn11', data-gender='#male')
+                    i.radio-btn__icon
+                    | Мальчик
+              .d-inline-flex.pl-2.pr-2
+                .radio-btn
+                  input#rbtn12.radio-btn__control(type='radio', name='gender')
+                  label.radio-btn__box(for='rbtn12', data-gender='#female')
+                    i.radio-btn__icon
+                    | Девочка
+          fieldset.form-group
+            select#male.form-group.select(required)
+              each option, i in form.selectM.items
+                option(value=(i + 1))!= option
+            select#female.form-group.select(required)
+              each option, i in form.selectF.items
+                option(value=(i + 1))!= option
+          fieldset.form-group
+            input.form-control(type="email", name="email", placeholder=form.email.placeholder, required)
+          .btn-groups.form__btn-groups
+            button.btn.btn--default.btn--size(name='form', value=form.submit.value, type='submit', data-loading-text=form.submit.loading)!= form.submit.text
+          a.info.form__info(href="#faq")!= form.info.text
+
