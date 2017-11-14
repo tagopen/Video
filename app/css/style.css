@@ -1053,3 +1053,89 @@ button:focus {
     margin-bottom: 65px;
   }
 }
+
+/* ---------------------------------------- */
+/* S E C T I O N    F A Q    S T Y L E      */
+/* ---------------------------------------- */
+.faq {
+  padding-top: 60px;
+  padding-bottom: 200px;
+}
+
+.faq__heading {
+  margin-bottom: 45px;
+}
+
+.panel {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: transparent;
+  padding-bottom: 15px;
+}
+
+.panel-group {
+  position: relative;
+  z-index: 25;
+}
+
+.panel__title {
+  padding-bottom: 15px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #874d5b;
+}
+
+.panel__heading {
+  border: 0 !important;
+}
+
+.panel__body {
+  border: 0 !important;
+}
+
+.panel__link {
+  position: relative;
+  display: block;
+  color: #000;
+  font: 400 20px/27px "PF Din Text Pro", sans-serif;
+  padding-right: 30px;
+}
+
+.panel__link:hover, .panel__link:focus {
+  text-decoration: none;
+  color: #000;
+}
+
+.panel__text {
+  color: #000;
+  font: 400 16px/24px "PF Din Text Pro", sans-serif;
+  padding-left: 10px;
+}
+
+.panel__icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+  display: inline-block;
+  height: 20px;
+  width: 21px;
+}
+
+.panel__ic {
+  position: relative;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.panel__ic.minus {
+  cursor: pointer;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+@media only screen and (min-width: 768px) {
+  .faq__heading {
+    margin-bottom: 65px;
+  }
+}

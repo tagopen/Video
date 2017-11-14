@@ -1,0 +1,18 @@
+section.faq
+  .container
+    .row
+      .col-24
+        h2.heading.heading--curl.faq__heading!= page.faq.heading
+    .row
+      .col-24.col-lg-20.col-xl-16
+        #accordion.panel-group
+          each item, i in page.faq.items
+            .panel
+              .panel-heading.panel__heading
+                h4.panel-title.panel__title
+                  a.panel__link(data-toggle="collapse", data-parent="#accordion", href="#collapse"+(i+1))!= item.question
+                    .panel__icon
+                      i.fa.fa-chevron-down.panel__ic(aria-hidden="true")
+              .panel-collapse.collapse(id="collapse"+(i+1))
+                .panel-body.panel__body
+                  p.panel__text=item.answer
