@@ -7,12 +7,14 @@
     .ic--#{nth($sprite, 10)}
       &:before
         +bs($sprite)
+
 +cm('svg icons')
 +svg
 @if (global-variable-exists(svg-spritesheet-sprites))
   @each $sprite in $svg-spritesheet-sprites
     .svg--#{nth($sprite, 1)}
       +svgi($sprite)
+
 +cm('form')
 .text-danger
   color: $text-danger
@@ -29,6 +31,7 @@
     background-position: 40px 0
   to
     background-position: 0 0
+
 +cm('modal')
 .modal
   -webkit-overflow-scrolling: touch
@@ -56,6 +59,7 @@ button
   &:hover,
   &:focus
     outline: none !important
+
 +cm("heading")
 .heading
   position: relative
@@ -80,6 +84,7 @@ button
   .heading
     font-size: 36px
     line-height: 40px
+
 +cm("button")
 a,
 button
@@ -156,7 +161,9 @@ button
     line-height: 26px
 
 +comment("home page style")
+
 +comment("section header style")
+
 .header
   position: relative
   background: url(../img/headerbg.jpg) no-repeat
@@ -291,7 +298,9 @@ button
     &__title
       text-align: left   
       font: 500 38px/54px $main-font     
-+comment("section video style")  
+
++comment("section video style")
+
 .video
   position: relative
   background: url(../img/sugrob1.png) no-repeat
@@ -362,7 +371,9 @@ button
 +r(992)
   .video
     padding-top: 40px
+
 +comment("section discount style")
+
 .discount
   padding: 50px 0 283px
   background-image: url(../img/letter.png)
@@ -501,6 +512,7 @@ button
       line-height: 34px
 
 +comment("section comments")
+
 .comments
   padding: 45px 0 50px
   &__heading
