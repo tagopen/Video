@@ -1,0 +1,12 @@
+section.service
+  .container
+    .row
+      .col-24
+        h2.heading.heading--curl.service__heading!= page.service.heading
+    .row.justify-content-center.align-items-center
+      each item in page.service.items
+        .col-24.col-sm-12.col-lg-8
+          .sv-item.service__item
+            .sv-item__photo
+              +svg(item.icon)(class="sv-item__icon")
+            p.sv-item__text!= item.text

@@ -1,0 +1,59 @@
+// gift
+$svg-gift-name: "gift";
+$svg-gift-width: em(25.88);
+$svg-gift-height: em(32);
+$svg-gift-offset-x: px;
+$svg-gift-offset-y: px;
+$svg-gift-image: "../img/sprite.svg";
+$svg-gift: ( "gift", em(25.88), em(32), px, px, "../img/sprite.svg" );
+
+// kids
+$svg-kids-name: "kids";
+$svg-kids-width: em(32);
+$svg-kids-height: em(26.11);
+$svg-kids-offset-x: px;
+$svg-kids-offset-y: px;
+$svg-kids-image: "../img/sprite.svg";
+$svg-kids: ( "kids", em(32), em(26.11), px, px, "../img/sprite.svg" );
+
+// pic
+$svg-pic-name: "pic";
+$svg-pic-width: em(32);
+$svg-pic-height: em(32);
+$svg-pic-offset-x: px;
+$svg-pic-offset-y: px;
+$svg-pic-image: "../img/sprite.svg";
+$svg-pic: ( "pic", em(32), em(32), px, px, "../img/sprite.svg" );
+
+// santa
+$svg-santa-name: "santa";
+$svg-santa-width: em(25.51);
+$svg-santa-height: em(32);
+$svg-santa-offset-x: px;
+$svg-santa-offset-y: px;
+$svg-santa-image: "../img/sprite.svg";
+$svg-santa: ( "santa", em(25.51), em(32), px, px, "../img/sprite.svg" );
+
+// snow-globe
+$svg-snow-globe-name: "snow-globe";
+$svg-snow-globe-width: em(31.53);
+$svg-snow-globe-height: em(32);
+$svg-snow-globe-offset-x: px;
+$svg-snow-globe-offset-y: px;
+$svg-snow-globe-image: "../img/sprite.svg";
+$svg-snow-globe: ( "snow-globe", em(31.53), em(32), px, px, "../img/sprite.svg" );
+
+// timer
+$svg-timer-name: "timer";
+$svg-timer-width: em(28.71);
+$svg-timer-height: em(32);
+$svg-timer-offset-x: px;
+$svg-timer-offset-y: px;
+$svg-timer-image: "../img/sprite.svg";
+$svg-timer: ( "timer", em(28.71), em(32), px, px, "../img/sprite.svg" );
+
+
+$svg-spritesheet-width: px;
+$svg-spritesheet-height: px;
+$svg-spritesheet-image: "../img/sprite.svg";
+$svg-spritesheet-sprites: ( $svg-gift,  $svg-kids,  $svg-pic,  $svg-santa,  $svg-snow-globe,  $svg-timer,  );

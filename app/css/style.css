@@ -146,6 +146,36 @@
   fill: currentColor;
 }
 
+.svg--gift {
+  width: 1.6175em;
+  height: 2em;
+}
+
+.svg--kids {
+  width: 2em;
+  height: 1.63187em;
+}
+
+.svg--pic {
+  width: 2em;
+  height: 2em;
+}
+
+.svg--santa {
+  width: 1.59438em;
+  height: 2em;
+}
+
+.svg--snow-globe {
+  width: 1.97063em;
+  height: 2em;
+}
+
+.svg--timer {
+  width: 1.79438em;
+  height: 2em;
+}
+
 /* form */
 .text-danger {
   color: #b94a48;
