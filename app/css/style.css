@@ -249,7 +249,7 @@ button:focus {
 /* heading */
 .heading {
   position: relative;
-  font: 500 28px/40px "PF Din Text Pro", sans-serif;
+  font: 500 26px/40px "PF Din Text Pro", sans-serif;
   color: #212121;
   text-align: center;
 }
@@ -713,7 +713,7 @@ button:focus {
 /* S E C T I O N    D I S C O U N T    S T Y L E  */
 /* ---------------------------------------------- */
 .discount {
-  padding: 50px 0 83px;
+  padding: 50px 0 283px;
   background-image: url(../img/letter.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -781,7 +781,7 @@ button:focus {
 
 .timer__time {
   margin-bottom: 11px;
-  font: 400 72px/74px "Neumann", sans-serif;
+  font: 400 58px/68px "Neumann", sans-serif;
   color: #fff;
   text-transform: uppercase;
 }
@@ -934,5 +934,29 @@ button:focus {
   .price__currency {
     font-size: 30px;
     line-height: 34px;
+  }
+}
+
+/* ---------------------------------------- */
+/* S E C T I O N    C O M M E N T S         */
+/* ---------------------------------------- */
+.comments {
+  padding: 45px 0 50px;
+}
+
+.comments__heading {
+  margin-bottom: 49px;
+}
+
+.comments__box {
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .comments {
+    padding: 12px 0;
+  }
+  .comments__heading {
+    margin-bottom: 65px;
   }
 }
