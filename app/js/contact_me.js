@@ -1,7 +1,7 @@
 $(function() {
   $('.js-form')
   .validator({
-    focus: false; 
+    focus: false,
     disable: false
   })
   .on('submit', function (e) {
