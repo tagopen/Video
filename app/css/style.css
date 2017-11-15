@@ -1162,6 +1162,17 @@ button:focus {
   }
 }
 
+.hidden-accessible {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
 /* ---------------------------------------- */
 /* H O M E    P A G E    S T Y L E          */
 /* ---------------------------------------- */
@@ -1382,10 +1393,10 @@ button:focus {
 /* ---------------------------------------- */
 .video {
   position: relative;
+  padding-bottom: 140px;
   background: url(../img/sugrob1.png) no-repeat;
   background-size: contain;
   background-position: 50% bottom;
-  padding-bottom: 140px;
 }
 
 .video:before {
@@ -1422,46 +1433,6 @@ button:focus {
   color: #fff;
   margin-bottom: 20px;
   text-align: center;
-}
-
-.video__box {
-  position: relative;
-}
-
-.video__descr {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.video__text {
-  font: 400 28px/40px "PF Din Text Pro", sans-serif;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.video__play {
-  position: relative;
-  z-index: 30;
-  display: inline-block;
-  height: 84px;
-  width: 84px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  background-color: #f7d68f;
-  -webkit-box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
-          box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
-  text-align: center;
-}
-
-.video__icon {
-  color: #814f06;
-  font-size: 22px;
-  line-height: 82px;
-  position: relative;
-  right: -4px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1782,6 +1753,7 @@ button:focus {
 /* -------------------------------------------- */
 .example {
   overflow: hidden;
+  padding: 93px 0 131px;
 }
 
 .example__img {
@@ -1805,17 +1777,83 @@ button:focus {
   margin-top: -80px;
 }
 
-@media only screen and (min-width: 400px) {
-  .example__img {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.example__year {
+  margin-bottom: 48px;
+}
+
+.year {
+  font: 400 120px/125px "Neumann", sans-serif;
+  color: #f0ae64;
+}
+
+.mp-play {
+  position: relative;
+  display: inline-block;
+  height: 84px;
+  width: 84px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background-color: #f7d68f;
+  -webkit-box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
+          box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
+  text-align: center;
+  z-index: 30;
+}
+
+.mp-play__icon {
+  color: #814f06;
+  font-size: 22px;
+  line-height: 82px;
+  position: relative;
+  right: -4px;
+}
+
+.vd-video {
+  position: relative;
+  display: inline-block;
+}
+
+.vd-video:after {
+  content: '';
+  position: absolute;
+  margin: auto;
+  width: 130%;
+  height: 0;
+  bottom: -20px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.26);
+          box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.26);
+}
+
+.vd-video__descr {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vd-video__text {
+  font: 400 28px/40px "PF Din Text Pro", sans-serif;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.vd-video__play {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 @media only screen and (min-width: 768px) {
-  .example__img {
-    margin-top: 0;
+  .example__heading {
+    text-align: left;
   }
 }
 

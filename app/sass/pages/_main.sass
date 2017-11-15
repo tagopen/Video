@@ -164,7 +164,15 @@ button
   .btn
     font-size: 20px
     line-height: 26px
-
+.hidden-accessible
+  border: 0 !important
+  clip: rect(0 0 0 0) !important
+  height: 1px !important
+  margin: -1px !important
+  overflow: hidden !important
+  padding: 0 !important
+  position: absolute !important
+  width: 1px !important
 +comment("home page style")
 
 +comment("section header style")
@@ -316,10 +324,10 @@ button
 
 .video
   position: relative
+  padding-bottom: 140px
   background: url(../img/sugrob1.png) no-repeat
   background-size: contain
   background-position: 50% bottom
-  padding-bottom: 140px
   &:before
     display: block
     content: ''
@@ -348,34 +356,7 @@ button
     color: #fff
     margin-bottom: 20px
     text-align: center
-  &__box
-    position: relative  
-  &__descr
-    position: absolute
-    left: 0
-    top: 0
-    width: 100%
-    height: 100%  
-  &__text
-    font: 400 28px/40px $main-font 
-    color: #fff
-    margin-bottom: 20px
-  &__play
-    position: relative
-    z-index: 30
-    display: inline-block
-    height: 84px
-    width: 84px
-    border-radius: 50%
-    background-color: #f7d68f
-    box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35)  
-    text-align: center
-  &__icon
-    color: #814f06 
-    font-size: 22px
-    line-height: 82px 
-    position: relative
-    right: -4px
+  
 +r(768)
   .video
     padding-top: 110px
@@ -587,6 +568,7 @@ button
 +comment("section example style")
 .example
   overflow: hidden
+  padding: 93px 0 131px
   &__img
     max-width: 400px
     margin: 45px -55px 0
@@ -600,16 +582,62 @@ button
     left: 50%
     margin-left: -42px
     margin-top: -80px
-+r(400)
-  .example
-    &__img
-      max-width: 100%
-      margin-left: auto
-      margin-right: auto
+  &__year
+    margin-bottom: 48px
+.year
+  font: 400 120px/125px $font-neumann
+  color: #f0ae64
+.mp-play
+  position: relative
+  display: inline-block
+  height: 84px
+  width: 84px
+  border-radius: 50%
+  background-color: #f7d68f
+  box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35)  
+  text-align: center
+  z-index: 30
+  &__icon
+    color: #814f06 
+    font-size: 22px
+    line-height: 82px 
+    position: relative
+    right: -4px
+.vd-video
+  position: relative
+  display: inline-block
+  &:after
+    content: ''
+    position: absolute
+    margin: auto
+    width: 130%
+    height: 0
+    bottom: -20px
+    left: 50%
+    transform: translateX(-50%)
+    box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.26)
+  &__descr
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%  
+  &__text
+    font: 400 28px/40px $main-font 
+    color: #fff
+    margin-bottom: 20px
+  &__play
+    position: absolute
+    margin: auto
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
 +r(768)
   .example
-    &__img
-      margin-top: 0       
+    &__heading
+      text-align: left
+
 +comment("section discount style")
 
 .discount
