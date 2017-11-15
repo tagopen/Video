@@ -350,18 +350,10 @@ button
     z-index: 20
   &__row
     height: 100%  
-  &-text 
-    padding-top: 30px
-    font: 400 28px/40px $main-font 
-    color: #fff
-    margin-bottom: 20px
-    text-align: center
   
 +r(768)
   .video
     padding-top: 110px
-    &__text
-      padding-right: 30px   
 +r(992)
   .video
     padding-top: 40px
@@ -618,13 +610,12 @@ button
     box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.26)
   &__descr
     position: absolute
-    left: 0
-    top: 0
+    top: 50%
+    left: 50%
     width: 100%
-    height: 100%  
+    transform: translate(-50%, -50%)
+    text-align: center
   &__text
-    font: 400 28px/40px $main-font 
-    color: #fff
     margin-bottom: 20px
   &__play
     position: absolute
@@ -633,6 +624,22 @@ button
     right: 0
     bottom: 0
     left: 0
+  &__text 
+    padding-top: 30px
+    font: 400 28px/40px $main-font 
+    color: #fff
+    margin-bottom: 20px
+    text-align: center
+.gg-text
+  font: 400 28px/40px $main-font 
+  color: #212121
+  &--white
+    color: #fff
++r(768)
+  .vd-video
+    &__text
+      padding-right: 30px   
+      text-align: left
 +r(768)
   .example
     &__heading

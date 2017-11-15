@@ -1427,20 +1427,9 @@ button:focus {
   height: 100%;
 }
 
-.video-text {
-  padding-top: 30px;
-  font: 400 28px/40px "PF Din Text Pro", sans-serif;
-  color: #fff;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 @media only screen and (min-width: 768px) {
   .video {
     padding-top: 110px;
-  }
-  .video__text {
-    padding-right: 30px;
   }
 }
 
@@ -1830,15 +1819,16 @@ button:focus {
 
 .vd-video__descr {
   position: absolute;
-  left: 0;
-  top: 0;
+  top: 50%;
+  left: 50%;
   width: 100%;
-  height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .vd-video__text {
-  font: 400 28px/40px "PF Din Text Pro", sans-serif;
-  color: #fff;
   margin-bottom: 20px;
 }
 
@@ -1849,6 +1839,30 @@ button:focus {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.vd-video__text {
+  padding-top: 30px;
+  font: 400 28px/40px "PF Din Text Pro", sans-serif;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.gg-text {
+  font: 400 28px/40px "PF Din Text Pro", sans-serif;
+  color: #212121;
+}
+
+.gg-text--white {
+  color: #fff;
+}
+
+@media only screen and (min-width: 768px) {
+  .vd-video__text {
+    padding-right: 30px;
+    text-align: left;
+  }
 }
 
 @media only screen and (min-width: 768px) {
