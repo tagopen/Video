@@ -763,6 +763,78 @@ button:focus {
   }
 }
 
+/* -------------------------------------------- */
+/* S E C T I O N    P R E V I E W    S T Y L E  */
+/* -------------------------------------------- */
+.radio-btn__control {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.radio-btn__control:checked + .radio-btn__box .radio-btn__icon:before {
+  opacity: 1;
+}
+
+.radio-btn__box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+}
+
+.radio-btn__icon {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  -webkit-box-shadow: inset 0 4px 7px #c6b4a3;
+          box-shadow: inset 0 4px 7px #c6b4a3;
+  border: 2px solid #e3e3e3;
+  background-color: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.radio-btn__icon:before {
+  content: '';
+  position: absolute;
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: inherit;
+          border-radius: inherit;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  background-color: #f4ab59;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
 /* ---------------------------------------- */
 /* S E C T I O N    G I F T    S T Y L E    */
 /* ---------------------------------------- */
