@@ -806,37 +806,43 @@
 .ic--box:before {
   width: 163px;
   height: 128px;
-  background: url(../img/sprite.png) 0px 0px no-repeat;
+  background: url(../img/sprite.png) 0px -119px no-repeat;
 }
 
 .ic--candy:before {
   width: 109px;
   height: 134px;
-  background: url(../img/sprite.png) -173px 0px no-repeat;
+  background: url(../img/sprite.png) -377px 0px no-repeat;
 }
 
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) -292px -48px no-repeat;
+  background: url(../img/sprite.png) -377px -162px no-repeat;
 }
 
 .ic--confetti:before {
   width: 105px;
   height: 187px;
-  background: url(../img/sprite.png) 0px -138px no-repeat;
+  background: url(../img/sprite.png) -262px 0px no-repeat;
 }
 
 .ic--linear-sm:before {
   width: 45px;
   height: 8px;
-  background: url(../img/sprite.png) -292px -30px no-repeat;
+  background: url(../img/sprite.png) -377px -144px no-repeat;
 }
 
 .ic--linear:before {
   width: 115px;
   height: 20px;
-  background: url(../img/sprite.png) -292px 0px no-repeat;
+  background: url(../img/sprite.png) 0px -257px no-repeat;
+}
+
+.ic--year:before {
+  width: 252px;
+  height: 109px;
+  background: url(../img/sprite.png) 0px 0px no-repeat;
 }
 
 /* svg icons */
@@ -1701,14 +1707,17 @@ button:focus {
 .package__icon {
   position: absolute;
   top: 0;
+  -webkit-transform: scale(0.6);
+      -ms-transform: scale(0.6);
+          transform: scale(0.6);
 }
 
 .package__icon--left {
-  left: -70px;
+  left: -115px;
 }
 
 .package__icon--right {
-  right: -70px;
+  right: -115px;
 }
 
 .package__info {
@@ -1759,6 +1768,54 @@ button:focus {
 @media only screen and (min-width: 768px) {
   .package {
     background-size: cover;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .package {
+    background-size: auto;
+  }
+}
+
+/* -------------------------------------------- */
+/* S E C T I O N    E X A M P L E    S T Y L E  */
+/* -------------------------------------------- */
+.example {
+  overflow: hidden;
+}
+
+.example__img {
+  max-width: 400px;
+  margin: 45px -55px 0;
+}
+
+.example__heading {
+  margin-bottom: 25px;
+}
+
+.example__box {
+  position: relative;
+}
+
+.example__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -42px;
+  margin-top: -80px;
+}
+
+@media only screen and (min-width: 400px) {
+  .example__img {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .example__img {
+    margin-top: 0;
   }
 }
 
@@ -2251,6 +2308,19 @@ button:focus {
 @media only screen and (min-width: 992px) {
   .dream__heading {
     text-align: left;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .dream__box {
+    position: relative;
+    height: 650px;
+  }
+  .dream__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: none;
   }
 }
 

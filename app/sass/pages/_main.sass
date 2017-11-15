@@ -543,10 +543,11 @@ button
   &__icon
     position: absolute 
     top: 0
+    transform: scale(0.6)
     &--left
-      left: -70px
+      left: -115px
     &--right
-      right: -70px  
+      right: -115px  
   &__info
     font: 400 18px/27px $main-font
     color: #212121    
@@ -580,6 +581,35 @@ button
 +r(768)   
   .package
     background-size: cover 
++r(992)
+  .package
+    background-size: auto    
++comment("section example style")
+.example
+  overflow: hidden
+  &__img
+    max-width: 400px
+    margin: 45px -55px 0
+  &__heading
+    margin-bottom: 25px
+  &__box
+    position: relative
+  &__icon
+    position: absolute  
+    top: 50%
+    left: 50%
+    margin-left: -42px
+    margin-top: -80px
++r(400)
+  .example
+    &__img
+      max-width: 100%
+      margin-left: auto
+      margin-right: auto
++r(768)
+  .example
+    &__img
+      margin-top: 0       
 +comment("section discount style")
 
 .discount
@@ -879,6 +909,16 @@ button
   .dream
     &__heading
       text-align: left
++r(1600)      
+  .dream
+    &__box
+      position: relative
+      height: 650px
+    &__img
+      position: absolute
+      top: 0
+      right: 0
+      max-width: none
 +comment("section footer style")
 .footer
   padding: 85px 0 20px
