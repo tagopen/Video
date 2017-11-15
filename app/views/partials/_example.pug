@@ -1,0 +1,13 @@
+section.example
+  .container
+    .row.flex-md-row-reverse.justify-content-start
+      .col-24.col-md-12.col-lg-10.col-xl-8.text-center.text-md-left
+        h2.heading.dream__heading!= page.example.heading
+          br
+          i.ic.ic--linear.heading__line
+        i.ic.ic--year    
+      .col-24.col-md-12.col-lg-11    
+        .example__box
+          img.img-fluid.example__img(src!= page.example.img.src, alt!= page.example.img.alt)
+          a.video__play.example__icon(href="#")
+            i.fa.fa-play.video__icon(aria-hidden="true")  
