@@ -818,13 +818,19 @@
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) -292px -30px no-repeat;
+  background: url(../img/sprite.png) -292px -48px no-repeat;
 }
 
 .ic--confetti:before {
   width: 105px;
   height: 187px;
   background: url(../img/sprite.png) 0px -138px no-repeat;
+}
+
+.ic--linear-sm:before {
+  width: 45px;
+  height: 8px;
+  background: url(../img/sprite.png) -292px -30px no-repeat;
 }
 
 .ic--linear:before {
