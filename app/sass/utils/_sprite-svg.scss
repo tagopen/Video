@@ -1,3 +1,12 @@
+// arrow-down
+$svg-arrow-down-name: "arrow-down";
+$svg-arrow-down-width: em(18);
+$svg-arrow-down-height: em(13);
+$svg-arrow-down-offset-x: px;
+$svg-arrow-down-offset-y: px;
+$svg-arrow-down-image: "../img/sprite.svg";
+$svg-arrow-down: ( "arrow-down", em(18), em(13), px, px, "../img/sprite.svg" );
+
 // gift
 $svg-gift-name: "gift";
 $svg-gift-width: em(25.88);
@@ -56,4 +65,4 @@ $svg-timer: ( "timer", em(28.71), em(32), px, px, "../img/sprite.svg" );
 $svg-spritesheet-width: px;
 $svg-spritesheet-height: px;
 $svg-spritesheet-image: "../img/sprite.svg";
-$svg-spritesheet-sprites: ( $svg-gift,  $svg-kids,  $svg-pic,  $svg-santa,  $svg-snow-globe,  $svg-timer,  );
+$svg-spritesheet-sprites: ( $svg-arrow-down,  $svg-gift,  $svg-kids,  $svg-pic,  $svg-santa,  $svg-snow-globe,  $svg-timer,  );

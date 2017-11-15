@@ -21,7 +21,8 @@
   text-align: left
 .form-group.has-error
   .form-control 
-    border-color: $form-control-error-border-color
+    color: $form-control-error-border-color
+    border: 2px solid $form-control-error-border-color
 [type=submit]:disabled
   animation: progress-bar-stripes 2s linear infinite
   background-image: $btn-submit-loading-bg
@@ -373,6 +374,11 @@ button
     padding-top: 40px
 
 +comment("section preview style")
+.form
+  padding: 69px 15px
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2)
+  background-color: #fff
+  text-align: center
 .radio-btn
   &__control
     position: absolute
@@ -382,8 +388,8 @@ button
     clip: rect(0 0 0 0)
     &:checked + .radio-btn__box
       .radio-btn__icon
-        &:before
-          opacity: 1
+        background-color: rgba(244, 171, 89, 0.37)
+        box-shadow: inset 0 4px 7px #f4ab59
   &__box
     display: flex
     flex-direction: row
@@ -391,33 +397,107 @@ button
     align-items: center
     justify-content: center
     margin: 0
+    font: 400 18px/18px $main-font
+    color: #212121
   &__icon
     position: relative
     display: inline-block
-    width: 15px
-    height: 15px
+    width: 20px
+    height: 20px
     margin-right: 5px
     box-shadow: inset 0 4px 7px #c6b4a3
     border: 2px solid #e3e3e3
     background-color: #fff
     border-radius: 50%
-    &:before
-      content: ''
-      position: absolute
-      display: block
-      margin: auto
-      width: 100%
-      height: 100%
-      border-radius: inherit
-      top: 0
-      right: 0
-      bottom: 0
-      left: 0
-      opacity: 0
-      background-color: #f4ab59
-      transition: all .2s ease-out
 
+    //&:before
+    //  content: ''
+    //  position: absolute
+    //  display: block
+    //  margin: auto
+    //  width: 50%
+    //  height: 50%
+    //  border-radius: inherit
+    //  top: 0
+    //  right: 0
+    //  bottom: 0
+    //  left: 0
+    //  opacity: 0
+    //  background-color: #f4ab59
+    //  box-shadow: 0 4px 7px 5px #f4ab59
+    //  transition: all .2s ease-out
+.form-control
+  padding: 22px 25px 19px
+  box-shadow: inset 2px 4px 7px #c6b4a3
+  background-color: #fff
+  border: 2px solid #e3e3e3
+  border-radius: 55px
+  font: 400 16px/19px $main-font
+  &:focus
+    box-shadow: inset 2px -4px 7px #c6b4a3
+    border-color: #e3e3e3
+    color: #988e7e
+  +placeholder
+    color: #988e7e
+.info
+  display: inline
+  border-bottom: 1px dashed currentColor
+  font: 400 18px/27px $main-font
+  color: #43131f
+  text-decoration: none
+  transition: all .3s ease-out
+  &:hover,
+  &:focus
+    text-decoration: none
+    color: #43131f + #d07630
+.select2-container--default 
+  .select2-dropdown
+    &--below,
+    &--above
+      border: none
+      background-color: transparent
+  .select2-selection--single 
+    height: 59px
+    border: none
+    .select2-selection
+      &__rendered
+        padding: 20px 25px
+        box-shadow: inset 2px 4px 7px #c6b4a3
+        border: 2px solid #e3e3e3
+        background-color: #fff
+        border-radius: 55px
+        text-align: left
+        font: 400 16px/19px $main-font
+        color: #988e7e
+        transition: all .3s ease-out
+      &__arrow
+        height: 13px
+        right: 27px
+        top: 50%
+        transform: translateY(-50%)
+        transform-origin: 50% 50%
+        transition: all .3s ease-out
+      &__icon
+        color: #988e7e
+.select2-container--open
+  &.select2-container--default 
+    .select2-selection--single 
+      .select2-selection
+        &__rendered
+          outline: none
+          box-shadow: inset 2px -4px 7px #c6b4a3
+          border-color: #e3e3e3
 
+        &__arrow
+          transform: translateY(-50%) rotate(180deg)
+.select2-results
+  width: calc(100% - 44px)
+  margin: 0 auto
+  box-shadow: -1px 4px 27px #c6b4a3
+  background-color: #fff
++r(768)
+  .form
+    padding: 67px 37px
 
 +comment("section gift style")
 .gift
