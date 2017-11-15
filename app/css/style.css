@@ -1855,6 +1855,9 @@ button:focus {
   .example__heading {
     text-align: left;
   }
+  .example__year {
+    margin: 0;
+  }
 }
 
 /* ---------------------------------------------- */
