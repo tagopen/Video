@@ -1439,6 +1439,44 @@ button:focus {
   }
 }
 
+/* ---------------------------------------- */
+/* S E C T I O N    A B O U T    S T Y L E  */
+/* ---------------------------------------- */
+.about {
+  padding: 50px 0;
+}
+
+.about__heading {
+  margin-bottom: 40px;
+}
+
+.about__descr {
+  margin-bottom: 23px;
+}
+
+.bt-descr {
+  font: 400 24px/36px "PF Din Text Pro", sans-serif;
+  color: #212121;
+}
+
+@media only screen and (min-width: 768px) {
+  .about__heading {
+    margin-bottom: 68px;
+  }
+  .about__descr {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .about__heading {
+    margin-bottom: 12px;
+  }
+  .about__descr {
+    margin: 56px 0 0;
+  }
+}
+
 /* -------------------------------------------- */
 /* S E C T I O N    P R E V I E W    S T Y L E  */
 /* -------------------------------------------- */

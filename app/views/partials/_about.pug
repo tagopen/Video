@@ -2,10 +2,10 @@ section.about
   .container         
     .row
       .col-24
-        h2.heading.heading--curl!= page.about.heading
+        h2.heading.heading--curl.about__heading!= page.about.heading
     .row.text-center.text-lg-left.justify-content-end
       .col-24.col-lg-12
         p.bt-descr.about__descr!= page.about.descr
-      .col-24.col-md-12
+      .col-24.col-md-14.col-lg-12
         - var img = page.about.img
         img.img-fluid.about__img(src=img.src, alt=img.alt)
