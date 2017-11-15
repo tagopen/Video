@@ -205,6 +205,10 @@ button
     color: #fab655
     text-decoration: underline
     transition: all .3s ease 
+    &:hover,
+    &:focus
+      text-decoration: none
+      color: #fab655 * 1.2
 .h-content
   padding-top: 180px
   &__box
@@ -812,7 +816,7 @@ button
       text-decoration: none
       color: #fff
   &__text  
-    color: #000
+    color: #fff
     font: 400 16px/24px $main-font 
     padding-left: 10px
   &__icon

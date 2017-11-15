@@ -1207,6 +1207,11 @@ button:focus {
   transition: all .3s ease;
 }
 
+.h-call__button:hover, .h-call__button:focus {
+  text-decoration: none;
+  color: #ffda66;
+}
+
 .h-content {
   padding-top: 180px;
 }
@@ -2137,7 +2142,7 @@ button:focus {
 }
 
 .panel__text {
-  color: #000;
+  color: #fff;
   font: 400 16px/24px "PF Din Text Pro", sans-serif;
   padding-left: 10px;
 }
