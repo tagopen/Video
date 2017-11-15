@@ -177,23 +177,27 @@ button
   width: 100%
   padding-top: 15px
 .logo
+  &--white
+    color: #fff 
   &__image
     text-align: center 
     margin-bottom: 10px 
   &__img
     display: inline-block 
   &__text
+    margin: 0
     font: 400 14px/21px $main-font
-    color: #fff 
     text-align: center
 .h-call
   margin-bottom: 15px
   &__number
     display: inline-block
     font: 400 22px/24px $main-font
-    color: #fff
     text-decoration: none
+    color: #212121
     transition: all .3s ease
+    &--white
+      color: #fff
     &:hover,
     &:focus
       text-decoration: none
@@ -849,3 +853,19 @@ button
     background-position: center center 
   #accordion
     min-height: 500px      
+
++comment("sectoin footer style")
+.footer
+  padding: 85px 0 20px
+  background: #fff url(../img/footer-bg.png) no-repeat scroll 50% 0
+  background-size: cover
+.partner
+  text-align: center
+.copyright
+  margin: 20px 0
+  font: 400 14px/17px $font-neumann
+  color: #212121
++r(768)
+  .footer
+    background-size: auto
+    color: #1c468f * 1.6

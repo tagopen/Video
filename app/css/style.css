@@ -1164,6 +1164,10 @@ button:focus {
   padding-top: 15px;
 }
 
+.logo--white {
+  color: #fff;
+}
+
 .logo__image {
   text-align: center;
   margin-bottom: 10px;
@@ -1174,8 +1178,8 @@ button:focus {
 }
 
 .logo__text {
+  margin: 0;
   font: 400 14px/21px "PF Din Text Pro", sans-serif;
-  color: #fff;
   text-align: center;
 }
 
@@ -1186,10 +1190,14 @@ button:focus {
 .h-call__number {
   display: inline-block;
   font: 400 22px/24px "PF Din Text Pro", sans-serif;
-  color: #fff;
   text-decoration: none;
+  color: #212121;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
+}
+
+.h-call__number--white {
+  color: #fff;
 }
 
 .h-call__number:hover, .h-call__number:focus {
@@ -2192,5 +2200,31 @@ button:focus {
   }
   #accordion {
     min-height: 500px;
+  }
+}
+
+/* ------------------------------------------ */
+/* S E C T O I N    F O O T E R    S T Y L E  */
+/* ------------------------------------------ */
+.footer {
+  padding: 85px 0 20px;
+  background: #fff url(../img/footer-bg.png) no-repeat scroll 50% 0;
+  background-size: cover;
+}
+
+.partner {
+  text-align: center;
+}
+
+.copyright {
+  margin: 20px 0;
+  font: 400 14px/17px "Neumann", sans-serif;
+  color: #212121;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer {
+    background-size: auto;
+    color: #2d70e5;
   }
 }

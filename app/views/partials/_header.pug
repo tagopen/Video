@@ -5,26 +5,26 @@ header.header
         .row.flex-md-row-reverse.justify-content-between
           .col-24.col-md-6
             .header__call.h-call
-              .row
-                .col-12.col-md-24.text-left.text-md-right
-                  a.h-call__number(href!= page.header.menu.number.href)!=page.header.menu.number.tel
-                .col-12.col-md-24.text-right  
+              .row.justify-content-center
+                .col-auto.col-md-24.text-left.text-md-right
+                  a.h-call__number.h-call__number--white(href!= page.header.menu.number.href)!=page.header.menu.number.tel
+                .col-auto.col-md-24.text-right  
                   a.h-call__button(href!= page.header.menu.call.href)!= page.header.menu.call.text  
           .col-24.col-md-12.col-lg-9
-            .header__logo.logo
+            .header__logo.logo.logo--white
               .row
-                .col-24.col-md-6
+                .col-24.col-md-auto
                   .logo__image
                     img.img-fluid.logo__img(src!= page.header.menu.logo.img.src, alt!= page.header.menu.logo.img.alt)
-                .col-24.col-md-18.logo__col.align-items-center  
-                  .logo__text!= page.header.menu.logo.text      
+                .col-24.col-md-auto.logo__col.align-items-center  
+                  p.logo__text!= page.header.menu.logo.text      
     .header__content.h-content.d-flex.align-items-center 
       .container
         .row.justify-content-center.flex-lg-row-reverse
           .col-24.col-md-12.col-lg-8
             .h-content__image
               img.img-fluid.h-content__img(src!= page.header.content.img.src, alt!= page.header.content.img.alt)
-          .col-24.col-lg-16.d-flex.align-items-center
+          .col-24.col-lg-16.align-self-center
             .h-content__box
               h2.h-content__subtitle!= page.header.content.subtitle
               h1.h-content__title!= page.header.content.title
