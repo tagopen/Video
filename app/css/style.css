@@ -1695,14 +1695,17 @@ button:focus {
 .package__icon {
   position: absolute;
   top: 0;
+  -webkit-transform: scale(0.6);
+      -ms-transform: scale(0.6);
+          transform: scale(0.6);
 }
 
 .package__icon--left {
-  left: -70px;
+  left: -115px;
 }
 
 .package__icon--right {
-  right: -70px;
+  right: -115px;
 }
 
 .package__info {
@@ -2245,6 +2248,19 @@ button:focus {
 @media only screen and (min-width: 992px) {
   .dream__heading {
     text-align: left;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .dream__box {
+    position: relative;
+    height: 650px;
+  }
+  .dream__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: none;
   }
 }
 

@@ -2,8 +2,9 @@ section.dream
   .container
     .row.justify-content-center.align-items-center
       .col-24.col-lg-12
-        - var img = page.dream.img
-        img.img-fluid.dream__img(src=img.src, alt=img.alt)
+        .dream__box
+          - var img = page.dream.img
+          img.img-fluid.dream__img(src=img.src, alt=img.alt)
       .col-24.col-lg-12.text-center.text-lg-left
         h2.heading.dream__heading!= page.dream.heading
           br
