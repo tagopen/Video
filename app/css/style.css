@@ -818,7 +818,7 @@
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) -173px -162px no-repeat;
+  background: url(../img/sprite.png) -292px -30px no-repeat;
 }
 
 .ic--confetti:before {
@@ -828,9 +828,9 @@
 }
 
 .ic--linear:before {
-  width: 45px;
-  height: 8px;
-  background: url(../img/sprite.png) -173px -144px no-repeat;
+  width: 115px;
+  height: 20px;
+  background: url(../img/sprite.png) -292px 0px no-repeat;
 }
 
 /* svg icons */
@@ -1014,10 +1014,17 @@ button:focus {
   color: #fff;
 }
 
+.heading__line {
+  margin-top: 39px;
+}
+
 @media only screen and (min-width: 768px) {
   .heading {
     font-size: 36px;
     line-height: 40px;
+  }
+  .heading__line {
+    margin-top: 33px;
   }
 }
 
@@ -2203,8 +2210,46 @@ button:focus {
   }
 }
 
+/* ---------------------------------------- */
+/* S E C T I O N    D R E A M    S T Y L E  */
+/* ---------------------------------------- */
+.dream {
+  padding: 50px 0;
+}
+
+.dream__heading {
+  margin-bottom: 47px;
+}
+
+.dream__descr {
+  margin-bottom: 40px;
+}
+
+.dm-descr {
+  font: 400 24px/36px "Neumann", sans-serif;
+  color: #212121;
+}
+
+@media only screen and (min-width: 768px) {
+  .dream {
+    padding: 80px 0 50px;
+  }
+  .dream__heading {
+    margin-bottom: 42px;
+  }
+  .dream__descr {
+    margin-bottom: 58px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .dream__heading {
+    text-align: left;
+  }
+}
+
 /* ------------------------------------------ */
-/* S E C T O I N    F O O T E R    S T Y L E  */
+/* S E C T I O N    F O O T E R    S T Y L E  */
 /* ------------------------------------------ */
 .footer {
   padding: 85px 0 20px;
@@ -2225,6 +2270,5 @@ button:focus {
 @media only screen and (min-width: 768px) {
   .footer {
     background-size: auto;
-    color: #2d70e5;
   }
 }

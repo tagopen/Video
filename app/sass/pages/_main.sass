@@ -81,10 +81,14 @@ button
       background-size: contain
   &--white
     color: #fff
+  &__line
+    margin-top: 39px
 +r(768)
   .heading
     font-size: 36px
     line-height: 40px
+    &__line
+      margin-top: 33px
 
 +cm("button")
 a,
@@ -852,9 +856,30 @@ button
     background-size: cover 
     background-position: center center 
   #accordion
-    min-height: 500px      
+    min-height: 500px 
 
-+comment("sectoin footer style")
++comment("section dream style")    
+.dream
+  padding: 50px 0 
+  &__heading
+    margin-bottom: 47px
+  &__descr
+    margin-bottom: 40px
+.dm-descr
+  font: 400 24px/36px $font-neumann
+  color: #212121
++r(768)
+  .dream
+    padding: 80px 0 50px
+    &__heading
+      margin-bottom: 42px
+    &__descr
+      margin-bottom: 58px
++r(992)
+  .dream
+    &__heading
+      text-align: left
++comment("section footer style")
 .footer
   padding: 85px 0 20px
   background: #fff url(../img/footer-bg.png) no-repeat scroll 50% 0
@@ -868,4 +893,3 @@ button
 +r(768)
   .footer
     background-size: auto
-    color: #1c468f * 1.6

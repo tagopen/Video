@@ -1,0 +1,13 @@
+section.dream
+  .container
+    .row.justify-content-center.align-items-center
+      .col-24.col-lg-12
+        - var img = page.dream.img
+        img.img-fluid.dream__img(src=img.src, alt=img.alt)
+      .col-24.col-lg-12.text-center.text-lg-left
+        h2.heading.dream__heading!= page.dream.heading
+          br
+          i.ic.ic--linear.heading__line
+        p.dm-descr.dream__descr!= page.dream.descr
+        .btn-groups
+          button.btn.btn--default.btn--sm!= page.dream.btn.text
