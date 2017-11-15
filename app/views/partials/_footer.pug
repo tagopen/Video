@@ -1,1 +1,24 @@
-.footer
+footer.footer
+  .container-fluid
+    .row.justify-content-center.justify-content-md-between.align-items-center
+      .col-24.col-md.col-lg-auto
+        .logo.footer__logo
+          .row
+            .col-24.col-md-auto
+              .logo__image
+                img.img-fluid.logo__img(src!= page.header.menu.logo.img.src, alt!= page.header.menu.logo.img.alt)
+            .col-24.col-md-auto.logo__col.align-items-center  
+              p.logo__text!= page.header.menu.logo.text
+      .col-24.col-md.col-lg-auto.order-last.order-md-unordered
+        - var partner = page.footer.partner
+        .partner.footer__partner
+          img.img-fluid.partner__img(src=partner.img.src, alt=partner.img.alt)
+          p.partner__text!= partner.text
+      .col-24.col-md.col-lg-auto
+        .h-call.footer__call
+          .row.justify-content-between.align-items-end
+            .col-auto.col-md-24.text-left.text-md-right
+              a.h-call__number(href!= page.header.menu.number.href)!=page.header.menu.number.tel
+            .col-auto.col-md-24.text-right  
+              a.h-call__button(href!= page.header.menu.call.href)!= page.header.menu.call.text  
+  footer.copyright.text-center!= page.footer.copyright

@@ -36,18 +36,18 @@
     <meta name="twitter:image" content="/img/logo/microformat.png"/>
     <!-- build:css css/bundle.min.css-->
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/fonts.css?v=1510698794774">
+    <link rel="stylesheet" href="css/fonts.css?v=1510762256768">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.css?v=1510698794774">
+    <link rel="stylesheet" href="css/bootstrap.css?v=1510762256768">
     <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="css/font-awesome.css?v=1510698794774">
+    <link rel="stylesheet" href="css/font-awesome.css?v=1510762256768">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1510698794774">
+    <link rel="stylesheet" href="css/style.css?v=1510762256768">
     <!-- endbuild-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://--><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1510698794774"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1510698794774"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1510762256768"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1510762256768"></script>
 <![endif]-->
   </head>
   <body class="body">
@@ -58,20 +58,20 @@
             <div class="row flex-md-row-reverse justify-content-between">
               <div class="col-24 col-md-6">
                 <div class="header__call h-call">
-                  <div class="row">
-                    <div class="col-12 col-md-24 text-left text-md-right"><a class="h-call__number" href="tel:380685736713">068 573 67 13</a></div>
-                    <div class="col-12 col-md-24 text-right"> <a class="h-call__button" href="#">Заказать звонок</a></div>
+                  <div class="row justify-content-center">
+                    <div class="col-auto col-md-24 text-left text-md-right"><a class="h-call__number h-call__number--white" href="tel:380685736713">068 573 67 13</a></div>
+                    <div class="col-auto col-md-24 text-right"> <a class="h-call__button" href="#">Заказать звонок</a></div>
                   </div>
                 </div>
               </div>
               <div class="col-24 col-md-12 col-lg-9">
-                <div class="header__logo logo">
+                <div class="header__logo logo logo--white">
                   <div class="row">
-                    <div class="col-24 col-md-6">
+                    <div class="col-24 col-md-auto">
                       <div class="logo__image"><img class="img-fluid logo__img" src="img/logo/logo.png" alt="logo"></div>
                     </div>
-                    <div class="col-24 col-md-18 logo__col align-items-center"> 
-                      <div class="logo__text">Именное видеопоздравление для вашего ребенка от Дедушки Мороза</div>
+                    <div class="col-24 col-md-auto logo__col align-items-center"> 
+                      <p class="logo__text">Именное видеопоздравление <br>для вашего ребенка от Дедушки Мороза</p>
                     </div>
                   </div>
                 </div>
@@ -85,7 +85,7 @@
               <div class="col-24 col-md-12 col-lg-8">
                 <div class="h-content__image"><img class="img-fluid h-content__img" src="img/children.png" alt="Дети"></div>
               </div>
-              <div class="col-24 col-lg-16 d-flex align-items-center">
+              <div class="col-24 col-lg-16 align-self-center">
                 <div class="h-content__box">
                   <h2 class="h-content__subtitle">Каждый ребенок в новогоднюю ночь мечтает о чуде...</h2>
                   <h1 class="h-content__title">Удивите своего ребенка персональным видео-поздравлением от Дедушки Мороза!</h1>
@@ -145,20 +145,21 @@
                   <div class="row justify-content-around">
                     <div class="d-inline-flex pl-2 pr-2">
                       <div class="radio-btn">
-                        <input class="radio-btn__control" id="rbtn11" type="radio" name="gender">
+                        <input class="radio-btn__control js-gender" id="rbtn11" type="radio" name="gender">
                         <label class="radio-btn__box" for="rbtn11" data-gender="#male"><i class="radio-btn__icon"></i>Мальчик</label>
                       </div>
                     </div>
                     <div class="d-inline-flex pl-2 pr-2">
                       <div class="radio-btn">
-                        <input class="radio-btn__control" id="rbtn12" type="radio" name="gender">
+                        <input class="radio-btn__control js-gender" id="rbtn12" type="radio" name="gender">
                         <label class="radio-btn__box" for="rbtn12" data-gender="#female"><i class="radio-btn__icon"></i>Девочка</label>
                       </div>
                     </div>
                   </div>
                 </fieldset>
                 <fieldset class="form-group">
-                  <select class="form-group select" id="male" required>
+                  <select class="form-control form-control--select select" id="male" data-placeholder="Выберите имя из списка" required>
+                    <option></option>
                     <option value="1">Абрам</option>
                     <option value="2">Авраам</option>
                     <option value="3">Адам</option>
@@ -345,7 +346,8 @@
                     <option value="184">Ян</option>
                     <option value="185">Ярослав</option>
                   </select>
-                  <select class="form-group select" id="female" required>
+                  <select class="form-control form-control--select select" id="female" data-placeholder="Выберите имя из списка" required>
+                    <option></option>
                     <option value="1">Аврора</option>
                     <option value="2">Агата</option>
                     <option value="3">Агнесса</option>
@@ -627,18 +629,7 @@
               </div>
               <div class="col-24">
                 <div class="comments__box">
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fukrxenia%2Fposts%2F1686942961379685%3A0&amp;width=500" width="500" height="449" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true" data-show-text="false"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D643906779330999%26id%3D100011350496585%26substory_index%3D0&amp;width=500" width="500" height="461" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D160454914542259%26id%3D100017332535862%26substory_index%3D0&amp;width=500" width="500" height="499" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D820572198109309%26id%3D100004696098951%26substory_index%3D0&amp;width=500" width="500" height="430" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D501739700181515%26id%3D100010364672209%26substory_index%3D0&amp;width=500" width="500" height="430" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FSamarskiy.S%2Fposts%2F1499299050107938%3A0&amp;width=500" width="500" height="411" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fzmielena%2Fposts%2F1679997712039188%3A0&amp;width=500" width="500" height="392" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fgrishnyaevatommy%2Fposts%2F834746806707663%3A0&amp;width=500" width="500" height="392" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fgrishnyaevatommy%2Fposts%2F834746806707663%3A0&amp;width=500" width="500" height="392" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D283821425449852%26id%3D100014659892701%26substory_index%3D0&amp;width=500" width="500" height="354" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1876121029068993%26id%3D100000133413756%26substory_index%3D0&amp;width=500" width="500" height="335" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                  <div class="fb-comment-embed" data-href="//www.facebook.com/ekaterina.pavliuk/activity/816341538530119?comment_id=816342095196730" data-width="720" data-include-parent="false" numposts="5"></div>
+                  <iframe src="https://www.displaysocialmedia.com/app/embed/index.php?embed_id=4666" frameborder="0" width="100%" height="1000"></iframe>
                 </div>
               </div>
             </div>
@@ -812,17 +803,63 @@
           </div>
         </div>
       </section>
+      <section class="dream">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-24 col-lg-12"><img class="img-fluid dream__img" src="img/family.png" alt="Семья">
+            </div>
+            <div class="col-24 col-lg-12 text-center text-lg-left">
+              <h2 class="heading dream__heading">Каждый ребенок <br class="d-md-none">в новогоднюю <nobr>ночь мечтает о чуде.</nobr><br><i class="ic ic--linear heading__line"></i></h2>
+              <p class="dm-descr dream__descr">Сделайте ребенку подарок, который он запомнит на всю жизнь.</p>
+              <div class="btn-groups">
+                <button class="btn btn--default btn--sm">Сделать подарок</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <div class="footer"></div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row justify-content-center justify-content-md-between align-items-center">
+          <div class="col-24 col-md col-lg-auto">
+            <div class="logo footer__logo">
+              <div class="row">
+                <div class="col-24 col-md-auto">
+                  <div class="logo__image"><img class="img-fluid logo__img" src="img/logo/logo.png" alt="logo"></div>
+                </div>
+                <div class="col-24 col-md-auto logo__col align-items-center"> 
+                  <p class="logo__text">Именное видеопоздравление <br>для вашего ребенка от Дедушки Мороза</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-24 col-md col-lg-auto order-last order-md-unordered">
+            <div class="partner footer__partner"><img class="img-fluid partner__img" src="img/partner.png" alt="Майстерня карамели">
+              <p class="partner__text">Генеральный спонсор</p>
+            </div>
+          </div>
+          <div class="col-24 col-md col-lg-auto">
+            <div class="h-call footer__call">
+              <div class="row justify-content-between align-items-end">
+                <div class="col-auto col-md-24 text-left text-md-right"><a class="h-call__number" href="tel:380685736713">068 573 67 13</a></div>
+                <div class="col-auto col-md-24 text-right"> <a class="h-call__button" href="#">Заказать звонок</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="copyright text-center">Сделано с душой студией WELL DONE</footer>
+    </footer>
     <!-- build:js js/bundle.min.js-->
     <!-- Popper JavaScript-->
-    <script src="js/popper.js?v=1510698794774"></script>
+    <script src="js/popper.js?v=1510762256768"></script>
     <!-- jQuery-->
-    <script src="js/jquery.js?v=1510698794774"></script>
+    <script src="js/jquery.js?v=1510762256768"></script>
     <!-- Bootstrap JavaScript-->
-    <script src="js/bootstrap.js?v=1510698794774"></script>
+    <script src="js/bootstrap.js?v=1510762256768"></script>
     <!-- Old browsers reject JavaScript-->
-    <script src="js/jquery.reject.js?v=1510698794774"></script>
+    <script src="js/jquery.reject.js?v=1510762256768"></script>
     <script>
       (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -831,19 +868,18 @@
       js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.11';
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-      
-      
-      
     </script>
     <!-- CountDown JavaScript-->
-    <script src="js/jquery.countdown.js?v=1510698794774"></script>
+    <script src="js/jquery.countdown.js?v=1510762256768"></script>
     <!-- Match Height JavaScript-->
-    <script src="js/jquery.matchHeight.js?v=1510698794774">   </script>
+    <script src="js/jquery.matchHeight.js?v=1510762256768">   </script>
     <!-- Validator JavaScript-->
-    <script src="js/validator.js?v=1510698794774"></script>
-    <script src="js/contact_me.js?v=1510698794774"></script>
+    <script src="js/validator.js?v=1510762256768"></script>
+    <script src="js/contact_me.js?v=1510762256768"> </script>
+    <!-- Select2 JavaScript-->
+    <script src="js/select2.js?v=1510762256768"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js?v=1510698794774"></script>
+    <script src="js/main.js?v=1510762256768"></script>
     <!-- endbuild-->
   </body>
 </html>

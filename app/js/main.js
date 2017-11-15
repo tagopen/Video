@@ -75,5 +75,55 @@
     });
   });
 
+  // Select2 
+  $(function() {
+    var $selectElement = $('.form-control--select');
+
+    if ($selectElement) {
+      $selectElement.select2({
+        minimumResultsForSearch: Infinity,
+        placeholder: "--Select something (default placeholder)--", 
+        width: 'resolve'
+      });
+      
+      $('.select2-selection__arrow').html('<svg class="svg svg--arrow-down select2-selection__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img"><use xlink:href="img/sprite.svg#arrow-down"></use></svg>');
+    }
+  });
+  
+  // Change select with childrean names
+  $(function() {
+
+    $(".js-gender").each(function() {
+      if ($(this).prop("checked")) {
+        var target = $(this).siblings("[data-gender]").data("gender"),
+            $select = $(target);
+        $select.next(".select2-container")
+             .show();
+        $select.siblings(".select")
+               .next(".select2-container")
+               .hide();
+      } else {
+        var target = $(".js-gender").eq(0).siblings("[data-gender]").data("gender"),
+            $select = $(target);
+        $select.next(".select2-container")
+             .show();
+        $select.siblings(".select")
+               .next(".select2-container")
+               .hide();
+
+      }
+    });
+
+    $(".js-gender").on('change click', function() {
+      var target = $(this).siblings("[data-gender]").data("gender"),
+          $select = $(target);
+
+      $select.next(".select2-container")
+             .show();
+      $select.siblings(".select")
+             .next(".select2-container")
+             .hide();
+    });
+  });
 
 })(jQuery); // End of use strict
