@@ -358,6 +358,35 @@ button
   .video
     padding-top: 40px
 
++comment("section split style")
+.split
+  position: relative
+  overflow: hidden
+  z-index: 1
+.snowflake
+  +coverdiv
+  z-index: 0
+  &__icon
+    position: absolute
+    z-index: 1
+    &--1
+      left: 0
+      top: 0
+    &--2
+    &--3
+      top: 5%
+      right: 5%
+    &--4
+    &--5
+      top: 10%
+      right: 3%
+    &--6
+    &--7
+    &--8
+    &--9
+    &--10
+    &--11
+
 +comment("section about style")
 .about
   padding: 50px 0
@@ -382,6 +411,11 @@ button
       margin: 56px 0 0
 
 +comment("section preview style")
+.preview
+  background-image: url(../img/sugrob2.png)
+  background-position: 50% 100%
+  background-repeat: no-repeat
+
 .form
   padding: 69px 15px
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2)

@@ -806,43 +806,109 @@
 .ic--box:before {
   width: 163px;
   height: 128px;
-  background: url(../img/sprite.png) 0px -119px no-repeat;
+  background: url(../img/sprite.png) -185px -358px no-repeat;
 }
 
 .ic--candy:before {
   width: 109px;
   height: 134px;
-  background: url(../img/sprite.png) -377px 0px no-repeat;
+  background: url(../img/sprite.png) 0px -506px no-repeat;
 }
 
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) -377px -162px no-repeat;
+  background: url(../img/sprite.png) -619px -328px no-repeat;
 }
 
 .ic--confetti:before {
   width: 105px;
   height: 187px;
-  background: url(../img/sprite.png) -262px 0px no-repeat;
+  background: url(../img/sprite.png) -548px 0px no-repeat;
 }
 
 .ic--linear-sm:before {
   width: 45px;
   height: 8px;
-  background: url(../img/sprite.png) -377px -144px no-repeat;
+  background: url(../img/sprite.png) -483px -358px no-repeat;
 }
 
 .ic--linear:before {
   width: 115px;
   height: 20px;
-  background: url(../img/sprite.png) 0px -257px no-repeat;
+  background: url(../img/sprite.png) -358px -460px no-repeat;
+}
+
+.ic--snowflake-10:before {
+  width: 65px;
+  height: 51px;
+  background: url(../img/sprite.png) -119px -506px no-repeat;
+}
+
+.ic--snowflake-11:before {
+  width: 175px;
+  height: 138px;
+  background: url(../img/sprite.png) 0px -358px no-repeat;
+}
+
+.ic--snowflake-12:before {
+  width: 115px;
+  height: 92px;
+  background: url(../img/sprite.png) -358px -358px no-repeat;
+}
+
+.ic--snowflake-2:before {
+  width: 61px;
+  height: 75px;
+  background: url(../img/sprite.png) -548px -413px no-repeat;
+}
+
+.ic--snowflake-3:before {
+  width: 287px;
+  height: 229px;
+  background: url(../img/sprite.png) 0px 0px no-repeat;
+}
+
+.ic--snowflake-4:before {
+  width: 61px;
+  height: 75px;
+  background: url(../img/sprite.png) -548px -328px no-repeat;
+}
+
+.ic--snowflake-5:before {
+  width: 98px;
+  height: 121px;
+  background: url(../img/sprite.png) -548px -197px no-repeat;
+}
+
+.ic--snowflake-6:before {
+  width: 126px;
+  height: 100px;
+  background: url(../img/sprite.png) -398px -239px no-repeat;
+}
+
+.ic--snowflake-7:before {
+  width: 126px;
+  height: 100px;
+  background: url(../img/sprite.png) -262px -239px no-repeat;
+}
+
+.ic--snowflake-8:before {
+  width: 65px;
+  height: 51px;
+  background: url(../img/sprite.png) -194px -506px no-repeat;
+}
+
+.ic--snowflake:before {
+  width: 241px;
+  height: 229px;
+  background: url(../img/sprite.png) -297px 0px no-repeat;
 }
 
 .ic--year:before {
   width: 252px;
   height: 109px;
-  background: url(../img/sprite.png) 0px 0px no-repeat;
+  background: url(../img/sprite.png) 0px -239px no-repeat;
 }
 
 /* svg icons */
@@ -1440,6 +1506,44 @@ button:focus {
 }
 
 /* ---------------------------------------- */
+/* S E C T I O N    S P L I T    S T Y L E  */
+/* ---------------------------------------- */
+.split {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.snowflake__icon {
+  position: absolute;
+  z-index: 1;
+}
+
+.snowflake__icon--1 {
+  left: 0;
+  top: 0;
+}
+
+.snowflake__icon--3 {
+  top: 5%;
+  right: 5%;
+}
+
+.snowflake__icon--5 {
+  top: 10%;
+  right: 3%;
+}
+
+/* ---------------------------------------- */
 /* S E C T I O N    A B O U T    S T Y L E  */
 /* ---------------------------------------- */
 .about {
@@ -1480,6 +1584,12 @@ button:focus {
 /* -------------------------------------------- */
 /* S E C T I O N    P R E V I E W    S T Y L E  */
 /* -------------------------------------------- */
+.preview {
+  background-image: url(../img/sugrob2.png);
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+}
+
 .form {
   padding: 69px 15px;
   -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
