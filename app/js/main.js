@@ -125,5 +125,19 @@
              .hide();
     });
   });
+  
+  // fixed panel close
+  $(function() {
+    var timeoutID = setTimeout ( function() {
+      $('.js-panel').fadeIn('300');
+       clearTimeout(timeoutID);
+    }, 5000);
+
+    $(".js-panel").on('click', '[data-close]', function() {
+      $(this.parentNode).fadeOut("300", function() {
+        $(this).detach();
+      });
+    });
+  });
 
 })(jQuery); // End of use strict

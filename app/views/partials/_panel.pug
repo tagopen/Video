@@ -1,0 +1,9 @@
+section.fd-panel.fd-panel--hidden.js-panel
+  button.btn-close.fd-panel__close(data-close="panel")
+    +svg("close")(class="btn-close__icon")
+  .vd-video
+    img.img-fluid.vd-video__img(src!= page.panel.img.src)
+    .vd-video__descr
+      a.vd-video__play.mp-play.mp-play--sm(href="#")
+        i.fa.fa-play.mp-play__icon(aria-hidden="true") 
+      .vd-video__text.gg-text.gg-text--sm.gg-text--white!= page.panel.text

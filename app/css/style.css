@@ -925,6 +925,11 @@
   height: 0.8125em;
 }
 
+.svg--close {
+  width: 0.875em;
+  height: 0.875em;
+}
+
 .svg--gift {
   width: 1.6175em;
   height: 2em;
@@ -1130,7 +1135,7 @@ button:focus {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 25px;
-  padding: 10px 22px;
+  padding: 15px 30px;
   border: 0 none;
   min-height: 61px;
   -webkit-box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
@@ -1236,6 +1241,47 @@ button:focus {
 /* ---------------------------------------- */
 /* H O M E    P A G E    S T Y L E          */
 /* ---------------------------------------- */
+/* ---------------------------------------- */
+/* S E C T I O N    P A N E L    S T Y L E  */
+/* ---------------------------------------- */
+.fd-panel {
+  position: fixed;
+  bottom: 35px;
+  left: 35px;
+  z-index: 102;
+}
+
+.fd-panel--hidden {
+  display: none;
+}
+
+.fd-panel__close {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.btn-close {
+  padding: 10px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: transparent;
+  border: 0 none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0;
+  line-height: 0;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  z-index: 99;
+}
+
+.btn-close:hover, .btn-close:focus {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
 /* ------------------------------------------ */
 /* S E C T I O N    H E A D E R    S T Y L E  */
 /* ------------------------------------------ */
@@ -1955,7 +2001,21 @@ button:focus {
 
 .mp-play {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   height: 84px;
   width: 84px;
   -webkit-border-radius: 50%;
@@ -1965,6 +2025,16 @@ button:focus {
           box-shadow: 2px 3.5px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
   text-align: center;
   z-index: 30;
+  text-decoration: none;
+}
+
+.mp-play:hover, .mp-play:focus {
+  text-decoration: none;
+}
+
+.mp-play--sm {
+  width: 45px;
+  height: 45px;
 }
 
 .mp-play__icon {
@@ -2008,23 +2078,10 @@ button:focus {
 
 .vd-video__text {
   margin-bottom: 20px;
-}
-
-.vd-video__play {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.vd-video__text {
   padding-top: 30px;
   font: 400 28px/40px "PF Din Text Pro", sans-serif;
   color: #fff;
   margin-bottom: 20px;
-  text-align: center;
 }
 
 .gg-text {
@@ -2032,15 +2089,13 @@ button:focus {
   color: #212121;
 }
 
-.gg-text--white {
-  color: #fff;
+.gg-text--sm {
+  font-size: 18px;
+  line-height: 20px;
 }
 
-@media only screen and (min-width: 768px) {
-  .vd-video__text {
-    padding-right: 30px;
-    text-align: left;
-  }
+.gg-text--white {
+  color: #fff;
 }
 
 @media only screen and (min-width: 768px) {
