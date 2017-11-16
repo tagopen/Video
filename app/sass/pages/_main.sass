@@ -361,32 +361,37 @@ button
 +comment("section split style")
 .split
   position: relative
-  overflow: hidden
+  background-size: cover
   z-index: 1
-.snowflake
-  +coverdiv
-  z-index: 0
+  &--1
+    background: #f4f4f5 url(../img/split-bg.png) no-repeat 50% 0
+  &--2
+    background: #fbf9fa url(../img/split-bg-2.png) no-repeat 50% 0
+  &--3
+    background: #fff url(../img/split-bg-3.png) no-repeat 50% 0
   &__icon
     position: absolute
-    z-index: 1
     &--1
+      top: -340px
       left: 0
-      top: 0
     &--2
-    &--3
-      top: 5%
-      right: 5%
+      right: 0
+      bottom: -130px
+    &--3,
     &--4
-    &--5
-      top: 10%
-      right: 3%
-    &--6
-    &--7
-    &--8
-    &--9
-    &--10
-    &--11
-
+      display: none
+    &--3
+      top: -274px
+      left: 0
+    &--4
+      right: 0
+      bottom: 50px
++r(1450)
+  .split
+    &__icon
+      &--3,
+      &--4
+        display: inline-block
 +comment("section about style")
 .about
   padding: 50px 0
@@ -397,6 +402,12 @@ button
 .bt-descr
   font: 400 24px/36px $main-font
   color: #212121
+.icons-group
+  position: relative
+  &__box
+    position: absolute
+    left: -100px
+    top: 50px
 +r(768)
   .about
     &__heading
@@ -409,6 +420,10 @@ button
       margin-bottom: 12px
     &__descr
       margin: 56px 0 0
++r(1200)
+  .icons-group
+    &__box
+      position: static
 
 +comment("section preview style")
 .preview
@@ -707,11 +722,14 @@ button
 +comment("section discount style")
 
 .discount
+  position: relative
+  margin-bottom: -200px
   padding: 50px 0 283px
   background-image: url(../img/letter.png)
   background-repeat: no-repeat
   background-size: cover
   background-position: 50% 50%
+  z-index: 2
   &__heading
     margin-bottom: 50px
   &__descr
@@ -792,6 +810,7 @@ button
   color: #fff
 +r(768)
   .discount
+    margin-bottom: -100px
     padding: 42px 0 228px
     &__heading
       margin-bottom: 69px
@@ -858,9 +877,6 @@ button
       margin-bottom: 65px
 
 +comment("section service style")
-.double
-  background: url(../img/doublebg.png) no-repeat
-  background-size: cover
 .service
   padding-top: 100px
   &__heading
@@ -912,12 +928,12 @@ button
 .faq
   position: relative
   margin-top: -50px
-  z-index: 15
   padding-top: 100px  
   padding-bottom: 25px
   background: url(../img/faqbg320.png) no-repeat
   background-size: cover 
-  background-position: center center     
+  background-position: center center   
+  z-index: 1
   &__heading
     margin-bottom: 45px
 #accordion
@@ -984,11 +1000,19 @@ button
 
 +comment("section dream style")    
 .dream
+  position: relative
   padding: 50px 0 
+  &__icon
+    position: absolute
+    top: -92px
+    left: 0
+    z-index: 1
   &__heading
     margin-bottom: 47px
   &__descr
     margin-bottom: 40px
+  &__img
+    z-index: 1
 .dm-descr
   font: 400 24px/36px $font-neumann
   color: #212121

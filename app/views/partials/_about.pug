@@ -6,6 +6,10 @@ section.about
     .row.text-center.text-lg-left.justify-content-end
       .col-24.col-lg-12
         p.bt-descr.about__descr!= page.about.descr
+        .icons-group.d-none.d-md-block.d-lg-none.d-xl-block.mt-lg-5.about__icons
+          .text-center.icons-group__box
+            i.ic.ic--ball.icons__item.icons__item--1
+            i.mt-5.ic.ic--ball-2.icons__item.icons__item--2
       .col-24.col-md-14.col-lg-12
         - var img = page.about.img
         img.img-fluid.about__img(src=img.src, alt=img.alt)

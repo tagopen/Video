@@ -803,112 +803,94 @@
   vertical-align: middle;
 }
 
+.ic--ball-2:before {
+  width: 251px;
+  height: 220px;
+  background: url(../img/sprite.png) -1086px -523px no-repeat;
+}
+
+.ic--ball:before {
+  width: 101px;
+  height: 118px;
+  background: url(../img/sprite.png) -1205px -872px no-repeat;
+}
+
 .ic--box:before {
   width: 163px;
   height: 128px;
-  background: url(../img/sprite.png) -185px -358px no-repeat;
+  background: url(../img/sprite.png) -1524px -770px no-repeat;
 }
 
 .ic--candy:before {
   width: 109px;
   height: 134px;
-  background: url(../img/sprite.png) 0px -506px no-repeat;
+  background: url(../img/sprite.png) -1086px -872px no-repeat;
 }
 
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) -619px -328px no-repeat;
+  background: url(../img/sprite.png) -1697px -788px no-repeat;
 }
 
 .ic--confetti:before {
   width: 105px;
   height: 187px;
-  background: url(../img/sprite.png) -548px 0px no-repeat;
+  background: url(../img/sprite.png) -1347px -523px no-repeat;
+}
+
+.ic--gift-box:before {
+  width: 334px;
+  height: 1014px;
+  background: url(../img/sprite.png) 0px 0px no-repeat;
+}
+
+.ic--gift-box2:before {
+  width: 253px;
+  height: 599px;
+  background: url(../img/sprite.png) 0px -1024px no-repeat;
+}
+
+.ic--gift-box3:before {
+  width: 365px;
+  height: 682px;
+  background: url(../img/sprite.png) -711px 0px no-repeat;
+}
+
+.ic--gift-box4:before {
+  width: 357px;
+  height: 832px;
+  background: url(../img/sprite.png) -344px 0px no-repeat;
+}
+
+.ic--gift-box5:before {
+  width: 250px;
+  height: 760px;
+  background: url(../img/sprite.png) -1524px 0px no-repeat;
+}
+
+.ic--gift-box6:before {
+  width: 428px;
+  height: 513px;
+  background: url(../img/sprite.png) -1086px 0px no-repeat;
 }
 
 .ic--linear-sm:before {
   width: 45px;
   height: 8px;
-  background: url(../img/sprite.png) -483px -358px no-repeat;
+  background: url(../img/sprite.png) -1697px -770px no-repeat;
 }
 
 .ic--linear:before {
   width: 115px;
   height: 20px;
-  background: url(../img/sprite.png) -358px -460px no-repeat;
-}
-
-.ic--snowflake-10:before {
-  width: 65px;
-  height: 51px;
-  background: url(../img/sprite.png) -119px -506px no-repeat;
-}
-
-.ic--snowflake-11:before {
-  width: 175px;
-  height: 138px;
-  background: url(../img/sprite.png) 0px -358px no-repeat;
-}
-
-.ic--snowflake-12:before {
-  width: 115px;
-  height: 92px;
-  background: url(../img/sprite.png) -358px -358px no-repeat;
-}
-
-.ic--snowflake-2:before {
-  width: 61px;
-  height: 75px;
-  background: url(../img/sprite.png) -548px -413px no-repeat;
-}
-
-.ic--snowflake-3:before {
-  width: 287px;
-  height: 229px;
-  background: url(../img/sprite.png) 0px 0px no-repeat;
-}
-
-.ic--snowflake-4:before {
-  width: 61px;
-  height: 75px;
-  background: url(../img/sprite.png) -548px -328px no-repeat;
-}
-
-.ic--snowflake-5:before {
-  width: 98px;
-  height: 121px;
-  background: url(../img/sprite.png) -548px -197px no-repeat;
-}
-
-.ic--snowflake-6:before {
-  width: 126px;
-  height: 100px;
-  background: url(../img/sprite.png) -398px -239px no-repeat;
-}
-
-.ic--snowflake-7:before {
-  width: 126px;
-  height: 100px;
-  background: url(../img/sprite.png) -262px -239px no-repeat;
-}
-
-.ic--snowflake-8:before {
-  width: 65px;
-  height: 51px;
-  background: url(../img/sprite.png) -194px -506px no-repeat;
-}
-
-.ic--snowflake:before {
-  width: 241px;
-  height: 229px;
-  background: url(../img/sprite.png) -297px 0px no-repeat;
+  background: url(../img/sprite.png) -1524px -908px no-repeat;
 }
 
 .ic--year:before {
   width: 252px;
   height: 109px;
-  background: url(../img/sprite.png) 0px -239px no-repeat;
+  background: url(../img/sprite.png) -1086px -753px no-repeat;
 }
 
 /* svg icons */
@@ -1510,37 +1492,54 @@ button:focus {
 /* ---------------------------------------- */
 .split {
   position: relative;
-  overflow: hidden;
+  background-size: cover;
   z-index: 1;
 }
 
-.snowflake {
+.split--1 {
+  background: #f4f4f5 url(../img/split-bg.png) no-repeat 50% 0;
+}
+
+.split--2 {
+  background: #fbf9fa url(../img/split-bg-2.png) no-repeat 50% 0;
+}
+
+.split--3 {
+  background: #fff url(../img/split-bg-3.png) no-repeat 50% 0;
+}
+
+.split__icon {
   position: absolute;
-  top: 0;
+}
+
+.split__icon--1 {
+  top: -340px;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
 }
 
-.snowflake__icon {
-  position: absolute;
-  z-index: 1;
+.split__icon--2 {
+  right: 0;
+  bottom: -130px;
 }
 
-.snowflake__icon--1 {
+.split__icon--3, .split__icon--4 {
+  display: none;
+}
+
+.split__icon--3 {
+  top: -274px;
   left: 0;
-  top: 0;
 }
 
-.snowflake__icon--3 {
-  top: 5%;
-  right: 5%;
+.split__icon--4 {
+  right: 0;
+  bottom: 50px;
 }
 
-.snowflake__icon--5 {
-  top: 10%;
-  right: 3%;
+@media only screen and (min-width: 1450px) {
+  .split__icon--3, .split__icon--4 {
+    display: inline-block;
+  }
 }
 
 /* ---------------------------------------- */
@@ -1563,6 +1562,16 @@ button:focus {
   color: #212121;
 }
 
+.icons-group {
+  position: relative;
+}
+
+.icons-group__box {
+  position: absolute;
+  left: -100px;
+  top: 50px;
+}
+
 @media only screen and (min-width: 768px) {
   .about__heading {
     margin-bottom: 68px;
@@ -1578,6 +1587,12 @@ button:focus {
   }
   .about__descr {
     margin: 56px 0 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .icons-group__box {
+    position: static;
   }
 }
 
@@ -2026,11 +2041,14 @@ button:focus {
 /* S E C T I O N    D I S C O U N T    S T Y L E  */
 /* ---------------------------------------------- */
 .discount {
+  position: relative;
+  margin-bottom: -200px;
   padding: 50px 0 283px;
   background-image: url(../img/letter.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  z-index: 2;
 }
 
 .discount__heading {
@@ -2176,6 +2194,7 @@ button:focus {
 
 @media only screen and (min-width: 768px) {
   .discount {
+    margin-bottom: -100px;
     padding: 42px 0 228px;
   }
   .discount__heading {
@@ -2277,11 +2296,6 @@ button:focus {
 /* -------------------------------------------- */
 /* S E C T I O N    S E R V I C E    S T Y L E  */
 /* -------------------------------------------- */
-.double {
-  background: url(../img/doublebg.png) no-repeat;
-  background-size: cover;
-}
-
 .service {
   padding-top: 100px;
 }
@@ -2367,12 +2381,12 @@ button:focus {
 .faq {
   position: relative;
   margin-top: -50px;
-  z-index: 15;
   padding-top: 100px;
   padding-bottom: 25px;
   background: url(../img/faqbg320.png) no-repeat;
   background-size: cover;
   background-position: center center;
+  z-index: 1;
 }
 
 .faq__heading {
@@ -2480,7 +2494,15 @@ button:focus {
 /* S E C T I O N    D R E A M    S T Y L E  */
 /* ---------------------------------------- */
 .dream {
+  position: relative;
   padding: 50px 0;
+}
+
+.dream__icon {
+  position: absolute;
+  top: -92px;
+  left: 0;
+  z-index: 1;
 }
 
 .dream__heading {
@@ -2489,6 +2511,10 @@ button:focus {
 
 .dream__descr {
   margin-bottom: 40px;
+}
+
+.dream__img {
+  z-index: 1;
 }
 
 .dm-descr {
