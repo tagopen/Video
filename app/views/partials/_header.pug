@@ -2,39 +2,42 @@ header.header
   section.header__box
     .header__menu.menu
       .container
+        - var navbar = page.header.menu
         .row.flex-md-row-reverse.justify-content-between
           .col-24.col-md-6
             .header__call.h-call
               .row.justify-content-center
                 .col-auto.col-md-24.text-left.text-md-right
-                  a.h-call__number.h-call__number--white(href!= page.header.menu.number.href)!=page.header.menu.number.tel
+                  a.h-call__number.h-call__number--white(href!= navbar.number.href)!=navbar.number.tel
                 .col-auto.col-md-24.text-right  
-                  a.h-call__button(href!= page.header.menu.call.href)!= page.header.menu.call.text  
+                  a.h-call__button(href!= navbar.call.href)!= navbar.call.text  
           .col-24.col-md-12.col-lg-9
             .header__logo.logo.logo--white
+              - var logo = navbar.logo
               .row
                 .col-24.col-md-auto
                   .logo__image
-                    img.img-fluid.logo__img(src!= page.header.menu.logo.img.src, alt!= page.header.menu.logo.img.alt)
+                    img.img-fluid.logo__img(src!= logo.img.src, alt!= logo.img.alt)
                 .col-24.col-md-auto.logo__col.align-items-center  
-                  p.logo__text!= page.header.menu.logo.text      
+                  p.logo__text!= logo.text      
     .header__content.h-content.d-flex.align-items-center 
       .container
+        - var headContent = page.header.content
         .row.justify-content-center.flex-lg-row-reverse
           .col-24.col-md-12.col-lg-8
             .h-content__image
-              img.img-fluid.h-content__img(src!= page.header.content.img.src, alt!= page.header.content.img.alt)
+              img.img-fluid.h-content__img(src!= page.header.content.img.src, alt!= headContent.img.alt)
           .col-24.col-lg-16.align-self-center
             .h-content__box
-              h2.h-content__subtitle!= page.header.content.subtitle
-              h1.h-content__title!= page.header.content.title
+              h2.h-content__subtitle!= headContent.subtitle
+              h1.h-content__title!= headContent.title
               .row.justify-content-center.justify-content-lg-start
                 .col-24.col-md-18.col-lg-24 
                   ul.h-content__list.h-list
-                    each item, i in page.header.content.list
+                    each item, i in headContent.list
                       li.h-list__item!= item.text
                         i.ic.ic--check.h-list__icon
               .btn-groups.text-center.text-lg-left
-                a.btn.btn--default.h-content__btn(href!= page.header.content.btn.target)!= page.header.content.btn.text
+                button.btn.btn--default.h-content__btn(data-toggle="modal" data-target= headContent.btn.target)!= headContent.btn.text
                 .gg-text.gg-text--white.mt-2.mb-4.d-md-none!= page.video.text
   include ../partials/_video.pug            

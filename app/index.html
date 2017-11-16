@@ -36,18 +36,18 @@
     <meta name="twitter:image" content="/img/logo/microformat.png"/>
     <!-- build:css css/bundle.min.css-->
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/fonts.css?v=1510823430751">
+    <link rel="stylesheet" href="css/fonts.css?v=1510826494075">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.css?v=1510823430751">
+    <link rel="stylesheet" href="css/bootstrap.css?v=1510826494075">
     <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="css/font-awesome.css?v=1510823430751">
+    <link rel="stylesheet" href="css/font-awesome.css?v=1510826494075">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1510823430751">
+    <link rel="stylesheet" href="css/style.css?v=1510826494075">
     <!-- endbuild-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://--><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1510823430751"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1510823430751"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1510826494075"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1510826494075"></script>
 <![endif]-->
   </head>
   <body class="body">
@@ -98,7 +98,8 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="btn-groups text-center text-lg-left"><a class="btn btn--default h-content__btn" href="">Посмотреть пример <nobr>видео-поздравления</nobr></a>
+                  <div class="btn-groups text-center text-lg-left">
+                    <button class="btn btn--default h-content__btn" data-toggle="modal" data-target="#callback">Посмотреть пример <br class="d-md-none">видео-поздравления</button>
                     <div class="gg-text gg-text--white mt-2 mb-4 d-md-none">Узнайте что такое <br class="d-lg-none">видео поздравление <br class="d-lg-none">от Дедушки <nobr>Мороза 3 минуты</nobr></div>
                   </div>
                 </div>
@@ -159,7 +160,7 @@
               <div class="d-none d-lg-block col-8"><img class="preview__img" src="img/preview.png" alt="Ребенок с планшетом">
               </div>
               <div class="col-24 col-md-19 col-lg-10 col-lg-10">
-                <form class="form js-form" action="mail/mail.php" method="post">
+                <form class="form form--desk js-form" action="mail/mail.php" method="post">
                   <fieldset class="form-group">
                     <div class="row justify-content-around">
                       <div class="d-inline-flex pl-2 pr-2">
@@ -644,7 +645,7 @@
               </div>
               <p class="notify discount__notify">Жмите на кнопку чтобы перейти к оформлению заказа и воспользоваться лучшей ценой!</p>
               <div class="btn-groups">
-                <button class="btn btn--default btn--size discount__btn">Оформить заказ <nobr>по выгодной цене</nobr></button>
+                <button class="btn btn--default btn--size discount__btn">Оформить заказ <br class="d-md-none">по выгодной цене</button>
               </div>
             </div>
             <div class="col-24 col-md-8 col-lg-6">
@@ -890,15 +891,39 @@
       </div>
       <footer class="copyright text-center">Сделано с душой студией WELL DONE</footer>
     </footer>
+    <div class="modal fade" id="callback" tabindex="-1" role="dialog" aria-labelledby="callbackLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content"><i class="d-none d-sm-inline-block ic ic--wreath modal__icon modal__icon--1"></i><i class="d-none d-lg-inline-block ic ic--manager modal__icon modal__icon--2"></i>
+          <div class="modal-body">
+            <div class="row justify-content-center justify-content-lg-start">
+              <div class="col-24 col-sm-18 col-md-24 col-lg-16">
+                <h5 class="mb-3 dm-descr" id="callbackLabel">Оставьте свой номер телефона что бы мы вам перезвонили!</h5>
+                <p class="mb-3 sv-descr">Если у вас возникли вопросы или вы хотите оформить заказ по телефону, то укажите ваш номер телефона, что бы менеджер Екатерина вам перезвонила</p>
+              </div>
+              <div class="col-24 col-sm-18 col-md-24 col-lg-12">
+                <form class="form js-form" action="mail/mail.php" method="post">
+                  <fieldset class="form-group">
+                    <input class="form-control" type="tel" name="phone" placeholder="Введите ваш номер телефона" required>
+                  </fieldset>
+                  <div class="btn-groups form__btn-groups">
+                    <button class="btn btn--default btn--size" name="form" value="Модалка" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Перезвоните мне</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- build:js js/bundle.min.js-->
     <!-- Popper JavaScript-->
-    <script src="js/popper.js?v=1510823430751"></script>
+    <script src="js/popper.js?v=1510826494075"></script>
     <!-- jQuery-->
-    <script src="js/jquery.js?v=1510823430751"></script>
+    <script src="js/jquery.js?v=1510826494075"></script>
     <!-- Bootstrap JavaScript-->
-    <script src="js/bootstrap.js?v=1510823430751"></script>
+    <script src="js/bootstrap.js?v=1510826494075"></script>
     <!-- Old browsers reject JavaScript-->
-    <script src="js/jquery.reject.js?v=1510823430751"></script>
+    <script src="js/jquery.reject.js?v=1510826494075"></script>
     <script>
       (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -909,16 +934,16 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     <!-- CountDown JavaScript-->
-    <script src="js/jquery.countdown.js?v=1510823430751"></script>
+    <script src="js/jquery.countdown.js?v=1510826494075"></script>
     <!-- Match Height JavaScript-->
-    <script src="js/jquery.matchHeight.js?v=1510823430751">   </script>
+    <script src="js/jquery.matchHeight.js?v=1510826494075">   </script>
     <!-- Validator JavaScript-->
-    <script src="js/validator.js?v=1510823430751"></script>
-    <script src="js/contact_me.js?v=1510823430751"> </script>
+    <script src="js/validator.js?v=1510826494075"></script>
+    <script src="js/contact_me.js?v=1510826494075"> </script>
     <!-- Select2 JavaScript-->
-    <script src="js/select2.js?v=1510823430751"></script>
+    <script src="js/select2.js?v=1510826494075"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js?v=1510823430751"></script>
+    <script src="js/main.js?v=1510826494075"></script>
     <!-- endbuild-->
   </body>
 </html>

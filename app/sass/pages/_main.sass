@@ -432,10 +432,11 @@ button
   background-repeat: no-repeat
 
 .form
-  padding: 69px 15px
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2)
-  background-color: #fff
   text-align: center
+  &--desk
+    padding: 69px 15px
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2)
+    background-color: #fff
 .radio-btn
   &__control
     position: absolute
@@ -554,7 +555,8 @@ button
   background-color: #fff
 +r(768)
   .form
-    padding: 67px 37px
+    &--desk
+      padding: 67px 37px
 
 +comment("section gift style")
 .gift
@@ -1051,3 +1053,25 @@ button
 +r(768)
   .footer
     background-size: auto
+
++comment("section modal style")
+.modal
+  &__icon
+    position: absolute
+    &--1
+      top: -45px
+      left: -56px
+    &--2
+      right: 0
+      bottom: 0
+.modal-content
+  padding: 25px 15px
+.sv-descr
+  font: 300 16px/24px $main-font
+  color: #212121
++r(768)
+  .modal-content
+    padding: 54px 80px
++r(992)
+  .modal-content
+    padding: 61px 98px

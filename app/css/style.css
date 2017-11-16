@@ -806,37 +806,37 @@
 .ic--ball-2:before {
   width: 251px;
   height: 220px;
-  background: url(../img/sprite.png) -1086px -523px no-repeat;
+  background: url(../img/sprite.png) -711px -692px no-repeat;
 }
 
 .ic--ball:before {
   width: 101px;
   height: 118px;
-  background: url(../img/sprite.png) -1205px -872px no-repeat;
+  background: url(../img/sprite.png) -972px -692px no-repeat;
 }
 
 .ic--box:before {
   width: 163px;
   height: 128px;
-  background: url(../img/sprite.png) -1524px -770px no-repeat;
+  background: url(../img/sprite.png) -263px -1024px no-repeat;
 }
 
 .ic--candy:before {
   width: 109px;
   height: 134px;
-  background: url(../img/sprite.png) -1086px -872px no-repeat;
+  background: url(../img/sprite.png) -378px -1162px no-repeat;
 }
 
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) -1697px -788px no-repeat;
+  background: url(../img/sprite.png) -1692px -788px no-repeat;
 }
 
 .ic--confetti:before {
   width: 105px;
   height: 187px;
-  background: url(../img/sprite.png) -1347px -523px no-repeat;
+  background: url(../img/sprite.png) -263px -1162px no-repeat;
 }
 
 .ic--gift-box:before {
@@ -878,19 +878,31 @@
 .ic--linear-sm:before {
   width: 45px;
   height: 8px;
-  background: url(../img/sprite.png) -1697px -770px no-repeat;
+  background: url(../img/sprite.png) -1692px -770px no-repeat;
 }
 
 .ic--linear:before {
   width: 115px;
   height: 20px;
-  background: url(../img/sprite.png) -1524px -908px no-repeat;
+  background: url(../img/sprite.png) -1086px -991px no-repeat;
+}
+
+.ic--manager:before {
+  width: 356px;
+  height: 458px;
+  background: url(../img/sprite.png) -1086px -523px no-repeat;
+}
+
+.ic--wreath:before {
+  width: 158px;
+  height: 219px;
+  background: url(../img/sprite.png) -1524px -770px no-repeat;
 }
 
 .ic--year:before {
   width: 252px;
   height: 109px;
-  background: url(../img/sprite.png) -1086px -753px no-repeat;
+  background: url(../img/sprite.png) -344px -842px no-repeat;
 }
 
 /* svg icons */
@@ -1606,11 +1618,14 @@ button:focus {
 }
 
 .form {
+  text-align: center;
+}
+
+.form--desk {
   padding: 69px 15px;
   -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  text-align: center;
 }
 
 .radio-btn__control {
@@ -1782,7 +1797,7 @@ button:focus {
 }
 
 @media only screen and (min-width: 768px) {
-  .form {
+  .form--desk {
     padding: 67px 37px;
   }
 }
@@ -2575,5 +2590,43 @@ button:focus {
 @media only screen and (min-width: 768px) {
   .footer {
     background-size: auto;
+  }
+}
+
+/* ---------------------------------------- */
+/* S E C T I O N    M O D A L    S T Y L E  */
+/* ---------------------------------------- */
+.modal__icon {
+  position: absolute;
+}
+
+.modal__icon--1 {
+  top: -45px;
+  left: -56px;
+}
+
+.modal__icon--2 {
+  right: 0;
+  bottom: 0;
+}
+
+.modal-content {
+  padding: 25px 15px;
+}
+
+.sv-descr {
+  font: 300 16px/24px "PF Din Text Pro", sans-serif;
+  color: #212121;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal-content {
+    padding: 54px 80px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .modal-content {
+    padding: 61px 98px;
   }
 }
