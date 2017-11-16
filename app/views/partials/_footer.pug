@@ -20,5 +20,5 @@ footer.footer
             .col-auto.col-md-24.text-left.text-md-right
               a.h-call__number(href!= page.header.menu.number.href)!=page.header.menu.number.tel
             .col-auto.col-md-24.text-right  
-              a.h-call__button(href!= page.header.menu.call.href)!= page.header.menu.call.text  
+              a.h-call__button(href!= page.header.menu.call.href, data-toggle="modal")!= page.header.menu.call.text  
   footer.copyright.text-center!= page.footer.copyright
