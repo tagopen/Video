@@ -5,8 +5,8 @@
       i.d-none.d-sm-inline-block.ic.ic--wreath.modal__icon.modal__icon--1
       i.d-none.d-lg-inline-block.ic.ic--manager.modal__icon.modal__icon--2
       //-.modal-header
-      //-  button.close(type='button', data-dismiss='modal', aria-label='Close')
-      //-    span(aria-hidden='true') ×
+      button.close.modal__close(type='button', data-dismiss='modal', aria-label='Close')
+        +svg("close")(class="close__icon")
       .modal-body
         .row.justify-content-center.justify-content-lg-start
           .col-24.col-sm-18.col-md-24.col-lg-16

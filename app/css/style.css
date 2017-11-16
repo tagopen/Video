@@ -2664,6 +2664,31 @@ button:focus {
   bottom: 0;
 }
 
+.modal__close {
+  position: absolute;
+  padding: 15px !important;
+  top: 0;
+  right: 0;
+}
+
+.close {
+  line-height: 0;
+  cursor: pointer;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  z-index: 1;
+}
+
+.close:hover, .close:focus {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.close__icon {
+  font-size: 30px;
+}
+
 .modal-content {
   padding: 25px 15px;
 }
@@ -2682,5 +2707,18 @@ button:focus {
 @media only screen and (min-width: 992px) {
   .modal-content {
     padding: 61px 98px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .modal__close {
+    top: -45px;
+    right: -45px;
+    opacity: 1;
+    color: #fff;
+  }
+  .modal__close:hover, .modal__close:focus {
+    color: #f7b76d;
+    opacity: 1;
   }
 }

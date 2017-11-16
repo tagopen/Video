@@ -1088,6 +1088,21 @@ button
     &--2
       right: 0
       bottom: 0
+  &__close
+    position: absolute
+    padding: 15px !important
+    top: 0
+    right: 0
+.close
+  line-height: 0
+  cursor: pointer
+  transition: all .3s ease-out
+  z-index: 1
+  &:hover,
+  &:focus
+    transform: scale(1.5)
+  &__icon
+    font-size: 30px
 .modal-content
   padding: 25px 15px
 .sv-descr
@@ -1099,3 +1114,14 @@ button
 +r(992)
   .modal-content
     padding: 61px 98px
++r(1200)
+  .modal
+    &__close
+      top: -45px
+      right: -45px
+      opacity: 1
+      color: #fff
+      &:hover,
+      &:focus
+        color: #f7b76d
+        opacity: 1
