@@ -5,7 +5,7 @@ section.example
         .example__video.vd-video
           img.img-fluid.vd-video__img(src!= page.example.img.src, alt!= page.example.img.alt)
           .vd-video__descr
-            a.vd-video__play.mp-play(href="#")
+            a.vd-video__play.mp-play(data-toggle="modal" href="#video__modal")
               i.fa.fa-play.mp-play__icon(aria-hidden="true") 
       .col-24.col-md-auto.offset-lg-1
         h2.heading.example__heading!= page.example.heading
