@@ -1852,7 +1852,7 @@ button:focus {
 /* S E C T I O N    G I F T    S T Y L E    */
 /* ---------------------------------------- */
 .gift {
-  padding: 50px 0 150px;
+  padding: 50px 0 60px;
   overflow: hidden;
 }
 
@@ -1964,6 +1964,7 @@ button:focus {
 .example {
   overflow: hidden;
   padding: 93px 0 131px;
+  background: url(../img/giftbgs.png) no-repeat;
 }
 
 .example__img {
@@ -2648,6 +2649,11 @@ button:focus {
 /* ---------------------------------------- */
 /* S E C T I O N    M O D A L    S T Y L E  */
 /* ---------------------------------------- */
+.modal-content {
+  -webkit-box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25);
+          box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25);
+}
+
 .modal__icon {
   position: absolute;
 }
