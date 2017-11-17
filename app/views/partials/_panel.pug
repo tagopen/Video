@@ -4,6 +4,6 @@ section.fd-panel.fd-panel--hidden.js-panel
   .vd-video
     img.img-fluid.vd-video__img(src!= page.panel.img.src)
     .vd-video__descr
-      a.vd-video__play.mp-play.mp-play--sm(href="#")
+      a.vd-video__play.mp-play.mp-play--sm.js-scroll-trigger(href=page.panel.href, data-close="panel")
         i.fa.fa-play.mp-play__icon(aria-hidden="true") 
       .vd-video__text.gg-text.gg-text--sm.gg-text--white!= page.panel.text
