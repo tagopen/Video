@@ -7,7 +7,7 @@ section.preview
       .d-none.d-lg-block.col-8
         - var img = page.preview.img
         img.preview__img(src=img.src, alt=img.alt)
-      .col-24.col-md-19.col-lg-10.col-lg-10
+      .col-24.col-md-19.col-lg-12
         - var form = page.preview.form
         form.form.form--desk.js-form(action="mail/mail.php", method="post")
           fieldset.form-group

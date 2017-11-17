@@ -1064,7 +1064,7 @@ button:focus {
 /* heading */
 .heading {
   position: relative;
-  font: 500 26px/40px "PF Din Text Pro", sans-serif;
+  font: 400 26px/40px "PF Din Text Pro", sans-serif;
   color: #212121;
   text-align: center;
 }
@@ -1147,7 +1147,7 @@ button:focus {
   -webkit-border-radius: 61px;
           border-radius: 61px;
   white-space: normal;
-  font: 700 18px/24px "PF Din Text Pro", sans-serif;
+  font: 500 18px/24px "PF Din Text Pro", sans-serif;
   text-shadow: 0 1px 0 #853e09, 0 0 29px rgba(255, 255, 255, 0.35);
   color: #fff;
   cursor: pointer;
@@ -1455,7 +1455,7 @@ button:focus {
 
 @media only screen and (min-width: 992px) {
   .h-content {
-    padding-top: 150px;
+    padding-top: 100px;
   }
   .h-content__subtitle {
     text-align: left;
@@ -1891,17 +1891,14 @@ button:focus {
 .package__icon {
   position: absolute;
   top: 0;
-  -webkit-transform: scale(0.6);
-      -ms-transform: scale(0.6);
-          transform: scale(0.6);
 }
 
 .package__icon--left {
-  left: -115px;
+  left: -60px;
 }
 
 .package__icon--right {
-  right: -115px;
+  right: -60px;
 }
 
 .package__info {
@@ -2425,7 +2422,7 @@ button:focus {
 
 .sv-item__icon {
   position: relative;
-  font-size: 26px;
+  font-size: 30px;
   color: #be8739;
   z-index: 10;
 }
