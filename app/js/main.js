@@ -134,9 +134,25 @@
     }, 5000);
 
     $(".js-panel").on('click', '[data-close]', function() {
-      $(this.parentNode).fadeOut("300", function() {
+      $(this).closest('.js-panel').fadeOut("300", function() {
         $(this).detach();
       });
+    });
+  });
+
+  // Trigger anchor scroll
+  $(function() {
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: (target.offset().top - 40)
+          }, 1000);
+          return false;
+        }
+      }
     });
   });
 

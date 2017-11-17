@@ -58,7 +58,7 @@
         </svg>
       </button>
       <div class="vd-video"><img class="img-fluid vd-video__img" src="img/santa.jpg">
-        <div class="vd-video__descr"><a class="vd-video__play mp-play mp-play--sm" href="#"><i class="fa fa-play mp-play__icon" aria-hidden="true"> </i></a>
+        <div class="vd-video__descr"><a class="vd-video__play mp-play mp-play--sm js-scroll-trigger" href="#preview" data-close="panel"><i class="fa fa-play mp-play__icon" aria-hidden="true"> </i></a>
           <div class="vd-video__text gg-text gg-text--sm gg-text--white">Посмотрите пример <br>видео-поздравления</div>
         </div>
       </div>
@@ -110,8 +110,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="btn-groups text-center text-lg-left">
-                    <button class="btn btn--default h-content__btn" data-toggle="modal" data-target="#callback">Посмотреть пример <br class="d-md-none">видео-поздравления</button>
+                  <div class="btn-groups text-center text-lg-left"><a class="btn btn--default h-content__btn js-scroll-trigger" href="#preview">Посмотреть пример <br class="d-md-none">видео-поздравления</a>
                     <div class="gg-text gg-text--white mt-2 mb-4 d-md-none">Узнайте что такое <br class="d-lg-none">видео поздравление <br class="d-lg-none">от Дедушки <nobr>Мороза 3 минуты</nobr></div>
                   </div>
                 </div>
@@ -161,7 +160,7 @@
             </div>
           </div>
         </section>
-        <section class="preview">
+        <section class="preview" id="preview">
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-24">
