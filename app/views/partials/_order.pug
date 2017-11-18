@@ -1,0 +1,335 @@
+form.form(action='mail/mail.php', method='post', novalidate)
+
+  .tabs(data-tabs="test-tabs")
+    .tabs__control.tabs-control
+      .tabs-control__item.tabs-control__item--active(data-tabs-control='control', data-tabs-toggle='0')
+        a.tabs-control__link(href="#") Шаг 1
+      .tabs-control__item(data-tabs-control='control', data-tabs-toggle='1')
+        a.tabs-control__link(href="#") Шаг 2
+      .tabs-control__item(data-tabs-control='control', data-tabs-toggle='2')
+        a.tabs-control__link(href="#") Шаг 3
+    .tabs__item.tabs__item--active
+      .row
+        .col-24
+          h2.heading.heading--left Сколько детей нужно поздравить?
+        .col-24
+          .row
+            .col-auto
+              label.radio-btn
+                input#rbtn11.radio-btn__control(type='radio', name='childrean', checked)
+                label.radio-btn__box(for='rbtn11', data-childrean='1')
+                  i.radio-btn__icon 
+                  | 1 ребенок
+            .col-auto
+              label.radio-btn
+                input#rbtn12.radio-btn__control(type='radio', name='childrean')
+                label.radio-btn__box(for='rbtn12', data-childrean='2')
+                  i.radio-btn__icon
+                  | 2 ребенка
+      .row
+        .col-24.col-md-12(data-childrean-item="0")
+          fieldset.form-group
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', required)
+              option
+              option(value='1') Абрам
+              option(value='2') Авраам
+            input.form-control(type='text', name='new_firstname_1', placeholder='Введите новое имя', required)
+
+          fieldset.form-group
+            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка', required)
+              option
+              option(value='1') Мужской
+              option(value='2') Женский
+          label.radio-btn
+            input#rbtn21.radio-btn__control(type='checkbox', name='new_name1')
+            label.radio-btn__box(for='rbtn21', data-new-name='1')
+              i.radio-btn__icon
+              | Добавить имя ребенка
+        .col-24.col-md-12(data-childrean-item="1")
+          fieldset.form-group
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', required)
+              option
+              option(value='1') Аврора
+              option(value='2') Агата
+            input.form-control(type='text', name='new_firstname_1', placeholder='Введите новое имя', required)
+          fieldset.form-group
+            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка', required)
+              option
+              option(value='1') Мужской
+              option(value='2') Женский
+          label.radio-btn
+            input#rbtn22.radio-btn__control(type='checkbox', name='new_name2')
+            label.radio-btn__box(for='rbtn22', data-new-name='2')
+              i.radio-btn__icon
+              | Добавить имя ребенка
+
+      .btn-groups.text-left
+        button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+    .tabs__item
+      .row
+        .col-md-9
+          // <h3>Demo:</h3>
+          .img-container
+            img#image(src='images/picture.jpg', alt='Picture')
+        .col-md-3
+          // <h3>Preview:</h3>
+          .docs-preview.clearfix
+            .img-preview.preview-lg
+            .img-preview.preview-md
+            .img-preview.preview-sm
+            .img-preview.preview-xs
+      .row
+        .col-md-9.docs-buttons
+          // <h3>Toolbar:</h3>
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='setDragMode', data-option='move', title='Move')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("setDragMode", "move")')
+                span.fa.fa-arrows
+            button.btn.btn-primary(type='button', data-method='setDragMode', data-option='crop', title='Crop')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("setDragMode", "crop")')
+                span.fa.fa-crop
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='zoom', data-option='0.1', title='Zoom In')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("zoom", 0.1)')
+                span.fa.fa-search-plus
+            button.btn.btn-primary(type='button', data-method='zoom', data-option='-0.1', title='Zoom Out')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("zoom", -0.1)')
+                span.fa.fa-search-minus
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='move', data-option='-10', data-second-option='0', title='Move Left')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("move", -10, 0)')
+                span.fa.fa-arrow-left
+            button.btn.btn-primary(type='button', data-method='move', data-option='10', data-second-option='0', title='Move Right')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("move", 10, 0)')
+                span.fa.fa-arrow-right
+            button.btn.btn-primary(type='button', data-method='move', data-option='0', data-second-option='-10', title='Move Up')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("move", 0, -10)')
+                span.fa.fa-arrow-up
+            button.btn.btn-primary(type='button', data-method='move', data-option='0', data-second-option='10', title='Move Down')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("move", 0, 10)')
+                span.fa.fa-arrow-down
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='rotate', data-option='-45', title='Rotate Left')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("rotate", -45)')
+                span.fa.fa-rotate-left
+            button.btn.btn-primary(type='button', data-method='rotate', data-option='45', title='Rotate Right')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("rotate", 45)')
+                span.fa.fa-rotate-right
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='scaleX', data-option='-1', title='Flip Horizontal')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("scaleX", -1)')
+                span.fa.fa-arrows-h
+            button.btn.btn-primary(type='button', data-method='scaleY', data-option='-1', title='Flip Vertical')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("scaleY", -1)')
+                span.fa.fa-arrows-v
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='crop', title='Crop')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("crop")')
+                span.fa.fa-check
+            button.btn.btn-primary(type='button', data-method='clear', title='Clear')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("clear")')
+                span.fa.fa-remove
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='disable', title='Disable')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("disable")')
+                span.fa.fa-lock
+            button.btn.btn-primary(type='button', data-method='enable', title='Enable')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("enable")')
+                span.fa.fa-unlock
+          .btn-group
+            button.btn.btn-primary(type='button', data-method='reset', title='Reset')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("reset")')
+                span.fa.fa-refresh
+            label.btn.btn-primary.btn-upload(for='inputImage', title='Upload image file')
+              input#inputImage.sr-only(type='file', name='file', accept='.jpg,.jpeg,.png,.gif,.bmp,.tiff')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='Import image with Blob URLs')
+                span.fa.fa-upload
+            button.btn.btn-primary(type='button', data-method='destroy', title='Destroy')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("destroy")')
+                span.fa.fa-power-off
+          .btn-group.btn-group-crop
+            button.btn.btn-success(type='button', data-method='getCroppedCanvas', data-option='{ "maxWidth": 4096, "maxHeight": 4096 }')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getCroppedCanvas", { maxWidth: 4096, maxHeight: 4096 })')
+                | Get Cropped Canvas
+            button.btn.btn-success(type='button', data-method='getCroppedCanvas', data-option='{ "width": 160, "height": 90 }')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getCroppedCanvas", { width: 160, height: 90 })')
+                | 160×90
+            button.btn.btn-success(type='button', data-method='getCroppedCanvas', data-option='{ "width": 320, "height": 180 }')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getCroppedCanvas", { width: 320, height: 180 })')
+                | 320×180
+          // Show the cropped image in modal
+          #getCroppedCanvasModal.modal.fade.docs-cropped(aria-hidden='true', aria-labelledby='getCroppedCanvasTitle', role='dialog', tabindex='-1')
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  h5#getCroppedCanvasTitle.modal-title Cropped
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                .modal-footer
+                  button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                  a#download.btn.btn-primary(href='javascript:void(0);', download='cropped.jpg') Download
+          // /.modal
+          button.btn.btn-secondary(type='button', data-method='getData', data-option='', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getData")')
+              | Get Data
+          button.btn.btn-secondary(type='button', data-method='setData', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("setData", data)')
+              | Set Data
+          button.btn.btn-secondary(type='button', data-method='getContainerData', data-option='', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getContainerData")')
+              | Get Container Data
+          button.btn.btn-secondary(type='button', data-method='getImageData', data-option='', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getImageData")')
+              | Get Image Data
+          button.btn.btn-secondary(type='button', data-method='getCanvasData', data-option='', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getCanvasData")')
+              | Get Canvas Data
+          button.btn.btn-secondary(type='button', data-method='setCanvasData', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("setCanvasData", data)')
+              | Set Canvas Data
+          button.btn.btn-secondary(type='button', data-method='getCropBoxData', data-option='', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getCropBoxData")')
+              | Get Crop Box Data
+          button.btn.btn-secondary(type='button', data-method='setCropBoxData', data-target='#putData')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("setCropBoxData", data)')
+              | Set Crop Box Data
+          button.btn.btn-secondary(type='button', data-method='moveTo', data-option='0')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='cropper.moveTo(0)')
+              | Move to [0,0]
+          button.btn.btn-secondary(type='button', data-method='zoomTo', data-option='1')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='cropper.zoomTo(1)')
+              | Zoom to 100%
+          button.btn.btn-secondary(type='button', data-method='rotateTo', data-option='180')
+            span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='cropper.rotateTo(180)')
+              | Rotate 180°
+          button.btn.btn-secondary(type='button', data-method='scale', data-option='-2', data-second-option='-1')
+            span.docs-tooltip(data-toggle='tooltip', title='cropper.scale(-2, -1)')
+              | Scale (-2, -1)
+          textarea#putData.form-control(type='text', rows='1', placeholder='Get data to here or set data with this value')
+        // /.docs-buttons
+        .col-md-3.docs-toggles
+          // <h3>Toggles:</h3>
+          .btn-group.d-flex.flex-nowrap(data-toggle='buttons')
+            label.btn.btn-primary.active
+              input#aspectRatio0.sr-only(type='radio', name='aspectRatio', value='1.7777777777777777')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='aspectRatio: 16 / 9')
+                | 16:9
+            label.btn.btn-primary
+              input#aspectRatio1.sr-only(type='radio', name='aspectRatio', value='1.3333333333333333')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='aspectRatio: 4 / 3')
+                | 4:3
+            label.btn.btn-primary
+              input#aspectRatio2.sr-only(type='radio', name='aspectRatio', value='1')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='aspectRatio: 1 / 1')
+                | 1:1
+            label.btn.btn-primary
+              input#aspectRatio3.sr-only(type='radio', name='aspectRatio', value='0.6666666666666666')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='aspectRatio: 2 / 3')
+                | 2:3
+            label.btn.btn-primary
+              input#aspectRatio4.sr-only(type='radio', name='aspectRatio', value='NaN')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='aspectRatio: NaN')
+                | Free
+          .btn-group.d-flex.flex-nowrap(data-toggle='buttons')
+            label.btn.btn-primary.active
+              input#viewMode0.sr-only(type='radio', name='viewMode', value='0', checked='')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='View Mode 0')
+                | VM0
+            label.btn.btn-primary
+              input#viewMode1.sr-only(type='radio', name='viewMode', value='1')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='View Mode 1')
+                | VM1
+            label.btn.btn-primary
+              input#viewMode2.sr-only(type='radio', name='viewMode', value='2')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='View Mode 2')
+                | VM2
+            label.btn.btn-primary
+              input#viewMode3.sr-only(type='radio', name='viewMode', value='3')
+              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='View Mode 3')
+                | VM3
+          .dropdown.dropup.docs-options
+            button#toggleOptions.btn.btn-primary.btn-block.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+              | Toggle Options
+              span.caret
+            ul.dropdown-menu(aria-labelledby='toggleOptions', role='menu')
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='responsive', checked='')
+                  |                 responsive
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='restore', checked='')
+                  |                 restore
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='checkCrossOrigin', checked='')
+                  |                 checkCrossOrigin
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='checkOrientation', checked='')
+                  |                 checkOrientation
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='modal', checked='')
+                  |                 modal
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='guides', checked='')
+                  |                 guides
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='center', checked='')
+                  |                 center
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='highlight', checked='')
+                  |                 highlight
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='background', checked='')
+                  |                 background
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='autoCrop', checked='')
+                  |                 autoCrop
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='movable', checked='')
+                  |                 movable
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='rotatable', checked='')
+                  |                 rotatable
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='scalable', checked='')
+                  |                 scalable
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='zoomable', checked='')
+                  |                 zoomable
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='zoomOnTouch', checked='')
+                  |                 zoomOnTouch
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='zoomOnWheel', checked='')
+                  |                 zoomOnWheel
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='cropBoxMovable', checked='')
+                  |                 cropBoxMovable
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='cropBoxResizable', checked='')
+                  |                 cropBoxResizable
+              li.dropdown-item
+                label.form-check-label
+                  input.form-check-input(type='checkbox', name='toggleDragModeOnDblclick', checked='')
+                  |                 toggleDragModeOnDblclick
+          // /.dropdown
+          a.btn.btn-success.btn-block(data-toggle='tooltip', data-animation='false', href='https://fengyuanchen.github.io/cropperjs', title='The non-jQuery version of Cropper (recommended)') Cropper.js
+        // /.docs-toggles
+

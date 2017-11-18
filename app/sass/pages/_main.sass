@@ -81,6 +81,8 @@ button
       background-size: contain
   &--white
     color: #fff
+  &--left
+    text-align: left
   &__line
     margin-top: 39px
 +r(768)
@@ -150,13 +152,14 @@ button
     color: #fff
     text-decoration: none
   &:active
+    top: 3px
     &:before,
     &:after
       transform: translateY(-3px)
   &--size
     width: 100%
   &--sm
-    max-width: 220px
+    min-width: 220px
 .btn-groups
   position: relative
   z-index: 1
@@ -1152,3 +1155,9 @@ button
     &__content
       width: 800px
       height: 400px      
+
++comment("section tabs style")
+.tabs
+  &__item
+    background-color: #fff
+    text-align: left

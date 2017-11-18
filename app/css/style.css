@@ -1091,6 +1091,10 @@ button:focus {
   color: #fff;
 }
 
+.heading--left {
+  text-align: left;
+}
+
 .heading__line {
   margin-top: 39px;
 }
@@ -1201,6 +1205,10 @@ button:focus {
   text-decoration: none;
 }
 
+.btn:active {
+  top: 3px;
+}
+
 .btn:active:before, .btn:active:after {
   -webkit-transform: translateY(-3px);
       -ms-transform: translateY(-3px);
@@ -1212,7 +1220,7 @@ button:focus {
 }
 
 .btn--sm {
-  max-width: 220px;
+  min-width: 220px;
 }
 
 .btn-groups {
@@ -2758,4 +2766,12 @@ button:focus {
     width: 800px;
     height: 400px;
   }
+}
+
+/* ---------------------------------------- */
+/* S E C T I O N    T A B S    S T Y L E    */
+/* ---------------------------------------- */
+.tabs__item {
+  background-color: #fff;
+  text-align: left;
 }
