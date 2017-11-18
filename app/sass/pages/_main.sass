@@ -1161,3 +1161,186 @@ button
   &__item
     background-color: #fff
     text-align: left
+
+
+.carbonads
+  border-radius: .25rem
+  border: 1px solid #ccc
+  font-size: .875rem
+  overflow: hidden
+  padding: 1rem
+
+.carbon-wrap
+  overflow: hidden
+
+.carbon-img
+  clear: left
+  display: block
+  float: left
+
+.carbon-text, .carbon-poweredby
+  display: block
+  margin-left: 140px
+
+.carbon-text
+  color: #fff
+  text-decoration: none
+  &:hover, &:focus
+    color: #fff
+    text-decoration: none
+
+.carbon-poweredby
+  color: #ddd
+  text-decoration: none
+  &:hover, &:focus
+    color: #ddd
+    text-decoration: none
+
+@media (min-width: 768px)
+  .carbonads
+    float: right
+    margin-bottom: -1rem
+    margin-top: -1rem
+    max-width: 360px
+
+.footer
+  font-size: .875rem
+
+.heart
+  color: #ddd
+  display: block
+  height: 2rem
+  line-height: 2rem
+  margin-bottom: 0
+  margin-top: 1rem
+  position: relative
+  text-align: center
+  width: 100%
+  &:hover
+    color: #ff4136
+  &::before
+    border-top: 1px solid #eee
+    content: " "
+    display: block
+    height: 0
+    left: 0
+    position: absolute
+    right: 0
+    top: 50%
+  &::after
+    background-color: #fff
+    content: "♥"
+    padding-left: .5rem
+    padding-right: .5rem
+    position: relative
+    z-index: 1
+
+.img-container, .img-preview
+  background-color: #f7f7f7
+  text-align: center
+  width: 100%
+
+.img-container
+  margin-bottom: 1rem
+  max-height: 497px
+  > img
+    max-width: 100%
+
+
+.docs-preview
+  margin-right: -1rem
+
+.img-preview
+  float: left
+  margin-bottom: .5rem
+  margin-right: .5rem
+  overflow: hidden
+  > img
+    max-width: 100%
+
+.preview-lg
+  height: 9rem
+  width: 16rem
+
+.preview-md
+  height: 4.5rem
+  width: 8rem
+
+.preview-sm
+  height: 2.25rem
+  width: 4rem
+
+.preview-xs
+  height: 1.125rem
+  margin-right: 0
+  width: 2rem
+
+.docs-data > .input-group
+  margin-bottom: .5rem
+  >
+    label
+      justify-content: center
+      min-width: 5rem
+    span
+      justify-content: center
+      min-width: 3rem
+
+.docs-buttons >
+  .btn, .btn-group, .form-control
+    margin-bottom: .5rem
+    margin-right: .25rem
+
+.docs-toggles >
+  .btn, .btn-group, .dropdown
+    margin-bottom: .5rem
+
+.docs-tooltip
+  display: block
+  margin: -.5rem -.75rem
+  padding: .5rem .75rem
+  > .icon
+    margin: 0 -.25rem
+    vertical-align: top
+
+.tooltip-inner
+  white-space: normal
+
+.btn-upload .tooltip-inner
+  white-space: nowrap
+
+.btn-toggle
+  .tooltip-inner
+    white-space: nowrap
+  padding: .5rem
+  > .docs-tooltip
+    margin: -.5rem
+    padding: .5rem
+
+@media (max-width: 400px)
+  .btn-group-crop
+    margin-right: -1rem !important
+    > .btn
+      padding-left: .5rem
+      padding-right: .5rem
+    .docs-tooltip
+      margin-left: -.5rem
+      margin-right: -.5rem
+      padding-left: .5rem
+      padding-right: .5rem
+
+.docs-options .dropdown-menu
+  width: 100%
+  > li
+    font-size: .875rem
+    padding-left: 1rem
+    padding-right: 1rem
+    &:hover
+      background-color: #f7f7f7
+    > label
+      display: block
+
+.docs-cropped .modal-body
+  text-align: center
+  >
+    img, canvas
+      max-width: 100%

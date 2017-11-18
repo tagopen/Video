@@ -194,7 +194,6 @@
     var console = window.console || { log: function () {} };
     var URL = window.URL || window.webkitURL;
     var $image = $('#image');
-    var $download = $('#download');
     var $dataX = $('#dataX');
     var $dataY = $('#dataY');
     var $dataHeight = $('#dataHeight');
@@ -256,13 +255,6 @@
       $('button[data-method="rotate"]').prop('disabled', true);
       $('button[data-method="scale"]').prop('disabled', true);
     }
-
-
-    // Download
-    if (typeof $download[0].download === 'undefined') {
-      $download.addClass('disabled');
-    }
-
 
     // Options
     $('.docs-toggles').on('change', 'input', function () {
@@ -361,11 +353,7 @@
           case 'getCroppedCanvas':
             if (result) {
               // Bootstrap's Modal
-              $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
 
-              if (!$download.hasClass('disabled')) {
-                $download.attr('href', result.toDataURL(uploadedImageType));
-              }
             }
 
             break;
