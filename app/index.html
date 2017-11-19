@@ -36,18 +36,18 @@
     <meta name="twitter:image" content="/img/logo/microformat.png"/>
     <!-- build:css css/bundle.min.css-->
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/fonts.css?v=1511090219874">
+    <link rel="stylesheet" href="css/fonts.css?v=1511111906613">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.css?v=1511090219874">
+    <link rel="stylesheet" href="css/bootstrap.css?v=1511111906613">
     <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="css/font-awesome.css?v=1511090219874">
+    <link rel="stylesheet" href="css/font-awesome.css?v=1511111906613">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1511090219874">
+    <link rel="stylesheet" href="css/style.css?v=1511111906613">
     <!-- endbuild-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://--><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1511090219874"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1511090219874"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1511111906613"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1511111906613"></script>
 <![endif]-->
   </head>
   <body class="body">
@@ -570,7 +570,7 @@
                   </fieldset>
                   <div class="btn-groups form__btn-groups">
                     <button class="btn btn--default btn--size" name="form" value="Как будет выглядеть" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Посмотреть фрагмент поздравления</button>
-                  </div><a class="info form__info" href="#faq">Что делать, если я хочу поздравить <br/>двух детей в одном видео?</a>
+                  </div><a class="info form__info" data-toggle="modal" href="#kid__modal">Что делать, если я хочу поздравить <br/>двух детей в одном видео?</a>
                 </form>
               </div>
             </div>
@@ -933,6 +933,28 @@
         </div>
       </div>
     </div>
+    <div class="kid modal fade" id="kid__modal" tabindex="-1" role="dialog" aria-labelledby="callbackLabel" aria-hidden="true">
+      <div class="modal-dialog kid__dialog" role="document">
+        <div class="modal-content kid__content"><i class="d-none d-md-inline-block ic ic--babochka kid__icon kid__icon--1"></i><i class="d-none d-md-inline-block ic ic--sharik kid__icon kid__icon--2"></i>
+          <button class="close modal__close" type="button" data-dismiss="modal" aria-label="Close">
+            <svg class="svg svg--close close__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+              <use xlink:href="img/sprite.svg#close"></use>
+            </svg>
+          </button>
+          <div class="modal-body">
+            <div class="row justify-content-center">
+              <div class="col-24 col-md-18 col-lg-16 text-center">
+                <h5 class="mb-3 dm-descr" id="callbackLabel">Поздравления<br> для двоих детей</h5>
+              </div>
+              <div class="col-24 text-center"> 
+                <div class="mb-3 kid__descr">Заказы на поздравление двух детей в одном видео выполняются в течении 2х дней. Мы запишем имена и согласуем с вами их звучание.</div>
+                <div class="mb-3 kid__text">Переходите к оформлению заказа, чтобы указать имена для двоих деток. На странице оформления заказа вы также сможете выбрать подарочный набор, загрузить фотографии детей и получить скидку за репост!</div><a class="btn btn--default btn--size" href="#">Перейти к оформлению заказа</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="modal fade" id="video__modal" tabindex="-1" role="dialog" aria-labelledby="callbackLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content modal__content">
@@ -951,13 +973,13 @@
     </div>
     <!-- build:js js/bundle.min.js-->
     <!-- Popper JavaScript-->
-    <script src="js/popper.js?v=1511090219874"></script>
+    <script src="js/popper.js?v=1511111906613"></script>
     <!-- jQuery-->
-    <script src="js/jquery.js?v=1511090219874"></script>
+    <script src="js/jquery.js?v=1511111906613"></script>
     <!-- Bootstrap JavaScript-->
-    <script src="js/bootstrap.js?v=1511090219874"></script>
+    <script src="js/bootstrap.js?v=1511111906613"></script>
     <!-- Old browsers reject JavaScript-->
-    <script src="js/jquery.reject.js?v=1511090219874"></script>
+    <script src="js/jquery.reject.js?v=1511111906613"></script>
     <script>
       (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -968,18 +990,18 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     <!-- Cropper JavaScript-->
-    <script src="js/cropper.js?v=1511090219874"></script>
+    <script src="js/cropper.js?v=1511111906613"></script>
     <!-- CountDown JavaScript-->
-    <script src="js/jquery.countdown.js?v=1511090219874"></script>
+    <script src="js/jquery.countdown.js?v=1511111906613"></script>
     <!-- Match Height JavaScript-->
-    <script src="js/jquery.matchHeight.js?v=1511090219874">   </script>
+    <script src="js/jquery.matchHeight.js?v=1511111906613">   </script>
     <!-- Validator JavaScript-->
-    <script src="js/validator.js?v=1511090219874"></script>
-    <script src="js/contact_me.js?v=1511090219874"> </script>
+    <script src="js/validator.js?v=1511111906613"></script>
+    <script src="js/contact_me.js?v=1511111906613"> </script>
     <!-- Select2 JavaScript-->
-    <script src="js/select2.js?v=1511090219874"></script>
+    <script src="js/select2.js?v=1511111906613"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js?v=1511090219874"></script>
+    <script src="js/main.js?v=1511111906613"></script>
     <!-- endbuild-->
   </body>
 </html>

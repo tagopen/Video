@@ -1086,6 +1086,7 @@ button
 .modal
   &-content
     box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25)
+    border: 0
   &__icon
     position: absolute
     &--1
@@ -1156,6 +1157,33 @@ button
       width: 800px
       height: 400px      
 
+.kid
+  &__content
+    padding: 15px 
+    box-shadow: 0 0 140px rgba(250, 182, 85, 0.8)
+  &__descr
+    color: #212121
+    font: 400 20px/30px $main-font
+  &__text
+    color: #212121
+    font: 400 16px/24px $main-font
+    padding: 10px 15px
+    background: #ffecdb
+    margin-bottom: 25px !important
++r(768)
+  .kid
+    &__dialog
+      max-width: 560px  
+    &__content
+      padding: 50px     
+    &__icon
+      position: absolute
+      &--1
+        left: -120px
+        top: -70px
+      &--2
+        bottom: -150px
+        right: -55px
 +comment("section tabs style")
 .tabs
   &__item

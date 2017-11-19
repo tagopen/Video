@@ -1097,40 +1097,46 @@
   vertical-align: middle;
 }
 
+.ic--babochka:before {
+  width: 284px;
+  height: 273px;
+  background: url(../img/sprite.png) -711px -692px no-repeat;
+}
+
 .ic--ball-2:before {
   width: 251px;
   height: 220px;
-  background: url(../img/sprite.png) -711px -692px no-repeat;
+  background: url(../img/sprite.png) -263px -1024px no-repeat;
 }
 
 .ic--ball:before {
   width: 101px;
   height: 118px;
-  background: url(../img/sprite.png) -972px -692px no-repeat;
+  background: url(../img/sprite.png) -865px -1024px no-repeat;
 }
 
 .ic--box:before {
   width: 163px;
   height: 128px;
-  background: url(../img/sprite.png) -263px -1024px no-repeat;
+  background: url(../img/sprite.png) -692px -1024px no-repeat;
 }
 
 .ic--candy:before {
   width: 109px;
   height: 134px;
-  background: url(../img/sprite.png) -378px -1162px no-repeat;
+  background: url(../img/sprite.png) -378px -1254px no-repeat;
 }
 
 .ic--check:before {
   width: 22px;
   height: 17px;
-  background: url(../img/sprite.png) -1692px -788px no-repeat;
+  background: url(../img/sprite.png) -1452px -541px no-repeat;
 }
 
 .ic--confetti:before {
   width: 105px;
   height: 187px;
-  background: url(../img/sprite.png) -263px -1162px no-repeat;
+  background: url(../img/sprite.png) -263px -1254px no-repeat;
 }
 
 .ic--gift-box:before {
@@ -1172,7 +1178,7 @@
 .ic--linear-sm:before {
   width: 45px;
   height: 8px;
-  background: url(../img/sprite.png) -1692px -770px no-repeat;
+  background: url(../img/sprite.png) -1452px -523px no-repeat;
 }
 
 .ic--linear:before {
@@ -1187,10 +1193,16 @@
   background: url(../img/sprite.png) -1086px -523px no-repeat;
 }
 
+.ic--sharik:before {
+  width: 233px;
+  height: 234px;
+  background: url(../img/sprite.png) -1524px -770px no-repeat;
+}
+
 .ic--wreath:before {
   width: 158px;
   height: 219px;
-  background: url(../img/sprite.png) -1524px -770px no-repeat;
+  background: url(../img/sprite.png) -524px -1024px no-repeat;
 }
 
 .ic--year:before {
@@ -2954,6 +2966,7 @@ button:focus {
 .modal-content {
   -webkit-box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25);
           box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25);
+  border: 0;
 }
 
 .modal__icon {
@@ -3059,6 +3072,45 @@ button:focus {
   .modal__content {
     width: 800px;
     height: 400px;
+  }
+}
+
+.kid__content {
+  padding: 15px;
+  -webkit-box-shadow: 0 0 140px rgba(250, 182, 85, 0.8);
+          box-shadow: 0 0 140px rgba(250, 182, 85, 0.8);
+}
+
+.kid__descr {
+  color: #212121;
+  font: 400 20px/30px "PF Din Text Pro", sans-serif;
+}
+
+.kid__text {
+  color: #212121;
+  font: 400 16px/24px "PF Din Text Pro", sans-serif;
+  padding: 10px 15px;
+  background: #ffecdb;
+  margin-bottom: 25px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .kid__dialog {
+    max-width: 560px;
+  }
+  .kid__content {
+    padding: 50px;
+  }
+  .kid__icon {
+    position: absolute;
+  }
+  .kid__icon--1 {
+    left: -120px;
+    top: -70px;
+  }
+  .kid__icon--2 {
+    bottom: -150px;
+    right: -55px;
   }
 }
 

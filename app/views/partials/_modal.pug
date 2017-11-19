@@ -19,8 +19,22 @@
                 input.form-control(type="tel", name="phone", placeholder=form.phone.placeholder, required)
               .btn-groups.form__btn-groups
                 button.btn.btn--default.btn--size(name='form', value=form.submit.value, type='submit', data-loading-text=form.submit.loading)!= form.submit.text
+#kid__modal.kid.modal.fade(tabindex='-1', role='dialog', aria-labelledby='callbackLabel', aria-hidden='true')
+  .modal-dialog.kid__dialog(role='document')
+    .modal-content.kid__content
+      i.d-none.d-md-inline-block.ic.ic--babochka.kid__icon.kid__icon--1
+      i.d-none.d-md-inline-block.ic.ic--sharik.kid__icon.kid__icon--2
+      button.close.modal__close(type='button', data-dismiss='modal', aria-label='Close')
+        +svg("close")(class="close__icon")
+      .modal-body
+        .row.justify-content-center
+          .col-24.col-md-18.col-lg-16.text-center
+            h5#callbackLabel.mb-3.dm-descr!= content.index.modal.kid.heading
+          .col-24.text-center  
+            .mb-3.kid__descr!= content.index.modal.kid.descr
+            .mb-3.kid__text!= content.index.modal.kid.text
+            a.btn.btn--default.btn--size(href="#")!= content.index.modal.kid.btn.text
 #video__modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='callbackLabel', aria-hidden='true')
-  -var callback = page.modal.callback
   .modal-dialog.modal-lg(role='document')
     .modal-content.modal__content
       button.close.modal__close(type='button', data-dismiss='modal', aria-label='Close')
