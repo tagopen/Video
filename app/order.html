@@ -36,18 +36,18 @@
     <meta name="twitter:image" content="/img/logo/microformat.png"/>
     <!-- build:css css/bundle.min.css-->
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/fonts.css?v=1511090219874">
+    <link rel="stylesheet" href="css/fonts.css?v=1511133539678">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.css?v=1511090219874">
+    <link rel="stylesheet" href="css/bootstrap.css?v=1511133539678">
     <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="css/font-awesome.css?v=1511090219874">
+    <link rel="stylesheet" href="css/font-awesome.css?v=1511133539678">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1511090219874">
+    <link rel="stylesheet" href="css/style.css?v=1511133539678">
     <!-- endbuild-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://--><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1511090219874"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1511090219874"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1511133539678"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1511133539678"></script>
 <![endif]-->
   </head>
   <body class="body">
@@ -115,22 +115,22 @@
                       <div class="row">
                         <div class="col-24 col-md-12" data-childrean-item="0">
                           <fieldset class="form-group" id="new1">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-1" required>
                               <option></option>
                               <option value="1">Абрам</option>
                               <option value="2">Авраам</option>
                             </select>
-                            <input class="form-control" type="text" name="new_firstname_1" placeholder="Введите новое имя" required>
+                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child-name-new-1">
                           </fieldset>
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите пол ребенка" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите пол ребенка" name="gender-1" required>
                               <option></option>
                               <option value="1">Мужской</option>
                               <option value="2">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn">
-                            <input class="radio-btn__control" id="rbtn21" type="checkbox" name="new_name1" data-new-name="#new1">
+                            <input class="radio-btn__control" id="rbtn21" type="checkbox" name="new-name-1" data-new-name="#new1">
                             <label class="radio-btn__box" for="rbtn21"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
                           <div class="btn-groups text-left">
@@ -139,22 +139,22 @@
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
                           <fieldset class="form-group" id="new2">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-2" required>
                               <option></option>
                               <option value="1">Аврора</option>
                               <option value="2">Агата</option>
                             </select>
-                            <input class="form-control" type="text" name="new_firstname_1" placeholder="Введите новое имя" required>
+                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child-name-new-2">
                           </fieldset>
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите пол ребенка" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите пол ребенка" name="gender-2" required>
                               <option></option>
                               <option value="1">Мужской</option>
                               <option value="2">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn">
-                            <input class="radio-btn__control" id="rbtn22" type="checkbox" name="new_name2" data-new-name="#new2">
+                            <input class="radio-btn__control" id="rbtn22" type="checkbox" name="new-name-2" data-new-name="#new2">
                             <label class="radio-btn__box" for="rbtn22"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
                         </div>
@@ -163,38 +163,71 @@
                     <div class="tabs__item">
                       <div class="row">
                         <div class="col-24 col-md-12">
-                          <div class="img-container"><img class="img-fluid" id="image" src="images/picture.jpg"></div>
+                          <div id="crop-avatar">
+                            <div class="btn-groups text-left">
+                              <button class="btn btn--default btn--sm btn--file" type="button" data-toggle="modal" data-target="#avatar-modal-1">Загрузите фотографию</button>
+                            </div>
+                            <!-- Current avatar-->
+                            <div class="avatar-view" title="Change the avatar"></div>
+                          </div>
                         </div>
                         <div class="col-24 col-md-12">
-                          <div class="preview-lg"></div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-24">
-                          <div class="btns-group">
-                            <button class="btn btn--default" type="button" data-method="rotate" data-option="-90" title="Rotate Left"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;rotate&quot;, -90)"><span class="fa fa-rotate-left"></span></span></button>
-                            <button class="btn btn--default" type="button" data-method="rotate" data-option="90" title="Rotate Right"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;rotate&quot;, 90)"><span class="fa fa-rotate-right"></span></span></button>
-                            <label class="btn btn--default" for="inputImage" title="Upload image file">
-                              <input class="sr-only" id="inputImage" type="file" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="Import image with Blob URLs"><span class="fa fa-upload"></span></span>
-                            </label>
-                            <button class="btn btn--default" type="button" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;getCroppedCanvas&quot;, { maxWidth: 4096, maxHeight: 4096 })">Get Cropped Canvas</span></button>
-                          </div>
-                          <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn btn--default active">
-                              <input class="sr-only" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="aspectRatio: 3 / 2">3:2</span>
-                            </label>
-                            <label class="btn btn btn--default">
-                              <input class="sr-only" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="aspectRatio: 2 / 3">2:3</span>
-                            </label>
+                          <div id="crop-avatar2">
+                            <div class="btn-groups text-left">
+                              <button class="btn btn--default btn--sm btn--file" type="button" data-toggle="modal" data-target="#avatar-modal-2">Загрузите фотографию</button>
+                            </div>
+                            <!-- Current avatar-->
+                            <div class="avatar-view" title="Change the avatar"><img src="images/picture.jpg" alt="Avatar"></div>
                           </div>
                         </div>
-                        <!-- /.docs-toggles-->
                       </div>
                       <div class="btn-groups text-left">
                         <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
                       </div>
                     </div>
-                    <div class="tabs__item"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
+                    <div class="tabs__item">
+                      <div class="row">
+                        <div class="col-24 col-md-12">
+                          <h2 class="heading heading--left">Контактные данные</h2>
+                          <fieldset class="form-group">
+                            <input class="form-control" type="text" name="name" placeholder="Введите ваше имя" required>
+                          </fieldset>
+                          <fieldset class="form-group">
+                            <input class="form-control" type="tel" name="phone" placeholder="Введите номер телефона" required>
+                          </fieldset>
+                          <fieldset class="form-group">
+                            <input class="form-control" type="email" name="email" placeholder="Введите ваш E-mail">
+                          </fieldset>
+                          <p class="gg-text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
+                          <fieldset class="form-group"><a class="sr-only link js-promo" href="#promo">Ввести промокод</a>
+                            <input class="form-control" id="promo" type="text" name="promocode" placeholder="Введите промокод, если он есть у вас">
+                          </fieldset>
+                        </div>
+                        <div class="col-24 col-md-8">
+                          <h2 class="heading heading--left">Детали заказа</h2>
+                          <div class="total-price">
+                            <div class="row justify-content-between">
+                              <div class="col-auto"><span>Стоимость пакета:</span></div>
+                              <div class="col-auto"><span class="nt-price">200 грн</span></div>
+                            </div>
+                            <div class="row justify-content-between">
+                              <div class="col-auto"><span>Ваша скидка:</span></div>
+                              <div class="col-auto"><span class="nt-price">-40 грн</span></div>
+                            </div>
+                            <div class="row justify-content-between">
+                              <div class="col-auto"><a class="link" href="#facebook" data-toggle="modal">Получить скидку 17 грн</a></div>
+                            </div>
+                            <div class="row justify-content-between">
+                              <div class="col-auto"><span>Итоговая цена:</span></div>
+                              <div class="col-auto"><span class="nt-price">160 грн</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="btn-groups form__btn-groups">
+                          <button class="btn btn--default btn--sm" name="form" value="Заказ" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Отправить</button><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -252,26 +285,26 @@
     </div>
     <!-- build:js js/bundle.min.js-->
     <!-- Popper JavaScript-->
-    <script src="js/popper.js?v=1511090219874"></script>
+    <script src="js/popper.js?v=1511133539678"></script>
     <!-- jQuery-->
-    <script src="js/jquery.js?v=1511090219874"></script>
+    <script src="js/jquery.js?v=1511133539678"></script>
     <!-- Bootstrap JavaScript-->
-    <script src="js/bootstrap.js?v=1511090219874"></script>
+    <script src="js/bootstrap.js?v=1511133539678"></script>
     <!-- Old browsers reject JavaScript-->
-    <script src="js/jquery.reject.js?v=1511090219874"></script>
+    <script src="js/jquery.reject.js?v=1511133539678"></script>
     <!-- Cropper JavaScript-->
-    <script src="js/cropper.js?v=1511090219874"></script>
+    <script src="js/cropper.js?v=1511133539678"></script>
     <!-- CountDown JavaScript-->
-    <script src="js/jquery.countdown.js?v=1511090219874"></script>
+    <script src="js/jquery.countdown.js?v=1511133539678"></script>
     <!-- Match Height JavaScript-->
-    <script src="js/jquery.matchHeight.js?v=1511090219874">   </script>
+    <script src="js/jquery.matchHeight.js?v=1511133539678">   </script>
     <!-- Validator JavaScript-->
-    <script src="js/validator.js?v=1511090219874"></script>
-    <script src="js/contact_me.js?v=1511090219874"> </script>
+    <script src="js/validator.js?v=1511133539678"></script>
+    <script src="js/contact_me.js?v=1511133539678"> </script>
     <!-- Select2 JavaScript-->
-    <script src="js/select2.js?v=1511090219874"></script>
+    <script src="js/select2.js?v=1511133539678"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js?v=1511090219874"></script>
+    <script src="js/main.js?v=1511133539678"></script>
     <!-- endbuild-->
   </body>
 </html>

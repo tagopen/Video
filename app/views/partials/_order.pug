@@ -29,19 +29,19 @@ form.form(action='mail/mail.php', method='post', novalidate)
       .row
         .col-24.col-md-12(data-childrean-item="0")
           fieldset#new1.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-1", required)
               option
               option(value='1') Абрам
               option(value='2') Авраам
-            input.form-control(type='text', name='new_firstname_1', placeholder='Введите новое имя', required)
+            input.form-control(type='text', placeholder='Введите новое имя', name="child-name-new-1")
 
           fieldset.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка', required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка', name="gender-1", required)
               option
               option(value='1') Мужской
               option(value='2') Женский
           label.radio-btn
-            input#rbtn21.radio-btn__control(type='checkbox', name='new_name1', data-new-name="#new1")
+            input#rbtn21.radio-btn__control(type='checkbox', name='new-name-1', data-new-name="#new1")
             label.radio-btn__box(for='rbtn21')
               i.radio-btn__icon
               | Добавить имя ребенка
@@ -51,57 +51,77 @@ form.form(action='mail/mail.php', method='post', novalidate)
 
         .col-24.col-md-12(data-childrean-item="1")
           fieldset#new2.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-2", required)
               option
               option(value='1') Аврора
               option(value='2') Агата
-            input.form-control(type='text', name='new_firstname_1', placeholder='Введите новое имя', required)
+            input.form-control(type='text', placeholder='Введите новое имя', name="child-name-new-2")
           fieldset.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка', required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка',  name="gender-2", required)
               option
               option(value='1') Мужской
               option(value='2') Женский
           label.radio-btn
-            input#rbtn22.radio-btn__control(type='checkbox', name='new_name2', data-new-name='#new2')
+            input#rbtn22.radio-btn__control(type='checkbox', name='new-name-2', data-new-name='#new2')
             label.radio-btn__box(for='rbtn22')
               i.radio-btn__icon
               | Добавить имя ребенка
     .tabs__item
       .row
         .col-24.col-md-12
-          .img-container
-            img#image.img-fluid(src='images/picture.jpg')
+          #crop-avatar
+            .btn-groups.text-left
+              button.btn.btn--default.btn--sm.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal-1") Загрузите фотографию
+            // Current avatar
+            .avatar-view(title='Change the avatar')
         .col-24.col-md-12
-          .preview-lg
-      .row
-        .col-24
-          .btns-group
-            button.btn.btn--default(type='button', data-method='rotate', data-option='-90', title='Rotate Left')
-              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("rotate", -90)')
-                span.fa.fa-rotate-left
-            button.btn.btn--default(type='button', data-method='rotate', data-option='90', title='Rotate Right')
-              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("rotate", 90)')
-                span.fa.fa-rotate-right
-            label.btn.btn--default(for='inputImage', title='Upload image file')
-              input#inputImage.sr-only(type='file', name='file', accept='.jpg,.jpeg,.png,.gif,.bmp,.tiff')
-              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='Import image with Blob URLs')
-                span.fa.fa-upload
-            button.btn.btn--default(type='button', data-method='getCroppedCanvas', data-option='{ "maxWidth": 4096, "maxHeight": 4096 }')
-              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='$().cropper("getCroppedCanvas", { maxWidth: 4096, maxHeight: 4096 })')
-                | Get Cropped Canvas
-          .btn-group(data-toggle='buttons')
-            label.btn.btn.btn--default.active
-              input#aspectRatio0.sr-only(type='radio', name='aspectRatio', value='1.5')
-              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='aspectRatio: 3 / 2')
-                | 3:2
-            label.btn.btn.btn--default
-              input#aspectRatio1.sr-only(type='radio', name='aspectRatio', value='0.66666666666')
-              span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='aspectRatio: 2 / 3')
-                | 2:3
-        // /.docs-toggles
-
+          #crop-avatar2
+            .btn-groups.text-left
+              button.btn.btn--default.btn--sm.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal-2") Загрузите фотографию
+            // Current avatar
+            .avatar-view(title='Change the avatar')
+              img(src='images/picture.jpg', alt='Avatar')
       .btn-groups.text-left
         button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
         a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
     .tabs__item
-       a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+      .row
+        .col-24.col-md-12
+          h2.heading.heading--left Контактные данные
+          fieldset.form-group
+            input.form-control(type='text', name='name', placeholder='Введите ваше имя', required)
+          fieldset.form-group
+            input.form-control(type='tel', name='phone', placeholder='Введите номер телефона', required)
+          fieldset.form-group
+            input.form-control(type='email', name='email', placeholder='Введите ваш E-mail')
+          p.gg-text На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail
+          fieldset.form-group
+            a.sr-only.link.js-promo(href="#promo") Ввести промокод
+            input#promo.form-control(type='text', name='promocode', placeholder='Введите промокод, если он есть у вас')
+
+        .col-24.col-md-8
+          h2.heading.heading--left Детали заказа
+          .total-price
+            .row.justify-content-between
+              .col-auto
+                span Стоимость пакета:
+              .col-auto
+                span.nt-price 200 грн
+            .row.justify-content-between
+              .col-auto
+                span Ваша скидка:
+              .col-auto
+                span.nt-price -40 грн
+            .row.justify-content-between
+              .col-auto
+                a.link(href="#facebook", data-toggle="modal") Получить скидку 17 грн
+            .row.justify-content-between
+              .col-auto
+                span Итоговая цена:
+              .col-auto
+                span.nt-price 160 грн
+        .btn-groups.form__btn-groups
+          button.btn.btn--default.btn--sm(name='form', value='Заказ', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Отправить
+
+          a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+
