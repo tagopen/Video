@@ -2965,6 +2965,7 @@ button:focus {
 .modal-content {
   -webkit-box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25);
           box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25);
+  border: 0;
 }
 
 .modal__icon {
@@ -3070,6 +3071,45 @@ button:focus {
   .modal__content {
     width: 800px;
     height: 400px;
+  }
+}
+
+.kid__content {
+  padding: 15px;
+  -webkit-box-shadow: 0 0 140px rgba(250, 182, 85, 0.8);
+          box-shadow: 0 0 140px rgba(250, 182, 85, 0.8);
+}
+
+.kid__descr {
+  color: #212121;
+  font: 400 20px/30px "PF Din Text Pro", sans-serif;
+}
+
+.kid__text {
+  color: #212121;
+  font: 400 16px/24px "PF Din Text Pro", sans-serif;
+  padding: 10px 15px;
+  background: #ffecdb;
+  margin-bottom: 25px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .kid__dialog {
+    max-width: 560px;
+  }
+  .kid__content {
+    padding: 50px;
+  }
+  .kid__icon {
+    position: absolute;
+  }
+  .kid__icon--1 {
+    left: -120px;
+    top: -70px;
+  }
+  .kid__icon--2 {
+    bottom: -150px;
+    right: -55px;
   }
 }
 
