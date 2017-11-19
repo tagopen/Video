@@ -3066,8 +3066,14 @@ button:focus {
 /* S E C T I O N    T A B S    S T Y L E    */
 /* ---------------------------------------- */
 .tabs__item {
+  position: relative;
+  display: none;
   background-color: #fff;
   text-align: left;
+}
+
+.tabs__item--active {
+  display: block;
 }
 
 .carbonads {

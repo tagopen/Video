@@ -36,18 +36,18 @@
     <meta name="twitter:image" content="/img/logo/microformat.png"/>
     <!-- build:css css/bundle.min.css-->
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/fonts.css?v=1511043116827">
+    <link rel="stylesheet" href="css/fonts.css?v=1511090219874">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.css?v=1511043116827">
+    <link rel="stylesheet" href="css/bootstrap.css?v=1511090219874">
     <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="css/font-awesome.css?v=1511043116827">
+    <link rel="stylesheet" href="css/font-awesome.css?v=1511090219874">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1511043116827">
+    <link rel="stylesheet" href="css/style.css?v=1511090219874">
     <!-- endbuild-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://--><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1511043116827"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1511043116827"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1511090219874"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1511090219874"></script>
 <![endif]-->
   </head>
   <body class="body">
@@ -86,9 +86,9 @@
                 <form class="form" action="mail/mail.php" method="post" novalidate>
                   <div class="tabs" data-tabs="test-tabs">
                     <div class="tabs__control tabs-control">
-                      <div class="tabs-control__item tabs-control__item--active" data-tabs-control="control" data-tabs-toggle="0"><a class="tabs-control__link" href="#">Шаг 1</a></div>
-                      <div class="tabs-control__item" data-tabs-control="control" data-tabs-toggle="1"><a class="tabs-control__link" href="#">Шаг 2</a></div>
-                      <div class="tabs-control__item" data-tabs-control="control" data-tabs-toggle="2"><a class="tabs-control__link" href="#">Шаг 3</a></div>
+                      <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
+                      <div class="tabs-control__item"><a class="tabs-control__link" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="1">Шаг 2</a></div>
+                      <div class="tabs-control__item"><a class="tabs-control__link" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="2">Шаг 3</a></div>
                     </div>
                     <div class="tabs__item tabs__item--active">
                       <div class="row">
@@ -99,14 +99,14 @@
                           <div class="row">
                             <div class="col-auto">
                               <label class="radio-btn">
-                                <input class="radio-btn__control" id="rbtn11" type="radio" name="childrean" checked>
-                                <label class="radio-btn__box" for="rbtn11" data-childrean="1"><i class="radio-btn__icon"> </i>1 ребенок</label>
+                                <input class="radio-btn__control" id="rbtn11" type="radio" name="childrean" data-childrean="1">
+                                <label class="radio-btn__box" for="rbtn11"><i class="radio-btn__icon"> </i>1 ребенок</label>
                               </label>
                             </div>
                             <div class="col-auto">
                               <label class="radio-btn">
-                                <input class="radio-btn__control" id="rbtn12" type="radio" name="childrean">
-                                <label class="radio-btn__box" for="rbtn12" data-childrean="2"><i class="radio-btn__icon"></i>2 ребенка</label>
+                                <input class="radio-btn__control" id="rbtn12" type="radio" name="childrean" data-childrean="2">
+                                <label class="radio-btn__box" for="rbtn12"><i class="radio-btn__icon"></i>2 ребенка</label>
                               </label>
                             </div>
                           </div>
@@ -114,7 +114,7 @@
                       </div>
                       <div class="row">
                         <div class="col-24 col-md-12" data-childrean-item="0">
-                          <fieldset class="form-group">
+                          <fieldset class="form-group" id="new1">
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" required>
                               <option></option>
                               <option value="1">Абрам</option>
@@ -130,12 +130,15 @@
                             </select>
                           </fieldset>
                           <label class="radio-btn">
-                            <input class="radio-btn__control" id="rbtn21" type="checkbox" name="new_name1">
-                            <label class="radio-btn__box" for="rbtn21" data-new-name="1"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
+                            <input class="radio-btn__control" id="rbtn21" type="checkbox" name="new_name1" data-new-name="#new1">
+                            <label class="radio-btn__box" for="rbtn21"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
+                          <div class="btn-groups text-left">
+                            <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
+                          </div>
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
-                          <fieldset class="form-group">
+                          <fieldset class="form-group" id="new2">
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" required>
                               <option></option>
                               <option value="1">Аврора</option>
@@ -151,13 +154,10 @@
                             </select>
                           </fieldset>
                           <label class="radio-btn">
-                            <input class="radio-btn__control" id="rbtn22" type="checkbox" name="new_name2">
-                            <label class="radio-btn__box" for="rbtn22" data-new-name="2"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
+                            <input class="radio-btn__control" id="rbtn22" type="checkbox" name="new_name2" data-new-name="#new2">
+                            <label class="radio-btn__box" for="rbtn22"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
                         </div>
-                      </div>
-                      <div class="btn-groups text-left">
-                        <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
                       </div>
                     </div>
                     <div class="tabs__item">
@@ -190,7 +190,11 @@
                         </div>
                         <!-- /.docs-toggles-->
                       </div>
+                      <div class="btn-groups text-left">
+                        <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
+                      </div>
                     </div>
+                    <div class="tabs__item"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
                   </div>
                 </form>
               </div>
@@ -248,26 +252,26 @@
     </div>
     <!-- build:js js/bundle.min.js-->
     <!-- Popper JavaScript-->
-    <script src="js/popper.js?v=1511043116827"></script>
+    <script src="js/popper.js?v=1511090219874"></script>
     <!-- jQuery-->
-    <script src="js/jquery.js?v=1511043116827"></script>
+    <script src="js/jquery.js?v=1511090219874"></script>
     <!-- Bootstrap JavaScript-->
-    <script src="js/bootstrap.js?v=1511043116827"></script>
+    <script src="js/bootstrap.js?v=1511090219874"></script>
     <!-- Old browsers reject JavaScript-->
-    <script src="js/jquery.reject.js?v=1511043116827"></script>
+    <script src="js/jquery.reject.js?v=1511090219874"></script>
     <!-- Cropper JavaScript-->
-    <script src="js/cropper.js?v=1511043116827"></script>
+    <script src="js/cropper.js?v=1511090219874"></script>
     <!-- CountDown JavaScript-->
-    <script src="js/jquery.countdown.js?v=1511043116827"></script>
+    <script src="js/jquery.countdown.js?v=1511090219874"></script>
     <!-- Match Height JavaScript-->
-    <script src="js/jquery.matchHeight.js?v=1511043116827">   </script>
+    <script src="js/jquery.matchHeight.js?v=1511090219874">   </script>
     <!-- Validator JavaScript-->
-    <script src="js/validator.js?v=1511043116827"></script>
-    <script src="js/contact_me.js?v=1511043116827"> </script>
+    <script src="js/validator.js?v=1511090219874"></script>
+    <script src="js/contact_me.js?v=1511090219874"> </script>
     <!-- Select2 JavaScript-->
-    <script src="js/select2.js?v=1511043116827"></script>
+    <script src="js/select2.js?v=1511090219874"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js?v=1511043116827"></script>
+    <script src="js/main.js?v=1511090219874"></script>
     <!-- endbuild-->
   </body>
 </html>

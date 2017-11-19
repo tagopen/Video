@@ -163,29 +163,106 @@
   $('#video__modal').on('hidden.bs.modal', function() {
     $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=0&showinfo=0&mute=1&iv_load_policy=3&showsearch=0');
   });
-
+  
+  // Tabs
   $(function() {
     $("[data-tabs-control]").on('click', function(e) {
-      var control = $(this).data('tabs-control'),
+      var $indexControl = $("[data-tabs-index]"),
+          control = $(this).data('tabs-control'),
+          index = $(this).data('tabs-index'),
           target = $(this).data('tabs-toggle'),
           $tabs = $("[data-tabs=" + target + "]");
 
+      if (typeof index !== undefined) {
+
+      }
+
       $tabs.each(function() {
         var  $item = $(this).find('.tabs__item'),
-             $currentItem = $item.filter('.tabs__item--active').closest('.tabs__item'),
-             activeItem = $currentItem.index();
+             $currentItem = $item.filter('.tabs__item--active'),
+             activeItem = $currentItem.index() - 1;
 
         // Tabs control button
         if (control === 'prev') {
           activeItem = activeItem - 1;
         } else if (control === 'next') {
           activeItem = activeItem + 1;
+        } else if (control === 'index') {
+          activeItem = parseInt(index, 10);
+          $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
         }
 
         $item.removeClass('tabs__item--active').eq(activeItem).addClass('tabs__item--active');
         
       });
     e.preventDefault();
+    });
+  });
+
+  // Show more childrean
+  $(function() {
+    var $items = $("[data-childrean-item]"),
+        $control = $("[data-childrean]"),
+        childrean = 0,
+        showChildrean = function showChildrean(childrean) {
+          var items = parseInt(childrean, 10);
+          
+          if (!items) {
+            $items.fadeOut();
+            return;
+          }
+
+          for (var i = 0; i < $items.length; i++) {
+            if (i < items) {
+              $items.eq(i).fadeIn();
+            } else {
+              $items.eq(i).fadeOut();
+            }
+          }
+        };
+
+    $control.each(function() {
+      if ($(this).prop("checked")) {
+        childrean = $(this).data("childrean");
+      }
+    });
+
+    showChildrean(childrean);
+
+    $control.on("click change", function() {
+      childrean = $(this).data("childrean");
+      showChildrean(childrean);
+    });
+
+  });
+  
+  // Add new name
+  $(function() {
+    var $checkbox = $("[data-new-name]"),
+        newName = function($item) {
+          var target = $item.data("new-name"),
+              $group = $(target),
+              $input = $group.find("input.form-control"),
+              $select = $group.find(".select"),
+              $selectContainer = $select.next(".select2-container");
+          if ($item.prop("checked")) {
+            $input.fadeIn();
+            $input.prop('required', true);
+            $select.prop('required', false);
+            $selectContainer.fadeOut(0);
+          } else {
+            $input.fadeOut(0);
+            $input.prop('required', false);
+            $select.prop('required', true);
+            $selectContainer.fadeIn();
+          }
+        };
+    $checkbox.each(function() {
+      newName($(this));
+    });
+
+    $checkbox.on("click change", function() {
+      newName($(this));
     });
   });
 

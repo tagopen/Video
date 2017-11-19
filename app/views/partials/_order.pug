@@ -2,12 +2,12 @@ form.form(action='mail/mail.php', method='post', novalidate)
 
   .tabs(data-tabs="test-tabs")
     .tabs__control.tabs-control
-      .tabs-control__item.tabs-control__item--active(data-tabs-control='control', data-tabs-toggle='0')
-        a.tabs-control__link(href="#") Шаг 1
-      .tabs-control__item(data-tabs-control='control', data-tabs-toggle='1')
-        a.tabs-control__link(href="#") Шаг 2
-      .tabs-control__item(data-tabs-control='control', data-tabs-toggle='2')
-        a.tabs-control__link(href="#") Шаг 3
+      .tabs-control__item
+        a.tabs-control__link.tabs-control__link--active(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="0") Шаг 1
+      .tabs-control__item
+        a.tabs-control__link(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="1") Шаг 2
+      .tabs-control__item
+        a.tabs-control__link(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="2") Шаг 3
     .tabs__item.tabs__item--active
       .row
         .col-24
@@ -16,19 +16,19 @@ form.form(action='mail/mail.php', method='post', novalidate)
           .row
             .col-auto
               label.radio-btn
-                input#rbtn11.radio-btn__control(type='radio', name='childrean', checked)
-                label.radio-btn__box(for='rbtn11', data-childrean='1')
+                input#rbtn11.radio-btn__control(type='radio', name='childrean', data-childrean='1')
+                label.radio-btn__box(for='rbtn11')
                   i.radio-btn__icon 
                   | 1 ребенок
             .col-auto
               label.radio-btn
-                input#rbtn12.radio-btn__control(type='radio', name='childrean')
-                label.radio-btn__box(for='rbtn12', data-childrean='2')
+                input#rbtn12.radio-btn__control(type='radio', name='childrean', data-childrean='2')
+                label.radio-btn__box(for='rbtn12')
                   i.radio-btn__icon
                   | 2 ребенка
       .row
         .col-24.col-md-12(data-childrean-item="0")
-          fieldset.form-group
+          fieldset#new1.form-group
             select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', required)
               option
               option(value='1') Абрам
@@ -41,12 +41,16 @@ form.form(action='mail/mail.php', method='post', novalidate)
               option(value='1') Мужской
               option(value='2') Женский
           label.radio-btn
-            input#rbtn21.radio-btn__control(type='checkbox', name='new_name1')
-            label.radio-btn__box(for='rbtn21', data-new-name='1')
+            input#rbtn21.radio-btn__control(type='checkbox', name='new_name1', data-new-name="#new1")
+            label.radio-btn__box(for='rbtn21')
               i.radio-btn__icon
               | Добавить имя ребенка
+
+          .btn-groups.text-left
+            button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+
         .col-24.col-md-12(data-childrean-item="1")
-          fieldset.form-group
+          fieldset#new2.form-group
             select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', required)
               option
               option(value='1') Аврора
@@ -58,13 +62,10 @@ form.form(action='mail/mail.php', method='post', novalidate)
               option(value='1') Мужской
               option(value='2') Женский
           label.radio-btn
-            input#rbtn22.radio-btn__control(type='checkbox', name='new_name2')
-            label.radio-btn__box(for='rbtn22', data-new-name='2')
+            input#rbtn22.radio-btn__control(type='checkbox', name='new_name2', data-new-name='#new2')
+            label.radio-btn__box(for='rbtn22')
               i.radio-btn__icon
               | Добавить имя ребенка
-
-      .btn-groups.text-left
-        button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
     .tabs__item
       .row
         .col-24.col-md-12
@@ -99,3 +100,8 @@ form.form(action='mail/mail.php', method='post', novalidate)
                 | 2:3
         // /.docs-toggles
 
+      .btn-groups.text-left
+        button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+        a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+    .tabs__item
+       a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
