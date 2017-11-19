@@ -37,5 +37,5 @@ section#preview.preview
             input.form-control(type="email", name="email", placeholder=form.email.placeholder, required)
           .btn-groups.form__btn-groups
             button.btn.btn--default.btn--size(name='form', value=form.submit.value, type='submit', data-loading-text=form.submit.loading)!= form.submit.text
-          a.info.form__info(href="#faq")!= form.info.text
+          a.info.form__info(data-toggle="modal" href="#kid__modal")!= form.info.text
 
