@@ -115,7 +115,7 @@ gulp.task('pug', () => {
       basedir: path.src.pug,
       pretty: true
     }))
-    .pipe($.htmlVersion(htmlVersionOptions))
+    //.pipe($.htmlVersion(htmlVersionOptions))
     .pipe(gulp.dest(path.src.html));
 });
 

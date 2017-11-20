@@ -306,6 +306,8 @@
   var console = window.console || { log: function () {} };
 
   function CropAvatar($element, $modalEl) {
+    var _this = this;
+
     this.$container = $element;
     this.$modal = $modalEl;
 
@@ -330,6 +332,7 @@
       minCropBoxWidth: 300,
       minCropBoxHeight: 200,*/
       crop: function (e) {
+
         var json = [
               '{"x":' + e.x,
               '"y":' + e.y,
@@ -337,7 +340,6 @@
               '"width":' + e.width,
               '"rotate":' + e.rotate + '}'
             ].join();
-
         _this.$avatarData.val(json);
       }
     };
@@ -478,7 +480,6 @@
 
     ratio: function(e) {
 
-      var data = $(e.target).data();
       this.options.aspectRatio = $(e.target).val();
       this.$img.cropper('destroy').cropper(this.options);
     },

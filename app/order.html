@@ -36,18 +36,18 @@
     <meta name="twitter:image" content="/img/logo/microformat.png"/>
     <!-- build:css css/bundle.min.css-->
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/fonts.css?v=1511111906613">
+    <link rel="stylesheet" href="css/fonts.css">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.css?v=1511111906613">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <!-- Font-Awesome CSS-->
-    <link rel="stylesheet" href="css/font-awesome.css?v=1511111906613">
+    <link rel="stylesheet" href="css/font-awesome.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1511111906613">
+    <link rel="stylesheet" href="css/style.css">
     <!-- endbuild-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://--><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js?v=1511111906613"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js?v=1511111906613"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
   </head>
   <body class="body">
@@ -163,21 +163,14 @@
                     <div class="tabs__item">
                       <div class="row">
                         <div class="col-24 col-md-12">
-                          <div id="crop-avatar">
-                            <div class="btn-groups text-left">
-                              <button class="btn btn--default btn--sm btn--file" type="button" data-toggle="modal" data-target="#avatar-modal-1">Загрузите фотографию</button>
-                            </div>
-                            <!-- Current avatar-->
-                            <div class="avatar-view" title="Change the avatar"></div>
+                          <div class="btn-groups text-left">
+                            <button class="btn btn--default btn--sm btn--file" type="button" data-toggle="modal" data-target="#avatar-modal">Загрузите фотографию</button>
                           </div>
                         </div>
-                        <div class="col-24 col-md-12">
-                          <div id="crop-avatar2">
-                            <div class="btn-groups text-left">
-                              <button class="btn btn--default btn--sm btn--file" type="button" data-toggle="modal" data-target="#avatar-modal-2">Загрузите фотографию</button>
-                            </div>
+                        <div class="col-24 col-md-12">         
+                          <div id="crop-avatar">
                             <!-- Current avatar-->
-                            <div class="avatar-view" title="Change the avatar"><img src="images/picture.jpg" alt="Avatar"></div>
+                            <div class="avatar-view" title="Change the avatar"></div>
                           </div>
                         </div>
                       </div>
@@ -305,28 +298,74 @@
         </div>
       </div>
     </div>
+    <!-- Cropping modal-->
+    <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
+            <div class="modal-body">
+              <div class="avatar-body">
+                <!-- Upload image and data-->
+                <div class="avatar-upload">
+                  <input class="avatar-src" type="hidden" name="avatar_src">
+                  <input class="avatar-data" type="hidden" name="avatar_data">
+                  <label for="avatarInput">Local upload</label>
+                  <input class="avatar-input" id="avatarInput" type="file" name="avatar_file">
+                </div>
+                <!-- Crop and preview-->
+                <div class="row">
+                  <div class="col-24">
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                </div>
+                <div class="row avatar-btns">
+                  <div class="col-auto">
+                    <div class="btn-group">
+                      <button class="btn btn--default" type="button" data-method="rotate" data-option="90" title="Rotate 90 degrees"><i class="fa fa-rotate-left"></i></button>
+                      <button class="btn btn--default" type="button" data-method="rotate" data-option="-90" title="Rotate -90 degrees"><i class="fa fa-rotate-right"></i></button>
+                    </div>
+                    <div class="btn-group d-flex flex-nowrap avatar-ratio" data-toggle="buttons">
+                      <label class="btn btn-primary active">
+                        <input class="sr-only" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 3 / 2">3:2</span>
+                      </label>
+                      <label class="btn btn-primary">
+                        <input class="sr-only" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 2 / 3">2:3</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <button class="btn btn-primary btn-block avatar-save" type="submit">Обрезать</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
     <!-- build:js js/bundle.min.js-->
     <!-- Popper JavaScript-->
-    <script src="js/popper.js?v=1511111906613"></script>
+    <script src="js/popper.js"></script>
     <!-- jQuery-->
-    <script src="js/jquery.js?v=1511111906613"></script>
+    <script src="js/jquery.js"></script>
     <!-- Bootstrap JavaScript-->
-    <script src="js/bootstrap.js?v=1511111906613"></script>
+    <script src="js/bootstrap.js"></script>
     <!-- Old browsers reject JavaScript-->
-    <script src="js/jquery.reject.js?v=1511111906613"></script>
+    <script src="js/jquery.reject.js"></script>
     <!-- Cropper JavaScript-->
-    <script src="js/cropper.js?v=1511111906613"></script>
+    <script src="js/cropper.js"></script>
     <!-- CountDown JavaScript-->
-    <script src="js/jquery.countdown.js?v=1511111906613"></script>
+    <script src="js/jquery.countdown.js"></script>
     <!-- Match Height JavaScript-->
-    <script src="js/jquery.matchHeight.js?v=1511111906613">   </script>
+    <script src="js/jquery.matchHeight.js">   </script>
     <!-- Validator JavaScript-->
-    <script src="js/validator.js?v=1511111906613"></script>
-    <script src="js/contact_me.js?v=1511111906613"> </script>
+    <script src="js/validator.js"></script>
+    <script src="js/contact_me.js"> </script>
     <!-- Select2 JavaScript-->
-    <script src="js/select2.js?v=1511111906613"></script>
+    <script src="js/select2.js"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js?v=1511111906613"></script>
+    <script src="js/main.js"></script>
     <!-- endbuild-->
   </body>
 </html>

@@ -69,18 +69,12 @@ form.form(action='mail/mail.php', method='post', novalidate)
     .tabs__item
       .row
         .col-24.col-md-12
+          .btn-groups.text-left
+            button.btn.btn--default.btn--sm.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal") Загрузите фотографию
+        .col-24.col-md-12          
           #crop-avatar
-            .btn-groups.text-left
-              button.btn.btn--default.btn--sm.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal-1") Загрузите фотографию
             // Current avatar
             .avatar-view(title='Change the avatar')
-        .col-24.col-md-12
-          #crop-avatar2
-            .btn-groups.text-left
-              button.btn.btn--default.btn--sm.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal-2") Загрузите фотографию
-            // Current avatar
-            .avatar-view(title='Change the avatar')
-              img(src='images/picture.jpg', alt='Avatar')
       .btn-groups.text-left
         button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
         a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
