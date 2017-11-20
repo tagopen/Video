@@ -1371,6 +1371,10 @@ button:focus {
   outline: none !important;
 }
 
+.h-100 {
+  height: 100%;
+}
+
 /* heading */
 .heading {
   position: relative;
@@ -1533,6 +1537,14 @@ button:focus {
   min-width: 220px;
 }
 
+.btn__icon {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  font-size: 20px;
+  margin-top: -10px;
+}
+
 .btn-groups {
   position: relative;
   z-index: 1;
@@ -1554,6 +1566,12 @@ button:focus {
   padding: 0 !important;
   position: absolute !important;
   width: 1px !important;
+}
+
+@media only screen and (min-width: 992px) {
+  .btn__icon {
+    right: 60px;
+  }
 }
 
 /* ---------------------------------------- */
@@ -1605,16 +1623,42 @@ button:focus {
 /* ------------------------------------------ */
 .header {
   position: relative;
+  height: 100%;
   background: url(../img/headerbg.jpg) no-repeat;
   background-size: cover;
   overflow: hidden;
 }
 
+.intro {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+.intro__menu {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.intro__content {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 44px 0 22px;
+}
+
 .menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   padding-top: 15px;
 }
 
@@ -1674,14 +1718,6 @@ button:focus {
   color: #ffda66;
 }
 
-.h-content {
-  padding-top: 180px;
-}
-
-.h-content__box {
-  padding-top: 15px;
-}
-
 .h-content__image {
   text-align: center;
 }
@@ -1727,10 +1763,6 @@ button:focus {
 }
 
 @media only screen and (min-width: 768px) {
-  .header__box {
-    height: 100vh;
-    min-height: 760px;
-  }
   .menu {
     padding-top: 10px;
   }
@@ -1754,10 +1786,6 @@ button:focus {
   .h-call__button {
     font: 500 19px/24px "PF Din Text Pro", sans-serif;
   }
-  .h-content {
-    padding-top: 100px;
-    height: 100%;
-  }
   .h-content__subtitle {
     margin-bottom: 10px;
   }
@@ -1772,9 +1800,6 @@ button:focus {
 }
 
 @media only screen and (min-width: 992px) {
-  .h-content {
-    padding-top: 100px;
-  }
   .h-content__subtitle {
     text-align: left;
     font: 300 italic 26px/40px "PF Din Text Pro", sans-serif;
@@ -3130,6 +3155,7 @@ button:focus {
   padding: 35px 15px 0;
   position: relative;
   display: none;
+  height: 100%;
   background-color: #fff;
   text-align: left;
 }
@@ -3178,6 +3204,8 @@ button:focus {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-left: -2px;
+  margin-right: -2px;
 }
 
 .tabs-control__item {
@@ -3189,28 +3217,42 @@ button:focus {
       -ms-flex-positive: 1;
           flex-grow: 1;
   max-width: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fcd29d), color-stop(21%, #f4ab59), color-stop(73%, #cf752f), to(#bc692b));
-  background-image: -webkit-linear-gradient(top, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%);
-  background-image: linear-gradient(180deg, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%);
-  border: 1px solid transparent;
-  -webkit-border-radius: 6px 6px 0 0;
-          border-radius: 6px 6px 0 0;
-  -webkit-box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
-          box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+  padding: 0 2px;
 }
 
 .tabs-control__link {
   display: block;
   padding: 8px;
+  -webkit-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+  -webkit-box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+          box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+  border: 1px solid transparent;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fcd29d), color-stop(21%, #f4ab59), color-stop(73%, #cf752f), to(#bc692b));
+  background-image: -webkit-linear-gradient(bottom, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%);
+  background-image: linear-gradient(to top, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%);
   font: 500 14px/14px "PF Din Text Pro", sans-serif;
-  color: #fff;
+  color: #853e09;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
 
 .tabs-control__link:hover, .tabs-control__link:focus {
-  color: #fab655;
   text-decoration: none;
+  color: #853e09;
+  opacity: .8;
+}
+
+.tabs-control__link--active {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fcd29d), color-stop(21%, #f4ab59), color-stop(73%, #cf752f), to(#bc692b));
+  background-image: -webkit-linear-gradient(top, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%);
+  background-image: linear-gradient(to bottom, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%);
+  color: #fff;
+}
+
+.tabs-control__link--active:hover, .tabs-control__link--active:focus {
+  color: #fff;
+  opacity: 1;
 }
 
 .total-price {
@@ -3296,14 +3338,6 @@ button:focus {
   text-align: left;
 }
 
-.icon__clip {
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  font-size: 20px;
-  margin-top: -10px;
-}
-
 @media only screen and (min-width: 768px) {
   .tabs {
     margin: 0 -39px;
@@ -3313,6 +3347,11 @@ button:focus {
   }
   .tabs__item {
     padding: 35px 30px 0;
+    -webkit-border-radius: 10px;
+            border-radius: 10px;
+  }
+  .tabs__control {
+    margin-bottom: -10px;
   }
   .tabs__radio-group {
     padding-left: 5px;
@@ -3325,17 +3364,21 @@ button:focus {
     -webkit-justify-content: flex-start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    margin-left: -5px;
+    margin-right: -5px;
   }
   .tabs-control__item {
+    padding: 0 5px;
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: auto;
     max-width: none;
-    margin-right: 5px;
     width: 165px;
-    padding: 7px 5px 6px;
+  }
+  .tabs-control__link {
+    padding: 15px 13px 20px;
   }
   .quiz__btn {
     margin: 0;
@@ -3346,9 +3389,6 @@ button:focus {
 @media only screen and (min-width: 992px) {
   .tabs {
     margin: 0;
-  }
-  .icon__clip {
-    right: 60px;
   }
 }
 

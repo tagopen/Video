@@ -59,13 +59,14 @@
             .row
               .col-24
                 .avatar-wrapper
-            .row.avatar-btns
-              .col-auto
-                .btn-group
+            .row.justify-content-center.avatar-btns
+              .col-24.col-md-auto
+                .btn-groups
                   button.btn.btn--default(type='button', data-method='rotate', data-option='90', title='Rotate 90 degrees')
                     i.fa.fa-rotate-left
                   button.btn.btn--default(type='button', data-method='rotate', data-option='-90', title='Rotate -90 degrees')
                     i.fa.fa-rotate-right
+              .col-24.col-md-auto
                 .btn-group.d-flex.flex-nowrap.avatar-ratio(data-toggle='buttons')
                   label.btn.btn-primary.active
                     input#aspectRatio0.sr-only(type='radio', name='aspectRatio', value='1.5')
@@ -73,6 +74,6 @@
                   label.btn.btn-primary
                     input#aspectRatio1.sr-only(type='radio', name='aspectRatio', value='0.66666666666')
                     span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='', data-original-title='aspectRatio: 2 / 3') 2:3
-              .col-auto
-                button.btn.btn-primary.btn-block.avatar-save(type='submit') Обрезать
+              .col-24.col-md-auto
+                button.btn.btn--default.avatar-save(type='submit') Обрезать
 .loading(aria-label='Loading', role='img', tabindex='-1')

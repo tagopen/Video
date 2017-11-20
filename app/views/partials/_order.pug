@@ -1,6 +1,6 @@
-form.form(action='mail/mail.php', method='post', novalidate)
+form.form.h-100(action='mail/mail.php', method='post', novalidate)
 
-  .tabs(data-tabs="test-tabs")
+  .tabs.h-100(data-tabs="test-tabs")
     .tabs__control.tabs-control
       .tabs-control__item
         a.tabs-control__link.tabs-control__link--active(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="0") Шаг 1
@@ -75,7 +75,7 @@ form.form(action='mail/mail.php', method='post', novalidate)
         .col-24.col-md-12
           .btn-groups.text-left
             button.form-control.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal") Загрузите фотографию
-            +svg("clip")(class="icon__clip")
+            +svg("clip")(class="btn__icon")
         .col-24.col-md-12          
           #crop-avatar
             // Current avatar
