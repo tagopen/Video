@@ -5,8 +5,8 @@ section.discount
         h2.heading.heading--white.heading--curl.discount__heading!= page.discount.heading
       .col-24.col-lg-20
         p.descr.descr--white.discount__descr!= page.discount.descr
-    .row.flex-column-reverse.flex-md-row.justify-content-around
-      .col-24.col-md-16.col-lg-10
+    .row.justify-content-around
+      .col-24.col-md-16.col-lg-10.order-1
         .countdown.discount__countdown
           - var timer = page.discount.timer
           h3.cd-heading.countdown__heading!= timer.heading
@@ -27,7 +27,7 @@ section.discount
         p.notify.discount__notify!= page.discount.notify
         .btn-groups
           button.btn.btn--default.btn--size.discount__btn!= page.discount.btn.text
-      .col-24.col-md-8.col-lg-6
+      .col-24.col-md-8.col-lg-6.order-md-1
         .price.discount__price
           each item, i in page.discount.price
             .price__item(class="price__item--" + (i + 1))
