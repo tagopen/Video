@@ -60,7 +60,8 @@ button
   &:hover,
   &:focus
     outline: none !important
-
+.h-100
+  height: 100%
 +cm("heading")
 .heading
   position: relative
@@ -160,6 +161,12 @@ button
     width: 100%
   &--sm
     min-width: 220px
+  &__icon
+    position: absolute
+    right: 30px
+    top: 50%
+    font-size: 20px
+    margin-top: -10px
 .btn-groups
   position: relative
   z-index: 1
@@ -176,6 +183,10 @@ button
   padding: 0 !important
   position: absolute !important
   width: 1px !important
++r(992)
+  .btn
+    &__icon
+      right: 60px   
 +comment("home page style")
 
 +comment("section panel style")
@@ -207,15 +218,22 @@ button
 +comment("section header style")
 
 .header
-  position: relative
+  position: relative  
+  height: 100%
   background: url(../img/headerbg.jpg) no-repeat
   background-size: cover
   overflow: hidden
+.intro
+  display: flex  
+  flex-direction: column  
+  height: 100%
+  &__menu
+    flex: 0 0 auto
+    max-width: 100%
+  &__content
+    flex-grow: 1
+    padding: 44px 0 22px
 .menu
-  position: absolute
-  top: 0
-  left: 0
-  width: 100%
   padding-top: 15px
 .logo
   &--white
@@ -255,9 +273,6 @@ button
       text-decoration: none
       color: #fab655 * 1.2
 .h-content
-  padding-top: 180px
-  &__box
-    padding-top: 15px
   &__image
     text-align: center
   &__img
@@ -288,9 +303,6 @@ button
     left: -30px  
 +r(768)
   .header
-    &__box
-      height: 100vh
-      min-height: 760px
   .menu
     padding-top: 10px
   .logo
@@ -308,8 +320,6 @@ button
     &__button
       font: 500 19px/24px $main-font 
   .h-content
-    padding-top: 100px
-    height: 100%
     &__subtitle
       margin-bottom: 10px
     &__title
@@ -321,7 +331,6 @@ button
       margin-bottom: 25px       
 +r(992)
   .h-content
-    padding-top: 100px
     &__subtitle
       text-align: left  
       font: 300 italic 26px/40px $main-font 
@@ -1193,6 +1202,7 @@ button
     padding: 35px 15px 0 
     position: relative
     display: none
+    height: 100%
     background-color: #fff
     text-align: left
     &--active
@@ -1214,24 +1224,36 @@ button
   flex-direction: row
   align-items: center
   justify-content: center
+  margin: 
+    left: -2px
+    right: -2px
   &__item
     flex-basis: 0  
     flex-grow: 1  
     max-width: 100%
-    background-image: linear-gradient(180deg, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%)
-    border: 1px solid transparent
-    border-radius: 6px 6px 0 0
-    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29)
+    padding: 0 2px
   &__link
     display: block
     padding: 8px 
+    border-radius: 6px 6px 0 0
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-image: linear-gradient(to top, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%);
     font: 500 14px/14px $main-font
-    color: #fff  
+    color: #853e09
     transition: all .3s ease
     &:hover,
     &:focus
-      color: #fab655
       text-decoration: none
+      color: #853e09
+      opacity: .8
+    &--active
+      background-image: linear-gradient(to bottom, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%)
+      color: #fff
+      &:hover,
+      &:focus
+        color: #fff
+        opacity: 1
 .total-price
   margin-bottom: 80px      
 .total-row
@@ -1285,12 +1307,6 @@ button
   cursor: pointer   
   margin-bottom: 50px  
   text-align: left
-.icon__clip
-  position: absolute
-  right: 30px
-  top: 50%
-  font-size: 20px
-  margin-top: -10px
 +r(768)
   .tabs
     margin: 0 -39px
@@ -1298,27 +1314,32 @@ button
       text-align: left
     &__item
       padding: 35px 30px 0 
+      border-radius: 10px
+    &__control
+      margin-bottom: -10px
     &__radio-group
       padding-left: 5px
     &__text
       text-align: left  
   .tabs-control
     justify-content: flex-start
+    margin: 
+      left: -5px
+      right: -5px
     &__item
+      padding: 0 5px
       flex: 0 0 auto 
       width: auto
       max-width: none
-      margin-right: 5px
       width: 165px
-      padding: 7px 5px 6px
+    &__link
+      padding: 15px 13px 20px
   .quiz__btn
     margin: 0
     padding-top: 25px    
 +r(992)
   .tabs
-    margin: 0 
-  .icon__clip
-    right: 60px    
+    margin: 0  
 .avatar-view
   display: block
   margin: 15% auto 5%

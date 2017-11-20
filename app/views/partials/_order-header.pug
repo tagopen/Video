@@ -1,6 +1,6 @@
 header.header
-  section.header__box
-    .header__menu.menu
+  article.intro
+    section.intro__menu.menu
       .container
         - var navbar = page.header.menu
         .row.flex-md-row-reverse.justify-content-between
@@ -20,9 +20,9 @@ header.header
                     img.img-fluid.logo__img(src!= logo.img.src, alt!= logo.img.alt)
                 .col-24.col-md-auto.logo__col.align-items-center  
                   p.logo__text!= logo.text      
-    .header__content.h-content.d-flex.align-items-start
-      .container
+    section.h-content.intro__content.h-100
+      .container.h-100
         - var headContent = page.header.content
-        .row.justify-content-center.flex-lg-row-reverse
-          .col-24
+        .row.justify-content-center.flex-lg-row-reverse.h-100
+          .col-24.h-100
             include _order.pug
