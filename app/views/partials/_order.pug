@@ -11,21 +11,22 @@ form.form(action='mail/mail.php', method='post', novalidate)
     .tabs__item.tabs__item--active
       .row
         .col-24
-          h2.heading.heading--left Сколько детей нужно поздравить?
+          h2.heading.tabs__heading Сколько детей нужно поздравить?
         .col-24
-          .row
-            .col-auto
-              label.radio-btn
-                input#rbtn11.radio-btn__control(type='radio', name='childrean', data-childrean='1')
-                label.radio-btn__box(for='rbtn11')
-                  i.radio-btn__icon 
-                  | 1 ребенок
-            .col-auto
-              label.radio-btn
-                input#rbtn12.radio-btn__control(type='radio', name='childrean', data-childrean='2')
-                label.radio-btn__box(for='rbtn12')
-                  i.radio-btn__icon
-                  | 2 ребенка
+          .tabs__radio-group
+            .row
+              .col-12.col-md-auto.text-center
+                label.radio-btn
+                  input#rbtn11.radio-btn__control(type='radio', name='childrean', data-childrean='1')
+                  label.radio-btn__box(for='rbtn11')
+                    i.radio-btn__icon 
+                    | 1 ребенок
+              .col-12.col-md-auto.text-center
+                label.radio-btn
+                  input#rbtn12.radio-btn__control(type='radio', name='childrean', data-childrean='2')
+                  label.radio-btn__box(for='rbtn12')
+                    i.radio-btn__icon
+                    | 2 ребенка
       .row
         .col-24.col-md-12(data-childrean-item="0")
           fieldset#new1.form-group
@@ -40,13 +41,13 @@ form.form(action='mail/mail.php', method='post', novalidate)
               option
               option(value='1') Мужской
               option(value='2') Женский
-          label.radio-btn
+          label.radio-btn.radio-btn--size
             input#rbtn21.radio-btn__control(type='checkbox', name='new-name-1', data-new-name="#new1")
             label.radio-btn__box(for='rbtn21')
               i.radio-btn__icon
               | Добавить имя ребенка
 
-          .btn-groups.text-left
+          .btn-groups.text-center.text-md-left
             button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
 
         .col-24.col-md-12(data-childrean-item="1")
@@ -61,61 +62,70 @@ form.form(action='mail/mail.php', method='post', novalidate)
               option
               option(value='1') Мужской
               option(value='2') Женский
-          label.radio-btn
+          label.radio-btn.radio-btn--size
             input#rbtn22.radio-btn__control(type='checkbox', name='new-name-2', data-new-name='#new2')
             label.radio-btn__box(for='rbtn22')
               i.radio-btn__icon
               | Добавить имя ребенка
     .tabs__item
       .row
+        .col-24
+          h2.heading.tabs__heading Загрузите фотографию ребенка
+          h2.heading.tabs__heading Фотография появится в книге Дедушки Мороза
         .col-24.col-md-12
           .btn-groups.text-left
-            button.btn.btn--default.btn--sm.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal") Загрузите фотографию
+            button.form-control.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal") Загрузите фотографию
+            +svg("clip")(class="icon__clip")
         .col-24.col-md-12          
           #crop-avatar
             // Current avatar
             .avatar-view(title='Change the avatar')
-      .btn-groups.text-left
-        button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
-        a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+      .btn-groups.text-center
+        .row
+          .col-24.col-md-8.col-lg-6.text-center.text-md-left
+            button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+          .col-24.col-md-6.text-center.text-md-left
+            a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
     .tabs__item
-      .row
-        .col-24.col-md-12
-          h2.heading.heading--left Контактные данные
-          fieldset.form-group
-            input.form-control(type='text', name='name', placeholder='Введите ваше имя', required)
-          fieldset.form-group
-            input.form-control(type='tel', name='phone', placeholder='Введите номер телефона', required)
-          fieldset.form-group
-            input.form-control(type='email', name='email', placeholder='Введите ваш E-mail')
-          p.gg-text На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail
-          fieldset.form-group
-            a.sr-only.link.js-promo(href="#promo") Ввести промокод
-            input#promo.form-control(type='text', name='promocode', placeholder='Введите промокод, если он есть у вас')
-
-        .col-24.col-md-8
-          h2.heading.heading--left Детали заказа
+      .row.flex-md-row-reverse.justify-content-between
+        .col-24.col-md-12.col-lg-10.offset-lg-2
+          h2.heading.tabs__heading Детали заказа
           .total-price
-            .row.justify-content-between
+            .row.justify-content-between.total-row
               .col-auto
-                span Стоимость пакета:
+                span.tb-price Стоимость пакета:
               .col-auto
                 span.nt-price 200 грн
-            .row.justify-content-between
+            .row.justify-content-between.total-row
               .col-auto
-                span Ваша скидка:
+                span.tb-price Ваша скидка:
               .col-auto
                 span.nt-price -40 грн
-            .row.justify-content-between
+            .row.justify-content-between.total-row
               .col-auto
-                a.link(href="#facebook", data-toggle="modal") Получить скидку 17 грн
-            .row.justify-content-between
+                a.link.total-discount(href="#facebook", data-toggle="modal") Получить скидку 17 грн
+            .row.justify-content-between.total-row
               .col-auto
-                span Итоговая цена:
+                span.tb-price Итоговая цена:
               .col-auto
                 span.nt-price 160 грн
-        .btn-groups.form__btn-groups
-          button.btn.btn--default.btn--sm(name='form', value='Заказ', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Отправить
-
-          a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+        .col-24.col-md-12.col-lg-10
+          h2.heading.tabs__heading Контактные данные
+          fieldset.form-group.form__group--select
+            input.form-control(type='text', name='name', placeholder='Введите ваше имя', required)
+          fieldset.form-group.form__group--select
+            input.form-control(type='tel', name='phone', placeholder='Введите номер телефона', required)
+          fieldset.form-group.form__group--select
+            input.form-control(type='email', name='email', placeholder='Введите ваш E-mail')
+          p.tabs__text На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail
+          fieldset.form-group.text-center.text-md-left.tabs__promo
+            a.sr-only.link.js-promo(href="#promo") Ввести промокод
+            input#promo.form-control(type='text', name='promocode', placeholder='Введите промокод, если он есть у вас')
+        .col-24
+          .btn-groups.form__btn-groups
+            .row
+              .col-24.col-md-8.col-lg-6.text-center.text-md-left
+                button.btn.btn--default.btn--sm(name='form', value='Заказ', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Оформить
+              .col-24.col-md-6.text-center.text-md-left
+                a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
 

@@ -1185,15 +1185,140 @@ button
         bottom: -150px
         right: -55px
 +comment("section tabs style")
+
 .tabs
+  margin: 0 -15px
+  overflow: hidden
   &__item
+    padding: 35px 15px 0 
     position: relative
     display: none
     background-color: #fff
     text-align: left
     &--active
       display: block
-
+  &__radio-group
+    margin-bottom: 20px    
+  &__heading
+    text-align: center    
+    margin-bottom: 30px
+  &__text
+    color: #212121
+    font: 400 14px/21px $main-font
+    text-align: center
+  &__promo
+    margin-bottom: 35px     
+.tabs-control
+  display: flex
+  flex-wrap: wrap
+  flex-direction: row
+  align-items: center
+  justify-content: center
+  &__item
+    flex-basis: 0  
+    flex-grow: 1  
+    max-width: 100%
+    background-image: linear-gradient(180deg, #fcd29d 0%, #f4ab59 21%, #cf752f 73%, #bc692b 100%)
+    border: 1px solid transparent
+    border-radius: 6px 6px 0 0
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29)
+  &__link
+    display: block
+    padding: 8px 
+    font: 500 14px/14px $main-font
+    color: #fff  
+    transition: all .3s ease
+    &:hover,
+    &:focus
+      color: #fab655
+      text-decoration: none
+.total-price
+  margin-bottom: 80px      
+.total-row
+  margin-bottom: 20px  
+.total-discount
+  color: #fab655
+  font: 500 18px/20px $main-font
+  border-bottom: 1px dashed #fab655  
+  transition: all .2s ease  
+  &:hover,
+  &:focus
+    text-decoration: none
+    border-bottom: 1px dashed #0056b3    
+.tb-price
+  font: 400 italic 18px/28px $main-font
+  color: #212121 
+.nt-price
+  color: #fab655
+  font: 400 24px/24px $font-neumann        
+.radio-btn
+  &--size
+    margin: 25px 0 35px
+    width: 100%  
+  &__box
+    justify-content: start
+    padding-left: 5px
+.js-promo
+  color: #fab655
+  font: 500 18px/20px $main-font
+  border-bottom: 1px dashed #fab655  
+  transition: all .2s ease  
+  &:hover,
+  &:focus
+    text-decoration: none
+    border-bottom: 1px dashed #0056b3
+.quiz__btn
+  display: inline-block
+  color: #fab655
+  font: 400 18px/20px $main-font
+  border-bottom: 1px dashed #fab655  
+  transition: all .2s ease  
+  margin-bottom: 50px
+  &:hover,
+  &:focus
+    text-decoration: none
+    border-bottom: 1px dashed #0056b3
+#crop-avatar
+  display: none 
+.btn--file
+  position: relative
+  cursor: pointer   
+  margin-bottom: 50px  
+  text-align: left
+.icon__clip
+  position: absolute
+  right: 30px
+  top: 50%
+  font-size: 20px
+  margin-top: -10px
++r(768)
+  .tabs
+    margin: 0 -39px
+    &__heading
+      text-align: left
+    &__item
+      padding: 35px 30px 0 
+    &__radio-group
+      padding-left: 5px
+    &__text
+      text-align: left  
+  .tabs-control
+    justify-content: flex-start
+    &__item
+      flex: 0 0 auto 
+      width: auto
+      max-width: none
+      margin-right: 5px
+      width: 165px
+      padding: 7px 5px 6px
+  .quiz__btn
+    margin: 0
+    padding-top: 25px    
++r(992)
+  .tabs
+    margin: 0 
+  .icon__clip
+    right: 60px    
 .avatar-view
   display: block
   margin: 15% auto 5%
