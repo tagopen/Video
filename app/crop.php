@@ -41,7 +41,7 @@ class CropAvatar {
 
       if ($type) {
         $extension = image_type_to_extension($type);
-        $src = 'img/users/' . uniqid (date('YmdHis') . "_", true) . '.original' . $extension;
+        $src = 'img/users/' . uniqid ($gender . "_" . $name . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.original' . $extension;
 
         if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
 
