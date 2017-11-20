@@ -1634,13 +1634,14 @@ button:focus {
   overflow: hidden;
 }
 
-.header__box {
-  height: 100vh;
-  min-height: 768px;
-}
-
-.header__content {
-  height: 100%;
+@media only screen and (min-width: 768px) {
+  .header__box {
+    height: 100vh;
+    min-height: 600px;
+  }
+  .header__content {
+    height: 100%;
+  }
 }
 
 .intro {
