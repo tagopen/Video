@@ -92,7 +92,11 @@
   
   // Change select with childrean names
   $(function() {
+    var $childrean = $("[data-gender]");
+    
+    $childrean.next(".select2-container").hide();
 
+/*
     $(".js-gender").each(function() {
       if ($(this).prop("checked")) {
         var target = $(this).siblings("[data-gender]").data("gender"),
@@ -112,7 +116,7 @@
                .hide();
 
       }
-    });
+    });*/
 
     $(".js-gender").on('change click', function() {
       var target = $(this).siblings("[data-gender]").data("gender"),
@@ -308,9 +312,13 @@
   function CropAvatar($element, $modalEl) {
     var _this = this;
 
+
     this.$container = $element;
     this.$modal = $modalEl;
 
+    this.$newnames = $("[data-new-name]");
+
+    this.$btnToggle = $('.js-file');
     this.$avatarView = this.$container.find('.avatar-view');
     this.$avatar = this.$avatarView.find('img');
     this.$avatarModal = this.$modal;
@@ -368,6 +376,7 @@
     },
 
     addListener: function () {
+      this.$btnToggle.on('click', $.proxy(this.click, this));
       this.$avatarInput.on('change', $.proxy(this.change, this));
       this.$avatarForm.on('submit', $.proxy(this.submit, this));
       this.$avatarBtns.on('click', $.proxy(this.rotate, this));
@@ -425,6 +434,7 @@
 
     click: function () {
       this.$avatarModal.modal('show');
+      this.getNames();
     },
 
     change: function () {
@@ -483,6 +493,84 @@
       this.options.aspectRatio = $(e.target).val();
       this.$img.cropper('destroy').cropper(this.options);
     },
+
+    getNames: function(e) {
+      var $names = this.$newnames,
+          countgender = 0,
+          genderVal = "";
+      $names.each(function() {
+        var $this       = $(this),
+            targetClass = $this.data(),
+            $group      = $(targetClass.newName),
+            $input      = $group.find("input.form-control"),
+            $select     = $group.find(".select"),
+            $gender     = $group.closest("[data-childrean-item]").find(".js-gender"),
+            gender      = parseInt($gender.val(), 10);
+        
+        if(!isNaN(gender)) {
+          genderVal = (gender === 0) ? "m" : "f";
+          countgender ++
+        }
+
+        if ($(this).prop("checked")) {
+        }
+
+      });
+
+      if (countgender > 1) {
+        genderVal = "2";
+      }
+      console.log(genderVal);
+      console.log(this.transliterate("да ебись оно хореем через амфибрахий"));
+    },
+
+    transliterate: function(text) {
+      // Символ, на который будут заменяться все спецсимволы
+      var space = '-'; 
+      // Берем значение из нужного поля и переводим в нижний регистр
+      var text = text.toLowerCase();
+           
+      // Массив для транслитерации
+      var transl = {
+      'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh', 
+      'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
+      'о': 'o', 'п': 'p', 'р': 'r','с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h',
+      'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh','ъ': space, 'ы': 'y', 'ь': space, 'э': 'e', 'ю': 'yu', 'я': 'ya',
+      ' ': space, '_': space, '`': space, '~': space, '!': space, '@': space,
+      '#': space, '$': space, '%': space, '^': space, '&': space, '*': space, 
+      '(': space, ')': space,'-': space, '\=': space, '+': space, '[': space, 
+      ']': space, '\\': space, '|': space, '/': space,'.': space, ',': space,
+      '{': space, '}': space, '\'': space, '"': space, ';': space, ':': space,
+      '?': space, '<': space, '>': space, '№':space
+      }
+                      
+      var result = '';
+      var curent_sim = '';
+                      
+      for(var i=0; i < text.length; i++) {
+          // Если символ найден в массиве то меняем его
+          if(transl[text[i]] != undefined) {
+               if(curent_sim != transl[text[i]] || curent_sim != space){
+                   result += transl[text[i]];
+                   curent_sim = transl[text[i]];
+               }                                                                             
+          }
+          // Если нет, то оставляем так как есть
+          else {
+              result += text[i];
+              curent_sim = text[i];
+          }                              
+      }          
+                      
+      result = this.trimStr(result);
+      return result;
+    },
+
+    trimStr: function(s) {
+      s = s.replace(/^-/, '');
+      return s.replace(/-$/, '');
+    },
+
 
     isImageFile: function (file) {
       if (file.type) {

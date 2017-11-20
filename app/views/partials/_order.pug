@@ -30,17 +30,21 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
       .row
         .col-24.col-md-12(data-childrean-item="0")
           fieldset#new1.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-1", required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-1", data-gender="male" required)
               option
               option(value='1') Абрам
               option(value='2') Авраам
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-1", data-gender="female")
+              option
+              option(value='1') Аврора
+              option(value='2') Агата
             input.form-control(type='text', placeholder='Введите новое имя', name="child-name-new-1")
 
           fieldset.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка', name="gender-1", required)
+            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="gender-1", required)
               option
-              option(value='1') Мужской
-              option(value='2') Женский
+              option(value='0') Мужской
+              option(value='1') Женский
           label.radio-btn.radio-btn--size
             input#rbtn21.radio-btn__control(type='checkbox', name='new-name-1', data-new-name="#new1")
             label.radio-btn__box(for='rbtn21')
@@ -52,16 +56,20 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
 
         .col-24.col-md-12(data-childrean-item="1")
           fieldset#new2.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-2", required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-2", data-gender="male", required)
+              option
+              option(value='1') Абрам
+              option(value='2') Авраам
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-2", data-gender="female", required)
               option
               option(value='1') Аврора
               option(value='2') Агата
             input.form-control(type='text', placeholder='Введите новое имя', name="child-name-new-2")
           fieldset.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите пол ребенка',  name="gender-2", required)
+            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="gender-2", required)
               option
-              option(value='1') Мужской
-              option(value='2') Женский
+              option(value='0') Мужской
+              option(value='1') Женский
           label.radio-btn.radio-btn--size
             input#rbtn22.radio-btn__control(type='checkbox', name='new-name-2', data-new-name='#new2')
             label.radio-btn__box(for='rbtn22')
@@ -74,7 +82,7 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
           h2.heading.tabs__heading Фотография появится в книге Дедушки Мороза
         .col-24.col-md-12
           .btn-groups.text-left
-            button.form-control.btn--file(type="button", data-toggle="modal", data-target="#avatar-modal") Загрузите фотографию
+            button.form-control.btn--file.js-file(type="button") Загрузите фотографию
             +svg("clip")(class="btn__icon")
         .col-24.col-md-12          
           #crop-avatar

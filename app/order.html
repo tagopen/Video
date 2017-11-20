@@ -117,18 +117,23 @@
                       <div class="row">
                         <div class="col-24 col-md-12" data-childrean-item="0">
                           <fieldset class="form-group" id="new1">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-1" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-1" data-gender="male" required>
                               <option></option>
                               <option value="1">Абрам</option>
                               <option value="2">Авраам</option>
                             </select>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-1" data-gender="female">
+                              <option></option>
+                              <option value="1">Аврора</option>
+                              <option value="2">Агата</option>
+                            </select>
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child-name-new-1">
                           </fieldset>
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите пол ребенка" name="gender-1" required>
+                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="gender-1" required>
                               <option></option>
-                              <option value="1">Мужской</option>
-                              <option value="2">Женский</option>
+                              <option value="0">Мужской</option>
+                              <option value="1">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
@@ -141,7 +146,12 @@
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
                           <fieldset class="form-group" id="new2">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-2" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-2" data-gender="male" required>
+                              <option></option>
+                              <option value="1">Абрам</option>
+                              <option value="2">Авраам</option>
+                            </select>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-2" data-gender="female" required>
                               <option></option>
                               <option value="1">Аврора</option>
                               <option value="2">Агата</option>
@@ -149,10 +159,10 @@
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child-name-new-2">
                           </fieldset>
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите пол ребенка" name="gender-2" required>
+                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="gender-2" required>
                               <option></option>
-                              <option value="1">Мужской</option>
-                              <option value="2">Женский</option>
+                              <option value="0">Мужской</option>
+                              <option value="1">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
@@ -170,7 +180,7 @@
                         </div>
                         <div class="col-24 col-md-12">
                           <div class="btn-groups text-left">
-                            <button class="form-control btn--file" type="button" data-toggle="modal" data-target="#avatar-modal">Загрузите фотографию</button>
+                            <button class="form-control btn--file js-file" type="button">Загрузите фотографию</button>
                             <svg class="svg svg--clip btn__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                               <use xlink:href="img/sprite.svg#clip"></use>
                             </svg>
