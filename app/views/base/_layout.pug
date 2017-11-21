@@ -15,9 +15,9 @@ html.html(lang='ru' prefix='og: http://ogp.me/ns#')
     meta(http-equiv='Content-Type' content='text/html;charset=' + content.site.meta.charset)/
 
     // Meta SEO - Description, Keywords, Title
-    meta(name='title' content=page.title ? page.title  : relativePath + " - " + content.site.meta.title)/
-    meta(name='description' content=page.meta.description ? page.meta.description : relativePath + content.site.meta.description)/
-    meta(name='keywords' content= page.meta.keywords ? page.meta.keywords : relativePath + " - " + content.site.meta.keywords)/
+    meta(name='title' content=page.meta ? page.meta.title  : relativePath + " - " + content.site.title)/
+    meta(name='description' content=page.meta ? page.meta.description : content.site.meta.description)/
+    meta(name='keywords' content= page.meta ? page.meta.keywords : content.site.meta.keywords)/
 
     // Multilanguage localization
     link(rel='alternate' href='/' hreflang='x-default')/
