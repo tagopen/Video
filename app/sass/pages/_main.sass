@@ -1308,8 +1308,6 @@ button
   &:focus
     text-decoration: none
     border-bottom: 1px dashed #0056b3
-#crop-avatar
-  display: none 
 .btn--file
   position: relative
   cursor: pointer   
@@ -1348,18 +1346,17 @@ button
 +r(992)
   .tabs
     margin: 0  
+
++comment("crop image styles")
+.avatar
+  opacity: 0
+  transition: all .3s ease-out
+  &--active
+    opacity: 1
+  &__photo
+    margin-bottom: 10px
 .avatar-view
   display: block
-  margin: 15% auto 5%
-  height: 220px
-  width: 220px
-  border: 3px solid #fff
-  border-radius: 5px
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15)
-  cursor: pointer
-  overflow: hidden
-  img
-    width: 100%
 
 .avatar-body
   padding-right: 15px

@@ -305,6 +305,7 @@
 
     this.$container = $element;
     this.$modal = $modalEl;
+    this.containerActiveClass = "avatar--active";
 
     this.$newnames = $("[data-new-name]");
 
@@ -593,9 +594,9 @@
         this.active = true;
       }
 
-      this.$avatarModal.one('hidden.bs.modal', function () {
-        _this.stopCropper();
-      });
+      //this.$avatarModal.one('hidden.bs.modal', function () {
+       // _this.stopCropper();
+      //});
     },
 
     stopCropper: function () {
@@ -682,6 +683,7 @@
       this.$avatar.attr('src', this.url);
       this.stopCropper();
       this.$avatarModal.modal('hide');
+      this.$container.addClass(this.containerActiveClass);
     },
 
     alert: function (msg) {

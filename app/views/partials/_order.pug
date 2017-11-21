@@ -85,9 +85,10 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
             button.form-control.btn--file.js-file(type="button") Загрузите фотографию
             +svg("clip")(class="btn__icon")
         .col-24.col-md-12          
-          #crop-avatar
+          #crop-avatar.avatar
             // Current avatar
-            .avatar-view(title='Change the avatar')
+            .avatar-view.avatar__photo
+              img.img-fluid.avatar__img(src='img/picture.jpg', alt='Avatar')
       .btn-groups.text-center
         .row
           .col-24.col-md-8.col-lg-6.text-center.text-md-left

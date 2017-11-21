@@ -3342,10 +3342,6 @@ button:focus {
   border-bottom: 1px dashed #0056b3;
 }
 
-#crop-avatar {
-  display: none;
-}
-
 .btn--file {
   position: relative;
   cursor: pointer;
@@ -3407,22 +3403,25 @@ button:focus {
   }
 }
 
-.avatar-view {
-  display: block;
-  margin: 15% auto 5%;
-  height: 220px;
-  width: 220px;
-  border: 3px solid #fff;
-  -webkit-border-radius: 5px;
-          border-radius: 5px;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  overflow: hidden;
+/* ---------------------------------------- */
+/* C R O P    I M A G E    S T Y L E S      */
+/* ---------------------------------------- */
+.avatar {
+  opacity: 0;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
 }
 
-.avatar-view img {
-  width: 100%;
+.avatar--active {
+  opacity: 1;
+}
+
+.avatar__photo {
+  margin-bottom: 10px;
+}
+
+.avatar-view {
+  display: block;
 }
 
 .avatar-body {
