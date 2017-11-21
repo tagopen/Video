@@ -89,47 +89,7 @@
       $('.select2-selection__arrow').html('<svg class="svg svg--arrow-down select2-selection__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img"><use xlink:href="img/sprite.svg#arrow-down"></use></svg>');
     }
   });
-  
-  // Change select with childrean names
-  $(function() {
-    var $childrean = $("[data-gender]");
-    
-    $childrean.next(".select2-container").hide();
 
-/*
-    $(".js-gender").each(function() {
-      if ($(this).prop("checked")) {
-        var target = $(this).siblings("[data-gender]").data("gender"),
-            $select = $(target);
-        $select.next(".select2-container")
-             .show();
-        $select.siblings(".select")
-               .next(".select2-container")
-               .hide();
-      } else {
-        var target = $(".js-gender").eq(0).siblings("[data-gender]").data("gender"),
-            $select = $(target);
-        $select.next(".select2-container")
-             .show();
-        $select.siblings(".select")
-               .next(".select2-container")
-               .hide();
-
-      }
-    });*/
-
-    $(".js-gender").on('change click', function() {
-      var target = $(this).siblings("[data-gender]").data("gender"),
-          $select = $(target);
-
-      $select.next(".select2-container")
-             .show();
-      $select.siblings(".select")
-             .next(".select2-container")
-             .hide();
-    });
-  });
-  
   // fixed panel close
   $(function() {
     var timeoutID = setTimeout ( function() {
@@ -650,14 +610,7 @@
       var url = this.$avatarForm.attr('action');
       var data = new FormData(this.$avatarForm[0]);
       var _this = this;
-      var result;
-      for (var entry of data.entries())
-      {
-          result[entry[0]] = entry[1];
-      }
-      result = JSON.stringify(result)
-      console.log(result);
-
+      
       $.ajax(url, {
         type: 'post',
         data: data,
