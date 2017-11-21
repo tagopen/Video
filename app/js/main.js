@@ -243,31 +243,61 @@
   // Add new name
   $(function() {
     var $checkbox = $("[data-new-name]"),
-        newName = function($item) {
-          var target = $item.data("new-name"),
-              $group = $(target),
-              $input = $group.find("input.form-control"),
-              $select = $group.find(".select"),
-              $selectContainer = $select.next(".select2-container");
-          if ($item.prop("checked")) {
-            $input.fadeIn();
-            $input.prop('required', true);
-            $select.prop('required', false);
-            $selectContainer.fadeOut(0);
-          } else {
-            $input.fadeOut(0);
-            $input.prop('required', false);
-            $select.prop('required', true);
-            $selectContainer.fadeIn();
-          }
+        newName = function() {
+          var $childrean = $("[data-childrean-item]");
+
+          $childrean.each(function() {
+            var $check = $(this).find("[data-new-name]"),
+                target = $check.data("new-name"),
+                $group = $(target),
+                $input = $group.find("input.form-control"),
+                $select = $group.find(".select"),
+                $selectContainer = $select.next(".select2-container"),
+                $gender     = $(this).find(".js-gender"),
+                genderVal = $gender.val(),
+                selectIndex = 0;
+
+
+            if(genderVal !== "" && !isNaN(genderVal)) {
+              var gender = parseInt(genderVal, 10);
+              console.log("genderVal", gender);
+              if (gender === 0) {
+                selectIndex = 0;
+              } else {
+                selectIndex = 1;
+              }
+
+            }
+            console.log("selectIndex", selectIndex);
+
+
+
+            if ($check.prop("checked")) {
+              $input.fadeIn();
+              $input.prop('required', true);
+              $select.prop('required', false);
+              $selectContainer.fadeOut(0);
+            } else {
+              $input.fadeOut(0);
+              $input.prop('required', false);
+              $select.eq(selectIndex).prop('required', true);
+              $selectContainer.eq(selectIndex).fadeIn();
+              $select.eq(+!selectIndex).prop('required', false);
+              $selectContainer.eq(+!selectIndex).fadeOut(0);
+            }
+          });
         };
-    $checkbox.each(function() {
-      newName($(this));
-    });
+
+    newName();
 
     $checkbox.on("click change", function() {
-      newName($(this));
+      newName();
     });
+
+    $(".js-gender").on("change", function() {
+      newName();
+    });
+
   });
   
   // show promo
@@ -324,6 +354,7 @@
     this.$avatarModal = this.$modal;
     this.$loading = this.$container.find('.loading');
 
+    this.$fileName = this.$avatarModal.find('.avatar-filename');
     this.$avatarForm = this.$avatarModal.find('.avatar-form');
     this.$avatarUpload = this.$avatarForm.find('.avatar-upload');
     this.$avatarSrc = this.$avatarForm.find('.avatar-src');
@@ -495,24 +526,31 @@
     },
 
     getNames: function(e) {
-      var $names = this.$newnames,
+      var $items = this.$newnames,
           countgender = 0,
-          genderVal = "";
-      $names.each(function() {
+          genderVal = "",
+          names = [],
+          name = "";
+      $items.each(function() {
         var $this       = $(this),
             targetClass = $this.data(),
             $group      = $(targetClass.newName),
             $input      = $group.find("input.form-control"),
             $select     = $group.find(".select"),
             $gender     = $group.closest("[data-childrean-item]").find(".js-gender"),
-            gender      = parseInt($gender.val(), 10);
+            gender      = $gender.val();
         
-        if(!isNaN(gender)) {
+        if(gender !== "" && !isNaN(gender)) {
+          var gender = parseInt(gender, 10);
           genderVal = (gender === 0) ? "m" : "f";
-          countgender ++
+          countgender ++;
         }
 
         if ($(this).prop("checked")) {
+          names.push($input.val());
+        } else {
+          var name = $select.filter("[required]").find("option:selected").text();
+          names.push(name);
         }
 
       });
@@ -520,8 +558,10 @@
       if (countgender > 1) {
         genderVal = "2";
       }
-      console.log(genderVal);
-      console.log(this.transliterate("да ебись оно хореем через амфибрахий"));
+
+      name = this.transliterate(names.join(" "));
+      this.$fileName.val(genderVal + "_" + name);
+
     },
 
     transliterate: function(text) {
@@ -610,6 +650,13 @@
       var url = this.$avatarForm.attr('action');
       var data = new FormData(this.$avatarForm[0]);
       var _this = this;
+      var result;
+      for (var entry of data.entries())
+      {
+          result[entry[0]] = entry[1];
+      }
+      result = JSON.stringify(result)
+      console.log(result);
 
       $.ajax(url, {
         type: 'post',

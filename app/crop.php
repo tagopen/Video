@@ -4,13 +4,15 @@ class CropAvatar {
   private $data;
   private $dst;
   private $type;
+  private $filename;
   private $extension;
   private $msg;
 
-  function __construct($src, $data, $file) {
+  function __construct($src, $data, $file, $filename) {
     $this -> setSrc($src);
     $this -> setData($data);
-    $this -> setFile($file);
+    $this -> setFilename($filename);
+    $this -> setFile($file, $filename);
     $this -> crop($this -> src, $this -> dst, $this -> data);
   }
 
@@ -33,7 +35,13 @@ class CropAvatar {
     }
   }
 
-  private function setFile($file) {
+  private function setFilename($data) {
+    if (!empty($data)) {
+      $this -> filename = json_decode(stripslashes($data));
+    }
+  }
+
+  private function setFile($file, $filename) {
     $errorCode = $file['error'];
 
     if ($errorCode === UPLOAD_ERR_OK) {
@@ -41,7 +49,7 @@ class CropAvatar {
 
       if ($type) {
         $extension = image_type_to_extension($type);
-        $src = 'img/users/' . uniqid ($gender . "_" . $name . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.original' . $extension;
+        $src = 'img/users/' . uniqid ($filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.original' . $extension;
 
         if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
 
@@ -211,7 +219,8 @@ class CropAvatar {
 $crop = new CropAvatar(
   isset($_POST['avatar_src']) ? $_POST['avatar_src'] : null,
   isset($_POST['avatar_data']) ? $_POST['avatar_data'] : null,
-  isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null
+  isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null,
+  isset($_FILES['avatar_filename']) ? $_FILES['avatar_filename'] : null
 );
 
 $response = array(
