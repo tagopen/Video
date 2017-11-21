@@ -8,11 +8,11 @@ class CropAvatar {
   private $extension;
   private $msg;
  
-  function __construct($src, $data, $file) {
+  function __construct($src, $data, $file, $filename) {
     $this -> setSrc($src);
     $this -> setData($data);
     $this -> setFile($file);
-    $this -> setFilename($filename);
+    $this -> setFileName($filename);
     $this -> crop($this -> src, $this -> dst, $this -> data);
   }
  
@@ -35,7 +35,7 @@ class CropAvatar {
     }
   }
 
-  private function setFilename($data) {
+  private function setFileName($data) {
     if (!empty($data)) {
       $this -> filename = $data;
     }
@@ -51,7 +51,7 @@ class CropAvatar {
         $extension = image_type_to_extension($type);
         $src = 'img/users/' . uniqid ($this -> filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.original' . $extension;
 
-        
+
  
         if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
  
@@ -135,8 +135,8 @@ class CropAvatar {
  
       $tmp_img_w = $data -> width;
       $tmp_img_h = $data -> height;
-      $dst_img_w = 220;
-      $dst_img_h = 220;
+      $dst_img_w = $tmp_img_w;
+      $dst_img_h = $tmp_img_h;
  
       $src_x = $data -> x;
       $src_y = $data -> y;
