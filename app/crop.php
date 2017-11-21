@@ -9,10 +9,10 @@ class CropAvatar {
   private $msg;
  
   function __construct($src, $data, $file, $filename) {
+    $this -> setFileName($filename);
     $this -> setSrc($src);
     $this -> setData($data);
     $this -> setFile($file);
-    $this -> setFileName($filename);
     $this -> crop($this -> src, $this -> dst, $this -> data);
   }
  
