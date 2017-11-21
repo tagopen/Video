@@ -1634,6 +1634,16 @@ button:focus {
   overflow: hidden;
 }
 
+@media only screen and (min-width: 768px) {
+  .header__box {
+    height: 100vh;
+    min-height: 600px;
+  }
+  .header__content {
+    height: 100%;
+  }
+}
+
 .intro {
   display: -webkit-box;
   display: -webkit-flex;
