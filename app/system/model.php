@@ -41,7 +41,6 @@
       $this -> getProductPrice();
       $this -> promocodeIsValid($this -> data["promocode"]);
       $this -> discountIsValid($this -> data["discount"]);
-      $this -> setImage($this -> data["image"]);
       $this -> setOrder();
 
       //$this -> sendMail();
@@ -68,7 +67,19 @@
         $this -> totalPrice += $childrean;
       }
 
-      //DB::insert('order', $data);
+      $imageSrc = $this -> setImage($this -> data["image"])
+
+      DB::insert('order', array(
+        'firstname' => $data['firstname'],
+        'email' => $data['email'],
+        'order_image_id' => $imageSrc,
+        'telephone' => $data['phone'],
+        'childrean_add' => $childrean,
+        'coupon_id' => $_SESSION['promocode']["promocode_id"],
+        'discount_id' => $_SESSION['discount']['discount_id'];,
+        'date_added' => DB::sqleval("NOW()"),
+        'date_modified' => DB::sqleval("NOW()"),
+      ));
     }
 
     private function childreanCountPrice() {
@@ -325,6 +336,8 @@
         'image' => $src,
         'date_added' => DB::sqleval("NOW()")
       ));
+
+      return DB::insertId();
 
     }
 
