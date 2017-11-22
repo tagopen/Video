@@ -11,12 +11,12 @@ block variables
 doctype html
 html.html(lang='ru' prefix='og: http://ogp.me/ns#')
   head
-    title= page.title
+    title!= (typeof page.title !== "undefined") ? page.title  : relativePath + " - " + content.site.title
     meta(http-equiv='Content-Type' content='text/html;charset=' + content.site.meta.charset)/
 
     // Meta SEO - Description, Keywords, Title
     meta(name='title' content=page.meta ? page.meta.title  : relativePath + " - " + content.site.title)/
-    meta(name='description' content=page.meta ? page.meta.description : content.site.meta.description)/
+    meta(name='description' content=(typeof page.meta.description !== "undefined") ? page.meta.description : content.site.meta.description)/
     meta(name='keywords' content= page.meta ? page.meta.keywords : content.site.meta.keywords)/
 
     // Multilanguage localization
