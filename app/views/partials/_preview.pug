@@ -10,6 +10,7 @@ section#preview.preview
       .col-24.col-md-19.col-lg-12
         - var form = page.preview.form
         form.form.form--desk.js-form(action="mail/mail.php", method="post")
+          .preview__title!= page.preview.title
           fieldset.form-group
             .row.justify-content-around
               .d-inline-flex.pl-2.pr-2
@@ -33,8 +34,6 @@ section#preview.preview
               option
               each option, i in form.selectF.items
                 option(value=(i + 1))!= option
-          fieldset.form-group
-            input.form-control(type="email", name="email", placeholder=form.email.placeholder, required)
           .btn-groups.form__btn-groups
             button.btn.btn--default.btn--size(name='form', value=form.submit.value, type='submit', data-loading-text=form.submit.loading)!= form.submit.text
           a.info.form__info(data-toggle="modal" href="#kid__modal")!= form.info.text

@@ -482,7 +482,14 @@ button
   background-image: url(../img/sugrob2.png)
   background-position: 50% 100%
   background-repeat: no-repeat
-
+  &__title
+    color: #212121
+    font: 400 20px/30px $main-font
+    margin-bottom: 30px
++r(768)
+  .preview
+    &__title
+      font: 400 30px/32px $main-font   
 .form
   text-align: center
   &--desk
@@ -615,8 +622,26 @@ button
 
 +comment("section gift style")
 .gift
-  padding: 50px 0 60px
+  padding: 50px 0 0
   overflow: hidden
+  &__box
+    margin: 0 auto
+  &__text
+    color: #212121
+    font: 400 30px/45px $font-neumann
+    margin-bottom: 25px
+    &--span
+      text-decoration: underline
+  &__image
+    text-align: center
+    margin-bottom: 25px    
++r(992) 
+  .gift
+    &__text
+      text-align: left   
+    &__image
+      margin-bottom: 0
+      text-align: left    
 .package
   &__box
     display: inline-block
@@ -662,6 +687,19 @@ button
     font: 400 24px/30px $font-neumann
     color: #212121
     margin-bottom: 25px  
+    &--span
+      position: relative
+      margin-right: 25px
+      &:before
+        content: ''
+        position: absolute
+        display: inline-block
+        left: 0
+        top: 20px
+        width: 40px
+        height: 2px
+        background: #212121
+        transform: rotate(-45deg)
   &__candy
     position: absolute
     left: -110px
@@ -672,13 +710,23 @@ button
     top: 380px
 +r(576)
   .package
-    background: url(../img/giftbg.png) no-repeat
-    background-size: contain
-    background-position: center 160px
     &__content
       width: 300px  
     &__box  
-      width: 523px      
+      position: relative
+      width: 523px
+    &__bg     
+      position: absolute
+      top: 0
+      left: 0
+      width: 768px
+      left: 50%
+      margin-left: -384px
+      height: 100%  
+      background: url(../img/giftbg.png) no-repeat
+      background-size: contain
+      background-position: center 160px 
+      z-index: -1
 +r(768)   
   .package
     background-size: cover 
@@ -688,7 +736,7 @@ button
 +comment("section example style")
 .example
   overflow: hidden
-  padding: 93px 0 131px
+  padding: 53px 0 131px
   background: url(../img/giftbgs.png) no-repeat
   &__img
     max-width: 400px
@@ -1209,7 +1257,7 @@ button
       height: 506px
 .kid
   &__content
-    padding: 15px 
+    padding: 35px 15px 15px 
     box-shadow: 0 0 140px rgba(250, 182, 85, 0.8)
   &__descr
     color: #212121
@@ -1225,7 +1273,7 @@ button
     &__dialog
       max-width: 560px  
     &__content
-      padding: 50px     
+      padding: 80px 50px 10px     
     &__icon
       position: absolute
       &--1
