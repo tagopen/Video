@@ -2820,7 +2820,7 @@ button:focus {
 }
 
 #accordion {
-  min-height: 700px;
+  min-height: 720px;
 }
 
 .panel {
@@ -2899,7 +2899,7 @@ button:focus {
     margin-bottom: 65px;
   }
   #accordion {
-    min-height: 450px;
+    min-height: 470px;
   }
 }
 
@@ -2912,7 +2912,7 @@ button:focus {
     background-position: center center;
   }
   #accordion {
-    min-height: 500px;
+    min-height: 520px;
   }
 }
 
@@ -3529,4 +3529,64 @@ button:focus {
   opacity: .75;
   filter: alpha(opacity=75);
   z-index: 20140628;
+}
+
+/* ---------------------------------------- */
+/* F R I D A Y    P A G E    S T Y L E      */
+/* ---------------------------------------- */
+.h-content__subtitle--friday {
+  font: 500 20px/30px "PF Din Text Pro", sans-serif;
+}
+
+.h-content__descr {
+  color: #fab655;
+  font: 400 20px/30px "Neumann", sans-serif;
+  margin-bottom: 30px;
+}
+
+.vd-video__texto {
+  margin-bottom: 35px;
+}
+
+.vd-video__texto a {
+  font: 500 20px/20px "PF Din Text Pro", sans-serif;
+  color: #fff !important;
+  border-bottom: 1px dashed #fff;
+  cursor: pointer;
+}
+
+.vd-video__texto a:hover, .vd-video__texto a:focus {
+  text-decoration: none;
+}
+
+.video__play--friday {
+  margin-bottom: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.mp-play__icon--friday {
+  font-size: 14px;
+  right: -3px;
+}
+
+@media only screen and (min-width: 768px) {
+  .h-content__descr {
+    color: #fab655;
+    font: 400 24px/36px "Neumann", sans-serif;
+    margin-bottom: 25px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .h-content__title--friday {
+    font: 500 48px/50px "PF Din Text Pro", sans-serif;
+  }
+  .h-content__subtitle--friday {
+    font: 500 30px/50px "PF Din Text Pro", sans-serif;
+    margin-bottom: 30px;
+  }
+  .h-content__descr {
+    margin-bottom: 35px;
+  }
 }

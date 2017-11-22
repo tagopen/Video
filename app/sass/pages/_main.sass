@@ -984,7 +984,7 @@ button
   &__heading
     margin-bottom: 45px
 #accordion
-  min-height: 700px          
+  min-height: 720px          
 .panel
   box-shadow: none
   background: transparent
@@ -1034,7 +1034,7 @@ button
     &__heading
       margin-bottom: 65px
   #accordion
-    min-height: 450px              
+    min-height: 470px              
 +r(992)
   .faq
     padding-top: 160px
@@ -1043,7 +1043,7 @@ button
     background-size: cover 
     background-position: center center 
   #accordion
-    min-height: 500px 
+    min-height: 520px 
 
 +comment("section dream style")    
 .dream
@@ -1437,3 +1437,48 @@ button
   opacity: .75
   filter: alpha(opacity = 75)
   z-index: 20140628
+
++comment("friday page style")
+.h-content
+  &__subtitle
+    &--friday
+      font: 500 20px/30px $main-font
+  &__descr
+    color: #fab655
+    font: 400 20px/30px $font-neumann
+    margin-bottom: 30px  
+.vd-video__texto
+  margin-bottom: 35px
+  a
+    font: 500 20px/20px $main-font
+    color: #fff !important
+    border-bottom: 1px dashed #fff
+    cursor: pointer
+    &:hover,
+    &:focus
+      text-decoration: none
+.video__play--friday
+  margin-bottom: 20px
+  height: 40px
+  width: 40px
+.mp-play__icon--friday
+  font-size: 14px   
+  right: -3px 
++r(768)
+  .h-content
+    &__descr
+      color: #fab655
+      font: 400 24px/36px $font-neumann
+      margin-bottom: 25px    
++r(992)
+  .h-content
+    &__title
+      &--friday
+        font: 500 48px/50px $main-font
+    &__subtitle
+      &--friday
+        font: 500 30px/50px $main-font
+        margin-bottom: 30px
+    &__descr
+      margin-bottom: 35px    
+
