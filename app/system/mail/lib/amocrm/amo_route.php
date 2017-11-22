@@ -158,7 +158,17 @@ function amo_route($data) {
                     ), // ID: Имя 2-го ребенка *** Правка ***
                 )
             ));
-            return $res["leads"]["add"][0]["id"];
+            if ($res = $res["leads"]["add"][0]["id"]) {
+                sleep(1);
+                $leads_ids = (isset($contact["linked_leads_id"]) ? $contact["linked_leads_id"] : array());
+                $leads_ids[] = $res;
+                $amo->contacts_update(array(
+                    "id"=>$contact["id"],
+                    "last_modified"=>time()+10,
+                    "linked_leads_id"=>$leads_ids
+                ));
+                return $res;
+            }
         }
     }
     return null;
