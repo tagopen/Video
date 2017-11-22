@@ -14,14 +14,14 @@ section#preview.preview
             .row.justify-content-around
               .d-inline-flex.pl-2.pr-2
                 .radio-btn
-                  input#rbtn11.radio-btn__control.js-gender(type='radio', name='gender')
-                  label.radio-btn__box(for='rbtn11', data-gender='#male')
+                  input#rbtn11.radio-btn__control.js-gender(type='radio', name='gender', data-gender='#male', value="1")
+                  label.radio-btn__box(for='rbtn11')
                     i.radio-btn__icon
                     | Мальчик
               .d-inline-flex.pl-2.pr-2
                 .radio-btn
-                  input#rbtn12.radio-btn__control.js-gender(type='radio', name='gender')
-                  label.radio-btn__box(for='rbtn12', data-gender='#female')
+                  input#rbtn12.radio-btn__control.js-gender(type='radio', name='gender', value="2", data-gender='#female')
+                  label.radio-btn__box(for='rbtn12')
                     i.radio-btn__icon
                     | Девочка
           fieldset.form-group

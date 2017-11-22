@@ -163,6 +163,40 @@
     });
   });
 
+  $(function() {
+    var $genders = $("[data-gender]"),
+        triggerChecked = false,
+        changeName = function($item) {
+            var $this = $item,
+                target = $this.data("gender"),
+                $select = $(target),
+                $selectContainer = $select.next(".select2-container"),
+                genderVal = $this.val()
+
+            if ($this.prop("checked")) {
+              $select.prop('required', true);
+              $selectContainer.fadeIn();
+              $select.siblings(".select").prop('required', false);
+              $selectContainer.siblings(".select2-container").fadeOut(0);
+              triggerChecked = true;
+            }
+        }
+
+    $genders.each(function() {
+      changeName($(this));
+    });
+
+    if (!triggerChecked) {
+      var $item = $genders.eq(0);
+      $item.prop("checked", true);
+      changeName($item);
+    }
+
+    $genders.on("click change", function() {
+      changeName($(this));
+    });
+  });
+
   // Show more childrean
   $(function() {
     var $items = $("[data-childrean-item]"),
