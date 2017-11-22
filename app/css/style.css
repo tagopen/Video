@@ -2106,18 +2106,26 @@ button:focus {
 
 .form-control::-webkit-input-placeholder {
   color: #988e7e;
+  text-transform: none;
 }
 
 .form-control::-moz-placeholder {
   color: #988e7e;
+  text-transform: none;
 }
 
 .form-control:-ms-input-placeholder {
   color: #988e7e;
+  text-transform: none;
 }
 
 .form-control::placeholder {
   color: #988e7e;
+  text-transform: none;
+}
+
+.form-control--promo {
+  text-transform: uppercase;
 }
 
 .info {
@@ -2220,12 +2228,12 @@ button:focus {
   background-position: center center;
   height: 739px;
   width: 320px;
-  margin: 0 -15px;
+  margin: 25px -15px 0;
 }
 
 .package__content {
   position: relative;
-  padding-top: 85px;
+  padding-top: 120px;
   width: 290px;
   margin: 0 auto;
   text-align: center;
@@ -2234,7 +2242,7 @@ button:focus {
 .package__img {
   position: relative;
   left: -142px;
-  margin-top: -30px;
+  margin-top: -140px;
   max-width: none;
 }
 
@@ -2286,7 +2294,7 @@ button:focus {
 
 .package__confetti {
   position: absolute;
-  right: -85px;
+  right: -95px;
   top: 380px;
 }
 
@@ -2820,7 +2828,7 @@ button:focus {
 }
 
 #accordion {
-  min-height: 720px;
+  min-height: 700px;
 }
 
 .panel {
@@ -2893,13 +2901,14 @@ button:focus {
 
 @media only screen and (min-width: 768px) {
   .faq {
+    background-position: 50% center;
     padding-bottom: 250px;
   }
   .faq__heading {
     margin-bottom: 65px;
   }
   #accordion {
-    min-height: 470px;
+    min-height: 450px;
   }
 }
 
@@ -2912,7 +2921,7 @@ button:focus {
     background-position: center center;
   }
   #accordion {
-    min-height: 520px;
+    min-height: 500px;
   }
 }
 
@@ -3013,6 +3022,10 @@ button:focus {
   border: 0;
 }
 
+.modal-video__content {
+  padding: 0;
+}
+
 .modal__icon {
   position: absolute;
 }
@@ -3086,6 +3099,16 @@ button:focus {
   }
 }
 
+.modal-video__content {
+  padding: 0;
+  width: 320px;
+  max-width: 320px;
+}
+
+.modal__close--video {
+  top: -50px;
+}
+
 .modal__content {
   padding: 0;
   width: 320px;
@@ -3105,17 +3128,39 @@ button:focus {
 }
 
 @media only screen and (min-width: 768px) {
+  .modal__body {
+    height: 394px;
+  }
   .modal__content {
     width: 500px;
     height: 360px;
     height: 280px;
   }
+  .modal-video {
+    width: 700px;
+    max-width: 700px;
+  }
+  .modal-video__content {
+    width: 700px;
+    max-width: 700px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
+  .modal-video {
+    width: 900px;
+    max-width: 900px;
+  }
+  .modal-video__content {
+    width: 900px;
+    max-width: 900px;
+  }
   .modal__content {
     width: 800px;
     height: 400px;
+  }
+  .modal__body {
+    height: 506px;
   }
 }
 
@@ -3420,6 +3465,14 @@ button:focus {
   margin-bottom: 10px;
 }
 
+.avatar__img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  margin: auto;
+  display: block;
+}
+
 .avatar-view {
   display: block;
 }
@@ -3534,59 +3587,100 @@ button:focus {
 /* ---------------------------------------- */
 /* F R I D A Y    P A G E    S T Y L E      */
 /* ---------------------------------------- */
-.h-content__subtitle--friday {
-  font: 500 20px/30px "PF Din Text Pro", sans-serif;
+.header-friday {
+  position: relative;
 }
 
-.h-content__descr {
-  color: #fab655;
-  font: 400 20px/30px "Neumann", sans-serif;
+.header-friday:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+  background: url(../img/fridaybg.png) no-repeat;
+  background-size: cover;
+  z-index: 15;
+}
+
+.header-friday__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.header__box--friday {
+  position: relative;
+  z-index: 20;
+}
+
+.h-content__subtitle--friday {
+  font: 400 30px/40px "PF Din Text Pro", sans-serif;
+  color: #fff;
   margin-bottom: 30px;
 }
 
-.vd-video__texto {
-  margin-bottom: 35px;
+.h-content__subtitle--span {
+  font: 700 30px/40px "PF Din Text Pro", sans-serif;
+  color: #fab655;
 }
 
-.vd-video__texto a {
-  font: 500 20px/20px "PF Din Text Pro", sans-serif;
-  color: #fff !important;
-  border-bottom: 1px dashed #fff;
-  cursor: pointer;
+.sell {
+  margin-bottom: 45px;
+  text-align: center;
 }
 
-.vd-video__texto a:hover, .vd-video__texto a:focus {
-  text-decoration: none;
+.sell__text {
+  display: inline-block;
+  color: #fab655;
+  font: 400 50px/50px "Neumann", sans-serif;
 }
 
-.video__play--friday {
-  margin-bottom: 20px;
-  height: 40px;
+.sell__text--span {
+  font: 400 24px/30px "Neumann", sans-serif;
+}
+
+.sell__old {
+  position: relative;
+  display: inline-block;
+  font: 400 30px/40px "Neumann", sans-serif;
+  color: #212121;
+  background: #fab655;
+  padding: 0 3px;
+  margin-left: 10px;
+  position: relative;
+  top: -5px;
+}
+
+.sell__old:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  left: 10px;
+  top: 20px;
   width: 40px;
+  height: 2px;
+  background: #212121;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
-.mp-play__icon--friday {
-  font-size: 14px;
-  right: -3px;
+.sell__old--span {
+  font: 400 18px/20px "Neumann", sans-serif;
+}
+
+.mp-play--friday {
+  height: 180px;
+  width: 180px;
+  -webkit-box-shadow: 0 4px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
+          box-shadow: 0 4px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
 }
 
 @media only screen and (min-width: 768px) {
-  .h-content__descr {
-    color: #fab655;
-    font: 400 24px/36px "Neumann", sans-serif;
-    margin-bottom: 25px;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .h-content__title--friday {
-    font: 500 48px/50px "PF Din Text Pro", sans-serif;
-  }
-  .h-content__subtitle--friday {
-    font: 500 30px/50px "PF Din Text Pro", sans-serif;
-    margin-bottom: 30px;
-  }
-  .h-content__descr {
-    margin-bottom: 35px;
+  .sell {
+    text-align: left;
   }
 }

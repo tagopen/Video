@@ -1,4 +1,4 @@
-form.form.h-100(action='mail/mail.php', method='post', novalidate)
+form.form.h-100(action='system/model.php', method='post', novalidate)
 
   .tabs.h-100(data-tabs="test-tabs")
     .tabs__control.tabs-control
@@ -43,8 +43,8 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
           fieldset.form-group
             select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="gender-1", required)
               option
-              option(value='0') Мужской
-              option(value='1') Женский
+              option(value='1') Мужской
+              option(value='0') Женский
           label.radio-btn.radio-btn--size
             input#rbtn21.radio-btn__control(type='checkbox', name='new-name-1', data-new-name="#new1")
             label.radio-btn__box(for='rbtn21')
@@ -68,8 +68,8 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
           fieldset.form-group
             select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="gender-2", required)
               option
-              option(value='0') Мужской
-              option(value='1') Женский
+              option(value='1') Мужской
+              option(value='0') Женский
           label.radio-btn.radio-btn--size
             input#rbtn22.radio-btn__control(type='checkbox', name='new-name-2', data-new-name='#new2')
             label.radio-btn__box(for='rbtn22')
@@ -88,7 +88,7 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
           #crop-avatar.avatar
             // Current avatar
             .avatar-view.avatar__photo
-              img.img-fluid.avatar__img(src='img/picture.jpg', alt='Avatar')
+              img.img-fluid.avatar__img(alt='Avatar')
       .btn-groups.text-center
         .row
           .col-24.col-md-8.col-lg-6.text-center.text-md-left
@@ -129,12 +129,15 @@ form.form.h-100(action='mail/mail.php', method='post', novalidate)
           p.tabs__text На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail
           fieldset.form-group.text-center.text-md-left.tabs__promo
             a.sr-only.link.js-promo(href="#promo") Ввести промокод
-            input#promo.form-control(type='text', name='promocode', placeholder='Введите промокод, если он есть у вас')
+            input#promo.form-control.form-control--promo(type='text', name='promocode', placeholder='Введите промокод, если он есть у вас')
+            .result
         .col-24
           .btn-groups.form__btn-groups
             .row
               .col-24.col-md-8.col-lg-6.text-center.text-md-left
-                button.btn.btn--default.btn--sm(name='form', value='Заказ', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Оформить
+                .btn-groups
+                  button.btn.btn--default.btn--sm(name='form', value='Заказ', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Оформить
+
               .col-24.col-md-6.text-center.text-md-left
                 a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
 

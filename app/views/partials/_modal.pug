@@ -14,7 +14,7 @@
             p.mb-3.sv-descr!= callback.descr
           .col-24.col-sm-18.col-md-24.col-lg-12
             - var form = callback.form
-            form.form.js-form(action="mail/mail.php", method="post")
+            form.form.js-form(action="system/modal.php", method="post")
               fieldset.form-group
                 input.form-control(type="tel", name="phone", placeholder=form.phone.placeholder, required)
               .btn-groups.form__btn-groups
@@ -35,9 +35,9 @@
             .mb-3.kid__text!= content.index.modal.kid.text
             a.btn.btn--default.btn--size(href="#")!= content.index.modal.kid.btn.text
 #video__modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='callbackLabel', aria-hidden='true')
-  .modal-dialog.modal-lg(role='document')
-    .modal-content.modal__content
-      button.close.modal__close(type='button', data-dismiss='modal', aria-label='Close')
+  .modal-dialog.modal-video(role='document')
+    .modal-content.modal-video__content
+      button.close.modal__close.modal__close--video(type='button', data-dismiss='modal', aria-label='Close')
         +svg("close")(class="close__icon")
       .modal-body.modal__body
         .modal__iframe
@@ -77,4 +77,17 @@
                     span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='', data-original-title='aspectRatio: 2 / 3') 2:3
               .col-24.col-md-auto
                 button.btn.btn--default.avatar-save(type='submit') Обрезать
+
+#facebook.modal.fade(aria-hidden='true', aria-labelledby='avatar-modal-label', role='dialog', tabindex='-1')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-body
+        .row
+          .col-24.align-self-start
+            h2.heding Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 17 грн на вашу покупку!
+          .col-24.align-self-center
+            #shareBtn.btn.btn--facebook(data-layout="button_count") Я рекомендую
+          .col-24.align-self-end
+            a(href="#dismiss", data-dismiss="modal") Нет, спасибо
+
 .loading(aria-label='Loading', role='img', tabindex='-1')

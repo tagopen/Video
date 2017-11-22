@@ -220,15 +220,8 @@
 
             if(genderVal !== "" && !isNaN(genderVal)) {
               var gender = parseInt(genderVal, 10);
-              console.log("genderVal", gender);
-              if (gender === 0) {
-                selectIndex = 0;
-              } else {
-                selectIndex = 1;
-              }
-
+              selectIndex = (gender === 1) ? 0 : 1;
             }
-            console.log("selectIndex", selectIndex);
 
 
 
@@ -503,7 +496,7 @@
         
         if(gender !== "" && !isNaN(gender)) {
           var gender = parseInt(gender, 10);
-          genderVal = (gender === 0) ? "m" : "f";
+          genderVal = (gender === 1) ? "m" : "f";
           countgender ++;
         }
 
@@ -646,7 +639,6 @@
     },
 
     submitDone: function (data) {
-      console.log(data);
 
       if ($.isPlainObject(data) && data.state === 200) {
         if (data.result) {
@@ -704,6 +696,100 @@
 
 });
 
+  $("[name=\"promocode\"]").on("keydown paste", function() {
+    var element = this;
+    setTimeout(function () {
+      var value = $.trim($(element).val());
+      $(element).val( value );
+    }, 100);
+  });
+
+  $("[name=\"promocode\"]").on("focusout", function() {
+    var $form = $(".form");
+    var $promo = $(this);
+    var $result = $promo.siblings(".result")
+    var url = $form.attr('action');
+    var data = new FormData($form[0]);
+
+
+
+    var alert = function (msg, status) {
+      var $alert = [
+
+        '<div class="alert alert-' + status + ' avatar-alert alert-dismissable fade show" role="alert">',
+          '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+          msg,
+        '</div>'
+      ].join('');
+
+      $result.html($alert);
+      if (status === "success") {
+        setTimeout(function() {
+          $result.slideUp(function() {
+            $result.html('');
+          });
+        }, 3000);
+      }
+    }
+
+    var submitFail = function (msg) {
+      alert(msg, "danger");
+    }
+
+    var submitDone = function (msg) {
+      alert(msg, "success");
+    }
+    
+    $.ajax(url, {
+      type: 'post',
+      data: data,
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+
+      success: function (data) {
+        if (data.error) {
+          submitFail(data.error);
+        } else if(data.message) {
+          submitDone(data.message);
+          $promo.prop("disabled", true);
+        }
+      },
+
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        submitFail(textStatus || errorThrown);
+      },
+    });
+  });
+
+
+
+
+$(function() {
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/ru_RU/sdk.js', function(){
+    FB.init({
+      appId: '2026650054277944',
+      version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+    });     
+  });
+
+  $('#shareBtn').on("click", function() {
+    FB.ui({
+      method: 'share',
+      display: 'popup',
+      hashtag: '#VideoPozdravlenie2018',
+      href: 'https://www.facebook.com/VideoPozdravlenie2018/',
+    }, function(response) {
+    
+      if (response && !response.error_message) {
+        $("#facebook").modal("hide");
+      } else {
+        alert('Error while posting.');
+      }
+    });
+  });
+});
 
 
 
