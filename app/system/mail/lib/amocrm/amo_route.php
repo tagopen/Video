@@ -23,9 +23,10 @@ function amo_route($data) {
             if (!(is_array($params) && !empty($params))) {
                 $params = array();
             }
+            $children = (isset($data["childrean"]) && $data["childrean"] == 2 ? 2 : 1);
             $res = $amo->leads_add(array(
                 "name"=>"Заявка с сайта",
-                "price"=>12345,
+                "price"=>12345, // Сумма сделки  *** Правка ***
                 "status_id"=>AMO_DEFAULT_STATUS,
                 "custom_fields"=>array(
                     array(
@@ -35,7 +36,7 @@ function amo_route($data) {
                                 "value"=>"http://no-link.domain.local"
                             )
                         )
-                    ), // ID: Ссылка на оплату
+                    ), // ID: Ссылка на оплату *** Правка ***
                     array(
                         "id"=>283129,
                         "values"=>array(
@@ -99,66 +100,76 @@ function amo_route($data) {
                                 "value"=>@$data["image"]
                             )
                         )
-                    ), // ID: Фото (ссылка)
+                    ), // ID: Фото (ссылка) *** Правка ***
                     array(
                         "id"=>283151,
                         "values"=>array(
                             array(
-                                "value"=>1
+                                "value"=>$children
                             )
                         )
-                    ), // ID: Кол-во детей *** Правка ***
+                    ), // ID: Кол-во детей
                     array(
                         "id"=>283173,
                         "values"=>array(
                             array(
-                                "value"=>"???"
+                                "value"=>(isset($data["gender-1"]) && ($data["gender-1"] === "" || $data["gender-1"] == 1) ? "Мужской":"Женский")
                             )
                         )
-                    ), // ID: Пол 1-го ребенка *** Правка ***
+                    ), // ID: Пол 1-го ребенка
                     array(
                         "id"=>283175,
                         "values"=>array(
                             array(
-                                "value"=>"0"
+                                "value"=>(isset($data["new-name-1"]) && $data["new-name-1"] == "on" ? 1 : 0)
                             )
                         )
-                    ), // ID: Имя 1-го уникальное *** Правка ***
+                    ), // ID: Имя 1-го уникальное
                     array(
                         "id"=>283177,
                         "values"=>array(
                             array(
-                                "value"=>"ххх"
+                                "value"=>(isset($data["new-name-1"]) && $data["new-name-1"] == "on" ? @$data["child-name-new-1"] : $data["child-name-1"])
                             )
                         )
-                    ), // ID: Имя 1-го ребенка *** Правка ***
+                    ), // ID: Имя 1-го ребенка
                     array(
                         "id"=>283179,
                         "values"=>array(
                             array(
-                                "value"=>"Тест"
+                                "value"=>($children == 2 ? (isset($data["gender-2"]) && ($data["gender-2"] === "" || $data["gender-2"] == 1) ? "Мужской":"Женский") : "")
                             )
                         )
-                    ), // ID: Пол 2-го ребенка *** Правка ***
+                    ), // ID: Пол 2-го ребенка
                     array(
                         "id"=>283183,
                         "values"=>array(
                             array(
-                                "value"=>"1"
+                                "value"=>(isset($data["new-name-2"]) && $data["new-name-2"] == "on" ? 1 : 0)
                             )
                         )
-                    ), // ID: Имя 2-го уникальное *** Правка ***
+                    ), // ID: Имя 2-го уникальное
                     array(
                         "id"=>283187,
                         "values"=>array(
                             array(
-                                "value"=>"нет"
+                                "value"=>($children == 2 ? (isset($data["new-name-2"]) && $data["new-name-2"] == "on" ? @$data["child-name-new-2"] : $data["child-name-2"]) : "")
                             )
                         )
-                    ), // ID: Имя 2-го ребенка *** Правка ***
+                    ), // ID: Имя 2-го ребенка
                 )
             ));
-            return $res["leads"]["add"][0]["id"];
+            if ($res = $res["leads"]["add"][0]["id"]) {
+                sleep(1);
+                $leads_ids = (isset($contact["linked_leads_id"]) ? $contact["linked_leads_id"] : array());
+                $leads_ids[] = $res;
+                $amo->contacts_update(array(
+                    "id"=>$contact["id"],
+                    "last_modified"=>time()+10,
+                    "linked_leads_id"=>$leads_ids
+                ));
+                return $res;
+            }
         }
     }
     return null;

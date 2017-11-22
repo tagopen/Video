@@ -73,12 +73,8 @@ class amoCRM {
             502=>'Bad gateway',
             503=>'Service unavailable'
         );
-        try {
-            if($code!=200 && $code!=204) throw new Exception(isset($errors[$code]) ? $errors[$code] : 'Undescribed error',$code);
-        }
-        catch(Exception $E)
-        {
-            $err='Error: '.$E->getMessage().PHP_EOL.' ErrorCode: '.$E->getCode();
+        if($code!=200 && $code!=204) {
+            $err='Error: '.(isset($errors[$code]) ? $errors[$code] : 'Undescribed error').PHP_EOL.' ErrorCode: '.$code;
             $eml=$this->host."\r\nБыстро проверить проблему!!!\r\nhttp://".@$_SERVER['HTTP_HOST'].@$_SERVER['REQUEST_URI']."\r\nGET: ".print_r($_GET,1)."\r\nPOST: ".print_r($_POST,1)."\r\n".$out."\r\n---\r\n".$err;
             mail(AMO_USER,"Error!",$eml,"Content-type: text/plain; charset=UTF-8\r\nMime-Version: 1.0");
             die($eml);
@@ -102,20 +98,20 @@ class amoCRM {
     }
     public function contacts_add($arr) {
         return $this->api("POST", "contacts/set", array(
-            "request" => [
-                "contacts" => [
+            "request" => array(
+                "contacts" => array(
                     "add" => array($arr)
-                ]
-            ]
+                )
+            )
         ));
     }
     public function contacts_update($arr) {
         return $this->api("POST", "contacts/set", array(
-            "request" => [
-                "contacts" => [
+            "request" => array(
+                "contacts" => array(
                     "update" => array($arr)
-                ]
-            ]
+                )
+            )
         ));
     }
     public function leads_list($query = false) {
@@ -123,20 +119,20 @@ class amoCRM {
     }
     public function leads_add($arr) {
         return $this->api("POST", "leads/set", array(
-            "request" => [
-                "leads" => [
+            "request" => array(
+                "leads" => array(
                     "add" => array($arr)
-                ]
-            ]
+                )
+            )
         ));
     }
     public function leads_update($arr) {
         return $this->api("POST", "leads/set", array(
-            "request" => [
-                "leads" => [
+            "request" => array(
+                "leads" => array(
                     "update" => array($arr)
-                ]
-            ]
+                )
+            )
         ));
     }
 
