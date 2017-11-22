@@ -83,7 +83,7 @@
           <div class="container h-100">
             <div class="row justify-content-center flex-lg-row-reverse h-100">
               <div class="col-24 h-100">
-                <form class="form h-100" action="mail/mail.php" method="post" novalidate>
+                <form class="form h-100" action="system/model.php" method="post" novalidate>
                   <div class="tabs h-100" data-tabs="test-tabs">
                     <div class="tabs__control tabs-control">
                       <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
@@ -132,8 +132,8 @@
                           <fieldset class="form-group">
                             <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="gender-1" required>
                               <option></option>
-                              <option value="0">Мужской</option>
-                              <option value="1">Женский</option>
+                              <option value="1">Мужской</option>
+                              <option value="0">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
@@ -161,8 +161,8 @@
                           <fieldset class="form-group">
                             <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="gender-2" required>
                               <option></option>
-                              <option value="0">Мужской</option>
-                              <option value="1">Женский</option>
+                              <option value="1">Мужской</option>
+                              <option value="0">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
@@ -189,7 +189,7 @@
                         <div class="col-24 col-md-12">         
                           <div class="avatar" id="crop-avatar">
                             <!-- Current avatar-->
-                            <div class="avatar-view avatar__photo"><img class="img-fluid avatar__img" src="img/picture.jpg" alt="Avatar"></div>
+                            <div class="avatar-view avatar__photo"><img class="img-fluid avatar__img" alt="Avatar"></div>
                           </div>
                         </div>
                       </div>
@@ -237,7 +237,8 @@
                           </fieldset>
                           <p class="tabs__text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
                           <fieldset class="form-group text-center text-md-left tabs__promo"><a class="sr-only link js-promo" href="#promo">Ввести промокод</a>
-                            <input class="form-control" id="promo" type="text" name="promocode" placeholder="Введите промокод, если он есть у вас">
+                            <input class="form-control form-control--promo" id="promo" type="text" name="promocode" placeholder="Введите промокод, если он есть у вас">
+                            <div class="result"></div>
                           </fieldset>
                         </div>
                         <div class="col-24">
@@ -277,7 +278,7 @@
                 <p class="mb-3 sv-descr">Если у вас возникли вопросы или вы хотите оформить заказ по телефону, то укажите ваш номер телефона, что бы менеджер Екатерина вам перезвонила</p>
               </div>
               <div class="col-24 col-sm-18 col-md-24 col-lg-12">
-                <form class="form js-form" action="mail/mail.php" method="post">
+                <form class="form js-form" action="system/modal.php" method="post">
                   <fieldset class="form-group">
                     <input class="form-control" type="tel" name="phone" placeholder="Введите ваш номер телефона" required>
                   </fieldset>
@@ -374,6 +375,23 @@
               </div>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="facebook" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-24 align-self-start">
+                <h2 class="heding">Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 17 грн на вашу покупку!</h2>
+              </div>
+              <div class="col-24 align-self-center">
+                <div class="btn btn--facebook" id="shareBtn" data-layout="button_count">Я рекомендую</div>
+              </div>
+              <div class="col-24 align-self-end"><a href="#dismiss" data-dismiss="modal">Нет, спасибо</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

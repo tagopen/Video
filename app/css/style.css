@@ -2106,18 +2106,26 @@ button:focus {
 
 .form-control::-webkit-input-placeholder {
   color: #988e7e;
+  text-transform: none;
 }
 
 .form-control::-moz-placeholder {
   color: #988e7e;
+  text-transform: none;
 }
 
 .form-control:-ms-input-placeholder {
   color: #988e7e;
+  text-transform: none;
 }
 
 .form-control::placeholder {
   color: #988e7e;
+  text-transform: none;
+}
+
+.form-control--promo {
+  text-transform: uppercase;
 }
 
 .info {
