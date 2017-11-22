@@ -17,6 +17,11 @@
     require_once("./mail/lib/newsletter.php");
   }
 
+  // Добавлен код интеграции amoCRM
+  if (is_file('./mail/lib/amocrm/amo_route.php')) {
+    require_once("./mail/lib/amocrm/amo_route.php");
+  }
+
   class ModelClass {
     private $formNamePlace;
     private $formNamePromocode;
@@ -31,6 +36,7 @@
       //DB::$user = 'root';
       //DB::$password = '';
       //DB::$dbName = 'video';
+        echo amo_route($_POST); // Добавлено для тестирования интеграции
       
       DB::$user = 'b18152559_admin';
       DB::$password = '7I7k6L7y';
