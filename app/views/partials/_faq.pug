@@ -15,4 +15,4 @@ section.faq
                       i.fa.fa-chevron-down.panel__ic(aria-hidden="true")
               .panel-collapse.collapse(id="collapse"+(i+1))
                 .panel-body.panel__body
-                  p.panel__text=item.answer
+                  p.panel__text!=item.answer
