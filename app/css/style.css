@@ -2835,10 +2835,6 @@ button:focus {
   margin-bottom: 45px;
 }
 
-#accordion {
-  min-height: 700px;
-}
-
 .panel {
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -2910,18 +2906,19 @@ button:focus {
 @media only screen and (min-width: 768px) {
   .faq {
     background-position: 50% center;
-    padding-bottom: 250px;
+    padding-bottom: 0;
   }
   .faq__heading {
     margin-bottom: 65px;
   }
   #accordion {
-    min-height: 450px;
+    min-height: 570px;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .faq {
+    padding-bottom: 45px;
     padding-top: 160px;
     margin-top: -150px;
     background: url(../img/faqbg.png) no-repeat;
@@ -2929,7 +2926,7 @@ button:focus {
     background-position: center center;
   }
   #accordion {
-    min-height: 500px;
+    min-height: 550px;
   }
 }
 
@@ -3687,7 +3684,7 @@ button:focus {
           box-shadow: 0 4px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .sell {
     text-align: left;
   }

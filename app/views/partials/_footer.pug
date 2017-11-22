@@ -10,10 +10,7 @@ footer.footer
             .col-24.col-md-auto.logo__col.align-items-center  
               p.logo__text!= page.header.menu.logo.text
       .col-24.col-md.col-lg-auto.order-last.order-md-unordered
-        - var partner = page.footer.partner
-        .partner.footer__partner
-          img.img-fluid.partner__img(src=partner.img.src, alt=partner.img.alt)
-          p.partner__text!= partner.text
+        .copyright.text-center!= page.footer.copyright
       .col-24.col-md.col-lg-auto
         .h-call.footer__call
           .row.justify-content-between.align-items-end
@@ -21,4 +18,3 @@ footer.footer
               a.h-call__number(href!= page.header.menu.number.href)!=page.header.menu.number.tel
             .col-auto.col-md-24.text-right  
               a.h-call__button(href!= page.header.menu.call.href, data-toggle="modal")!= page.header.menu.call.text  
-  footer.copyright.text-center!= page.footer.copyright
