@@ -55,6 +55,10 @@ class CropAvatar {
  
         if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
  
+          if (!file_exists('img/users/')) {
+            mkdir('img/users/', 0777, true);
+          }
+
           if (file_exists($src)) {
             unlink($src);
           }
