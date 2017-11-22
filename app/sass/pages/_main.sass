@@ -36,7 +36,7 @@
 +cm('modal')
 .modal
   -webkit-overflow-scrolling: touch
-  transform: translateZ(0)
+  transform: translateZ(0) 
 .modal.show 
   display: flex !important
   align-items: center
@@ -618,17 +618,17 @@ button
     background-position: center center
     height: 739px
     width: 320px
-    margin: 0 -15px
+    margin: 25px -15px 0
   &__content
     position: relative
-    padding-top: 85px
+    padding-top: 120px
     width: 290px
     margin: 0 auto
     text-align: center
   &__img
     position: relative
     left: -142px
-    margin-top: -30px
+    margin-top: -140px
     max-width: none  
   &__type
     position: relative
@@ -662,7 +662,7 @@ button
     top: 300px
   &__confetti
     position: absolute
-    right: -85px
+    right: -95px
     top: 380px
 +r(576)
   .package
@@ -1033,6 +1033,7 @@ button
       transform: rotate(180deg)   
 +r(768)
   .faq
+    background-position: 50% center   
     padding-bottom: 250px
     &__heading
       margin-bottom: 65px
@@ -1107,6 +1108,9 @@ button
   &-content
     box-shadow: 0 20px 40px rgba(67, 19, 31, 0.25)
     border: 0
+  &-video
+    &__content
+      padding: 0  
   &__icon
     position: absolute
     &--1
@@ -1137,10 +1141,10 @@ button
   color: #212121
 +r(768)
   .modal-content
-    padding: 54px 80px
+    padding: 54px 80px  
 +r(992)
   .modal-content
-    padding: 61px 98px
+    padding: 61px 98px 
 +r(1200)
   .modal
     &__close
@@ -1152,7 +1156,13 @@ button
       &:focus
         color: #f7b76d
         opacity: 1
+.modal-video__content
+  padding: 0    
+  width: 320px
+  max-width: 320px     
 .modal
+  &__close--video
+    top: -50px
   &__content
     padding: 0
     width: 320px
@@ -1167,16 +1177,31 @@ button
     left: 0
 +r(768)
   .modal
+    &__body
+      height: 394px
     &__content
       width: 500px    
       height: 360px
       height: 280px
+  .modal-video
+    width: 700px
+    max-width: 700px  
+  .modal-video__content 
+    width: 700px
+    max-width: 700px 
 +r(992)
+  .modal-video
+    width: 900px
+    max-width: 900px
+  .modal-video__content 
+    width: 900px
+    max-width: 900px  
   .modal
     &__content
       width: 800px
       height: 400px      
-
+    &__body
+      height: 506px
 .kid
   &__content
     padding: 15px 
@@ -1446,3 +1471,73 @@ button
   opacity: .75
   filter: alpha(opacity = 75)
   z-index: 20140628
+
++comment("friday page style")
+.header-friday
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    display: block
+    background: url(../img/fridaybg.png) no-repeat
+    background-size: cover
+    z-index: 15
+  &__video
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+.header__box--friday
+  position: relative
+  z-index: 20    
+.h-content
+  &__subtitle
+    &--friday
+      font: 400 30px/40px $main-font
+      color: #fff
+      margin-bottom: 30px
+    &--span
+      font: 700 30px/40px $main-font
+      color: #fab655
+.sell
+  margin-bottom: 45px
+  text-align: center
+  &__text
+    display: inline-block
+    color: #fab655
+    font: 400 50px/50px $font-neumann
+    &--span
+      font: 400 24px/30px $font-neumann
+  &__old
+    position: relative
+    display: inline-block 
+    font: 400 30px/40px $font-neumann       
+    color: #212121
+    background: #fab655
+    padding: 0 3px
+    margin-left: 10px
+    position: relative
+    top: -5px
+    &:before
+      content: ''
+      position: absolute
+      display: inline-block
+      left: 10px
+      top: 20px
+      width: 40px
+      height: 2px
+      background: #212121
+      transform: rotate(-45deg)
+    &--span
+      font: 400 18px/20px $font-neumann  
+.mp-play--friday
+  height: 180px
+  width: 180px
+  box-shadow: 0 4px 0 rgba(250, 182, 85, 0.75), 0 0 55px rgba(250, 182, 85, 0.35)      
++r(768)
+  .sell
+    text-align: left      

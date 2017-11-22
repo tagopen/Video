@@ -35,9 +35,9 @@
             .mb-3.kid__text!= content.index.modal.kid.text
             a.btn.btn--default.btn--size(href="#")!= content.index.modal.kid.btn.text
 #video__modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='callbackLabel', aria-hidden='true')
-  .modal-dialog.modal-lg(role='document')
-    .modal-content.modal__content
-      button.close.modal__close(type='button', data-dismiss='modal', aria-label='Close')
+  .modal-dialog.modal-video(role='document')
+    .modal-content.modal-video__content
+      button.close.modal__close.modal__close--video(type='button', data-dismiss='modal', aria-label='Close')
         +svg("close")(class="close__icon")
       .modal-body.modal__body
         .modal__iframe
