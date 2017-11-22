@@ -1413,6 +1413,14 @@ button:focus {
   margin-top: 39px;
 }
 
+.result {
+  margin: 15px 0;
+}
+
+.alert .close {
+  line-height: 1;
+}
+
 @media only screen and (min-width: 768px) {
   .heading {
     font-size: 36px;

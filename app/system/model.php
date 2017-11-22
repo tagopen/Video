@@ -28,9 +28,13 @@
 
     function __construct() {
       
-      DB::$user = 'root';
-      DB::$password = '';
-      DB::$dbName = 'video';
+      //DB::$user = 'root';
+      //DB::$password = '';
+      //DB::$dbName = 'video';
+      
+      DB::$user = 'b18152559_admin';
+      DB::$password = '7I7k6L7y';
+      DB::$dbName = 'b18152559_video';
 
       DB::$host = 'localhost'; //defaults to localhost if omitted
       DB::$encoding = 'utf8'; // defaults to latin1 if omitted
@@ -41,8 +45,9 @@
       $this -> getProductPrice();
       $this -> promocodeIsValid($this -> data["promocode"]);
       $this -> discountIsValid($this -> data["discount"]);
-      $this -> setImage($this -> data["image"]);
-      $this -> setOrder();
+      if ($this -> data["form"]) {
+        $this -> setOrder();
+      }
 
       //$this -> sendMail();
     }
@@ -68,7 +73,19 @@
         $this -> totalPrice += $childrean;
       }
 
-      //DB::insert('order', $data);
+      $imageSrc = $this -> setImage($this -> data["image"]);
+
+      DB::insert('order', array(
+        'firstname' => $data['firstname'],
+        'email' => $data['email'],
+        'order_image_id' => $imageSrc,
+        'telephone' => $data['phone'],
+        'coupon_id' => $_SESSION['promocode']["promocode_id"],
+        'childrean_add' => $childrean,
+        'discount_id' => $_SESSION['discount']['discount_id'],
+        'date_added' => DB::sqleval("NOW()"),
+        'date_modified' => DB::sqleval("NOW()"),
+      ));
     }
 
     private function childreanCountPrice() {
@@ -325,6 +342,8 @@
         'image' => $src,
         'date_added' => DB::sqleval("NOW()")
       ));
+
+      return DB::insertId();
 
     }
 
