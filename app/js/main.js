@@ -779,13 +779,12 @@ $(function() {
       method: 'share',
       display: 'popup',
       hashtag: '#VideoPozdravlenie2018',
-      href: 'https://www.facebook.com/VideoPozdravlenie2018/',
+      href: 'http://video-pozdravlenie.com/',
     }, function(response) {
     
       if (response && !response.error_message) {
         $("#facebook").modal("hide");
-      } else {
-        alert('Error while posting.');
+        $(".js-discount").val("facebook");
       }
     });
   });
