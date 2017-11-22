@@ -52,7 +52,7 @@
       $this -> promocodeIsValid($this -> data["promocode"]);
       $this -> discountIsValid($this -> data["discount"]);
       if ($this -> data["form"]) {
-        $this -> setOrder();
+        //$this -> setOrder();
       }
 
       //$this -> sendMail();
