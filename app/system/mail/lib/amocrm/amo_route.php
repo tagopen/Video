@@ -13,8 +13,8 @@ require_once(__DIR__."/amocrm.php");
  */
 function amo_route($data) {
     global $amo;
-    echo "<pre>";
-    print_r($data);
+    //echo "<pre>";
+    //print_r($data);
     $data["host_referer"] = (isset($data["host_referer"]) ? $data["host_referer"] : @(string)$_SERVER["HTTP_REFERER"]);
     if ($amo->auth()) {
         $contact = $amo->check_contact_entity($data["name"], $data["email"], $data["phone"]);
