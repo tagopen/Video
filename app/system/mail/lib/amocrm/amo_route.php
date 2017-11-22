@@ -19,7 +19,7 @@ function amo_route($data) {
     if ($amo->auth()) {
         $contact = $amo->check_contact_entity($data["name"], $data["email"], $data["phone"]);
         if (!empty($contact)) {
-            @parse_str(substr($data["host_referer"], strstr($data["host_referer"], "?"), strlen($data["host_referer"])), $params);
+            @parse_str(substr(strstr($data["host_referer"], "?"), 1), $params);
             if (!(is_array($params) && !empty($params))) {
                 $params = array();
             }
