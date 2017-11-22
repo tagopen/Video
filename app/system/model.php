@@ -1,4 +1,5 @@
 <?php
+  session_start();
 
   if (is_file('./mysql/meekrodb.2.3.class.php')) {
     require_once("./mysql/meekrodb.2.3.class.php");
@@ -23,6 +24,7 @@
     private $error;
     private $msg;
     private $result;
+    private $totalPrice;
 
     function __construct() {
       
@@ -33,20 +35,110 @@
       DB::$host = 'localhost'; //defaults to localhost if omitted
       DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 
-      $this -> setData();
-      $this -> promocodeIsValid($this -> data["promocode"]);
-      $this -> setImage($this -> data["image"]);
-      //$this -> sendMail();
+      $this -> totalPrice = 0.0000;
 
+      $this -> setData();
+      $this -> getProductPrice();
+      $this -> promocodeIsValid($this -> data["promocode"]);
+      $this -> discountIsValid($this -> data["discount"]);
+      $this -> setImage($this -> data["image"]);
+      $this -> setOrder();
+
+      //$this -> sendMail();
     }
 
+    private function setOrder() {
+      $product = ModelClass::productPrice();
+      if($product) {
+        $this -> totalPrice += $product['price'];
+      }
 
-    private function setOrder($data) {
+      if(isset($_SESSION['promocode'])) {
+        $this -> totalPrice += $_SESSION['promocode']['price'];
+        unset($_SESSION['promocode']);
+      }
 
-      DB::insert('order', $data);
+      if(isset($_SESSION['discount'])) {
+        $this -> totalPrice += $_SESSION['discount']['price'];
+        unset($_SESSION['discount']);
+      }
 
-      ModelClass::sendMail();
+      $childrean = ModelClass::childreanCountPrice();
+      if (!is_null( $childrean)) {
+        $this -> totalPrice += $childrean;
+      }
 
+      //DB::insert('order', $data);
+    }
+
+    private function childreanCountPrice() {
+      $priceTrigger = false;
+
+      if ($this -> post["childrean"] && $this -> post["childrean"] == "2") {
+        $priceTrigger = true;
+      }
+
+      if ($this -> post["new-name-1"]) {
+        $priceTrigger = true;
+      }
+
+      if ($this -> post["new-name-2"]) {
+        $priceTrigger = true;
+      }
+
+      if ($priceTrigger) {
+        $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.name=%s", "childrean");
+        if ($results) {
+          foreach ($results as $row) {
+            return $row['price'];
+          }
+        }
+      } else {
+        return;
+      }
+    }
+
+    private function getDiscount($discount) {
+      $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.permission = %s AND dc.date_start <= %t AND dc.date_end >= %t ", "public", date("Y-m-d"), date("Y-m-d"));
+      if ($results) {
+        foreach ($results as $row) {
+          return $row["price"];
+        }
+      } else {
+        return;
+      }
+    }
+
+    private function discountIsValid($discount) {
+
+      if (empty($discount)) {
+        return;
+      }
+
+      $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.permission=%s AND dc.name=%s AND dc.date_start <= %t AND dc.date_end >= %t ", "private", $discount, date("Y-m-d"), date("Y-m-d"));
+      if ($results) {
+        foreach ($results as $row) {
+            $_SESSION['discount']["discount_id"] = $row['discount_id'];
+            $_SESSION['discount']["price"] = $row['price'];
+        }
+      } else {
+        if(isset($_SESSION['discount'])) {
+          unset($_SESSION['discount']);
+        }
+      }
+    }
+
+    private function getProductPrice() {
+
+      $results = DB::query("SELECT ps.* FROM product_special AS ps WHERE ps.date_start <= %t AND ps.date_end >= %t ", date("Y-m-d"), date("Y-m-d"));
+      if ($results) {
+        foreach ($results as $row) {
+          return array(
+                  "product_id" => $row['product_special_id'],
+                  "price" => $row['price']
+                );
+        }
+      }
     }
     
     private function sendMail() {
@@ -251,11 +343,16 @@
           } elseif ($row['status'] === '1') {
             $this -> msg = "Промокод активирован!";
             $this -> result = $row['price'];
-            $_SESSION['promocode'] = $row['price'];
+
+            $_SESSION['promocode']["promocode_id"] = $row['coupon_id'];
+            $_SESSION['promocode']["price"] = $row['price'];
           }
         }
       } else {
         $this -> error = "Такого промокода не существует!";
+        if(isset($_SESSION['promocode'])) {
+          unset($_SESSION['promocode']);
+        }
       }
     }
 
