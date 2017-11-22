@@ -3669,19 +3669,8 @@ button:focus {
 /* ---------------------------------------- */
 .header-friday {
   position: relative;
-}
-
-.header-friday:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  display: block;
-  background: url(../img/fridaybg.png) no-repeat;
+  background: url(../img/fridaybgmain.png) no-repeat;
   background-size: cover;
-  z-index: 15;
 }
 
 .header-friday__video {
@@ -3689,6 +3678,14 @@ button:focus {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .header-friday {
+    background: url(../img/fridaybg1920.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
 }
 
 .header__box--friday {

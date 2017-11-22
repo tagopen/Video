@@ -1528,22 +1528,18 @@ button
 +comment("friday page style")
 .header-friday
   position: relative
-  &:before
-    content: ''
-    position: absolute
-    left: 0
-    top: 0
-    height: 100%
-    width: 100%
-    display: block
-    background: url(../img/fridaybg.png) no-repeat
-    background-size: cover
-    z-index: 15
+  background: url(../img/fridaybgmain.png) no-repeat
+  background-size: cover
   &__video
     position: absolute
     top: 0
     left: 0
     width: 100%
++r(992)
+  .header-friday
+    background: url(../img/fridaybg1920.jpg) no-repeat
+    background-size: cover
+    background-position: center center    
 .header__box--friday
   position: relative
   z-index: 21
