@@ -2169,6 +2169,10 @@ button:focus {
   color: #ff894f;
 }
 
+.select2-container {
+  width: 100% !important;
+}
+
 .select2-container--default .select2-dropdown--below, .select2-container--default .select2-dropdown--above {
   border: none;
   background-color: transparent;
