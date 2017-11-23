@@ -9,7 +9,7 @@ section#preview.preview
         img.preview__img(src=img.src, alt=img.alt)
       .col-24.col-md-19.col-lg-12
         - var form = page.preview.form
-        form.form.form--desk.js-form(action="mail/mail.php", method="post")
+        form.form--desk.form(action="order.php", method="get")
           fieldset.form-group
             .row.justify-content-around
               .d-inline-flex.pl-2.pr-2
@@ -25,14 +25,14 @@ section#preview.preview
                     i.radio-btn__icon
                     | Девочка
           fieldset.form-group
-            select#male.form-control.form-control--select.select(data-placeholder=form.selectM.placeholder, required)
+            select#male.form-control.form-control--select.select(data-placeholder=form.selectM.placeholder, name="name[male]", required)
               option
               each option, i in form.selectM.items
-                option(value=(i + 1))!= option
-            select#female.form-control.form-control--select.select(data-placeholder=form.selectF.placeholder)
+                option(value=option)!= option
+            select#female.form-control.form-control--select.select(name="name[female]", data-placeholder=form.selectF.placeholder)
               option
               each option, i in form.selectF.items
-                option(value=(i + 1))!= option
+                option(value=option)!= option
           .btn-groups.form__btn-groups
             button.btn.btn--default.btn--size(name='form', value=form.submit.value, type='submit', data-loading-text=form.submit.loading)!= form.submit.text
           a.info.form__info(data-toggle="modal" href="#kid__modal")!= form.info.text

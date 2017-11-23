@@ -80,7 +80,7 @@
                 </div>
               </div>
               <div class="col-24 col-md-14 col-lg-10">
-                <div class="header__logo logo logo--white">
+                <a class="header__logo logo logo--white" href="/">
                   <div class="row">
                     <div class="col-24 col-md-auto">
                       <div class="logo__image"><img class="img-fluid logo__img" src="img/logo/logo.png" alt="logo"></div>
@@ -89,7 +89,7 @@
                       <p class="logo__text">Именное видеопоздравление <br>для вашего ребенка от Дедушки Мороза</p>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

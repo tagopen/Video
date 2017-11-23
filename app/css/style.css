@@ -1805,6 +1805,10 @@ button:focus {
   padding-top: 15px;
 }
 
+.logo {
+  text-decoration: none;
+}
+
 .logo--white {
   color: #fff;
 }
@@ -1822,6 +1826,11 @@ button:focus {
   margin: 0;
   font: 400 14px/21px "PF Din Text Pro", sans-serif;
   text-align: center;
+}
+
+.logo:hover, .logo:focus {
+  text-decoration: none;
+  color: #fff;
 }
 
 .h-call {
