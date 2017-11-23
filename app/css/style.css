@@ -1612,7 +1612,6 @@ button:focus {
   top: 50%;
   font-size: 20px;
   margin-top: -10px;
-  z-index: -1;
 }
 
 .btn-groups {
