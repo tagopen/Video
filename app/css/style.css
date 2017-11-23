@@ -1671,7 +1671,7 @@ button:focus {
 @media only screen and (min-width: 768px) {
   .header__box {
     height: 100vh;
-    min-height: 600px;
+    min-height: 768px;
   }
   .header__content {
     height: 100%;
@@ -3733,7 +3733,7 @@ button:focus {
 /* ---------------------------------------- */
 .header-friday {
   position: relative;
-  background: url(../img/fridaybgmain.png) no-repeat;
+  background: url(../img/fridaybg1920.jpg) no-repeat;
   background-size: cover;
 }
 
@@ -3748,13 +3748,14 @@ button:focus {
   .header-friday {
     background: url(../img/fridaybg1920.jpg) no-repeat;
     background-size: cover;
-    background-position: 60% center;
+    background-position: 40% center;
   }
 }
 
 .header__box--friday {
   position: relative;
   z-index: 21;
+  padding-bottom: 25px;
 }
 
 .h-content__subtitle--friday {
