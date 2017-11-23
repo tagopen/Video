@@ -359,6 +359,12 @@
       aspectRatio: 3/2,/*
       minCropBoxWidth: 300,
       minCropBoxHeight: 200,*/
+      viewMode: 1,
+      restore: false,
+      guides: false,
+      highlight: false,
+      autoCropArea: 0.65,
+      zoomOnWheel: false,
       crop: function (e) {
 
         var json = [
@@ -369,7 +375,7 @@
               '"rotate":' + e.rotate + '}'
             ].join();
         _this.$avatarData.val(json);
-      }
+      },
     };
 
     this.init();

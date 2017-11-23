@@ -1357,6 +1357,7 @@
           flex: 0 0 100%;
   max-width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .main {
@@ -1471,18 +1472,7 @@ button:focus {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 25px;
-  padding: 15px 30px;
   border: 0 none;
-  min-height: 61px;
-  -webkit-box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
-          box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#bc692b), color-stop(35%, #cf752f), color-stop(78%, #f4ab59), to(#fcd29d));
-  background-image: -webkit-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
-  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
-  background-position: 50% 0%;
-  -webkit-border-radius: 61px;
-          border-radius: 61px;
   white-space: normal;
   font: 500 18px/24px "PF Din Text Pro", sans-serif;
   text-shadow: 0 1px 0 #853e09, 0 0 29px rgba(255, 255, 255, 0.35);
@@ -1493,7 +1483,35 @@ button:focus {
   transition: all .3s ease-out;
 }
 
-.btn:before, .btn:after {
+.btn:hover, .btn:focus {
+  background-position: 50% 100%;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#d87931), color-stop(35%, #ee8736), color-stop(78%, #ffc566), to(#fff2b5));
+  background-image: -webkit-linear-gradient(bottom, #d87931 0%, #ee8736 35%, #ffc566 78%, #fff2b5 100%);
+  background-image: linear-gradient(to top, #d87931 0%, #ee8736 35%, #ffc566 78%, #fff2b5 100%);
+}
+
+.btn--default {
+  margin-bottom: 25px;
+  padding: 15px 30px;
+  min-height: 61px;
+  -webkit-box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+          box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#bc692b), color-stop(35%, #cf752f), color-stop(78%, #f4ab59), to(#fcd29d));
+  background-image: -webkit-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  background-position: 50% 0%;
+  -webkit-border-radius: 61px;
+          border-radius: 61px;
+}
+
+.btn--default:before, .btn--default:after {
   content: '';
   position: absolute;
   margin: auto;
@@ -1509,7 +1527,7 @@ button:focus {
   z-index: -1;
 }
 
-.btn:before {
+.btn--default:before {
   bottom: -10px;
   width: 100%;
   -webkit-box-shadow: 0 1px 21px rgba(0, 0, 0, 0.13);
@@ -1518,7 +1536,7 @@ button:focus {
   background-color: #d28743;
 }
 
-.btn:after {
+.btn--default:after {
   bottom: -10px;
   width: -webkit-calc(100% - 15px);
   width: calc(100% - 15px);
@@ -1527,25 +1545,28 @@ button:focus {
   z-index: -2;
 }
 
-.btn:hover, .btn:focus {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#bc692b), color-stop(35%, #cf752f), color-stop(78%, #f4ab59), to(#fcd29d)) !important;
-  background-image: -webkit-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%) !important;
-  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%) !important;
-  background-position: 50% 100%;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  color: #fff;
-  text-decoration: none;
-}
-
-.btn:active {
+.btn--default:active {
   top: 3px;
 }
 
-.btn:active:before, .btn:active:after {
+.btn--default:active:before, .btn--default:active:after {
   -webkit-transform: translateY(-3px);
       -ms-transform: translateY(-3px);
           transform: translateY(-3px);
+}
+
+.btn--primary {
+  margin-bottom: 25px;
+  padding: 15px 30px;
+  min-height: 61px;
+  -webkit-box-shadow: inset 0 1px 5px #d28743, inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+          box-shadow: inset 0 1px 5px #d28743, inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#bc692b), color-stop(35%, #cf752f), color-stop(78%, #f4ab59), to(#fcd29d));
+  background-image: -webkit-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  background-position: 50% 0%;
+  -webkit-border-radius: 61px;
+          border-radius: 61px;
 }
 
 .btn--size {

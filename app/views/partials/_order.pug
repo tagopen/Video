@@ -29,6 +29,11 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
                     | 2 ребенка
       .row
         .col-24.col-md-12(data-childrean-item="0")
+          fieldset.form-group
+            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
+              option
+              option(value='1') Мужской
+              option(value='0') Женский
           fieldset#new1.form-group
             select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][male]", data-gender="male" required)
               option
@@ -40,11 +45,6 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
               option(value='Агата') Агата
             input.form-control(type='text', placeholder='Введите новое имя', name="child1[newname][name]")
 
-          fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
-              option
-              option(value='1') Мужской
-              option(value='0') Женский
           label.radio-btn.radio-btn--size
             input#rbtn21.radio-btn__control(type='checkbox', name='child1[newname][trigger]', data-new-name="#new1")
             label.radio-btn__box(for='rbtn21')
@@ -55,6 +55,11 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
             button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
 
         .col-24.col-md-12(data-childrean-item="1")
+          fieldset.form-group
+            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
+              option
+              option(value='1') Мужской
+              option(value='0') Женский
           fieldset#new2.form-group
             select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][male]", data-gender="male", required)
               option
@@ -65,11 +70,6 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
               option(value='Аврора') Аврора
               option(value='Агата') Агата
             input.form-control(type='text', placeholder='Введите новое имя', name="child2[newname][name]")
-          fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
-              option
-              option(value='1') Мужской
-              option(value='0') Женский
           label.radio-btn.radio-btn--size
             input#rbtn22.radio-btn__control(type='checkbox', name='child2[newname][trigger]', data-new-name='#new2')
             label.radio-btn__box(for='rbtn22')
