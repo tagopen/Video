@@ -40,15 +40,15 @@
     <meta property="og:description" content="Удивите своего ребенка именным видео-поздравлением от Дедушки Мороза. Сказочный герой несколько раз назовет ребенка по имени и посмотрит его фотографию. Восторг и радость вашему малышу гарантированы! "/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="ru_RU"/>
-    <meta property="og:image" content="/img/logo/microformat.png"/>
+    <meta property="og:image" content="http://video-pozdravlenie.com/img/logo/microformat.png"/>
     <meta property="og:image:type" content="image/png"/>
-    <meta property="og:url" content="/"/>
+    <meta property="og:url" content="http://video-pozdravlenie.com/"/>
     <!-- Microformats Twitter Cards-->
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@flickr"/>
     <meta name="twitter:title" content="Именное видеопоздравление от Дедушки Мороза с фотографией ребенка"/>
     <meta name="twitter:description" content="Удивите своего ребенка именным видео-поздравлением от Дедушки Мороза. Сказочный герой несколько раз назовет ребенка по имени и посмотрит его фотографию. Восторг и радость вашему малышу гарантированы! "/>
-    <meta name="twitter:image" content="/img/logo/microformat.png"/>
+    <meta name="twitter:image" content="http://video-pozdravlenie.com/img/logo/microformat.png"/>
     <!-- build:css css/bundle.min.css-->
     <!-- Fonts CSS-->
     <link rel="stylesheet" href="css/fonts.css">
@@ -66,7 +66,7 @@
 <![endif]-->
   </head>
   <body class="body">
-    <header class="header h-100">
+    <header class="header header--100vh">
       <article class="intro">
         <section class="intro__menu menu">
           <div class="container">
@@ -79,7 +79,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-24 col-md-14 col-lg-9">
+              <div class="col-24 col-md-14 col-lg-10">
                 <div class="header__logo logo logo--white">
                   <div class="row">
                     <div class="col-24 col-md-auto">
@@ -115,7 +115,7 @@
                             <div class="row">
                               <div class="col-12 col-md-auto text-center">
                                 <label class="radio-btn">
-                                  <input class="radio-btn__control" id="rbtn11" type="radio" name="childrean" data-childrean="1" value="1">
+                                  <input class="radio-btn__control" id="rbtn11" type="radio" name="childrean" data-childrean="1" value="1" checked>
                                   <label class="radio-btn__box" for="rbtn11"><i class="radio-btn__icon"> </i>1 ребенок</label>
                                 </label>
                               </div>
@@ -131,6 +131,13 @@
                       </div>
                       <div class="row">
                         <div class="col-24 col-md-12" data-childrean-item="0">
+                          <fieldset class="form-group">
+                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child1[gender]" required>
+                              <option></option>
+                              <option value="1">Мужской</option>
+                              <option value="0">Женский</option>
+                            </select>
+                          </fieldset>
                           <fieldset class="form-group" id="new1">
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child1[name][male]" data-gender="male" required>
                               <option></option>
@@ -152,13 +159,6 @@
                             </select>
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child1[newname][name]">
                           </fieldset>
-                          <fieldset class="form-group">
-                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child1[gender]" required>
-                              <option></option>
-                              <option value="1">Мужской</option>
-                              <option value="0">Женский</option>
-                            </select>
-                          </fieldset>
                           <label class="radio-btn radio-btn--size">
                             <input class="radio-btn__control" id="rbtn21" type="checkbox" name="child1[newname][trigger]" data-new-name="#new1">
                             <label class="radio-btn__box" for="rbtn21"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
@@ -168,6 +168,13 @@
                           </div>
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
+                          <fieldset class="form-group">
+                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child2[gender]" required>
+                              <option></option>
+                              <option value="1">Мужской</option>
+                              <option value="0">Женский</option>
+                            </select>
+                          </fieldset>
                           <fieldset class="form-group" id="new2">
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][male]" data-gender="male" required>
                               <option></option>
@@ -188,13 +195,6 @@
                               <?php } ?>
                             </select>
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child2[newname][name]">
-                          </fieldset>
-                          <fieldset class="form-group">
-                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child2[gender]" required>
-                              <option></option>
-                              <option value="1">Мужской</option>
-                              <option value="0">Женский</option>
-                            </select>
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
                             <input class="radio-btn__control" id="rbtn22" type="checkbox" name="child2[newname][trigger]" data-new-name="#new2">
@@ -246,16 +246,16 @@
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Ваша скидка:</span></div>
-                              <div class="col-auto"><span class="nt-price">-40 грн</span></div>
+                              <div class="col-auto"><span class="nt-price">-150 грн</span></div>
                             </div>
                             <div class="row justify-content-between total-row">
-                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 17 грн</a>
-                                <input class="js-discount" type="hidden" name="discount" value=<?=$discount?>>
+                              <div class="col-auto">
+                                <input class="js-discount" type="hidden" name="discount" value="<?=$discount?>">
                               </div>
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
-                              <div class="col-auto"><span class="nt-price">160 грн</span></div>
+                              <div class="col-auto"><span class="nt-price">100 грн</span></div>
                             </div>
                           </div>
                         </div>
@@ -271,10 +271,6 @@
                             <input class="form-control" type="email" name="email" placeholder="Введите ваш E-mail">
                           </fieldset>
                           <p class="tabs__text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
-                          <fieldset class="form-group text-center text-md-left tabs__promo"><a class="sr-only link js-promo" href="#promo">Ввести промокод</a>
-                            <input class="form-control form-control--promo" id="promo" type="text" name="promocode" placeholder="Введите промокод, если он есть у вас">
-                            <div class="result"></div>
-                          </fieldset>
                         </div>
                         <div class="col-24">
                           <div class="btn-groups form__btn-groups">
@@ -366,44 +362,41 @@
     </div>
     <!-- Cropping modal-->
     <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+      <div class="modal-dialog modal-lg"> 
+        <div class="modal-content modal-content--default">
           <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
             <div class="modal-body">
-              <div class="avatar-body">
-                <!-- Upload image and data-->
-                <div class="avatar-upload">
-                  <input class="avatar-src" type="hidden" name="avatar_src">
-                  <input class="avatar-data" type="hidden" name="avatar_data">
-                  <input class="avatar-filename" type="hidden" name="avatar_filename">
-                  <label for="avatarInput">Local upload</label>
-                  <input class="avatar-input" id="avatarInput" type="file" name="avatar_file">
-                </div>
+              <!-- Upload image and data-->
+              <div class="avatar-upload">
+                <input class="avatar-src" type="hidden" name="avatar_src">
+                <input class="avatar-data" type="hidden" name="avatar_data">
+                <input class="avatar-filename" type="hidden" name="avatar_filename">
                 <!-- Crop and preview-->
                 <div class="row">
                   <div class="col-24">
-                    <div class="avatar-wrapper"></div>
+                    <div class="avatar-wrapper avatar__wrapper"></div>
                   </div>
                 </div>
-                <div class="row justify-content-center avatar-btns">
-                  <div class="col-24 col-md-auto">
-                    <div class="btn-groups">
-                      <button class="btn btn--default" type="button" data-method="rotate" data-option="90" title="Rotate 90 degrees"><i class="fa fa-rotate-left"></i></button>
-                      <button class="btn btn--default" type="button" data-method="rotate" data-option="-90" title="Rotate -90 degrees"><i class="fa fa-rotate-right"></i></button>
+                <div class="row justify-content-center align-items-center avatar-btns">
+                  <div class="col-24 col-lg-17">
+                    <div class="btn-groups btn-groups--group">
+                      <label class="btn btn--primary btn--upload btn-upload" for="avatarInput" title="Upload image file">
+                        <input class="sr-only avatar-input" id="avatarInput" type="file" name="avatar_file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="Import image with Blob URLs"><span class="fa fa-upload"></span></span>
+                      </label>
+                      <button class="btn btn--primary" type="button" data-method="zoom" data-option="0.1" title="Zoom In"><span class="docs-tooltip" data-toggle="tooltip" title="" data-title="cropper.zoom(0.1)"><i class="fa fa-search-plus"></i></span></button>
+                      <button class="btn btn--primary" type="button" data-method="zoom" data-option="-0.1" title="Zoom Out"><span class="docs-tooltip" data-toggle="tooltip" title="" data-title="cropper.zoom(-0.1)"><i class="fa fa-search-minus"></i></span></button>
+                      <button class="btn btn--primary" type="button" data-method="rotate" data-option="90" title="Rotate 90 degrees"><i class="fa fa-rotate-left"></i></button>
+                      <button class="btn btn--primary" type="button" data-method="rotate" data-option="-90" title="Rotate -90 degrees"><i class="fa fa-rotate-right"></i></button>
+                      <label class="btn btn--primary avatar__checkbox-group avatar-ratio" for="aspectRatio0">
+                        <input class="sr-only avatar-ratio__control" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5" checked><span class="docs-tooltip avatar-ratio__text" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 3 / 2">3:2</span>
+                      </label>
+                      <label class="btn btn--primary avatar__checkbox-group avatar-ratio" for="aspectRatio1">
+                        <input class="sr-only avatar-ratio__control" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip avatar-ratio__text" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 2 / 3">2:3</span>
+                      </label>
                     </div>
                   </div>
-                  <div class="col-24 col-md-auto">
-                    <div class="btn-group d-flex flex-nowrap avatar-ratio" data-toggle="buttons">
-                      <label class="btn btn-primary active">
-                        <input class="sr-only" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 3 / 2">3:2</span>
-                      </label>
-                      <label class="btn btn-primary">
-                        <input class="sr-only" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 2 / 3">2:3</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-24 col-md-auto">
-                    <button class="btn btn--default avatar-save" type="submit">Обрезать</button>
+                  <div class="col-24 col-md-15 col-lg-7">
+                    <button class="btn btn--default btn--size avatar-save" type="submit">Обрезать</button>
                   </div>
                 </div>
               </div>

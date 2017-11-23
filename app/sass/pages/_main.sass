@@ -275,6 +275,8 @@ button
   background: url(../img/headerbg.jpg) no-repeat
   background-size: cover
   overflow: hidden
+  &--100vh
+    min-height: 100vh
 +r(768)
   .header
     &__box
@@ -1517,6 +1519,8 @@ button
     flex-direction: row
     justify-cotnent: center
     align-items: center
+    flex-grow: 1
+    width: 100%
     border-radius: inherit
     padding: 10px
     height: 100%

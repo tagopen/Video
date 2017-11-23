@@ -1750,6 +1750,10 @@ button:focus {
   overflow: hidden;
 }
 
+.header--100vh {
+  min-height: 100vh;
+}
+
 @media only screen and (min-width: 768px) {
   .header__box {
     height: 100vh;
@@ -3706,6 +3710,11 @@ button:focus {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
   -webkit-border-radius: inherit;
           border-radius: inherit;
   padding: 10px;
