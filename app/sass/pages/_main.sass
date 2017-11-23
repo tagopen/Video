@@ -182,8 +182,14 @@ button
     background-image: linear-gradient(to top, #fb6b00 0%, #ff8221 35%, #ff8700 78%, #ffffff 100%)
     flex-grow: 3
     &:hover
-
       background-image: linear-gradient(to top, #fb6b00 0%, #ff8221 35%, #ff8700 78%, #ffffff 100%)
+
+  &--file
+    position: relative
+    cursor: pointer   
+    margin-bottom: 50px  
+    text-align: left
+    background-color: transparent !important
   &--size
     width: 100%
   &--sm
@@ -194,6 +200,7 @@ button
     top: 50%
     font-size: 20px
     margin-top: -10px
+    z-index: -1
 .btn-groups
   position: relative
   z-index: 1
@@ -1445,11 +1452,6 @@ button
   &:focus
     text-decoration: none
     border-bottom: 1px dashed #0056b3
-.btn--file
-  position: relative
-  cursor: pointer   
-  margin-bottom: 50px  
-  text-align: left
 +r(768)
   .tabs
     margin: 0 -39px

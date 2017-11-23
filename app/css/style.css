@@ -1590,6 +1590,14 @@ button:focus {
   background-image: linear-gradient(to top, #fb6b00 0%, #ff8221 35%, #ff8700 78%, #ffffff 100%);
 }
 
+.btn--file {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 50px;
+  text-align: left;
+  background-color: transparent !important;
+}
+
 .btn--size {
   width: 100%;
 }
@@ -1604,6 +1612,7 @@ button:focus {
   top: 50%;
   font-size: 20px;
   margin-top: -10px;
+  z-index: -1;
 }
 
 .btn-groups {
@@ -3583,13 +3592,6 @@ button:focus {
 .quiz__btn:hover, .quiz__btn:focus {
   text-decoration: none;
   border-bottom: 1px dashed #0056b3;
-}
-
-.btn--file {
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 50px;
-  text-align: left;
 }
 
 @media only screen and (min-width: 768px) {
