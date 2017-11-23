@@ -274,7 +274,7 @@
                             <div class="row">
                               <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
                                 <div class="btn-groups">
-                                  <button class="btn btn--default btn--sm" name="form" value="Order" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Оформить</button>
+                                  <button class="btn btn--default btn--sm" name="form" value="Order" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Перейти к оплате</button>
                                 </div>
                               </div>
                               <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
