@@ -40,11 +40,15 @@
       //DB::$dbName = 'video';
       echo amo_route($_POST); // Добавлено для тестирования интеграции
       
-      DB::$user = 'b18152559_admin';
-      DB::$password = '7I7k6L7y';
-      DB::$dbName = 'b18152559_video';
+      //DB::$user = 'b18152559_admin';
+      //DB::$password = '7I7k6L7y';
+      //DB::$dbName = 'b18152559_video';
 
-      DB::$host = 'localhost'; //defaults to localhost if omitted
+      DB::$user = 'shunkin_videpp';
+      DB::$password = 'dqrgxfj5';
+      DB::$dbName = 'shunkin_videpp';
+
+      DB::$host = 'shunkin.mysql.tools'; //defaults to localhost if omitted
       DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 
       $this -> post = $this -> filterDataForm();
