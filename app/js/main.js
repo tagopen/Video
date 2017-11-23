@@ -778,7 +778,7 @@
     
     $.ajax(url, {
       type: 'post',
-      data: data,
+      data: data.get["promocode"],
       dataType: 'json',
       processData: false,
       contentType: false,

@@ -23,7 +23,9 @@
   }
 
   class ModelClass {
+    private $post;
     private $data;
+    private $price;
 
     private $error;
     private $msg;
@@ -33,29 +35,31 @@
 
     function __construct() {
       
-      DB::$user = 'root';
-      DB::$password = '';
-      DB::$dbName = 'video';
-        echo amo_route($_POST); // Добавлено для тестирования интеграции
+      //DB::$user = 'root';
+      //DB::$password = '';
+      //DB::$dbName = 'video';
+      echo amo_route($_POST); // Добавлено для тестирования интеграции
       
-      //DB::$user = 'b18152559_admin';
-      //DB::$password = '7I7k6L7y';
-      //DB::$dbName = 'b18152559_video';
+      DB::$user = 'b18152559_admin';
+      DB::$password = '7I7k6L7y';
+      DB::$dbName = 'b18152559_video';
 
       DB::$host = 'localhost'; //defaults to localhost if omitted
       DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 
-      $this -> setData();
-      $this -> setTotalPrice();
-
-      if ($this -> data["form"]) {
-        if ($this -> data["form"] == "Order") {
+      $this -> post = $this -> filterDataForm();
+      if ($this -> post["form"]) {
+        $this -> data = $this -> validateDataForm($this -> post );
+        $this -> setTotalPrice($this -> data["price"]);
+        if ($this -> post["form"] == "Order") {
           $this -> setOrder();
         }
-
         //$this -> sendMail();
+      } elseif ($this -> post["promocode"]) {
+        $this -> promocodeIsValid($this -> post["promocode"]);
+      } elseif ($this -> post["discount"]) {
+        $this -> discountIsValid($this -> post["discount"]);
       }
-
     }
 
     private function setOrder() {
@@ -67,7 +71,7 @@
         'firstname'      => $this -> data['firstname'],
         'email'          => $this -> data['email'],
         'telephone'      => $this -> data['phone'],
-        'price'          => $this -> data['price'],
+        'total_price'          => $this -> data['price'],
         'coupon_id'      => $_SESSION['promocode']["promocode_id"],
         'discount_id'    => $_SESSION['discount']['discount_id'],
         'date_added'     => DB::sqleval("NOW()"),
@@ -85,8 +89,8 @@
 
     }
 
-    private function setTotalPrice() {
-      $totalPrice = 0.0000;
+    private function setTotalPrice($totalPrice = 0.0000) {
+
       $product = ModelClass::getProductPrice();
       if($product) {
         $totalPrice += $product['price'];
@@ -256,95 +260,133 @@
       die;
     }
 
-    private function fieldIsValid($post, $key, $default = null) {
-      return isset($post[$key]) ? $post[$key] : $default;
-    }
-
-    private function validateChild($child) {
+    private function validateChild($data) {
       $result = array();
-      $gender = (int)ModelClass::fieldIsValid($child, "gender");
-
-      $newname = ModelClass::fieldIsValid($child["newname"], "name");
-      $trigger_newname = ModelClass::fieldIsValid($child["newname"], "trigger");
+      $gender = (int)$data["gender"];
 
       if ($gender === 1) {
-        $name = ModelClass::fieldIsValid($child["name"], "male");
         $result["gender"] = 1;
       } elseif ($gender === 0) {
-        $name = ModelClass::fieldIsValid($child["name"], "female");
         $result["gender"] = 0;
+      } else {
+        $this -> error = "Неправильно указан пол ребенка";
+        return;
       }
+
+
+
+      if ($data["newname"]) {
+        $newname = $data["newname"]["name"];
+
+        $trigger_newname = $data["newname"]["trigger"];
+        if (!$newname && !$trigger_newname) {
+          $this -> error = "Не заполнено поле с именем ребенка";
+          return;
+        }
+      }
+
+
 
       if ($trigger_newname) {
         $result["newname"] = $newname;
         ModelClass::setChildreanName($result);
       } else {
-        $result["name"] = $name;
+        $result["name"] = $data["name"];
       }
+
       return $result;
     }
 
-    private function setData() {
+    private function fieldIsValid($post, $key, $default = null) {
+      return isset($post[$key]) ? trim($post[$key]) : $default;
+    }
 
+    private function filterDataForm() {
       $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+      $data = array();
       if (!$post) {
         $this -> error = "Форма пустая";
         return;
-      } else {
-        $childrean = (int)ModelClass::fieldIsValid($post, "childrean", 1);
-        $this -> data["childrean"] = $childrean;
-        $child1 = ModelClass::fieldIsValid($post, "child1");
-        $child2 = ModelClass::fieldIsValid($post, "child2");
-        if (!($child1 || $child2)) {
-          $this -> error = "Данные о ребенке - отсутствуют";
-          return;
-        }
-
-        if ($child1) {
-          $this -> data["child1"] = ModelClass::validateChild($child1);
-        } 
-        if ($child2 && $childrean === 2){
-          $this -> data["child2"] = ModelClass::validateChild($child2);
-        }
-
-        $image = ModelClass::fieldIsValid($post, "image");
-        if (!($image)) {
-          $this -> error = "Изображение не загружено";
-          return;
-        }
-        $this -> data["image"] =  $image;
-
-        $firstname = ModelClass::fieldIsValid($post, "firstname");
-        if (!($firstname)) {
-          $this -> error = "Введите ваше имя";
-          return;
-        }
-        $this -> data["firstname"] =  $firstname;
-
-        $phone = ModelClass::fieldIsValid($post, "phone");
-        if (!($phone)) {
-          $this -> error = "Введите ваш телефон";
-          return;
-        }
-        $this -> data["phone"] =  $phone;
-
-        $email = ModelClass::fieldIsValid($post, "email");
-        if (!($email)) {
-          $this -> error = "Введите ваш email";
-          return;
-        }
-        $this -> data["email"] =  $email;
-
-        $promocode = ModelClass::fieldIsValid($post, "promocode");
-        $this -> data["promocode"] =  ModelClass::promocodeIsValid($promocode) ? $promocode : null;
-
-        $discount = ModelClass::fieldIsValid($post, "discount");
-        $this -> data["discount"] =  ModelClass::discountIsValid($discount) ? $discount : null;
-
-        $form = ModelClass::fieldIsValid($post, "form");
-        $this -> data["form"] =  $form;
-
       }
+
+      $data = ModelClass::recursivefilterForm($post);
+      return $data;
+    }
+
+    private function recursivefilterForm($data){
+        $result = array();
+        foreach ($data as $key => $value) {
+          if(is_array($value)) {            
+            $result[$key] = ModelClass::recursivefilterForm($value);
+          } else {
+            $result[$key] = ModelClass::fieldIsValid($data, $key);
+          }
+        }
+
+        return $result;
+    }
+
+    private function validateDataForm($post) {
+      $data = array();
+
+      $childrean = (int)$post['childrean'];
+      $data['childrean'] = $childrean;
+
+      $child1 = $post['child1'];
+      $child2 = $post['child2'];
+
+
+      if (!($child1 || $child2)) {
+        $this -> error = "Данные о ребенке - отсутствуют";
+        return;
+      }
+
+      if ($child1) {
+        $data['child1'] = ModelClass::validateChild($child1);
+      } 
+      if ($child2 && $childrean === 2){
+        $data['child2'] = ModelClass::validateChild($child2);
+      }
+
+
+      $image = $post["image"];
+      if (!$image) {
+        $this -> error = "Изображение не загружено";
+        return;
+      }
+      $data["image"] = $image;
+
+      $firstname = $post["firstname"];
+      if (!($firstname)) {
+        $this -> error = "Введите ваше имя";
+        return;
+      }
+      $data["firstname"] = $firstname;
+
+      $phone = $post["phone"];
+      if (!($phone)) {
+        $this -> error = "Введите ваш телефон";
+        return;
+      }
+      $data["phone"] = $phone;
+
+      $email =  $post["email"];
+      if (!($email)) {
+        $this -> error = "Введите ваш email";
+        return;
+      }
+      $data["email"] = $email;
+
+      $promocode = $post["promocode"];
+      $data["promocode"] =  ModelClass::promocodeIsValid($promocode) ? $promocode : null;
+
+      $discount = $post["discount"];
+      $data["discount"] =  ModelClass::discountIsValid($discount) ? $discount : null;
+
+      $form = $post["form"];
+      $data["form"] = $form;
+      
+      return $data;
     }
   }
 
