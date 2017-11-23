@@ -66,7 +66,7 @@
 <![endif]-->
   </head>
   <body class="body">
-    <header class="header">
+    <header class="header h-100">
       <article class="intro">
         <section class="intro__menu menu">
           <div class="container">
