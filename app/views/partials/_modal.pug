@@ -42,23 +42,26 @@
           iframe.modal__iframe(src="https://www.youtube.com/embed/kg-qEHftDd8" frameborder="0" gesture="media" allowfullscreen)
 // Cropping modal
 #avatar-modal.modal.fade(aria-hidden='true', aria-labelledby='avatar-modal-label', role='dialog', tabindex='-1')
-  .modal-dialog.modal-lg.avatar-modal    
-    .modal-content
+  .modal-dialog.modal-lg 
+    .modal-content.modal-content--default
       form.avatar-form(action='crop.php', enctype='multipart/form-data', method='post')
         .modal-body
-          .avatar-body
-            // Upload image and data
-            .avatar-upload
-              input.avatar-src(type='hidden', name='avatar_src')
-              input.avatar-data(type='hidden', name='avatar_data')
-              input.avatar-filename(type='hidden', name='avatar_filename')
+          // Upload image and data
+          .avatar-upload
+            input.avatar-src(type='hidden', name='avatar_src')
+            input.avatar-data(type='hidden', name='avatar_data')
+            input.avatar-filename(type='hidden', name='avatar_filename')
             // Crop and preview
             .row
               .col-24
-                .avatar-wrapper
+                .avatar-wrapper.avatar__wrapper
             .row.justify-content-center.align-items-center.avatar-btns
-              .col-24.col-md-auto
-                .btn-group.avatar-group.btn-group
+              .col-24.col-lg-17
+                .btn-groups.btn-groups--group
+                  label.btn.btn--primary.btn--upload.btn-upload(for='avatarInput', title='Upload image file')
+                    input#avatarInput.sr-only.avatar-input(type='file', name='avatar_file', accept='.jpg,.jpeg,.png,.gif,.bmp,.tiff')
+                    span.docs-tooltip(data-toggle='tooltip', title='', data-original-title='Import image with Blob URLs')
+                      span.fa.fa-upload
                   button.btn.btn--primary(type='button', data-method='zoom', data-option='0.1', title='Zoom In')
                     span.docs-tooltip(data-toggle='tooltip', title='', data-title='cropper.zoom(0.1)')
                       i.fa.fa-search-plus
@@ -69,19 +72,14 @@
                     i.fa.fa-rotate-left
                   button.btn.btn--primary(type='button', data-method='rotate', data-option='-90', title='Rotate -90 degrees')
                     i.fa.fa-rotate-right
-                  label.btn.btn--primary.avatar-ratio
-                    input#aspectRatio0.sr-only(type='radio', name='aspectRatio', value='1.5')
-                    span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='', data-original-title='aspectRatio: 3 / 2') 3:2
-                  label.btn.btn--primary.avatar-ratio
-                    input#aspectRatio1.sr-only(type='radio', name='aspectRatio', value='0.66666666666')
-                    span.docs-tooltip(data-toggle='tooltip', data-animation='false', title='', data-original-title='aspectRatio: 2 / 3') 2:3
-                  label.btn.btn--primary.btn-upload(for='avatarInput', title='Upload image file')
-                    input#avatarInput.sr-only.avatar-input(type='file', name='avatar_file', accept='.jpg,.jpeg,.png,.gif,.bmp,.tiff')
-                    span.docs-tooltip(data-toggle='tooltip', title='', data-original-title='Import image with Blob URLs')
-                      span.fa.fa-upload
-
-              .col-24.col-md-auto
-                button.btn.btn--default.avatar-save(type='submit') Обрезать
+                  label(for="aspectRatio0").btn.btn--primary.avatar__checkbox-group.avatar-ratio
+                    input#aspectRatio0.sr-only.avatar-ratio__control(type='radio', name='aspectRatio', value='1.5', checked)
+                    span.docs-tooltip.avatar-ratio__text(data-toggle='tooltip', data-animation='false', title='', data-original-title='aspectRatio: 3 / 2') 3:2
+                  label(for="aspectRatio1").btn.btn--primary.avatar__checkbox-group.avatar-ratio
+                    input#aspectRatio1.sr-only.avatar-ratio__control(type='radio', name='aspectRatio', value='0.66666666666')
+                    span.docs-tooltip.avatar-ratio__text(data-toggle='tooltip', data-animation='false', title='', data-original-title='aspectRatio: 2 / 3') 2:3
+              .col-24.col-md-15.col-lg-7
+                button.btn.btn--default.btn--size.avatar-save(type='submit') Обрезать
 
 #facebook.modal.fade(aria-hidden='true', aria-labelledby='avatar-modal-label', role='dialog', tabindex='-1')
   .modal-dialog.modal-lg

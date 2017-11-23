@@ -125,11 +125,14 @@ button
   &:hover,
   &:focus
     background-position: 50% 100%
-    box-shadow: none
     color: #fff
     text-decoration: none
   &:hover
     background-image: linear-gradient(to top, #bc692b*1.15 0%, #cf752f*1.15 35%, #f4ab59*1.15 78%, #fcd29d*1.15 100%)
+  &:active
+    background-image: linear-gradient(to top, #fab657 0%, #ee8736 35%, #c66f2d 78%, #fff2b5 100%) !important
+    background-position: 80% 100%
+
   &--default
     margin-bottom: 25px
     padding: 15px 30px 
@@ -168,14 +171,19 @@ button
       &:after
         transform: translateY(-3px)
   &--primary
-
     margin-bottom: 25px
-    padding: 15px 30px 
-    min-height: 61px
+    padding: 10px
     box-shadow: inset 0 1px 5px #d28743, inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29)
     background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%)
     background-position: 50% 0%
     border-radius: 61px
+    font-size: 14px
+  &--upload
+    background-image: linear-gradient(to top, #fb6b00 0%, #ff8221 35%, #ff8700 78%, #ffffff 100%)
+    flex-grow: 3
+    &:hover
+
+      background-image: linear-gradient(to top, #fb6b00 0%, #ff8221 35%, #ff8700 78%, #ffffff 100%)
   &--size
     width: 100%
   &--sm
@@ -189,10 +197,35 @@ button
 .btn-groups
   position: relative
   z-index: 1
+  &--group
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    align-items: stretch
+    justify-cotnent: center
+    &> .btn
+      flex-basis: 0
+      flex-grow: 1
+      max-width: 100%
+      &:first-child
+        margin-left: 0
+      &.btn+.btn
+        margin-left: -1px
+      &:first-child:not(:last-child)
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+      &:last-child:not(:first-child)
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+      &:not(:first-child):not(:last-child)
+        border-radius: 0
 +r(768)
   .btn
     font-size: 20px
     line-height: 26px
+    &--primary
+      padding: 15px
+
 .hidden-accessible
   border: 0 !important
   clip: rect(0 0 0 0) !important
@@ -1204,15 +1237,21 @@ button
     font-size: 30px
 .modal-content
   padding: 25px 15px
+  &--default
+  padding: 25px 15px
 .sv-descr
   font: 300 16px/24px $main-font
   color: #212121
 +r(768)
   .modal-content
     padding: 54px 80px  
+    &--default
+      padding: 35px 25px
 +r(992)
   .modal-content
     padding: 61px 98px 
+    &--default
+      padding: 35px 25px
 +r(1200)
   .modal
     &__close
@@ -1457,95 +1496,45 @@ button
     max-height: 300px
     margin: auto
     display: block
-.avatar-view
-  display: block
-.avatar-modal
-  max-width: 100%
-.avatar-body
-  padding-right: 15px
-  padding-left: 15px
-
-.avatar-upload
-  overflow: hidden
-  label
-    display: block
-    float: left
-    clear: left
-    width: 100px
-  input
-    display: block
-
-.avatar-alert
-  margin-top: 10px
-  margin-bottom: 10px
-
-.avatar-wrapper
-  height: 364px
-  width: 100%
-  margin-top: 15px
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25)
-  background-color: #fcfcfc
-  overflow: hidden
-  img
-    display: block
-    height: auto
-    max-width: 100%
+  &__wrapper
+    height: 164px
+    width: 100%
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25)
+    background-color: #fcfcfc
+    overflow: hidden
+    img
+      display: block
+      height: auto
+      max-width: 100%
+.avatar-ratio
+  padding: 0
+  background: none
+  &__control:checked
+    &+.avatar-ratio__text
+      background: #fab655 * 1.1
+  &__text
+    display: flex
+    flex-direction: row
+    justify-cotnent: center
+    align-items: center
+    border-radius: inherit
+    padding: 10px
+    height: 100%
+    box-shadow: inset 0 1px 5px #d28743, inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29)
+    background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%)
+    &:hover
+      background-image: linear-gradient(to top, #bc692b*1.15 0%, #cf752f*1.15 35%, #f4ab59*1.15 78%, #fcd29d*1.15 100%)
+    &:active
+      background-image: linear-gradient(to top, #fab657 0%, #ee8736 35%, #c66f2d 78%, #fff2b5 100%) !important
+      background-position: 80% 100%
 
 .avatar-preview
-  float: left
-  margin-top: 15px
-  margin-right: 15px
-  border: 1px solid #eee
-  border-radius: 4px
-  background-color: #fff
-  overflow: hidden
-  &:hover
-    border-color: #ccf
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15)
   img
     width: 100%
-
-.preview-lg
-  height: 184px
-  width: 184px
-  margin-top: 15px
-
-.preview-md
-  height: 100px
-  width: 100px
-
-.preview-sm
-  height: 50px
-  width: 50px
-.avatar-btn
-  padding: 15px 19px
-  &:before,
-  &:after
-    content: none 
-  &:hover,
-  &:focus
-    background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%)
-  &.active
-    box-shadow: none !important  
-  input:checked + span
-    background: red !important
-.avatar-group
-  padding-top: 20px  
-@media (min-width: 768px)
-  .avatar-upload
-    input
-      margin-left: 110px
-  .avatar-btn
-    padding: 15px 30px
-@media (min-width: 992px)
-  .avatar-preview
-    float: none
 
 .avatar-btns
   margin-top: 30px
   margin-bottom: 15px
-  .btn-group
-    margin-right: 5px
 
 .loading
   display: none
@@ -1556,8 +1545,20 @@ button
   left: 0
   background: #fff url("../img/icons/loading.gif") no-repeat center center
   opacity: .75
-  filter: alpha(opacity = 75)
   z-index: 20140628
++r(768)
+  .avatar
+    &__checkbox-group
+      padding: 0
+    &__ratio
+      padding: 15px
+    &__wrapper
+      height: 264px
++r(992)
+  .avatar
+
+    &__wrapper
+      height: 364px
 
 +comment("friday page style")
 .header-friday

@@ -952,43 +952,41 @@
     </div>
     <!-- Cropping modal-->
     <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
-      <div class="modal-dialog modal-lg avatar-modal">   
-        <div class="modal-content">
+      <div class="modal-dialog modal-lg"> 
+        <div class="modal-content modal-content--default">
           <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
             <div class="modal-body">
-              <div class="avatar-body">
-                <!-- Upload image and data-->
-                <div class="avatar-upload">
-                  <input class="avatar-src" type="hidden" name="avatar_src">
-                  <input class="avatar-data" type="hidden" name="avatar_data">
-                  <input class="avatar-filename" type="hidden" name="avatar_filename">
-                </div>
+              <!-- Upload image and data-->
+              <div class="avatar-upload">
+                <input class="avatar-src" type="hidden" name="avatar_src">
+                <input class="avatar-data" type="hidden" name="avatar_data">
+                <input class="avatar-filename" type="hidden" name="avatar_filename">
                 <!-- Crop and preview-->
                 <div class="row">
                   <div class="col-24">
-                    <div class="avatar-wrapper"></div>
+                    <div class="avatar-wrapper avatar__wrapper"></div>
                   </div>
                 </div>
                 <div class="row justify-content-center align-items-center avatar-btns">
-                  <div class="col-24 col-md-auto">
-                    <div class="btn-group avatar-group btn-group">
+                  <div class="col-24 col-lg-17">
+                    <div class="btn-groups btn-groups--group">
+                      <label class="btn btn--primary btn--upload btn-upload" for="avatarInput" title="Upload image file">
+                        <input class="sr-only avatar-input" id="avatarInput" type="file" name="avatar_file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="Import image with Blob URLs"><span class="fa fa-upload"></span></span>
+                      </label>
                       <button class="btn btn--primary" type="button" data-method="zoom" data-option="0.1" title="Zoom In"><span class="docs-tooltip" data-toggle="tooltip" title="" data-title="cropper.zoom(0.1)"><i class="fa fa-search-plus"></i></span></button>
                       <button class="btn btn--primary" type="button" data-method="zoom" data-option="-0.1" title="Zoom Out"><span class="docs-tooltip" data-toggle="tooltip" title="" data-title="cropper.zoom(-0.1)"><i class="fa fa-search-minus"></i></span></button>
                       <button class="btn btn--primary" type="button" data-method="rotate" data-option="90" title="Rotate 90 degrees"><i class="fa fa-rotate-left"></i></button>
                       <button class="btn btn--primary" type="button" data-method="rotate" data-option="-90" title="Rotate -90 degrees"><i class="fa fa-rotate-right"></i></button>
-                      <label class="btn btn--primary avatar-ratio">
-                        <input class="sr-only" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 3 / 2">3:2</span>
+                      <label class="btn btn--primary avatar__checkbox-group avatar-ratio" for="aspectRatio0">
+                        <input class="sr-only avatar-ratio__control" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5" checked><span class="docs-tooltip avatar-ratio__text" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 3 / 2">3:2</span>
                       </label>
-                      <label class="btn btn--primary avatar-ratio">
-                        <input class="sr-only" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 2 / 3">2:3</span>
-                      </label>
-                      <label class="btn btn--primary btn-upload" for="avatarInput" title="Upload image file">
-                        <input class="sr-only avatar-input" id="avatarInput" type="file" name="avatar_file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="Import image with Blob URLs"><span class="fa fa-upload"></span></span>
+                      <label class="btn btn--primary avatar__checkbox-group avatar-ratio" for="aspectRatio1">
+                        <input class="sr-only avatar-ratio__control" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip avatar-ratio__text" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 2 / 3">2:3</span>
                       </label>
                     </div>
                   </div>
-                  <div class="col-24 col-md-auto">
-                    <button class="btn btn--default avatar-save" type="submit">Обрезать</button>
+                  <div class="col-24 col-md-15 col-lg-7">
+                    <button class="btn btn--default btn--size avatar-save" type="submit">Обрезать</button>
                   </div>
                 </div>
               </div>
