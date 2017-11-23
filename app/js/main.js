@@ -149,8 +149,10 @@
         // Tabs control button
         if (control === 'prev') {
           activeItem = activeItem - 1;
+          $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
         } else if (control === 'next') {
           activeItem = activeItem + 1;
+          $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
         } else if (control === 'index') {
           activeItem = parseInt(index, 10);
           $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
