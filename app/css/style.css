@@ -3804,3 +3804,44 @@ button:focus {
     text-align: left;
   }
 }
+
+/* ---------------------------------------- */
+/* S U C C E S S    P A G E    S T Y L E S  */
+/* ---------------------------------------- */
+.header--success {
+  background: url(../img/successbg.png) no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.header__box--success {
+  min-height: auto;
+}
+
+.success__title {
+  padding-top: 40px;
+  margin-bottom: 25px;
+  font: 400 30px/40px "Neumann", sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.success__title .ic {
+  display: block;
+}
+
+.success__fb {
+  min-height: 500px;
+}
+
+@media only screen and (min-width: 768px) {
+  .success__title {
+    font: 400 54px/60px "Neumann", sans-serif;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .success__title {
+    font: 400 60px/70px "Neumann", sans-serif;
+  }
+}

@@ -1,0 +1,40 @@
+header.header.header--success
+  section.header__box.header__box--success
+    .header__menu.menu
+      .container
+        - var navbar = page.header.menu
+        .row.flex-md-row-reverse.justify-content-between
+          .col-24.col-md-6
+            .header__call.h-call
+              .row.justify-content-center
+                .col-auto.col-md-24.text-left.text-md-right
+                  a.h-call__number.h-call__number--white(href!= navbar.number.href)!=navbar.number.tel
+          .col-24.col-md-14.col-lg-10
+            .header__logo.logo.logo--white
+              - var logo = navbar.logo
+              .row
+                .col-24.col-md-auto
+                  .logo__image
+                    img.img-fluid.logo__img(src!= logo.img.src, alt!= logo.img.alt)
+                .col-24.col-md-auto.logo__col.align-items-center  
+                  p.logo__text!= logo.text      
+    .header__content
+      .container
+        .row
+          .col-24.text-center
+            h2.success__title!= page.header.title
+              i.ic.ic--linear
+        .col-24
+          .success__fb.text-center
+            .fb-page(data-href='https://www.facebook.com/VideoPozdravlenie2018/', data-tabs='timeline', data-small-header='false', data-adapt-container-width='true', data-hide-cover='false', data-show-facepile='true')
+              blockquote.fb-xfbml-parse-ignore(cite='https://www.facebook.com/VideoPozdravlenie2018')
+                a(href='https://www.facebook.com/VideoPozdravlenie2018/')
+            #fb-root
+            script.
+              (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.10";
+              fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));   
