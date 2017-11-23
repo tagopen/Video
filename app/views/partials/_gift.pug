@@ -6,17 +6,25 @@ section.gift
     .row.justify-content-center
       .col-24.text-center
         .package
-          .package__box
-            .package__content 
-              i.ic.ic--candy.package__candy
-              i.ic.ic--confetti.package__confetti 
-              .package__image
-                img.img-fluid.package__img(src!= page.gift.box.img.src, alt!= page.gift.box.img.alt)
-              h3.package__type!= page.gift.box.type
-                i.ic.ic--linear-sm.package__icon.package__icon--left
-                i.ic.ic--linear-sm.package__icon.package__icon--right  
-              .package__info!= page.gift.box.info
-              .package__cost!= page.gift.box.cost
-              .package__price!= page.gift.box.price
-              .btn-groups
-                a.btn.btn--default.h-content__btn.package__btn(href="order.html")!= page.gift.box.btn.text  
+          .row
+            .col-24.col-lg-10.d-flex.align-items-center
+              .gift__box
+                .gift__text!= page.gift.text
+                .gift__image  
+                  i.ic.ic--percent
+            .col-24.col-lg-14        
+              .package__box
+                .package__bg
+                .package__content 
+                  i.ic.ic--candy.package__candy
+                  i.ic.ic--confetti.package__confetti 
+                  .package__image
+                    img.img-fluid.package__img(src!= page.gift.box.img.src, alt!= page.gift.box.img.alt)
+                  h3.package__type!= page.gift.box.type
+                    i.ic.ic--linear-sm.package__icon.package__icon--left
+                    i.ic.ic--linear-sm.package__icon.package__icon--right  
+                  .package__info!= page.gift.box.info
+                  .package__cost!= page.gift.box.cost
+                  .package__price!= page.gift.box.price
+                  .btn-groups
+                    a.btn.btn--default.h-content__btn.package__btn(href="order.html")!= page.gift.box.btn.text  

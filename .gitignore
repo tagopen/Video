@@ -23,3 +23,6 @@ settings.js
 
 # npm
 package-lock.json
+
+# amoCRM cookies & cache
+app/system/mail/lib/amocrm/*.dat

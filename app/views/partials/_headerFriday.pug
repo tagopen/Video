@@ -1,7 +1,7 @@
 header.header.header-friday
-  video.header-friday__video(poster="img/bgvideo.png"  autoplay loop muted)
-    source(src="video/video.webm" type="video/webm")
-    source(src="video/video.mp4" type="video/mp4")
+  //- video.header-friday__video(poster="img/bgvideo.png"  autoplay loop muted)
+  //-   source(src="video/video.webm" type="video/webm")
+  //-   source(src="video/video.mp4" type="video/mp4")
   section.header__box.header__box--friday
     .header__menu.menu
       .container
@@ -36,7 +36,7 @@ header.header.header-friday
                 .sell__old!= headContent.old
               .btn-groups.text-center.text-lg-left
                 a.btn.btn--default.h-content__btn.js-scroll-trigger(href= headContent.btn.target)!= headContent.btn.text
-          .col-24.col-lg-8
+          .col-24.col-lg-10.header-friday__col
             .d-flex.align-items-center.justify-content-center.h-100
               a.vd-video__play.mp-play.mp-play--friday(data-toggle="modal" href="#video__modal")
                 i.fa.fa-play.mp-play__icon(aria-hidden="true") 

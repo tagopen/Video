@@ -1111,19 +1111,19 @@
 .ic--ball:before {
   width: 101px;
   height: 118px;
-  background: url(../img/sprite.png) -865px -1024px no-repeat;
+  background: url(../img/sprite.png) -436px -1254px no-repeat;
 }
 
 .ic--box:before {
   width: 163px;
   height: 128px;
-  background: url(../img/sprite.png) -692px -1024px no-repeat;
+  background: url(../img/sprite.png) -263px -1254px no-repeat;
 }
 
 .ic--candy:before {
   width: 109px;
   height: 134px;
-  background: url(../img/sprite.png) -378px -1254px no-repeat;
+  background: url(../img/sprite.png) -378px -1392px no-repeat;
 }
 
 .ic--check:before {
@@ -1135,7 +1135,7 @@
 .ic--confetti:before {
   width: 105px;
   height: 187px;
-  background: url(../img/sprite.png) -263px -1254px no-repeat;
+  background: url(../img/sprite.png) -263px -1392px no-repeat;
 }
 
 .ic--gift-box:before {
@@ -1192,6 +1192,12 @@
   background: url(../img/sprite.png) -1086px -523px no-repeat;
 }
 
+.ic--percent:before {
+  width: 292px;
+  height: 163px;
+  background: url(../img/sprite.png) -344px -842px no-repeat;
+}
+
 .ic--sharik:before {
   width: 233px;
   height: 234px;
@@ -1207,7 +1213,7 @@
 .ic--year:before {
   width: 252px;
   height: 109px;
-  background: url(../img/sprite.png) -344px -842px no-repeat;
+  background: url(../img/sprite.png) -692px -1024px no-repeat;
 }
 
 /* svg icons */
@@ -2029,6 +2035,18 @@ button:focus {
   background-repeat: no-repeat;
 }
 
+.preview__title {
+  color: #212121;
+  font: 400 20px/30px "PF Din Text Pro", sans-serif;
+  margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .preview__title {
+    font: 400 30px/32px "PF Din Text Pro", sans-serif;
+  }
+}
+
 .form {
   text-align: center;
 }
@@ -2226,8 +2244,37 @@ button:focus {
 /* S E C T I O N    G I F T    S T Y L E    */
 /* ---------------------------------------- */
 .gift {
-  padding: 50px 0 60px;
+  padding: 50px 0 0;
   overflow: hidden;
+}
+
+.gift__box {
+  margin: 0 auto;
+}
+
+.gift__text {
+  color: #212121;
+  font: 400 30px/45px "Neumann", sans-serif;
+  margin-bottom: 25px;
+}
+
+.gift__text--span {
+  text-decoration: underline;
+}
+
+.gift__image {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+@media only screen and (min-width: 992px) {
+  .gift__text {
+    text-align: left;
+  }
+  .gift__image {
+    margin-bottom: 0;
+    text-align: left;
+  }
 }
 
 .package__box {
@@ -2294,6 +2341,25 @@ button:focus {
   margin-bottom: 25px;
 }
 
+.package__price--span {
+  position: relative;
+  margin-right: 25px;
+}
+
+.package__price--span:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 20px;
+  width: 40px;
+  height: 2px;
+  background: #212121;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 .package__candy {
   position: absolute;
   left: -110px;
@@ -2307,16 +2373,25 @@ button:focus {
 }
 
 @media only screen and (min-width: 576px) {
-  .package {
-    background: url(../img/giftbg.png) no-repeat;
-    background-size: contain;
-    background-position: center 160px;
-  }
   .package__content {
     width: 300px;
   }
   .package__box {
+    position: relative;
     width: 523px;
+  }
+  .package__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 768px;
+    left: 50%;
+    margin-left: -384px;
+    height: 100%;
+    background: url(../img/giftbg.png) no-repeat;
+    background-size: contain;
+    background-position: center 160px;
+    z-index: -1;
   }
 }
 
@@ -2337,7 +2412,7 @@ button:focus {
 /* -------------------------------------------- */
 .example {
   overflow: hidden;
-  padding: 93px 0 131px;
+  padding: 53px 0 131px;
   background: url(../img/giftbgs.png) no-repeat;
 }
 
@@ -3170,7 +3245,7 @@ button:focus {
 }
 
 .kid__content {
-  padding: 15px;
+  padding: 35px 15px 15px;
   -webkit-box-shadow: 0 0 140px rgba(250, 182, 85, 0.8);
           box-shadow: 0 0 140px rgba(250, 182, 85, 0.8);
 }
@@ -3193,7 +3268,7 @@ button:focus {
     max-width: 560px;
   }
   .kid__content {
-    padding: 50px;
+    padding: 80px 50px 10px;
   }
   .kid__icon {
     position: absolute;
@@ -3594,19 +3669,8 @@ button:focus {
 /* ---------------------------------------- */
 .header-friday {
   position: relative;
-}
-
-.header-friday:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  display: block;
-  background: url(../img/fridaybg.png) no-repeat;
+  background: url(../img/fridaybgmain.png) no-repeat;
   background-size: cover;
-  z-index: 15;
 }
 
 .header-friday__video {
@@ -3614,6 +3678,14 @@ button:focus {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .header-friday {
+    background: url(../img/fridaybg1920.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
 }
 
 .header__box--friday {
