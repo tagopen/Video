@@ -41,7 +41,7 @@
 
 
   // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
-  $('.js-timer').countdown('2017/12/31', function(event) {
+  $('.js-timer').countdown('2017/11/27', function(event) {
 
     var $this = $(this).html(event.strftime(''
       + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
@@ -339,6 +339,7 @@
     this.$btnToggle = $('.js-file');
     this.$avatarView = this.$container.find('.avatar-view');
     this.$avatar = this.$avatarView.find('img');
+    this.$avatarSrcImage = this.$avatarView.find('#image');
     this.$avatarModal = this.$modal;
     this.$loading = this.$container.find('.loading');
 
@@ -707,6 +708,7 @@
     cropDone: function () {
       this.$avatarForm.get(0).reset();
       this.$avatar.attr('src', this.url);
+      this.$avatarSrcImage.val(this.url);
       this.stopCropper();
       this.$avatarModal.modal('hide');
       this.$container.addClass(this.containerActiveClass);

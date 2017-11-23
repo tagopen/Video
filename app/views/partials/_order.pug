@@ -30,23 +30,23 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
       .row
         .col-24.col-md-12(data-childrean-item="0")
           fieldset#new1.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-1", data-gender="male" required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][male]", data-gender="male" required)
               option
-              option(value='1') Абрам
-              option(value='2') Авраам
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-1", data-gender="female")
+              option(value='Абрам') Абрам
+              option(value='Авраам') Авраам
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][female]", data-gender="female")
               option
-              option(value='1') Аврора
-              option(value='2') Агата
-            input.form-control(type='text', placeholder='Введите новое имя', name="child-name-new-1")
+              option(value='Аврора') Аврора
+              option(value='Агата') Агата
+            input.form-control(type='text', placeholder='Введите новое имя', name="child1[newname][name]")
 
           fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="gender-1", required)
+            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
               option
               option(value='1') Мужской
               option(value='0') Женский
           label.radio-btn.radio-btn--size
-            input#rbtn21.radio-btn__control(type='checkbox', name='new-name-1', data-new-name="#new1")
+            input#rbtn21.radio-btn__control(type='checkbox', name='child1[newname][trigger]', data-new-name="#new1")
             label.radio-btn__box(for='rbtn21')
               i.radio-btn__icon
               | Добавить имя ребенка
@@ -56,22 +56,22 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
 
         .col-24.col-md-12(data-childrean-item="1")
           fieldset#new2.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-2", data-gender="male", required)
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][male]", data-gender="male", required)
               option
-              option(value='1') Абрам
-              option(value='2') Авраам
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child-name-2", data-gender="female")
+              option(value='Абрам') Абрам
+              option(value='Авраам') Авраам
+            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][female]", data-gender="female")
               option
-              option(value='1') Аврора
-              option(value='2') Агата
-            input.form-control(type='text', placeholder='Введите новое имя', name="child-name-new-2")
+              option(value='Аврора') Аврора
+              option(value='Агата') Агата
+            input.form-control(type='text', placeholder='Введите новое имя', name="child2[newname][name]")
           fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="gender-2", required)
+            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
               option
               option(value='1') Мужской
               option(value='0') Женский
           label.radio-btn.radio-btn--size
-            input#rbtn22.radio-btn__control(type='checkbox', name='new-name-2', data-new-name='#new2')
+            input#rbtn22.radio-btn__control(type='checkbox', name='child2[newname][trigger]', data-new-name='#new2')
             label.radio-btn__box(for='rbtn22')
               i.radio-btn__icon
               | Добавить имя ребенка
@@ -89,6 +89,7 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
             // Current avatar
             .avatar-view.avatar__photo
               img.img-fluid.avatar__img(alt='Avatar')
+              input#image(type="hidden", name="image")
       .btn-groups.text-center
         .row
           .col-24.col-md-8.col-lg-6.text-center.text-md-left
@@ -113,7 +114,7 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
             .row.justify-content-between.total-row
               .col-auto
                 a.link.total-discount(href="#facebook", data-toggle="modal") Получить скидку 17 грн
-                input.js-discount(type="hidden")
+                input.js-discount(type="hidden", name="discount")
             .row.justify-content-between.total-row
               .col-auto
                 span.tb-price Итоговая цена:
@@ -122,7 +123,7 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
         .col-24.col-md-12.col-lg-10
           h2.heading.tabs__heading Контактные данные
           fieldset.form-group.form__group--select
-            input.form-control(type='text', name='name', placeholder='Введите ваше имя', required)
+            input.form-control(type='text', name='firstname', placeholder='Введите ваше имя', required)
           fieldset.form-group.form__group--select
             input.form-control(type='tel', name='phone', placeholder='Введите номер телефона', required)
           fieldset.form-group.form__group--select
@@ -137,7 +138,7 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
             .row
               .col-24.col-md-8.col-lg-6.text-center.text-md-left
                 .btn-groups
-                  button.btn.btn--default.btn--sm(name='form', value='Заказ', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Оформить
+                  button.btn.btn--default.btn--sm(name='form', value='Order', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Оформить
 
               .col-24.col-md-6.text-center.text-md-left
                 a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад

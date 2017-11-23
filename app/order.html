@@ -117,27 +117,27 @@
                       <div class="row">
                         <div class="col-24 col-md-12" data-childrean-item="0">
                           <fieldset class="form-group" id="new1">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-1" data-gender="male" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child1[name][male]" data-gender="male" required>
                               <option></option>
-                              <option value="1">Абрам</option>
-                              <option value="2">Авраам</option>
+                              <option value="Абрам">Абрам</option>
+                              <option value="Авраам">Авраам</option>
                             </select>
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-1" data-gender="female">
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child1[name][female]" data-gender="female">
                               <option></option>
-                              <option value="1">Аврора</option>
-                              <option value="2">Агата</option>
+                              <option value="Аврора">Аврора</option>
+                              <option value="Агата">Агата</option>
                             </select>
-                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child-name-new-1">
+                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child1[newname][name]">
                           </fieldset>
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="gender-1" required>
+                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child1[gender]" required>
                               <option></option>
                               <option value="1">Мужской</option>
                               <option value="0">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
-                            <input class="radio-btn__control" id="rbtn21" type="checkbox" name="new-name-1" data-new-name="#new1">
+                            <input class="radio-btn__control" id="rbtn21" type="checkbox" name="child1[newname][trigger]" data-new-name="#new1">
                             <label class="radio-btn__box" for="rbtn21"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
                           <div class="btn-groups text-center text-md-left">
@@ -146,27 +146,27 @@
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
                           <fieldset class="form-group" id="new2">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-2" data-gender="male" required>
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][male]" data-gender="male" required>
                               <option></option>
-                              <option value="1">Абрам</option>
-                              <option value="2">Авраам</option>
+                              <option value="Абрам">Абрам</option>
+                              <option value="Авраам">Авраам</option>
                             </select>
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child-name-2" data-gender="female">
+                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][female]" data-gender="female">
                               <option></option>
-                              <option value="1">Аврора</option>
-                              <option value="2">Агата</option>
+                              <option value="Аврора">Аврора</option>
+                              <option value="Агата">Агата</option>
                             </select>
-                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child-name-new-2">
+                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child2[newname][name]">
                           </fieldset>
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="gender-2" required>
+                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child2[gender]" required>
                               <option></option>
                               <option value="1">Мужской</option>
                               <option value="0">Женский</option>
                             </select>
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
-                            <input class="radio-btn__control" id="rbtn22" type="checkbox" name="new-name-2" data-new-name="#new2">
+                            <input class="radio-btn__control" id="rbtn22" type="checkbox" name="child2[newname][trigger]" data-new-name="#new2">
                             <label class="radio-btn__box" for="rbtn22"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
                         </div>
@@ -189,7 +189,9 @@
                         <div class="col-24 col-md-12">         
                           <div class="avatar" id="crop-avatar">
                             <!-- Current avatar-->
-                            <div class="avatar-view avatar__photo"><img class="img-fluid avatar__img" alt="Avatar"></div>
+                            <div class="avatar-view avatar__photo"><img class="img-fluid avatar__img" alt="Avatar">
+                              <input id="image" type="hidden" name="image">
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -217,7 +219,7 @@
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 17 грн</a>
-                                <input class="js-discount" type="hidden">
+                                <input class="js-discount" type="hidden" name="discount">
                               </div>
                             </div>
                             <div class="row justify-content-between total-row">
@@ -229,7 +231,7 @@
                         <div class="col-24 col-md-12 col-lg-10">
                           <h2 class="heading tabs__heading">Контактные данные</h2>
                           <fieldset class="form-group form__group--select">
-                            <input class="form-control" type="text" name="name" placeholder="Введите ваше имя" required>
+                            <input class="form-control" type="text" name="firstname" placeholder="Введите ваше имя" required>
                           </fieldset>
                           <fieldset class="form-group form__group--select">
                             <input class="form-control" type="tel" name="phone" placeholder="Введите номер телефона" required>
@@ -248,7 +250,7 @@
                             <div class="row">
                               <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
                                 <div class="btn-groups">
-                                  <button class="btn btn--default btn--sm" name="form" value="Заказ" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Оформить</button>
+                                  <button class="btn btn--default btn--sm" name="form" value="Order" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Оформить</button>
                                 </div>
                               </div>
                               <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>

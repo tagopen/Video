@@ -18,93 +18,94 @@
   }
 
   class ModelClass {
-    private $formNamePlace;
-    private $formNamePromocode;
     private $data;
+
     private $error;
     private $msg;
     private $result;
-    private $totalPrice;
+
+
 
     function __construct() {
       
-      //DB::$user = 'root';
-      //DB::$password = '';
-      //DB::$dbName = 'video';
+      DB::$user = 'root';
+      DB::$password = '';
+      DB::$dbName = 'video';
       
-      DB::$user = 'b18152559_admin';
-      DB::$password = '7I7k6L7y';
-      DB::$dbName = 'b18152559_video';
+      //DB::$user = 'b18152559_admin';
+      //DB::$password = '7I7k6L7y';
+      //DB::$dbName = 'b18152559_video';
 
       DB::$host = 'localhost'; //defaults to localhost if omitted
       DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 
-      $this -> totalPrice = 0.0000;
-
       $this -> setData();
-      $this -> getProductPrice();
-      $this -> promocodeIsValid($this -> data["promocode"]);
-      $this -> discountIsValid($this -> data["discount"]);
+      $this -> setTotalPrice();
+
       if ($this -> data["form"]) {
-        $this -> setOrder();
+        if ($this -> data["form"] == "Order") {
+          $this -> setOrder();
+        }
+
+        //$this -> sendMail();
       }
 
-      //$this -> sendMail();
     }
 
     private function setOrder() {
-      $product = ModelClass::productPrice();
-      if($product) {
-        $this -> totalPrice += $product['price'];
-      }
+
+      $image_id = $this -> setImage($this -> data["image"]);
+
+      DB::insert('order', array(
+        'order_image_id' => $image_id,
+        'firstname'      => $this -> data['firstname'],
+        'email'          => $this -> data['email'],
+        'telephone'      => $this -> data['phone'],
+        'price'          => $this -> data['price'],
+        'coupon_id'      => $_SESSION['promocode']["promocode_id"],
+        'discount_id'    => $_SESSION['discount']['discount_id'],
+        'date_added'     => DB::sqleval("NOW()"),
+        'date_modified'  => DB::sqleval("NOW()"),
+      ));
+
 
       if(isset($_SESSION['promocode'])) {
-        $this -> totalPrice += $_SESSION['promocode']['price'];
         unset($_SESSION['promocode']);
       }
 
       if(isset($_SESSION['discount'])) {
-        $this -> totalPrice += $_SESSION['discount']['price'];
         unset($_SESSION['discount']);
       }
 
-      $childrean = ModelClass::childreanCountPrice();
-      if (!is_null( $childrean)) {
-        $this -> totalPrice += $childrean;
+    }
+
+    private function setTotalPrice() {
+      $totalPrice = 0.0000;
+      $product = ModelClass::getProductPrice();
+      if($product) {
+        $totalPrice += $product['price'];
       }
 
-      $imageSrc = $this -> setImage($this -> data["image"]);
+      if(isset($_SESSION['promocode'])) {
+        $totalPrice += $_SESSION['promocode']['price'];
+      }
 
-      DB::insert('order', array(
-        'firstname' => $data['firstname'],
-        'email' => $data['email'],
-        'order_image_id' => $imageSrc,
-        'telephone' => $data['phone'],
-        'coupon_id' => $_SESSION['promocode']["promocode_id"],
-        'childrean_add' => $childrean,
-        'discount_id' => $_SESSION['discount']['discount_id'],
-        'date_added' => DB::sqleval("NOW()"),
-        'date_modified' => DB::sqleval("NOW()"),
-      ));
+      if(isset($_SESSION['discount'])) {
+        $totalPrice += $_SESSION['discount']['price'];
+      }
+
+      $childrean = ModelClass::childreanCountPrice();
+      if($childrean) {
+        $totalPrice += $childrean;
+      }
+
+      $this -> data["price"] = $totalPrice;
     }
 
     private function childreanCountPrice() {
-      $priceTrigger = false;
-
-      if ($this -> post["childrean"] && $this -> post["childrean"] == "2") {
-        $priceTrigger = true;
-      }
-
-      if ($this -> post["new-name-1"]) {
-        $priceTrigger = true;
-      }
-
-      if ($this -> post["new-name-2"]) {
-        $priceTrigger = true;
-      }
-
-      if ($priceTrigger) {
-        $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.name=%s", "childrean");
+      $trigger = ($this -> data["newname"] || $this -> data["childrean"] == 2) ? true : false;
+      if ($trigger) {
+        $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.name=%s  AND dc.date_start <= %t AND dc.date_end >= %t" , "childrean", date("Y-m-d"), date("Y-m-d"));
         if ($results) {
           foreach ($results as $row) {
             return $row['price'];
@@ -116,7 +117,7 @@
     }
 
     private function getDiscount($discount) {
-      $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.permission = %s AND dc.date_start <= %t AND dc.date_end >= %t ", "public", date("Y-m-d"), date("Y-m-d"));
+      $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.permission = %s AND dc.date_start <= %t AND dc.date_end >= %t", "public", date("Y-m-d"), date("Y-m-d"));
       if ($results) {
         foreach ($results as $row) {
           return $row["price"];
@@ -126,22 +127,42 @@
       }
     }
 
+    private function getChildreanName() {
+      $results = DB::query("SELECT cd.* FROM childrean AS cd");
+      if ($results) {
+        return $results;
+      } else {
+        return;
+      }
+    }
+
+    private function setChildreanName($child) {
+      DB::insert('childrean', array(
+        'firstname'      => $child['newname'],
+        'gender'         => $child['gender'],
+        'date_added'     => DB::sqleval("NOW()")
+      ));
+    }
+
     private function discountIsValid($discount) {
 
       if (empty($discount)) {
         return;
       }
 
-      $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.permission=%s AND dc.name=%s AND dc.date_start <= %t AND dc.date_end >= %t ", "private", $discount, date("Y-m-d"), date("Y-m-d"));
+      $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.name=%s AND dc.date_start <= %t AND dc.date_end >= %t ", $discount, date("Y-m-d"), date("Y-m-d"));
       if ($results) {
         foreach ($results as $row) {
             $_SESSION['discount']["discount_id"] = $row['discount_id'];
             $_SESSION['discount']["price"] = $row['price'];
+            return 1;
         }
       } else {
         if(isset($_SESSION['discount'])) {
           unset($_SESSION['discount']);
         }
+        $this -> error = "Скидка не активна!";
+        return;
       }
     }
 
@@ -155,181 +176,13 @@
                   "price" => $row['price']
                 );
         }
+      } else {
+        return;
       }
     }
     
     private function sendMail() {
-      $http_host = $_SERVER["HTTP_HOST"];
-      $body = "";
-      $data = array();
-
-      if ( substr($http_host, 0, 4)=="www.") {
-        $host_name = substr($http_host, 4);
-      } else {
-        $host_name = $http_host;
-      }
-      if (isset($_SERVER["HTTP_REFERER"])) {
-        $http_referer = $_SERVER["HTTP_REFERER"];
-      } else {
-        $http_referer = "";
-      }
-      define ("HTTP_SERVER", "http://" . $http_host . "/");
-      define ("HOST_NAME", $host_name);
-      define ("HTTP_REFERER", $http_referer);
-      $post = array( 
-        "host_name"     => HOST_NAME,
-        "host_dir"      => HTTP_SERVER,
-        "host_referer"  => HTTP_REFERER
-      );
-
-      
-      //header("Content-Type: text/html; charset=utf-8");
-      //echo "<pre>";
-      //var_dump($_POST);
-      //echo "</pre>";
-      //exit;
-
-
-
-      if ( (!empty($_POST["form"])) && (isset($_POST["form"])) ) {
-        $post["user_form"] = $_POST["form"];
-
-        $stack = array(
-          "key"   => "Форма: ",
-          "value" => $post["user_form"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["email"])) && (isset($_POST["email"])) ) {
-        $post["user_email"] = $_POST["email"];
-        $stack = array(
-          "key"   => "Email: ",
-          "value" => $post["user_email"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["phone"])) && (isset($_POST["phone"])) ) {
-        $post["user_phone"] = $_POST["phone"];
-        $stack = array(
-          "key"   => "Телефон: ",
-          "value" => $post["user_phone"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["name"])) && (isset($_POST["name"])) ) {
-        $post["user_name"] = $_POST["name"];
-        $stack = array(
-          "key"   => "Имя: ",
-          "value" => $post["user_name"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["message"])) && (isset($_POST["message"])) ) {
-        $post["user_message"] = $_POST["message"];
-        $stack = array(
-          "key"   => "Сообщение: ",
-          "value" => $post["user_message"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["promocode"])) && (isset($_POST["promocode"])) ) {
-        $post["user_method"] = $_POST["promocode"];
-        $stack = array(
-          "key"   => "Как связаться: ",
-          "value" => $post["user_method"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["time"])) && (isset($_POST["time"])) ) {
-        $post["user_time"] = $_POST["time"];
-        $stack = array(
-          "key"   => "Удобное время: ",
-          "value" => $post["user_time"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( !empty($_POST["period"])  && (isset($_POST["period"])) ) {
-        if (is_array($_POST['period'])) {
-          $post["period"] = implode(", ", $_POST["period"]);
-        } else {
-          $post["period"] = $_POST["period"];
-        }
-        $stack = array(
-          "key"   => "Когда позвонить: ",
-          "value" => $post["period"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( !empty($_POST["material"])  && (isset($_POST["material"])) ) {
-        if (is_array($_POST['material'])) {
-          $post["material"] = implode(", ", $_POST["material"]);
-        } else {
-          $post["material"] = $_POST["material"];
-        }
-        $stack = array(
-          "key"   => "Чем зашивать: ",
-          "value" => $post["material"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["range1"])) && (isset($_POST["range1"])) ) {
-        $post["user_range1"] = $_POST["range1"];
-        $stack = array(
-          "key"   => "Длина ворот: ",
-          "value" => $post["user_range1"]
-        );
-        array_push($data, $stack);
-      }
-
-      if ( (!empty($_POST["range2"])) && (isset($_POST["range2"])) ) {
-        $post["user_range2"] = $_POST["range2"];
-        $stack = array(
-          "key"   => "Высота ворот: ",
-          "value" => $post["user_range2"]
-        );
-        array_push($data, $stack);
-      }
-
-      $stack = array(
-        "key"   => "Форма отправлена с сайта: ",
-        "value" => $post["host_referer"]
-      );
-      array_push($data, $stack);
-
-      foreach ($data as $key => $value) {
-        $body .= $value['key'] . $value['value'] . chr(10) . chr(13);
-      }
-
-      $mail = new PHPMailer();
-      $mail->CharSet = "UTF-8";
-      $mail->IsSendmail();
-
-      $from = "no-repeat@" . HOST_NAME;
-      $mail->SetFrom($from, HOST_NAME);
-      $mail->AddAddress("Artem2431@gmail.com");
-      $mail->AddAddress("Marchik88@rambler.ru");
-      $mail->isHTML(true);
-      $mail->Subject      = HOST_NAME;
-      $NewsLetterClass    = new NewsLetterClass();
-      $mail->Body         = $NewsLetterClass->generateHTMLLetter($data);
-      $mail->AltBody      = $body;
-
-      if(!$mail->send()) {
-        $this -> error =  "Что-то пошло не так. " . $mail->ErrorInfo;
-        return false;
-      } else {
-        $this -> msg =  "Сообщение отправлено!";
-        return true;
-      }
+     
     }
 
     private function setImage($src) {
@@ -359,12 +212,13 @@
         foreach ($results as $row) {
           if ($row['status'] === '0') {
             $this -> error = "Промокод не активен!";
+            return;
           } elseif ($row['status'] === '1') {
             $this -> msg = "Промокод активирован!";
-            $this -> result = $row['price'];
 
             $_SESSION['promocode']["promocode_id"] = $row['coupon_id'];
             $_SESSION['promocode']["price"] = $row['price'];
+            return 1;
           }
         }
       } else {
@@ -388,6 +242,42 @@
       return $this -> error;
     }
 
+    private function vardump($val) {
+      header('Content-Type: text/html; charset=utf-8');
+      echo "<pre>";
+      print_r($val);
+      echo "</pre>";
+      die;
+    }
+
+    private function fieldIsValid($post, $key, $default = null) {
+      return isset($post[$key]) ? $post[$key] : $default;
+    }
+
+    private function validateChild($child) {
+      $result = array();
+      $gender = (int)ModelClass::fieldIsValid($child, "gender");
+
+      $newname = ModelClass::fieldIsValid($child["newname"], "name");
+      $trigger_newname = ModelClass::fieldIsValid($child["newname"], "trigger");
+
+      if ($gender === 1) {
+        $name = ModelClass::fieldIsValid($child["name"], "male");
+        $result["gender"] = 1;
+      } elseif ($gender === 0) {
+        $name = ModelClass::fieldIsValid($child["name"], "female");
+        $result["gender"] = 0;
+      }
+
+      if ($trigger_newname) {
+        $result["newname"] = $newname;
+        ModelClass::setChildreanName($result);
+      } else {
+        $result["name"] = $name;
+      }
+      return $result;
+    }
+
     private function setData() {
 
       $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -395,9 +285,59 @@
         $this -> error = "Форма пустая";
         return;
       } else {
-        foreach($post as $key => $value) {
-          $this -> data[$key] = isset($post[$key]) ? $post[$key] : null;
+        $childrean = (int)ModelClass::fieldIsValid($post, "childrean", 1);
+        $this -> data["childrean"] = $childrean;
+        $child1 = ModelClass::fieldIsValid($post, "child1");
+        $child2 = ModelClass::fieldIsValid($post, "child2");
+        if (!($child1 || $child2)) {
+          $this -> error = "Данные о ребенке - отсутствуют";
+          return;
         }
+
+        if ($child1) {
+          $this -> data["child1"] = ModelClass::validateChild($child1);
+        } 
+        if ($child2 && $childrean === 2){
+          $this -> data["child2"] = ModelClass::validateChild($child2);
+        }
+
+        $image = ModelClass::fieldIsValid($post, "image");
+        if (!($image)) {
+          $this -> error = "Изображение не загружено";
+          return;
+        }
+        $this -> data["image"] =  $image;
+
+        $firstname = ModelClass::fieldIsValid($post, "firstname");
+        if (!($firstname)) {
+          $this -> error = "Введите ваше имя";
+          return;
+        }
+        $this -> data["firstname"] =  $firstname;
+
+        $phone = ModelClass::fieldIsValid($post, "phone");
+        if (!($phone)) {
+          $this -> error = "Введите ваш телефон";
+          return;
+        }
+        $this -> data["phone"] =  $phone;
+
+        $email = ModelClass::fieldIsValid($post, "email");
+        if (!($email)) {
+          $this -> error = "Введите ваш email";
+          return;
+        }
+        $this -> data["email"] =  $email;
+
+        $promocode = ModelClass::fieldIsValid($post, "promocode");
+        $this -> data["promocode"] =  ModelClass::promocodeIsValid($promocode) ? $promocode : null;
+
+        $discount = ModelClass::fieldIsValid($post, "discount");
+        $this -> data["discount"] =  ModelClass::discountIsValid($discount) ? $discount : null;
+
+        $form = ModelClass::fieldIsValid($post, "form");
+        $this -> data["form"] =  $form;
+
       }
     }
   }
