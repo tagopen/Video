@@ -659,7 +659,8 @@ button
     text-align: center
   &__img
     position: relative
-    left: -142px
+    left: 50%
+    margin-left: -210px
     margin-top: -140px
     max-width: none  
   &__type
@@ -1445,7 +1446,8 @@ button
     display: block
 .avatar-view
   display: block
-
+.avatar-modal
+  max-width: 100%
 .avatar-body
   padding-right: 15px
   padding-left: 15px
@@ -1459,7 +1461,6 @@ button
     width: 100px
   input
     display: block
-    margin-left: 110px
 
 .avatar-alert
   margin-top: 10px
@@ -1503,7 +1504,26 @@ button
 .preview-sm
   height: 50px
   width: 50px
-
+.avatar-btn
+  padding: 15px 19px
+  &:before,
+  &:after
+    content: none 
+  &:hover,
+  &:focus
+    background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%)
+  &.active
+    box-shadow: none !important  
+  input:checked + span
+    background: red !important
+.avatar-group
+  padding-top: 20px  
+@media (min-width: 768px)
+  .avatar-upload
+    input
+      margin-left: 110px
+  .avatar-btn
+    padding: 15px 30px
 @media (min-width: 992px)
   .avatar-preview
     float: none

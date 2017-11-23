@@ -2299,7 +2299,8 @@ button:focus {
 
 .package__img {
   position: relative;
-  left: -142px;
+  left: 50%;
+  margin-left: -210px;
   margin-top: -140px;
   max-width: none;
 }
@@ -3560,6 +3561,10 @@ button:focus {
   display: block;
 }
 
+.avatar-modal {
+  max-width: 100%;
+}
+
 .avatar-body {
   padding-right: 15px;
   padding-left: 15px;
@@ -3578,7 +3583,6 @@ button:focus {
 
 .avatar-upload input {
   display: block;
-  margin-left: 110px;
 }
 
 .avatar-alert {
@@ -3637,6 +3641,42 @@ button:focus {
 .preview-sm {
   height: 50px;
   width: 50px;
+}
+
+.avatar-btn {
+  padding: 15px 19px;
+}
+
+.avatar-btn:before, .avatar-btn:after {
+  content: none;
+}
+
+.avatar-btn:hover, .avatar-btn:focus {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#bc692b), color-stop(35%, #cf752f), color-stop(78%, #f4ab59), to(#fcd29d));
+  background-image: -webkit-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+}
+
+.avatar-btn.active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.avatar-btn input:checked + span {
+  background: red !important;
+}
+
+.avatar-group {
+  padding-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .avatar-upload input {
+    margin-left: 110px;
+  }
+  .avatar-btn {
+    padding: 15px 30px;
+  }
 }
 
 @media (min-width: 992px) {

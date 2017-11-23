@@ -152,7 +152,7 @@
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-24">
-                <h2 class="heading heading--curl preview__heading">Посмотрите как будет выглядеть видео поздравление для вашего ребенка совершенно бесплатно!</h2>
+                <h2 class="heading heading--curl preview__heading">Найдите имя своего ребенка</h2>
               </div>
             </div>
             <div class="row justify-content-center align-items-center">
@@ -160,7 +160,6 @@
               </div>
               <div class="col-24 col-md-19 col-lg-12">
                 <form class="form form--desk js-form" action="mail/mail.php" method="post">
-                  <div class="preview__title">Найдите имя своего ребенка</div>
                   <fieldset class="form-group">
                     <div class="row justify-content-around">
                       <div class="d-inline-flex pl-2 pr-2">
@@ -575,13 +574,7 @@
               <div class="col-24 text-center">
                 <div class="package">
                   <div class="row">
-                    <div class="col-24 col-lg-10 d-flex align-items-center">
-                      <div class="gift__box">
-                        <div class="gift__text">Только в Чёрную пятницу,<br/><span class="gift__text--span"> с 24 по 26 ноября</span>, скидка</div>
-                        <div class="gift__image"> <i class="ic ic--percent"></i></div>
-                      </div>
-                    </div>
-                    <div class="col-24 col-lg-14">       
+                    <div class="col-24"> 
                       <div class="package__box">
                         <div class="package__bg"></div>
                         <div class="package__content"> <i class="ic ic--candy package__candy"></i><i class="ic ic--confetti package__confetti"> </i>
@@ -589,7 +582,7 @@
                           <h3 class="package__type">Именное видео-поздравление<i class="ic ic--linear-sm package__icon package__icon--left"></i><i class="ic ic--linear-sm package__icon package__icon--right"> </i></h3>
                           <div class="package__info">Вы получите видео в формате Full HD 1080, в котором Дедушка Мороз 4 раза обращается к вашему ребенку по имени и хвалит малыша, глядя на его фотографию.</div>
                           <div class="package__cost">Стоимость сегодня</div>
-                          <div class="package__price"><span class="package__price--span">250 грн</span> 100 грн.</div>
+                          <div class="package__price"><span class="package__price--span">250 грн</span> 160 грн.</div>
                           <div class="btn-groups"><a class="btn btn--default h-content__btn package__btn" href="order.html">Оформить заказ</a></div>
                         </div>
                       </div>
@@ -959,7 +952,7 @@
     </div>
     <!-- Cropping modal-->
     <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg avatar-modal">
         <div class="modal-content">
           <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
             <div class="modal-body">
@@ -978,24 +971,20 @@
                     <div class="avatar-wrapper"></div>
                   </div>
                 </div>
-                <div class="row justify-content-center avatar-btns">
+                <div class="row justify-content-center">
                   <div class="col-24 col-md-auto">
-                    <div class="btn-groups">
-                      <button class="btn btn--default" type="button" data-method="rotate" data-option="90" title="Rotate 90 degrees"><i class="fa fa-rotate-left"></i></button>
-                      <button class="btn btn--default" type="button" data-method="rotate" data-option="-90" title="Rotate -90 degrees"><i class="fa fa-rotate-right"></i></button>
-                    </div>
-                  </div>
-                  <div class="col-24 col-md-auto">
-                    <div class="btn-group d-flex flex-nowrap avatar-ratio" data-toggle="buttons">
-                      <label class="btn btn-primary active">
+                    <div class="btn-groups btn-group avatar-group">
+                      <button class="btn btn--default avatar-btn" type="button" data-method="rotate" data-option="90" title="Rotate 90 degrees"><i class="fa fa-rotate-left"></i></button>
+                      <button class="btn btn--default avatar-btn" type="button" data-method="rotate" data-option="-90" title="Rotate -90 degrees"><i class="fa fa-rotate-right"></i></button>
+                      <label class="btn avatar-btn btn--default">
                         <input class="sr-only" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 3 / 2">3:2</span>
                       </label>
-                      <label class="btn btn-primary">
+                      <label class="btn avatar-btn btn--default">
                         <input class="sr-only" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 2 / 3">2:3</span>
                       </label>
                     </div>
                   </div>
-                  <div class="col-24 col-md-auto">
+                  <div class="col-24 col-md-auto text-center">
                     <button class="btn btn--default avatar-save" type="submit">Обрезать</button>
                   </div>
                 </div>
