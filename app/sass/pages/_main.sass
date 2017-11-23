@@ -1624,3 +1624,27 @@ button
 +r(992)
   .sell
     text-align: left      
++comment("success page styles")
+.header--success
+  background: url(../img/successbg.png) no-repeat
+  background-size: cover
+  background-position: center center
+.header__box--success
+  min-height: auto  
+.success
+  &__title
+    padding-top: 40px
+    margin-bottom: 25px
+    font: 400 30px/40px $font-neumann
+    color: #fff
+    text-transform: uppercase
+    .ic
+      display: block
+  &__fb
+    min-height: 500px  
++r(768)
+  .success__title 
+    font: 400 54px/60px $font-neumann  
++r(992)
+  .success__title
+    font: 400 60px/70px $font-neumann      
