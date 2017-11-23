@@ -247,11 +247,7 @@
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Ваша скидка:</span></div>
                               <div class="col-auto"><span class="nt-price">-150 грн</span></div>
-                            </div>
-                            <div class="row justify-content-between total-row">
-                              <div class="col-auto">
-                                <input class="js-discount" type="hidden" name="discount" value="<?=$discount?>">
-                              </div>
+                              <input class="js-discount" type="hidden" name="discount" value="<?=$discount?>">
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
