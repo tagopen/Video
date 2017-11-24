@@ -19,7 +19,7 @@ function amo_route($data, $leadname = "Заявка с сайта", $redirect = 
     print_r($data);
     $data["host_referer"] = (isset($data["host_referer"]) ? $data["host_referer"] : @(string)$_SERVER["HTTP_REFERER"]);
     if ($amo->auth()) {
-        $contact = $amo->check_contact_entity($data["firstname"], $data["email"], $data["phone"]);
+        $contact = $amo->check_contact_entity((isset($data["firstname"]) ? $data["firstname"] : "Новый контакт"), @$data["email"], $data["phone"]);
         if (!empty($contact)) {
             @parse_str(substr(strstr($data["host_referer"], "?"), 1), $params);
             if (!(is_array($params) && !empty($params))) {
@@ -30,7 +30,7 @@ function amo_route($data, $leadname = "Заявка с сайта", $redirect = 
                 "name"=>$leadname,
                 "price"=>(isset($data["price"]) ? $data["price"] : 0), // Сумма сделки  *** Правка ***
                 "status_id"=>$status_id,
-                "custom_fields"=>array(
+                "custom_fields"=>(AMO_DEFAULT_STATUS == $status_id ? array(
                     array(
                         "id"=>283057,
                         "values"=>array(
@@ -159,7 +159,7 @@ function amo_route($data, $leadname = "Заявка с сайта", $redirect = 
                             )
                         )
                     ), // ID: Имя 2-го ребенка
-                )
+                ) : array())
             ));
             if ($res = $res["leads"]["add"][0]["id"]) {
                 sleep(1);
