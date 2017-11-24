@@ -274,22 +274,26 @@ console.log($male);
   // Add new name
   $(function() {
     var $checkbox = $("[data-new-name]"),
+        $childreanNums = $("[data-childrean]"),
+        $totalPrice     = $(".js-total-price"),
         newName = function() {
           var $childrean = $("[data-childrean-item]"),
-              $childreanNums = $("[data-childrean]"),
               $label = $(".js-new-name"),
               triggerLabel = false;
-
           $childreanNums.each(function() {
             var $check = $(this);
-
             if ($check.prop("checked")) {
               if($check.val() == 2) {
                 $label.removeClass("d-none");
+                $totalPrice.filter(".d-none").removeClass("d-none").siblings().addClass("d-none");
                 triggerLabel = true;
+              } else {
+                $checkbox.eq(1).prop("checked", false);
               }
             }
           });
+
+
 
           $childrean.each(function() {
             var $check = $(this).find("[data-new-name]"),
@@ -302,13 +306,10 @@ console.log($male);
                 genderVal = $gender.val(),
                 selectIndex = 0;
 
-
             if(genderVal !== "" && !isNaN(genderVal)) {
               var gender = parseInt(genderVal, 10);
               selectIndex = (gender === 1) ? 0 : 1;
             }
-
-
 
             if ($check.prop("checked")) {
               $input.fadeIn();
@@ -316,6 +317,7 @@ console.log($male);
               $select.prop('required', false);
               $selectContainer.fadeOut(0);
               $label.removeClass("d-none");
+              $totalPrice.removeClass("d-none").eq(0).addClass("d-none");
               triggerLabel = true;
             } else {
               $input.fadeOut(0);
@@ -327,7 +329,10 @@ console.log($male);
             }
           });
 
-          if (!triggerLabel) { $label.addClass("d-none"); }
+          if (!triggerLabel) { 
+            $label.addClass("d-none"); 
+            $totalPrice.addClass("d-none").eq(0).removeClass("d-none");
+          }
         };
 
     newName();
@@ -336,7 +341,7 @@ console.log($male);
       newName();
     });
 
-    $(".js-gender").on("change", function() {
+    $childreanNums.on("change", function() {
       newName();
     });
 

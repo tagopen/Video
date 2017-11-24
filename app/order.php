@@ -253,7 +253,7 @@
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
-                              <div class="col-auto"><span class="nt-price">100 грн</span></div>
+                              <div class="col-auto"><span class="nt-price js-total-price">100 грн</span><span class="nt-price d-none js-total-price">140 грн</span></div>
                             </div>
                           </div>
                         </div>
