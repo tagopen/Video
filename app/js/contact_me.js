@@ -70,7 +70,7 @@ $(function() {
             .append('</div>');
           // remove prevent submit behaviour and disable preloading
           $form.find("[type=submit]").prop("disabled", false).button('reset');  
-          document.location.href="./success.html";
+          document.location.href="/success.html";
           //clear all fields
           $form.trigger("reset");
         },

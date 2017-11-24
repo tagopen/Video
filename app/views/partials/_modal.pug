@@ -14,9 +14,9 @@
             p.mb-3.sv-descr!= callback.descr
           .col-24.col-sm-18.col-md-24.col-lg-12
             - var form = callback.form
-            form.form.js-form(action="system/modal.php", method="post")
+            form.form.js-form(action="system/mail/mail.php", method="post")
               fieldset.form-group
-                input.form-control(type="tel", name="phone", placeholder=form.phone.placeholder, required)
+                input.form-control(type="tel", name="phone", placeholder=form.phone.placeholder, pattern="\\+380\\s\\d{2}\\s\\d{3}\\s\\d{2}\\s\\d{2}$", required)
               .btn-groups.form__btn-groups
                 button.btn.btn--default.btn--size(name='form', value=form.submit.value, type='submit', data-loading-text=form.submit.loading)!= form.submit.text
 #kid__modal.kid.modal.fade(tabindex='-1', role='dialog', aria-labelledby='callbackLabel', aria-hidden='true')

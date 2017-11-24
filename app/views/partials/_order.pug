@@ -131,7 +131,7 @@ form.form.h-100(action='system/model.php', method='post', novalidate)
           fieldset.form-group.form__group--select
             input.form-control(type='text', name='firstname', placeholder='Введите ваше имя', required)
           fieldset.form-group.form__group--select
-            input.form-control(type='tel', name='phone', placeholder='Введите номер телефона', required)
+            input.form-control(type='tel', name='phone', placeholder='Введите номер телефона', pattern="\\+380\\s\\d{2}\\s\\d{3}\\s\\d{2}\\s\\d{2}$", required)
           fieldset.form-group.form__group--select
             input.form-control(type='email', name='email', placeholder='Введите ваш E-mail')
           p.tabs__text На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail
