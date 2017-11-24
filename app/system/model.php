@@ -70,20 +70,21 @@
 
       $image_id = $this -> setImage($this -> data["image"]);
 
-      DB::insert('order', array(
-        'order_image_id' => $image_id,
-        'firstname'      => $this -> data['firstname'],
-        'email'          => $this -> data['email'],
-        'telephone'      => $this -> data['phone'],
-        'total_price'          => $this -> data['price'],
-        'coupon_id'      => $_SESSION['promocode']["promocode_id"],
-        'discount_id'    => $_SESSION['discount']['discount_id'],
-        'date_added'     => DB::sqleval("NOW()"),
-        'date_modified'  => DB::sqleval("NOW()"),
-      ));
-        //echo
-        amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
+      //echo
+     $amoID =  amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
 
+      DB::insert('order', array(
+        'order_image_id'   => $image_id,
+        'firstname'        => $this -> data['firstname'],
+        'email'            => $this -> data['email'],
+        'telephone'        => $this -> data['phone'],
+        'amo_track_number' => $amoID,
+        'total_price'      => $this -> data['price'],
+        'coupon_id'        => $_SESSION['promocode']["promocode_id"],
+        'discount_id'      => $_SESSION['discount']['discount_id'],
+        'date_added'       => DB::sqleval("NOW()"),
+        'date_modified'    => DB::sqleval("NOW()"),
+      ));
       if(isset($_SESSION['promocode'])) {
         unset($_SESSION['promocode']);
       }
@@ -91,7 +92,12 @@
       if(isset($_SESSION['discount'])) {
         unset($_SESSION['discount']);
       }
+    }
 
+    private function setPaymentStatus($amo_lead_id) {
+      DB::update('order', array(
+        'payment_status' => '1'
+        ), "amo_track_number=%s", $amo_lead_id);
     }
 
     private function setTotalPrice($totalPrice = 0.0000) {
