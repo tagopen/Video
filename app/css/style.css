@@ -2352,7 +2352,8 @@ button:focus {
           transform: translateY(-50%) rotate(180deg);
 }
 
-.select2-results {
+.select2-results,
+.select2-search {
   width: -webkit-calc(100% - 44px);
   width: calc(100% - 44px);
   margin: 0 auto;
