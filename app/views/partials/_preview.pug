@@ -20,16 +20,16 @@ section#preview.preview
                     | Мальчик
               .d-inline-flex.pl-2.pr-2
                 .radio-btn
-                  input#rbtn12.radio-btn__control.js-gender(type='radio', name='gender', value="2", data-gender='#female')
+                  input#rbtn12.radio-btn__control.js-gender(type='radio', name='gender', value="0", data-gender='#female')
                   label.radio-btn__box(for='rbtn12')
                     i.radio-btn__icon
                     | Девочка
           fieldset.form-group
-            select#male.form-control.form-control--select.select(data-placeholder=form.selectM.placeholder, name="name[male]", required)
+            select#male.form-control.form-control--select.select(data-placeholder=form.selectM.placeholder, name="male", required)
               option
               each option, i in form.selectM.items
                 option(value=option)!= option
-            select#female.form-control.form-control--select.select(name="name[female]", data-placeholder=form.selectF.placeholder)
+            select#female.form-control.form-control--select.select(name="female", data-placeholder=form.selectF.placeholder)
               option
               each option, i in form.selectF.items
                 option(value=option)!= option
