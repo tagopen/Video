@@ -38,7 +38,7 @@
       //DB::$user = 'root';
       //DB::$password = '';
       //DB::$dbName = 'video';
-      echo amo_route($_POST); // Добавлено для тестирования интеграции
+
       
       //DB::$user = 'b18152559_admin';
       //DB::$password = '7I7k6L7y';
@@ -81,7 +81,8 @@
         'date_added'     => DB::sqleval("NOW()"),
         'date_modified'  => DB::sqleval("NOW()"),
       ));
-
+        //echo
+        amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
 
       if(isset($_SESSION['promocode'])) {
         unset($_SESSION['promocode']);
