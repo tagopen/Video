@@ -887,6 +887,14 @@ $(function() {
   });
 });
 
+  $(function() {
+    var cleave = new Cleave('[name=phone]', {
+      blocks: [4, 2, 3, 2, 2],
+      prefix: '+380',
+      rawValueTrimPrefix: true
+    });
+  });
+
 
 
 
