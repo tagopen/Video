@@ -79,8 +79,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-24 col-md-14 col-lg-10">
-                <a class="header__logo logo logo--white" href="/">
+              <div class="col-24 col-md-14 col-lg-10"><a class="header__logo logo logo--white" href="/">
                   <div class="row">
                     <div class="col-24 col-md-auto">
                       <div class="logo__image"><img class="img-fluid logo__img" src="img/logo/logo.png" alt="logo"></div>
@@ -88,9 +87,7 @@
                     <div class="col-24 col-md-auto logo__col align-items-center"> 
                       <p class="logo__text">Именное видеопоздравление <br>для вашего ребенка от Дедушки Мороза</p>
                     </div>
-                  </div>
-                </a>
-              </div>
+                  </div></a></div>
             </div>
           </div>
         </section>
@@ -250,6 +247,10 @@
                               <div class="col-auto"><span class="nt-price">-150 грн</span></div>
                               <input class="js-discount" type="hidden" name="discount" value="<?=$discount?>">
                             </div>
+                            <div class="row justify-content-between total-row d-none js-new-name">
+                              <div class="col-auto"><span class="tb-price">Дозапись имени:</span></div>
+                              <div class="col-auto"><span class="nt-price">40 грн</span></div>
+                            </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
                               <div class="col-auto"><span class="nt-price">100 грн</span></div>
@@ -262,7 +263,7 @@
                             <input class="form-control" type="text" name="firstname" placeholder="Введите ваше имя" required>
                           </fieldset>
                           <fieldset class="form-group form__group--select">
-                            <input class="form-control" type="tel" name="phone" placeholder="Введите номер телефона" required>
+                            <input class="form-control" type="tel" name="phone" placeholder="Введите номер телефона" pattern="\+380\s\d{2}\s\d{3}\s\d{2}\s\d{2}$" required>
                           </fieldset>
                           <fieldset class="form-group form__group--select">
                             <input class="form-control" type="email" name="email" placeholder="Введите ваш E-mail">
@@ -308,9 +309,9 @@
                 <p class="mb-3 sv-descr">Если у вас возникли вопросы или вы хотите оформить заказ по телефону, то укажите ваш номер телефона, что бы менеджер Екатерина вам перезвонила</p>
               </div>
               <div class="col-24 col-sm-18 col-md-24 col-lg-12">
-                <form class="form js-form" action="system/modal.php" method="post">
+                <form class="form js-form" action="/system/modal.php" method="post">
                   <fieldset class="form-group">
-                    <input class="form-control" type="tel" name="phone" placeholder="Введите ваш номер телефона" required>
+                    <input class="form-control" type="tel" name="phone" placeholder="Введите ваш номер телефона" pattern="\+380\s\d{2}\s\d{3}\s\d{2}\s\d{2}$" required>
                   </fieldset>
                   <div class="btn-groups form__btn-groups">
                     <button class="btn btn--default btn--size" name="form" value="Модалка" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Перезвоните мне</button>
@@ -334,7 +335,7 @@
             <div class="row justify-content-center">
               <div class="col-24 text-center"> 
                 <div class="mb-3 kid__descr">Заказы на поздравление двоих детей в одном видео выполняются в течении 2-х дней. Мы запишем имена и согласуем с вами их звучание. Процедура записи имен, которых нет в списке аналогична.</div>
-                <div class="mb-3 kid__text">Переходите на следующий шаг, чтобы указать нужные имена. На странице оформления заказа вы также сможете загрузить фотографии детей и получить скидку за репост!</div><a class="btn btn--default btn--size" href="#">Перейти к оформлению заказа</a>
+                <div class="mb-3 kid__text">Переходите на следующий шаг, чтобы указать нужные имена. На странице оформления заказа вы также сможете загрузить фотографии детей и получить скидку за репост!</div><a class="btn btn--default btn--size" href="order.php">Перейти к оформлению заказа</a>
               </div>
             </div>
           </div>
@@ -440,6 +441,8 @@
     <script src="js/contact_me.js"> </script>
     <!-- Select2 JavaScript-->
     <script src="js/select2.js"></script>
+    <!-- Clave.js JavaScript-->
+    <script src="js/cleave.js"></script>
     <!-- Custom JavaScript-->
     <script src="js/main.js"></script>
     <!-- CRM AMO-->
