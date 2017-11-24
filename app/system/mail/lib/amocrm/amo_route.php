@@ -11,9 +11,9 @@ require_once(__DIR__."/amocrm.php");
 /**
  * @var AmoCRM $amo
  */
-function amo_route($data) {
+function amo_route($data, $leadname = "Заявка с сайта", $redirect = true, $status_id = AMO_DEFAULT_STATUS) {
     $payLink = "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTc5NDM2NzUxMTIyIiwiYW1vdW50IjoiMTAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6ItCf0L7Qt9C00YDQsNCy0LvQtdC90LjQtSDQtNC70Y8g0L7QtNC90L7Qs9C%2BINGA0LXQsdC10L3QutCwINGB0L4g0YHQutC40LTQutC%2B0LkgNjAlIiwidHlwZSI6ImJ1eSIsImxhbmd1YWdlIjoicnUifQ%3D%3D&signature=HHVfQqB9VnXoj%2Fsr6%2BjuTENpJOQ%3D";
-    header("Location: ".$payLink);
+    if ($redirect) header("Location: ".$payLink);
     global $amo;
     echo "<pre>";
     print_r($data);
@@ -27,9 +27,9 @@ function amo_route($data) {
             }
             $children = (isset($data["childrean"]) && $data["childrean"] == 2 ? 2 : 1);
             $res = $amo->leads_add(array(
-                "name"=>"Заявка с сайта",
-                "price"=>12345, // Сумма сделки  *** Правка ***
-                "status_id"=>AMO_DEFAULT_STATUS,
+                "name"=>$leadname,
+                "price"=>(isset($data["price"]) ? $data["price"] : 0), // Сумма сделки  *** Правка ***
+                "status_id"=>$status_id,
                 "custom_fields"=>array(
                     array(
                         "id"=>283057,
