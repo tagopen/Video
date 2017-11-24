@@ -48,7 +48,9 @@
       + '<div class="timer__item"><div class="timer__time">:</div></div>'
       + '<div class="timer__item"><div class="timer__time">%H</div><div class="timer__text">часов</div></div>'
       + '<div class="timer__item"><div class="timer__time">:</div></div>'
-      + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'));
+      + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'
+      + '<div class="timer__item"><div class="timer__time">:</div></div>'
+      + '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
   });
 
   if( $( window ).width() >= 576 ) {
@@ -240,7 +242,21 @@
   $(function() {
     var $checkbox = $("[data-new-name]"),
         newName = function() {
-          var $childrean = $("[data-childrean-item]");
+          var $childrean = $("[data-childrean-item]"),
+              $childreanNums = $("[data-childrean]"),
+              $label = $(".js-new-name"),
+              triggerLabel = false;
+
+          $childreanNums.each(function() {
+            var $check = $(this);
+
+            if ($check.prop("checked")) {
+              if($check.val() == 2) {
+                $label.removeClass("d-none");
+                triggerLabel = true;
+              }
+            }
+          });
 
           $childrean.each(function() {
             var $check = $(this).find("[data-new-name]"),
@@ -266,6 +282,8 @@
               $input.prop('required', true);
               $select.prop('required', false);
               $selectContainer.fadeOut(0);
+              $label.removeClass("d-none");
+              triggerLabel = true;
             } else {
               $input.fadeOut(0);
               $input.prop('required', false);
@@ -275,6 +293,8 @@
               $selectContainer.eq(+!selectIndex).fadeOut(0);
             }
           });
+
+          if (!triggerLabel) { $label.addClass("d-none"); }
         };
 
     newName();
