@@ -149,7 +149,7 @@
     }
 
     private function getChildreanName() {
-      $results = DB::query("SELECT cd.* FROM childrean AS cd WHERE status=%s", "1");
+      $results = DB::query("SELECT cd.* FROM childrean AS cd WHERE cd.status=%s", "1");
       if ($results) {
         return $results;
       } else {

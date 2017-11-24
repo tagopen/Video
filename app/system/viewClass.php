@@ -33,8 +33,8 @@
     }
 
     public function getChildreanName() {
-      $male = DB::query("SELECT cd.firstname FROM childrean AS cd WHERE cd.gender=%i", 1);
-      $female = DB::query("SELECT cd.firstname FROM childrean AS cd WHERE cd.gender=%i", 0);
+      $male = DB::query("SELECT cd.firstname FROM childrean AS cd WHERE cd.gender=%i AND cd.status=%s", 1, "1");
+      $female = DB::query("SELECT cd.firstname FROM childrean AS cd WHERE cd.gender=%i AND cd.status=%s", 0, "1");
       if ($male && $female) {
         return array(
           "male" => $male,
