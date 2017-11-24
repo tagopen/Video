@@ -132,9 +132,23 @@
   
   // Tabs
   $(function() {
+    var $indexControl = $("[data-tabs-index]");
+
+    function getQueryVariable(variable) {
+      var query = window.location.search.substring(1);
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+              return decodeURIComponent(pair[1]);
+          }
+      }
+      return ;
+    }
+
+
     $("[data-tabs-control]").on('click', function(e) {
-      var $indexControl = $("[data-tabs-index]"),
-          control = $(this).data('tabs-control'),
+      var control = $(this).data('tabs-control'),
           index = $(this).data('tabs-index'),
           target = $(this).data('tabs-toggle'),
           $tabs = $("[data-tabs=" + target + "]");
@@ -165,6 +179,25 @@
       });
     e.preventDefault();
     });
+
+    if(getQueryVariable('gender') !== undefined){
+      var $childreanItem = $("[data-childrean-item]"),
+          $gender = $childreanItem.eq(0).find(".js-gender"),
+          $male = $childreanItem.eq(0).find("[data-gender=male]"),
+          $female = $childreanItem.eq(0).find("[data-gender=female]"),
+          gender = parseInt(getQueryVariable('gender'), 10),
+          male = getQueryVariable('male'),
+          female = getQueryVariable('female');
+
+
+      $indexControl.get(1).click();
+      $gender.val(gender).trigger('change.select2');
+  
+      $male.val(male).trigger('change.select2');
+      $female.val(female).trigger('change.select2');
+
+console.log($male);
+    }
   });
 
   $(function() {
@@ -853,6 +886,14 @@ $(function() {
     });
   });
 });
+
+  $(function() {
+    var cleave = new Cleave('[name=phone]', {
+      blocks: [4, 2, 3, 2, 2],
+      prefix: '+380',
+      rawValueTrimPrefix: true
+    });
+  });
 
 
 
