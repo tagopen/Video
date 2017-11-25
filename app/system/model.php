@@ -88,7 +88,7 @@
       $this -> msg = "Заказ успешно оформлен!";
     }
 
-    private function setPaymentStatus($amo_lead_id) {
+    public function setPaymentStatus($amo_lead_id) {
       DB::update('order', array(
         'payment_status' => '1'
         ), "amo_track_number=%s", $amo_lead_id);
