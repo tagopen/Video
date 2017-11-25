@@ -23,7 +23,6 @@
   }
 
   class ModelClass {
-    private $post;
     private $data;
     private $price;
 
@@ -35,34 +34,35 @@
 
     function __construct() {
       
-      //DB::$user = 'root';
-      //DB::$password = '';
-      //DB::$dbName = 'video';
+      DB::$user = 'root';
+      DB::$password = '';
+      DB::$dbName = 'video';
 
       
       //DB::$user = 'b18152559_admin';
       //DB::$password = '7I7k6L7y';
       //DB::$dbName = 'b18152559_video';
 
-      DB::$user = 'shunkin_videpp';
-      DB::$password = 'dqrgxfj5';
-      DB::$dbName = 'shunkin_videpp';
+      //DB::$user = 'shunkin_videpp';
+      //DB::$password = 'dqrgxfj5';
+      //DB::$dbName = 'shunkin_videpp';
 
-      DB::$host = 'shunkin.mysql.tools'; //defaults to localhost if omitted
+      //DB::$host = 'shunkin.mysql.tools'; //defaults to localhost if omitted
+      DB::$host = 'localhost'; //defaults to localhost if omitted
       DB::$encoding = 'utf8'; // defaults to latin1 if omitted
 
-      $this -> post = $this -> filterDataForm();
-      if ($this -> post["form"]) {
-        $this -> data = $this -> validateDataForm($this -> post );
+      $this -> data = $this -> filterDataForm();
+      if ($this -> data["form"]) {
+        $this -> data = $this -> validateDataForm($this -> data );
         $this -> setTotalPrice($this -> data["price"]);
-        if ($this -> post["form"] == "Order") {
+        if ($this -> data["form"] == "Order") {
           $this -> setOrder();
         }
         //$this -> sendMail();
-      } elseif ($this -> post["promocode"]) {
-        $this -> promocodeIsValid($this -> post["promocode"]);
-      } elseif ($this -> post["discount"]) {
-        $this -> discountIsValid($this -> post["discount"]);
+      } elseif ($this -> data["promocode"]) {
+        $this -> promocodeIsValid($this -> data["promocode"]);
+      } elseif ($this -> data["discount"]) {
+        $this -> discountIsValid($this -> data["discount"]);
       }
     }
 
@@ -70,8 +70,7 @@
 
       $image_id = $this -> setImage($this -> data["image"]);
 
-      //echo
-     $amoID =  amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
+      $amoID = amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
 
       DB::insert('order', array(
         'order_image_id'   => $image_id,
@@ -92,6 +91,8 @@
       if(isset($_SESSION['discount'])) {
         unset($_SESSION['discount']);
       }
+
+      $this -> msg = "Заказ успешно оформлен!";
     }
 
     private function setPaymentStatus($amo_lead_id) {
@@ -103,7 +104,7 @@
     private function setTotalPrice($totalPrice = 0.0000) {
 
       $product = ModelClass::getProductPrice();
-      if($product) {
+      if(!is_null($product)) {
         $totalPrice += $product['price'];
       }
 
@@ -115,8 +116,9 @@
         $totalPrice += $_SESSION['discount']['price'];
       }
 
+
       $childrean = ModelClass::childreanCountPrice();
-      if($childrean) {
+      if(!is_null($childrean)) {
         $totalPrice += $childrean;
       }
 
@@ -124,7 +126,13 @@
     }
 
     private function childreanCountPrice() {
-      $trigger = ($this -> data["newname"] || $this -> data["childrean"] == 2) ? true : false;
+      $childrean = $this -> data["childrean"];
+      $trigger = false;
+
+      if ($this -> data["childrean"] === 2) $trigger = true;
+      if (($this -> data["childrean"] === 2) && ($this -> data["child2"]["newname"])) $trigger = true;
+      if ($this -> data["child1"]["newname"]) $trigger = true;
+
       if ($trigger) {
         $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.name=%s  AND dc.date_start <= %t AND dc.date_end >= %t" , "childrean", date("Y-m-d"), date("Y-m-d"));
         if ($results) {
@@ -218,7 +226,6 @@
       ));
 
       return DB::insertId();
-
     }
 
 
@@ -268,41 +275,53 @@
       echo "<pre>";
       print_r($val);
       echo "</pre>";
-      die;
+      return;
     }
 
     private function validateChild($data) {
       $result = array();
+
+      if (is_null($data["gender"])) {
+        $this -> error = "Не указан пол ребенка";
+        return;
+      }
+
       $gender = (int)$data["gender"];
+
 
       if ($gender === 1) {
         $result["gender"] = 1;
       } elseif ($gender === 0) {
         $result["gender"] = 0;
-      } else {
-        $this -> error = "Неправильно указан пол ребенка";
-        return;
+      }
+
+      if (!is_null($data["newname"])) {
+        $newname = $data["newname"]["name"];
+        $trigger_newname = $data["newname"]["trigger"];
       }
 
 
 
-      if ($data["newname"]) {
-        $newname = $data["newname"]["name"];
+      if (!is_null($trigger_newname)) {
 
-        $trigger_newname = $data["newname"]["trigger"];
-        if (!$newname && !$trigger_newname) {
-          $this -> error = "Не заполнено поле с именем ребенка";
+        if (is_null($newname)) {
+          $this -> error = "Не заполнено поле с добавлением имени ребенка";
           return;
         }
-      }
-
-
-
-      if ($trigger_newname) {
         $result["newname"] = $newname;
         ModelClass::setChildreanName($result);
       } else {
-        $result["name"] = $data["name"];
+
+        if (is_null($data["name"])) {
+          $this -> error = "Не заполнено поле с именем ребенка";
+          return;
+        }
+        if ($gender === 1) {
+          $result["name"] = $data["name"]["male"];
+        } elseif ($gender === 0) {
+          $result["name"] = $data["name"]["female"];
+        } 
+
       }
 
       return $result;
@@ -340,6 +359,11 @@
     private function validateDataForm($post) {
       $data = array();
 
+      if (is_null($post['childrean'])){
+        $this -> error = "Не выбрано кол-во детей";
+        return;
+      }
+
       $childrean = (int)$post['childrean'];
       $data['childrean'] = $childrean;
 
@@ -347,42 +371,44 @@
       $child2 = $post['child2'];
 
 
-      if (!($child1 || $child2)) {
-        $this -> error = "Данные о ребенке - отсутствуют";
+      if (is_null($child1)) {
+        $this -> error = "Данные о 1-м ребенке - отсутствуют";
         return;
       }
-
-      if ($child1) {
-        $data['child1'] = ModelClass::validateChild($child1);
-      } 
-      if ($child2 && $childrean === 2){
+      $data['child1'] = ModelClass::validateChild($child1);
+      
+      if (is_null($child2) && $childrean === 2){
+        $this -> error = "Данные о 2-м ребенке - отсутствуют";
+        return;
+      } else {
         $data['child2'] = ModelClass::validateChild($child2);
       }
 
-
       $image = $post["image"];
-      if (!$image) {
+
+      if (is_null($image)) {
         $this -> error = "Изображение не загружено";
         return;
       }
+
       $data["image"] = $image;
 
       $firstname = $post["firstname"];
-      if (!($firstname)) {
+      if (is_null($firstname)) {
         $this -> error = "Введите ваше имя";
         return;
       }
       $data["firstname"] = $firstname;
 
       $phone = $post["phone"];
-      if (!($phone)) {
+      if (is_null($phone)) {
         $this -> error = "Введите ваш телефон";
         return;
       }
       $data["phone"] = $phone;
 
       $email =  $post["email"];
-      if (!($email)) {
+      if (is_null($email)) {
         $this -> error = "Введите ваш email";
         return;
       }
