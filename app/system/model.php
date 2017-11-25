@@ -1,10 +1,14 @@
 <?php
   session_start();
 
+  if (is_file('../config.php')) {
+    require_once("../config.php");
+  }
+
   if (is_file('./mysql/meekrodb.2.3.class.php')) {
     require_once("./mysql/meekrodb.2.3.class.php");
   }
-  
+
   if (is_file('./mail/lib/class.phpmailer.php')) {
     require_once("./mail/lib/class.phpmailer.php");
   }
@@ -12,6 +16,7 @@
   if (is_file('./mail/lib/class.smtp.php')) {
     require_once("./mail/lib/class.smtp.php");
   }
+
   
   if (is_file('./mail/lib/newsletter.php')) {
     require_once("./mail/lib/newsletter.php");
@@ -30,26 +35,14 @@
     private $msg;
     private $result;
 
-
-
     function __construct() {
-      
-      DB::$user = 'root';
-      DB::$password = '';
-      DB::$dbName = 'video';
 
-      
-      //DB::$user = 'b18152559_admin';
-      //DB::$password = '7I7k6L7y';
-      //DB::$dbName = 'b18152559_video';
+      DB::$user = DB_USERNAME;
+      DB::$password = DB_PASSWORD;
+      DB::$dbName = DB_DATABASE;
 
-      //DB::$user = 'shunkin_videpp';
-      //DB::$password = 'dqrgxfj5';
-      //DB::$dbName = 'shunkin_videpp';
-
-      //DB::$host = 'shunkin.mysql.tools'; //defaults to localhost if omitted
-      DB::$host = 'localhost'; //defaults to localhost if omitted
-      DB::$encoding = 'utf8'; // defaults to latin1 if omitted
+      DB::$host = DB_HOSTNAME; //defaults to localhost if omitted
+      DB::$encoding = DB_ENCODING; // defaults to latin1 if omitted
 
       $this -> data = $this -> filterDataForm();
       if ($this -> data["form"]) {
