@@ -1239,6 +1239,7 @@ button
     padding: 15px !important
     top: 0
     right: 0
+    z-index: 20
 .close
   line-height: 0
   cursor: pointer
@@ -1667,3 +1668,41 @@ button
 +r(992)
   .success__title
     font: 400 60px/70px $font-neumann      
++comment("confident styles")
+.confident__link
+  font: 300 16px/24px $main-font
+  color: #212121
+  text-align: center
+  display: inline-block
+  &:hover,
+  &:focus
+    text-decoration: none
+.confident
+  text-align: center    
+  &__title
+    font: 400 24px/30px $main-font
+    color: #212121
+    text-align: center
+    margin-bottom: 20px
+  &__subtitle  
+    font: 400 20px/24px $main-font
+    color: #212121
+    margin-bottom: 20px
+  &__heading  
+    font: 500 18px/20px $main-font
+    color: #212121
+    margin-bottom: 15px
+  &__text  
+    font: 400 18px/20px $main-font
+    color: #212121
+    margin-bottom: 10px
++r(576)    
+  .modal--size
+    max-width: none
++r(992)
+  .modal--size
+    max-width: 900px    
++r(1200)    
+  .modal__close--confident
+    top: 0
+    right: -50px    

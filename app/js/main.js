@@ -39,6 +39,13 @@
     });
   });
 
+  var firstModalOpen = $("body").hasClass("modal-open");
+
+  $("#confident").on('hidden.bs.modal', function()
+  {
+    if (!firstModalOpen)
+      $("body").addClass("modal-open");
+  });
 
   // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
   $('.js-timer').countdown('2017/11/27', function(event) {
