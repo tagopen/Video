@@ -8,15 +8,21 @@
 
 require_once(__DIR__."/amocrm.php");
 
+define("LIQPAY_PUBLIC_KEY", "i79436751122");
+define("LIQPAY_PRIVATE_KEY", "cpNemwZYOdcFQnH6t03IRbH7t1iMjtPmjVsbZeZZ");
+
 /**
  * @var AmoCRM $amo
+ * @param array $data - POST data
+ * @param string $leadname - Lead name
+ * @param bool $redirect - Go to payment link?
+ * @param int $status_id - Lead status ID
+ * @return int - Lead ID
  */
 function amo_route($data, $leadname = "Заявка с сайта", $redirect = true, $status_id = AMO_DEFAULT_STATUS) {
-    $payLink = "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTc5NDM2NzUxMTIyIiwiYW1vdW50IjoiMTAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6ItCf0L7Qt9C00YDQsNCy0LvQtdC90LjQtSDQtNC70Y8g0L7QtNC90L7Qs9C%2BINGA0LXQsdC10L3QutCwINGB0L4g0YHQutC40LTQutC%2B0LkgNjAlIiwidHlwZSI6ImJ1eSIsImxhbmd1YWdlIjoicnUifQ%3D%3D&signature=HHVfQqB9VnXoj%2Fsr6%2BjuTENpJOQ%3D";
-    if ($redirect) header("Location: ".$payLink);
     global $amo;
-    echo "<pre>";
-    print_r($data);
+    $price = (isset($data["price"]) ? $data["price"] : 0);
+    $children = (isset($data["childrean"]) && $data["childrean"] == 2 ? 2 : 1);
     $data["host_referer"] = (isset($data["host_referer"]) ? $data["host_referer"] : @(string)$_SERVER["HTTP_REFERER"]);
     if ($amo->auth()) {
         $contact = $amo->check_contact_entity((isset($data["firstname"]) ? $data["firstname"] : "Новый контакт"), @$data["email"], $data["phone"]);
@@ -25,20 +31,11 @@ function amo_route($data, $leadname = "Заявка с сайта", $redirect = 
             if (!(is_array($params) && !empty($params))) {
                 $params = array();
             }
-            $children = (isset($data["childrean"]) && $data["childrean"] == 2 ? 2 : 1);
             $res = $amo->leads_add(array(
                 "name"=>$leadname,
-                "price"=>(isset($data["price"]) ? $data["price"] : 0), // Сумма сделки  *** Правка ***
+                "price"=>$price, // Сумма сделки
                 "status_id"=>$status_id,
                 "custom_fields"=>(AMO_DEFAULT_STATUS == $status_id ? array(
-                    array(
-                        "id"=>283057,
-                        "values"=>array(
-                            array(
-                                "value"=>$payLink
-                            )
-                        )
-                    ), // ID: Ссылка на оплату
                     array(
                         "id"=>283129,
                         "values"=>array(
@@ -170,6 +167,41 @@ function amo_route($data, $leadname = "Заявка с сайта", $redirect = 
                     "last_modified"=>time()+10,
                     "linked_leads_id"=>$leads_ids
                 ));
+                if ($redirect && $price > 0) {
+                    $payLink = "https://www.liqpay.ua/api/3/checkout?";
+                    $payData = array();
+                    $payData["data"] = base64_encode(json_encode(array(
+                        "version"=>3,
+                        "action"=>"pay",
+                        "public_key"=>LIQPAY_PUBLIC_KEY,
+                        "amount"=>$price,
+                        "currency"=>"UAH",
+                        "description"=>"Поздравление для ".($children > 1 ? "двух детей" : "одного ребенка"),
+                        "type"=>"buy",
+                        "language"=>"ru",
+                        "order_id"=>$res
+                    )));
+                    $payData["signature"] = base64_encode(sha1(LIQPAY_PRIVATE_KEY.$payData["data"].LIQPAY_PRIVATE_KEY,1));
+                    $payLink .= http_build_query($payData);
+                    sleep(1);
+                    $amo->leads_update(
+                        array(
+                            "id"=>$res,
+                            "last_modified"=>time()+10,
+                            "custom_fields"=>array(
+                                array(
+                                    "id"=>283057,
+                                    "values"=>array(
+                                        array(
+                                            "value"=>$payLink
+                                        )
+                                    )
+                                ), // ID: Ссылка на оплату
+                            )
+                        )
+                    );
+                    header("Location: ".$payLink);
+                }
                 return $res;
             }
         }
