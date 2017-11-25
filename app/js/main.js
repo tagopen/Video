@@ -966,6 +966,70 @@ $(function() {
     });
   });
 
+  $(function() {
+
+  $('.js-avatar-form')
+  .on('submit', function (e) {
+    var $form = $(this);
+
+    function alert(msg, classItem) {
+
+      // Success message
+      $form.find('.success').html("<div class='alert " + classItem + "'>");
+      $form.find('.success > .' + classItem).html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+        .append("</button>");
+      $form.find('.success >  .' + classItem)
+        .append("<strong>" + msg + "</strong>");
+      $form.find('.success >  .' + classItem)
+        .append('</div>');
+
+    }
+
+    if (e.isDefaultPrevented()) {
+      // handle the invalid form...
+    } else {
+      e.preventDefault();
+      $form.find("[type=submit]").prop("disabled", true).button('loading'); //prevent submit behaviour and display preloading
+
+      var url = $form.attr('action');
+      var form = $form.find("[type=submit]").attr("name");
+      var data = new FormData($form[0]);
+
+      data.append('form', form);
+
+      
+      $.ajax(url, {
+        type: 'post',
+        data: data,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        cache: false,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          alert(textStatus || errorThrown, "alert-danger");
+          $form.find("[type=submit]").prop("disabled", false).button('reset'); 
+        },
+
+        success: function(data) {
+          if ($.isPlainObject(data) && data.state === 200) {
+            if (data.message) {
+
+              alert(data.message, "alert-danger");
+              //clear all fields
+              $form.trigger("reset");
+            } else if (data.error) {
+              alert(data.error, "alert-danger");
+            }
+          } else {
+            alert('Failed to response', "alert-danger");
+          }
+          $form.find("[type=submit]").prop("disabled", false).button('reset'); 
+        },
+      });
+    }
+  }); 
+  });
+
 
 
 

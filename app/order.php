@@ -95,7 +95,7 @@
           <div class="container h-100">
             <div class="row justify-content-center flex-lg-row-reverse h-100">
               <div class="col-24 h-100">
-                <form class="form h-100" action="system/model.php" method="post" novalidate>
+                <form class="form js-avatar-form h-100" action="system/model.php" method="post" novalidate>
                   <div class="tabs h-100" data-tabs="test-tabs">
                     <div class="tabs__control tabs-control">
                       <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
@@ -271,6 +271,7 @@
                           <p class="tabs__text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
                         </div>
                         <div class="col-24">
+                          <div class="success"></div>
                           <div class="btn-groups form__btn-groups">
                             <div class="row">
                               <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">

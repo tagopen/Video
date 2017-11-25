@@ -351,6 +351,7 @@
 
     private function validateDataForm($post) {
       $data = array();
+      
 
       if (is_null($post['childrean'])){
         $this -> error = "Не выбрано кол-во детей";
@@ -363,8 +364,6 @@
       $child1 = $post['child1'];
       $child2 = $post['child2'];
 
-
-      ModelClass::vardump($post);
 
       if (is_null($child1)) {
         $this -> error = "Данные о 1-м ребенке - отсутствуют";
