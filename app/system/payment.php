@@ -11,9 +11,10 @@ if (isset($_POST["data"]) && !empty($_POST["data"])) {
     $data = json_decode(base64_decode($_POST["data"]), true);
     // Добавлен код интеграции amoCRM
     if ($data["status"] == "success" && $data["action"] == "pay" && !empty($data["order_id"])) {
-        if (is_file('./mail/lib/amocrm/amo_route.php')) {
-            require_once("./mail/lib/amocrm/amo_route.php");
-        }
+        ob_start();
+        require "model.php";
+        ob_end_clean();
+        $obj->setPaymentStatus($data["order_id"]);
         if ($amo->auth()) {
             sleep(1);
             $amo->leads_update(
