@@ -407,6 +407,10 @@ console.log($male);
       newName();
     });
 
+    $(".js-gender").on("change", function() {
+      newName();
+    });
+
   });
   
   // show promo
