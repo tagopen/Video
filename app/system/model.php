@@ -321,7 +321,7 @@
     }
 
     private function fieldIsValid($post, $key, $default = null) {
-      return isset($post[$key]) ? trim($post[$key]) : $default;
+      return (isset($post[$key]) &&  $post[$key]!="") ? trim($post[$key]) : $default;
     }
 
     private function filterDataForm() {
@@ -363,6 +363,8 @@
       $child1 = $post['child1'];
       $child2 = $post['child2'];
 
+
+      ModelClass::vardump($post);
 
       if (is_null($child1)) {
         $this -> error = "Данные о 1-м ребенке - отсутствуют";
@@ -428,7 +430,7 @@
     'error' => $obj -> getError(),
     'result' => $obj -> getResult()
   );
-   
+
   echo json_encode($response);
 
 ?>
