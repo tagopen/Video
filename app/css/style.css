@@ -3956,10 +3956,6 @@ button:focus {
   text-decoration: none;
 }
 
-.confident {
-  text-align: center;
-}
-
 .confident__title {
   font: 400 24px/30px "PF Din Text Pro", sans-serif;
   color: #212121;
