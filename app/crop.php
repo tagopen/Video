@@ -49,14 +49,14 @@ class CropAvatar {
  
       if ($type) {
         $extension = image_type_to_extension($type);
-        $src = 'img/users/' . uniqid ($this -> filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.original' . $extension;
+        $src = 'upload/' . uniqid ($this -> filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.original' . $extension;
 
 
  
         if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
  
-          if (!file_exists('img/users/')) {
-            mkdir('img/users/', 0777, true);
+          if (!file_exists('upload/')) {
+            mkdir('upload/', 0777, true);
           }
 
           if (file_exists($src)) {
@@ -85,7 +85,7 @@ class CropAvatar {
   }
  
   private function setDst() {
-    $this -> dst = 'img/users/' . uniqid ($this -> filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.png';
+    $this -> dst = 'upload/' . uniqid ($this -> filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.png';
   }
  
   private function crop($src, $dst, $data) {
