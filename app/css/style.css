@@ -3254,6 +3254,7 @@ button:focus {
   padding: 15px !important;
   top: 0;
   right: 0;
+  z-index: 20;
 }
 
 .close {
@@ -3938,5 +3939,63 @@ button:focus {
 @media only screen and (min-width: 992px) {
   .success__title {
     font: 400 60px/70px "Neumann", sans-serif;
+  }
+}
+
+/* ---------------------------------------- */
+/* C O N F I D E N T    S T Y L E S         */
+/* ---------------------------------------- */
+.confident__link {
+  font: 300 16px/24px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  text-align: center;
+  display: inline-block;
+}
+
+.confident__link:hover, .confident__link:focus {
+  text-decoration: none;
+}
+
+.confident__title {
+  font: 400 24px/30px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confident__subtitle {
+  font: 400 20px/24px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  margin-bottom: 20px;
+}
+
+.confident__heading {
+  font: 500 18px/20px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  margin-bottom: 15px;
+}
+
+.confident__text {
+  font: 400 18px/20px "PF Din Text Pro", sans-serif;
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 576px) {
+  .modal--size {
+    max-width: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .modal--size {
+    max-width: 900px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .modal__close--confident {
+    top: 0;
+    right: -50px;
   }
 }
