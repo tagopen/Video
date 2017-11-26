@@ -997,15 +997,6 @@ $(function() {
       var data = new FormData($form[0]);
 
       data.append("form", form);
-
-      let jsonObject = {};
-
-      for (const [key, value]  of data.entries()) {
-          jsonObject[key] = value;
-      }
-
-      console.log(jsonObject);
-
       
       $.ajax(url, {
         type: 'post',
