@@ -95,7 +95,7 @@
           <div class="container h-100">
             <div class="row justify-content-center flex-lg-row-reverse h-100">
               <div class="col-24 h-100">
-                <form class="form h-100" action="system/model.php" method="post" novalidate>
+                <form class="form js-avatar-form h-100" action="system/model.php" method="post" novalidate>
                   <div class="tabs h-100" data-tabs="test-tabs">
                     <div class="tabs__control tabs-control">
                       <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
@@ -189,7 +189,8 @@
                               ?>
                               <option value="<?=$name?>"><?=$name?></option>
 
-                              <?php } ?>                            </select>
+                              <?php } ?>                     
+                            </select>
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child2[newname][name]">
                           </fieldset>
                           <label class="radio-btn radio-btn--size">
@@ -251,9 +252,11 @@
                               <div class="col-auto"><span class="nt-price">40 грн</span></div>
                             </div>
                             <div class="row justify-content-between total-row">
+                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 17 грн</a></div>
+                            </div>
+                            <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
-                              <div class="col-auto"><span class="nt-price js-total-price">100 грн</span>
-                              <span class="nt-price d-none js-total-price">140 грн</span></div>
+                              <div class="col-auto"><span class="nt-price js-total-price">100 грн</span><span class="nt-price d-none js-total-price">140 грн</span></div>
                             </div>
                           </div>
                         </div>
@@ -269,6 +272,10 @@
                             <input class="form-control" type="email" name="email" placeholder="Введите ваш E-mail">
                           </fieldset>
                           <p class="tabs__text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
+                          <fieldset class="form-group text-center text-md-left tabs__promo"><a class="sr-only link js-promo" href="#promo">Ввести промокод</a>
+                            <input class="form-control form-control--promo" id="promo" type="text" name="promocode" placeholder="Введите промокод, если он есть у вас">
+                            <div class="result"></div>
+                          </fieldset>
                         </div>
                         <div class="col-24">
                           <div class="btn-groups form__btn-groups">
@@ -279,6 +286,7 @@
                                 </div>
                               </div>
                               <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
+                              <div class="col-24"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
                             </div>
                           </div>
                         </div>

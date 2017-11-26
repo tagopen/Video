@@ -51,8 +51,8 @@
 <![endif]-->
   </head>
   <body class="body">
-    <header class="header header-friday">
-      <section class="header__box header__box--friday">
+    <header class="header">
+      <section class="header__box">
         <div class="header__menu menu">
           <div class="container">
             <div class="row flex-md-row-reverse justify-content-between">
@@ -81,20 +81,46 @@
         </div>
         <div class="header__content h-content d-flex align-items-center"> 
           <div class="container">
-            <div class="row justify-content-start">
-              <div class="col-24 col-lg-14 align-self-center">
+            <div class="row justify-content-center flex-lg-row-reverse">
+              <div class="col-24 col-md-14 col-lg-8">
+                <div class="h-content__image"><img class="img-fluid h-content__img" src="img/children.png" alt="Дети"></div>
+              </div>
+              <div class="col-24 col-lg-16 align-self-center">
                 <div class="h-content__box">
+                  <h2 class="h-content__subtitle">BLACK FRIDAY <span class="h-content__subtitle--span">с 24 по 26</span> ноября скидка <span class="h-content__subtitle--span">60%!</span></h2>
                   <h1 class="h-content__title">Удивите своего ребенка видео поздравлением от Дедушки Мороза!</h1>
-                  <h2 class="h-content__subtitle h-content__subtitle--friday">BLACK FRIDAY <span class="h-content__subtitle--span">с 24 по 26</span> ноября скидка <span class="h-content__subtitle--span">60%!</span></h2>
-                  <div class="sell">
-                    <div class="sell__text">100 <span class="sell__text--span">грн</span></div>
-                    <div class="sell__old">250 <span class="sell__old--span">грн</span></div>
+                  <div class="row justify-content-center justify-content-lg-start">
+                    <div class="col-24 col-md-18 col-lg-24"> 
+                      <ul class="h-content__list h-list">
+                        <li class="h-list__item">Обращение к вашему ребенку по имени<i class="ic ic--check h-list__icon"></i></li>
+                        <li class="h-list__item">Четыре варианта подарка! От 78 грн<i class="ic ic--check h-list__icon"></i></li>
+                        <li class="h-list__item">Бесплатная доставка при оплате онлайн<i class="ic ic--check h-list__icon"></i></li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="btn-groups text-center text-lg-left"><a class="btn btn--default h-content__btn" href="order.php">Оформить заказ со скидкой 60%</a></div>
+                  <div class="btn-groups text-center text-lg-left"><a class="btn btn--default h-content__btn js-scroll-trigger" href="order.php">Оформить заказ со скидкой 60%</a>
+                    <div class="gg-text gg-text--white mt-2 mb-4 d-md-none">Узнайте что такое <br class="d-lg-none">видео поздравление <br class="d-lg-none">от Дедушки <nobr>Мороза 2 минуты</nobr></div>
+                  </div>
                 </div>
               </div>
-              <div class="col-24 col-lg-10 header-friday__col">
-                <div class="d-flex align-items-center justify-content-center h-100"><a class="vd-video__play mp-play mp-play--friday" data-toggle="modal" href="#video__modal"><i class="fa fa-play mp-play__icon" aria-hidden="true">         </i></a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="video">
+        <div class="video__bg"></div>
+        <div class="container">        
+          <div class="row justify-content-center">
+            <div class="col-24 col-lg-20">
+              <div class="video__movie vd-video"><img class="img-fluid vd-video__img" src="img/video.png" alt="Видео-фон">
+                <div class="vd-video__descr">
+                  <div class="row align-items-center">
+                    <div class="col-24 col-md-12 text-center"><a class="vd-video__play mp-play" data-toggle="modal" href="#video__modal"><i class="fa fa-play mp-play__icon" aria-hidden="true"> </i></a></div>
+                    <div class="col-24 col-md-12 hidden-sm-down d-none d-md-block text-md-left">
+                      <div class="vd-video__text gg-text gg-text--white">Узнайте что такое <br class="d-lg-none">видео поздравление <br class="d-lg-none">от Дедушки <nobr>Мороза 2 минуты</nobr></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -565,13 +591,7 @@
               <div class="col-24 text-center">
                 <div class="package">
                   <div class="row">
-                    <div class="col-24 col-lg-10 d-flex align-items-center">
-                      <div class="gift__box">
-                        <div class="gift__text">Только в Чёрную пятницу,<br /><span class="gift__text--span"> с 24 по 26 ноября</span>, скидка</div>
-                        <div class="gift__image"> <i class="ic ic--percent"></i></div>
-                      </div>
-                    </div>
-                    <div class="col-24 col-lg-14">       
+                    <div class="col-24"> 
                       <div class="package__box">
                         <div class="package__bg"></div>
                         <div class="package__content"> <i class="ic ic--candy package__candy"></i><i class="ic ic--confetti package__confetti"> </i>
