@@ -34,6 +34,7 @@
     private $error;
     private $msg;
     private $result;
+    private $pay_link;
 
     function __construct() {
 
@@ -64,7 +65,9 @@
 
       $image_id = $this -> setImage($this -> data["image"]);
 
-      $amoID = amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
+      $amoData = amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
+      $amoID = $amoData["lid"];
+      $this->pay_link = $amoData["link"];
 
       DB::insert('order', array(
         'order_image_id'   => $image_id,
@@ -263,6 +266,9 @@
     public function getError() {
       return $this -> error;
     }
+    public function getPayLink() {
+      return $this -> pay_link;
+    }
 
     private function vardump($val) {
       header('Content-Type: text/html; charset=utf-8');
@@ -431,7 +437,8 @@
     'state'  => 200,
     'message' => $obj -> getMsg(),
     'error' => $obj -> getError(),
-    'result' => $obj -> getResult()
+    'result' => $obj -> getResult(),
+    'pay_link' => $obj -> getPayLink(),
   );
 
   echo json_encode($response);

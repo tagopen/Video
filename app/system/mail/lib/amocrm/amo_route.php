@@ -17,7 +17,7 @@ define("LIQPAY_PRIVATE_KEY", "cpNemwZYOdcFQnH6t03IRbH7t1iMjtPmjVsbZeZZ");
  * @param string $leadname - Lead name
  * @param bool $redirect - Go to payment link?
  * @param int $status_id - Lead status ID
- * @return int - Lead ID
+ * @return array - Lead ID & payLink
  */
 function amo_route($data, $leadname = "Заявка с сайта", $redirect = true, $status_id = AMO_DEFAULT_STATUS) {
     global $amo;
@@ -158,7 +158,9 @@ function amo_route($data, $leadname = "Заявка с сайта", $redirect = 
                     ), // ID: Имя 2-го ребенка
                 ) : array())
             ));
+            $out = array("link"=>null);
             if ($res = $res["leads"]["add"][0]["id"]) {
+                $out["lid"] = $res;
                 sleep(1);
                 $leads_ids = (isset($contact["linked_leads_id"]) ? $contact["linked_leads_id"] : array());
                 $leads_ids[] = $res;
@@ -200,9 +202,10 @@ function amo_route($data, $leadname = "Заявка с сайта", $redirect = 
                             )
                         )
                     );
-                    header("Location: ".$payLink);
+                    //header("Location: ".$payLink);
+                    $out["link"] = $payLink;
                 }
-                return $res;
+                return $out;
             }
         }
     }
