@@ -1,5 +1,5 @@
 header.header.header--100vh
-  article.intro
+  article.intro.intro--mh-100
     section.intro__menu.menu
       .container
         - var navbar = page.header.menu
@@ -20,7 +20,7 @@ header.header.header--100vh
                     img.img-fluid.logo__img(src!= logo.img.src, alt!= logo.img.alt)
                 .col-24.col-md-auto.logo__col.align-items-center  
                   p.logo__text!= logo.text      
-    section.h-content.intro__content.h-100
+    section.h-content.intro__content
       .container.h-100
         - var headContent = page.header.content
         .row.justify-content-center.flex-lg-row-reverse.h-100

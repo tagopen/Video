@@ -1785,6 +1785,11 @@ button:focus {
   height: 100%;
 }
 
+.intro--mh-100 {
+  height: auto;
+  min-height: 100%;
+}
+
 .intro__menu {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
