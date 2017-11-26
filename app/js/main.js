@@ -467,7 +467,7 @@ console.log($male);
     this.$avatar = this.$avatarView.find('img');
     this.$avatarSrcImage = this.$avatarView.find('#image');
     this.$avatarModal = this.$modal;
-    this.$loading = this.$container.find('.loading');
+    this.$loading = $('.loading');
 
     this.$fileName = this.$avatarModal.find('.avatar-filename');
     this.$avatarForm = this.$avatarModal.find('.avatar-form');
@@ -972,7 +972,17 @@ $(function() {
   .on('submit', function (e) {
     var $form = $(this);
 
-    function alert(msg, classItem) {
+
+    var submitStart = function () {
+     $(".loading").fadeIn();
+    },
+
+
+    var submitEnd = function () {
+      $(".loading").fadeOut();
+    },
+
+    var alert = function (msg, classItem) {
 
       // Success message
       $form.find('.success').html("<div class='alert " + classItem + "'>");
@@ -1010,6 +1020,13 @@ $(function() {
           $form.find("[type=submit]").prop("disabled", false).button('reset'); 
         },
 
+        beforeSend: function () {
+          submitStart();
+        },
+
+        submitEnd: function () {
+          submitEnd();
+        },
         success: function(data) {
           if ($.isPlainObject(data) && data.state === 200) {
             if (data.message) {
@@ -1025,7 +1042,9 @@ $(function() {
             alert('Failed to response', "alert-danger");
           }
           $form.find("[type=submit]").prop("disabled", false).button('reset'); 
-        },
+          
+          submitEnd();
+        }
       });
     }
   }); 
