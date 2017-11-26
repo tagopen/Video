@@ -990,12 +990,21 @@ $(function() {
     } else {
       e.preventDefault();
       $form.find("[type=submit]").prop("disabled", true).button('loading'); //prevent submit behaviour and display preloading
+      $form.find('.success').html("");
 
       var url = $form.attr('action');
-      var form = $form.find("[type=submit]").attr("name");
+      var form = $form.find("[type=submit]").val();
       var data = new FormData($form[0]);
 
-      data.append('form', form);
+      data.append("form", form);
+
+      let jsonObject = {};
+
+      for (const [key, value]  of data.entries()) {
+          jsonObject[key] = value;
+      }
+
+      console.log(jsonObject);
 
       
       $.ajax(url, {

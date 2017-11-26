@@ -48,6 +48,7 @@
       if ($this -> data["form"]) {
         $this -> data = $this -> validateDataForm($this -> data );
         $this -> setTotalPrice($this -> data["price"]);
+
         if ($this -> data["form"] == "Order") {
           $this -> setOrder();
         }
@@ -279,8 +280,8 @@
         return;
       }
 
-      $gender = (int)$data["gender"];
 
+      $gender = (int)$data["gender"];
 
       if ($gender === 1) {
         $result["gender"] = 1;
@@ -288,15 +289,11 @@
         $result["gender"] = 0;
       }
 
-      if (!is_null($data["newname"])) {
-        $newname = $data["newname"]["name"];
-        $trigger_newname = $data["newname"]["trigger"];
-      }
 
-
+      $trigger_newname = $data["newname"]["trigger"];
 
       if (!is_null($trigger_newname)) {
-
+        $newname = $data["newname"]["name"];
         if (is_null($newname)) {
           $this -> error = "Не заполнено поле с добавлением имени ребенка";
           return;
@@ -305,16 +302,21 @@
         ModelClass::setChildreanName($result);
       } else {
 
-        if (is_null($data["name"])) {
-          $this -> error = "Не заполнено поле с именем ребенка";
-          return;
-        }
         if ($gender === 1) {
+           
+          if (is_null($data["name"]["male"])) {
+            $this -> error = "Не заполнено поле с именем ребенка";
+            return;
+          }
           $result["name"] = $data["name"]["male"];
         } elseif ($gender === 0) {
+           
+          if (is_null($data["name"]["female"])) {
+            $this -> error = "Не заполнено поле с именем ребенка";
+            return;
+          }
           $result["name"] = $data["name"]["female"];
         } 
-
       }
 
       return $result;
@@ -351,7 +353,7 @@
 
     private function validateDataForm($post) {
       $data = array();
-      
+
 
       if (is_null($post['childrean'])){
         $this -> error = "Не выбрано кол-во детей";
@@ -370,12 +372,14 @@
         return;
       }
       $data['child1'] = ModelClass::validateChild($child1);
-      
-      if (is_null($child2) && $childrean === 2){
-        $this -> error = "Данные о 2-м ребенке - отсутствуют";
-        return;
-      } else {
-        $data['child2'] = ModelClass::validateChild($child2);
+
+      if ($childrean === 2) {
+        if (is_null($child2)){
+          $this -> error = "Данные о 2-м ребенке - отсутствуют";
+          return;
+        } else {
+          $data['child2'] = ModelClass::validateChild($child2);
+        }
       }
 
       $image = $post["image"];
