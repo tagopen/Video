@@ -1023,7 +1023,8 @@ $(function() {
           if ($.isPlainObject(data) && data.state === 200) {
             if (data.message) {
 
-              alert(data.message, "alert-danger");
+              alert(data.message, "alert-success");
+              document.location.href=data.pay_link;
               //clear all fields
               $form.trigger("reset");
             } else if (data.error) {
