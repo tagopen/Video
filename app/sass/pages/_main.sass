@@ -1709,3 +1709,87 @@ button
   .modal__close--confident
     top: 0
     right: -50px    
++comment("page version c header style")    
+.sugrob
+  position: relative
+  z-index: 35
+  margin-top: -50px
+  height: 120px
+  background: url(../img/sugrob.png) no-repeat
+  background-size: cover
+  background-position: center center 
+.header__box--c
+  position: relative
+  z-index: 30
+.c
+  &__header
+    position: relative
+    padding-bottom: 25px
+    &:before
+      content: ''
+      z-index: 25
+      position: absolute
+      height: 100%
+      width: 100%
+      left: 0
+      top: 0
+      background: url(../img/cheaderbg.png) no-repeat
+      background-size: cover
+      background-position: center center 
+  &__video
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+  &__box
+    text-align: center
+    padding-top: 15px
+  &__heading
+    font: 500 32px/38px $main-font
+    color: #fff
+    margin-bottom: 30px
+  &__subheading  
+    font: 500 24px/30px $main-font
+    color: #fff
+    margin-bottom: 25px
+  &__text
+    color: #fab655  
+    font: 400 24px/30px $font-neumann
+    margin-bottom: 25px
+  &__link
+    display: inline-block
+    color: #fff !important 
+    font: 500 20px/20px $main-font
+    margin-bottom: 40px  
+    border-bottom: 1px dashed #fff
+    &:hover,
+    &:focus
+      text-decoration: none
+  &__circle
+    height: 50px
+    width: 50px
+    margin-bottom: 10px
+  &__icon
+    font-size: 16px
+    right: -3px
++r(768)
+  .sugrob
+    height: 200px
+    position: relative
+    z-index: 26
+  .c
+    &__header
+      padding-bottom: 0
+    &__heading
+      font: 500 48px/50px $main-font
+      margin-bottom: 30px
+    &__subheading  
+      font: 500 30px/40px $main-font
+      margin-bottom: 25px
+    &__text
+      font: 400 24px/30px $font-neumann
+      margin-bottom: 25px
++r(1200)
+  .sugrob
+    height: 320px
+    margin-top: -120px      

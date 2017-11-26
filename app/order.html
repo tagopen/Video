@@ -1,18 +1,3 @@
-<?php 
-  ini_set("display_errors","1");
-  ini_set("display_startup_errors","1");
-  ini_set('error_reporting', E_ALL);
-
-  require_once 'system/viewClass.php';
-
-  $view = new viewClass;
-  $discount = $view -> getDiscount();
-  $names = $view -> getChildreanName();
-  $male = $names["male"];
-  $female = $names["female"];
-  $price = $view -> getProductPrice();
-    
-?>
 <!DOCTYPE html>
 <html class="html" lang="ru" prefix="og: http://ogp.me/ns#">
   <head>
@@ -138,21 +123,13 @@
                           <fieldset class="form-group" id="new1">
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child1[name][male]" data-gender="male" required>
                               <option></option>
-                              <?php foreach ($male as $value) {
-                                $name = $value["firstname"];
-                              ?>
-                              <option value="<?=$name?>"><?=$name?></option>
-
-                              <?php } ?>
+                              <option value="Абрам">Абрам</option>
+                              <option value="Авраам">Авраам</option>
                             </select>
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child1[name][female]" data-gender="female">
                               <option></option>
-                              <?php foreach ($female as $value) {
-                                $name = $value["firstname"];
-                              ?>
-                              <option value="<?=$name?>"><?=$name?></option>
-
-                              <?php } ?>
+                              <option value="Аврора">Аврора</option>
+                              <option value="Агата">Агата</option>
                             </select>
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child1[newname][name]">
                           </fieldset>
@@ -175,21 +152,13 @@
                           <fieldset class="form-group" id="new2">
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][male]" data-gender="male" required>
                               <option></option>
-                              <?php foreach ($male as $value) {
-                                $name = $value["firstname"];
-                              ?>
-                              <option value="<?=$name?>"><?=$name?></option>
-
-                              <?php } ?>
+                              <option value="Абрам">Абрам</option>
+                              <option value="Авраам">Авраам</option>
                             </select>
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][female]" data-gender="female">
                               <option></option>
-                              <?php foreach ($female as $value) {
-                                $name = $value["firstname"];
-                              ?>
-                              <option value="<?=$name?>"><?=$name?></option>
-
-                              <?php } ?>
+                              <option value="Аврора">Аврора</option>
+                              <option value="Агата">Агата</option>
                             </select>
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child2[newname][name]">
                           </fieldset>
@@ -240,12 +209,12 @@
                           <div class="total-price">
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Стоимость пакета:</span></div>
-                              <div class="col-auto"><span class="nt-price"><?= $price?> грн</span></div>
+                              <div class="col-auto"><span class="nt-price">250 грн</span></div>
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Ваша скидка:</span></div>
                               <div class="col-auto"><span class="nt-price">-150 грн</span></div>
-                              <input class="js-discount" type="hidden" name="discount" value="<?=$discount?>">
+                              <input class="js-discount" type="hidden" name="discount">
                             </div>
                             <div class="row justify-content-between total-row d-none js-new-name">
                               <div class="col-auto"><span class="tb-price">Дозапись имени:</span></div>

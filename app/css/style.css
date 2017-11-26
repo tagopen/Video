@@ -4005,3 +4005,122 @@ button:focus {
     right: -50px;
   }
 }
+
+/* ---------------------------------------------------------- */
+/* P A G E    V E R S I O N    C    H E A D E R    S T Y L E  */
+/* ---------------------------------------------------------- */
+.sugrob {
+  position: relative;
+  z-index: 35;
+  margin-top: -50px;
+  height: 120px;
+  background: url(../img/sugrob.png) no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.header__box--c {
+  position: relative;
+  z-index: 30;
+}
+
+.c__header {
+  position: relative;
+  padding-bottom: 25px;
+}
+
+.c__header:before {
+  content: '';
+  z-index: 25;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: url(../img/cheaderbg.png) no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.c__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.c__box {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.c__heading {
+  font: 500 32px/38px "PF Din Text Pro", sans-serif;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.c__subheading {
+  font: 500 24px/30px "PF Din Text Pro", sans-serif;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.c__text {
+  color: #fab655;
+  font: 400 24px/30px "Neumann", sans-serif;
+  margin-bottom: 25px;
+}
+
+.c__link {
+  display: inline-block;
+  color: #fff !important;
+  font: 500 20px/20px "PF Din Text Pro", sans-serif;
+  margin-bottom: 40px;
+  border-bottom: 1px dashed #fff;
+}
+
+.c__link:hover, .c__link:focus {
+  text-decoration: none;
+}
+
+.c__circle {
+  height: 50px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.c__icon {
+  font-size: 16px;
+  right: -3px;
+}
+
+@media only screen and (min-width: 768px) {
+  .sugrob {
+    height: 200px;
+    position: relative;
+    z-index: 26;
+  }
+  .c__header {
+    padding-bottom: 0;
+  }
+  .c__heading {
+    font: 500 48px/50px "PF Din Text Pro", sans-serif;
+    margin-bottom: 30px;
+  }
+  .c__subheading {
+    font: 500 30px/40px "PF Din Text Pro", sans-serif;
+    margin-bottom: 25px;
+  }
+  .c__text {
+    font: 400 24px/30px "Neumann", sans-serif;
+    margin-bottom: 25px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .sugrob {
+    height: 320px;
+    margin-top: -120px;
+  }
+}
