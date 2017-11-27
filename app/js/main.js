@@ -495,6 +495,7 @@ Raven.context(function () {
         highlight: false,
         autoCropArea: 0.65,
         zoomOnWheel: false,
+        checkOrientation: false,
         crop: function (e) {
 
           var json = [
