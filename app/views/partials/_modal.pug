@@ -86,13 +86,15 @@
   .modal-dialog.modal-lg
     .modal-content
       .modal-body
-        .row
+        .row.text-center
           .col-24.align-self-start
-            h2.heding Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 17 грн на вашу покупку!
+            h2.heding.heading--neumann.mb-5 Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 17 грн на вашу покупку!
           .col-24.align-self-center
-            #shareBtn.btn.btn--facebook(data-layout="button_count") Я рекомендую
-          .col-24.align-self-end
-            a(href="#dismiss", data-dismiss="modal") Нет, спасибо
+            #shareBtn.btn.btn--facebook(data-layout="button_count") 
+              i.fa.fa-facebook.mr-3
+              | Я рекомендую
+          .col-24.align-self-end.mt-5
+            a.link-gray(href="#dismiss", data-dismiss="modal") Нет, спасибо
 
 .loading(aria-label='Loading', role='img', tabindex='-1')
 

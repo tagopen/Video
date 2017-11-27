@@ -23,10 +23,16 @@
       $results = DB::query("SELECT dc.* FROM discount AS dc WHERE dc.permission = %s AND dc.date_start <= %t AND dc.date_end >= %t", "public", date("Y-m-d"), date("Y-m-d"));
       if ($results) {
         foreach ($results as $row) {
-          return $row["name"];
+          return array(
+            "name" => $row["name"],
+            "price" => (int)$row["price"]
+            );
         }
       } else {
-        return;
+        return array(
+          "name" => "",
+          "price" => "0"
+          );
       }
     }
 

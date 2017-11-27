@@ -11,7 +11,6 @@
   $male = $names["male"];
   $female = $names["female"];
   $price = $view -> getProductPrice();
-    
 ?>
 <!DOCTYPE html>
 <html class="html" lang="ru" prefix="og: http://ogp.me/ns#">
@@ -244,19 +243,19 @@
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Ваша скидка:</span></div>
-                              <div class="col-auto"><span class="nt-price">-150 грн</span></div>
-                              <input class="js-discount" type="hidden" name="discount" value="<?=$discount?>">
+                              <div class="col-auto"><span class="nt-price"><span class="js-discount-price"><?=$discount["price"]?></span> грн</span></div>
+                              <input class="js-discount" type="hidden" name="discount" value="<?=$discount["name"]?>">
                             </div>
                             <div class="row justify-content-between total-row d-none js-new-name">
                               <div class="col-auto"><span class="tb-price">Дозапись имени:</span></div>
                               <div class="col-auto"><span class="nt-price">40 грн</span></div>
                             </div>
-                            <div class="row justify-content-between total-row">
-                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 17 грн</a></div>
+                            <div class="row justify-content-between total-row  js-total-discount">
+                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 30 грн</a></div>
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
-                              <div class="col-auto"><span class="nt-price js-total-price">100 грн</span><span class="nt-price d-none js-total-price">140 грн</span></div>
+                              <div class="col-auto"><span class="nt-price js-total-price"><span class="js-total-price-val"><?= ($price - $discount["price"])?></span> грн</span><span class="nt-price d-none js-total-price"><span class="js-total-price-val"><?=($price - $discount["price"] + 40)?></span> грн</span></div>
                             </div>
                           </div>
                         </div>
@@ -272,12 +271,9 @@
                             <input class="form-control" type="email" name="email" placeholder="Введите ваш E-mail">
                           </fieldset>
                           <p class="tabs__text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
-                          <fieldset class="form-group text-center text-md-left tabs__promo"><a class="sr-only link js-promo" href="#promo">Ввести промокод</a>
-                            <input class="form-control form-control--promo" id="promo" type="text" name="promocode" placeholder="Введите промокод, если он есть у вас">
-                            <div class="result"></div>
-                          </fieldset>
                         </div>
                         <div class="col-24">
+                          <div class="success"></div>
                           <div class="btn-groups form__btn-groups">
                             <div class="row">
                               <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
@@ -286,7 +282,7 @@
                                 </div>
                               </div>
                               <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
-                              <div class="col-24"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
+                              <div class="col-24 mb-4"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
                             </div>
                           </div>
                         </div>
@@ -415,14 +411,14 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="row">
+            <div class="row text-center">
               <div class="col-24 align-self-start">
-                <h2 class="heding">Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 17 грн на вашу покупку!</h2>
+                <h2 class="heading heading--neumann mb-5">Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 17 грн на вашу покупку!</h2>
               </div>
               <div class="col-24 align-self-center">
-                <div class="btn btn--facebook" id="shareBtn" data-layout="button_count">Я рекомендую</div>
+                <div class="btn btn--facebook" id="shareBtn" data-layout="button_count"> <i class="fa fa-facebook mr-3"></i>Я рекомендую</div>
               </div>
-              <div class="col-24 align-self-end"><a href="#dismiss" data-dismiss="modal">Нет, спасибо</a></div>
+              <div class="col-24 align-self-end mt-5"><a class="link-gray" href="#dismiss" data-dismiss="modal">Нет, спасибо</a></div>
             </div>
           </div>
         </div>

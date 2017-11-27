@@ -953,6 +953,15 @@ $(function() {
       if (response && !response.error_message) {
         $("#facebook").modal("hide");
         $(".js-discount").val("facebook");
+        $(".js-discount-price").text("-30");
+        var $totalPrice = $(".js-total-price-val");
+        $('.js-total-discount').remove();
+        $totalPrice.each(function() {
+          var totalPrice = $(this).text();
+          totalPrice = parseInt(totalPrice, 10);
+          console.log
+          $(this).text(totalPrice - 30);
+        });
       }
     });
   });
@@ -975,12 +984,12 @@ $(function() {
 
     var submitStart = function () {
      $(".loading").fadeIn();
-    },
+    }
 
 
     var submitEnd = function () {
       $(".loading").fadeOut();
-    },
+    }
 
     var alert = function (msg, classItem) {
 
@@ -1018,6 +1027,8 @@ $(function() {
         error: function (XMLHttpRequest, textStatus, errorThrown) {
           alert(textStatus || errorThrown, "alert-danger");
           $form.find("[type=submit]").prop("disabled", false).button('reset'); 
+          
+          submitEnd();
         },
 
         beforeSend: function () {
