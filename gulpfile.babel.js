@@ -66,7 +66,7 @@ gulp.task('sass', () => {
       image: path.src.img,
       outputStyle: 'expanded'
     }))
-    .pipe($.autoprefixer(['last 15 versions', '>1%', 'ie 10'], {
+    .pipe($.autoprefixer(['last 65 versions', 'not ie <= 10'], {
       cascade: true
     }))
     .pipe(gulp.dest(path.src.css))
