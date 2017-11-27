@@ -48,26 +48,29 @@
   });
 
   // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
-  $('.js-timer').countdown('2017/12/10', function(event) {
+  if ($('.js-timer').length) {
+    $('.js-timer').countdown('2017/12/10', function(event) {
 
-    var $this = $(this).html(event.strftime(''
-      + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
-      + '<div class="timer__item"><div class="timer__time">:</div></div>'
-      + '<div class="timer__item"><div class="timer__time">%H</div><div class="timer__text">часов</div></div>'
-      + '<div class="timer__item"><div class="timer__time">:</div></div>'
-      + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'
-      + '<div class="timer__item"><div class="timer__time">:</div></div>'
-      + '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
-  });
+      var $this = $(this).html(event.strftime(''
+        + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
+        + '<div class="timer__item"><div class="timer__time">:</div></div>'
+        + '<div class="timer__item"><div class="timer__time">%H</div><div class="timer__text">часов</div></div>'
+        + '<div class="timer__item"><div class="timer__time">:</div></div>'
+        + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'
+        + '<div class="timer__item"><div class="timer__time">:</div></div>'
+        + '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
+    });
+  }
 
   if( $( window ).width() >= 576 ) {
-
-    $('.sv-item__text').matchHeight({
-      byRow: true,
-      property: 'height',
-      target: null,
-      remove: false
-    });
+    if ($('.sv-item__text').length) {
+      $('.sv-item__text').matchHeight({
+        byRow: true,
+        property: 'height',
+        target: null,
+        remove: false
+      });
+    }
   };
 
   $(document).ready(function(){
