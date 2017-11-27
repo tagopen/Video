@@ -3,12 +3,12 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
   .tabs.h-100(data-tabs="test-tabs")
     .tabs__control.tabs-control
       .tabs-control__item
-        a.tabs-control__link.tabs-control__link--active(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="0") Шаг 1
+        a.tabs-control__link.tabs-control__link--1.tabs-control__link--active(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="0") Шаг 1
       .tabs-control__item
-        a.tabs-control__link(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="1") Шаг 2
+        a.tabs-control__link.tabs-control__link--2(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="1") Шаг 2
       .tabs-control__item
-        a.tabs-control__link(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="2") Шаг 3
-    .tabs__item.tabs__item--active.tabs__item--1
+        a.tabs-control__link.tabs-control__link--3(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="2") Шаг 3
+    .tabs__item.tabs__item--active
       .row
         .col-24
           h2.heading.tabs__heading Сколько детей нужно поздравить?
@@ -75,7 +75,7 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
             label.radio-btn__box(for='rbtn22')
               i.radio-btn__icon
               | Добавить имя ребенка
-    .tabs__item.tabs__item--2
+    .tabs__item
       .row
         .col-24
           h2.heading.tabs__heading Загрузите фотографию ребенка
@@ -96,7 +96,7 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
             button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
           .col-24.col-md-6.text-center.text-md-left
             a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
-    .tabs__item.tabs__item--3
+    .tabs__item
       .row.flex-md-row-reverse.justify-content-between
         .col-24.col-md-12.col-lg-10.offset-lg-2
           h2.heading.tabs__heading Детали заказа

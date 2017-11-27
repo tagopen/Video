@@ -97,11 +97,11 @@
                 <form class="form js-avatar-form h-100" action="system/model.php" method="post" novalidate>
                   <div class="tabs h-100" data-tabs="test-tabs">
                     <div class="tabs__control tabs-control">
-                      <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
-                      <div class="tabs-control__item"><a class="tabs-control__link" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="1">Шаг 2</a></div>
-                      <div class="tabs-control__item"><a class="tabs-control__link" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="2">Шаг 3</a></div>
+                      <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--1 tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
+                      <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--2" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="1">Шаг 2</a></div>
+                      <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--3" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="2">Шаг 3</a></div>
                     </div>
-                    <div class="tabs__item tabs__item--1 tabs__item--active">
+                    <div class="tabs__item tabs__item--active">
                       <div class="row">
                         <div class="col-24">
                           <h2 class="heading tabs__heading">Сколько детей нужно поздравить?</h2>
@@ -199,7 +199,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tabs__item tabs__item--2">
+                    <div class="tabs__item">
                       <div class="row">
                         <div class="col-24">
                           <h2 class="heading tabs__heading">Загрузите фотографию ребенка</h2>
@@ -232,7 +232,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tabs__item tabs__item--3">
+                    <div class="tabs__item">
                       <div class="row flex-md-row-reverse justify-content-between">
                         <div class="col-24 col-md-12 col-lg-10 offset-lg-2">
                           <h2 class="heading tabs__heading">Детали заказа</h2>
