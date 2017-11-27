@@ -1988,6 +1988,15 @@ button:focus {
   padding-top: 15px;
 }
 
+@media only screen and (min-width: 992px) {
+  .menu--main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
 .logo {
   text-decoration: none;
   color: #000;
@@ -2172,9 +2181,6 @@ button:focus {
 @media only screen and (min-width: 1200px) {
   .h-content__img {
     margin-left: -75px;
-  }
-  .h-content__subtitle {
-    font: 300 italic 30px/40px "PF Din Text Pro", sans-serif;
   }
   .h-content__title {
     text-align: left;
