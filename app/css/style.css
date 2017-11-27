@@ -3846,7 +3846,7 @@ button:focus {
 /* ---------------------------------------- */
 .header-friday {
   position: relative;
-  background: url(../img/fridaybg1920.jpg) no-repeat;
+  background-image: url(../img/fridaybg1920.jpg) no-repeat;
   background-size: cover;
 }
 
@@ -3859,8 +3859,6 @@ button:focus {
 
 @media only screen and (min-width: 992px) {
   .header-friday {
-    background: url(../img/fridaybg1920.jpg) no-repeat;
-    background-size: cover;
     background-position: 50% center;
   }
 }

@@ -48,7 +48,7 @@
   });
 
   // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
-  $('.js-timer').countdown('2017/11/27', function(event) {
+  $('.js-timer').countdown('2017/12/10', function(event) {
 
     var $this = $(this).html(event.strftime(''
       + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
@@ -1027,7 +1027,7 @@ $(function() {
         error: function (XMLHttpRequest, textStatus, errorThrown) {
           alert(textStatus || errorThrown, "alert-danger");
           $form.find("[type=submit]").prop("disabled", false).button('reset'); 
-          
+
           submitEnd();
         },
 
