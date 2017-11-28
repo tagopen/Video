@@ -2,7 +2,7 @@
 require_once '/home/shunkin/video-pozdravlenie.com/www/system/Raven/Autoloader.php';
 Raven_Autoloader::register();
 $client = new Raven_Client('https://78886c863af642f5b93e7dc7b033b9c3:3d3ebee940b34913b57c89508166beef@sentry.io/251024');
-$error_handler = new Raven_ErrorHandler($sentryClient);
+$error_handler = new Raven_ErrorHandler($client);
 $error_handler->registerExceptionHandler();
 $error_handler->registerErrorHandler();
 $error_handler->registerShutdownFunction();

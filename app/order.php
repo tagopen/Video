@@ -160,7 +160,7 @@
                             <label class="radio-btn__box" for="rbtn21"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
                           <div class="btn-groups text-center text-md-left">
-                            <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
+                            <button class="btn btn--default btn--sm btn--step-1" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
                           </div>
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
@@ -226,7 +226,7 @@
                       <div class="btn-groups text-center">
                         <div class="row">
                           <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
-                            <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
+                            <button class="btn btn--default btn--sm  btn--step-2" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
                           </div>
                           <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
                         </div>
@@ -278,7 +278,7 @@
                             <div class="row">
                               <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
                                 <div class="btn-groups">
-                                  <button class="btn btn--default btn--sm" name="form" value="Order" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Перейти к оплате</button>
+                                  <button class="btn btn--default btn--sm  btn--step-3" name="form" value="Order" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Перейти к оплате</button>
                                 </div>
                               </div>
                               <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
