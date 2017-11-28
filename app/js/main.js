@@ -956,6 +956,7 @@ Raven.context(function () {
         if (response && !response.error_message) {
           $("#facebook").modal("hide");
           $(".js-discount").val("facebook");
+          $(".js-hidden-discount").removeClass("d-none");
           $(".js-discount-price").text("-30");
           var $totalPrice = $(".js-total-price-val");
           $('.js-total-discount').remove();
