@@ -1,0 +1,59 @@
+header.header
+  section.header__box
+    .header__menu.menu.menu--main
+      .container
+        - var navbar = page.header.menu
+        .row.flex-md-row-reverse.justify-content-between
+          .col-24.col-md-6
+            .header__call.h-call
+              .row.justify-content-center
+                .col-auto.col-md-24.text-left.text-md-right
+                  a.h-call__number.h-call__number--white(href!= navbar.number.href)!=navbar.number.tel
+                .col-auto.col-md-24.text-right  
+                  a.h-call__button(href!= navbar.call.href, data-toggle="modal")!= navbar.call.text
+          .col-24.col-md-14.col-lg-10
+            .header__logo.logo.logo--white
+              - var logo = navbar.logo
+              .row
+                .col-24.col-md-auto
+                  .logo__image
+                    img.img-fluid.logo__img(src!= logo.img.src, alt!= logo.img.alt)
+                .col-24.col-md-auto.logo__col.align-items-center  
+                  p.logo__text!= logo.text      
+    .header__content.h-content.d-flex.align-items-center 
+      .container
+        - var headContent = page.header.content
+        .row.justify-content-center
+          .col-24.col-lg-14.align-self-center
+            .h-content__box
+              h2.h-content__subtitle!= headContent.subtitle
+              h1.h-content__title!= headContent.title
+              .row
+                .col-24.col-md-22.col-lg-21
+                  .price.discount__price.price--c
+                    each item, i in page.discount.price
+                      .price__item.price__item--c(class="price__item--" + (i + 1))
+                        span.price__value.price__value--c(data-label=item.text)
+                          != item.number
+                        span.price__currency.price__currency--c!= item.currency
+          .col-24.col-md-14.col-lg-10
+            .countdown.countdown--c
+              - var timer = page.discount.timer
+              h3.cd-heading.countdown__heading.text-center!= timer.heading
+              .timer.js-timer.js-timer--c
+                .timer__item
+                  .timer__time!= timer.days.number
+                  .timer__text!= timer.days.text
+                .timer__item
+                  .timer__time!= timer.delimeter
+                .timer__item
+                  .timer__time!= timer.hours.number
+                  .timer__text!= timer.hours.text
+                .timer__item
+                  .timer__time!= timer.delimeter
+                .timer__item
+                  .timer__time!= timer.minutes.number
+                  .timer__text!= timer.minutes.text
+            .btn-groups
+              a.btn.btn--default.btn--size.discount__btn(href="order.php")!= page.discount.btn.text                  
+  include ../partials/_video.pug            
