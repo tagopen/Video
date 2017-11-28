@@ -68,6 +68,14 @@ html.html(lang='ru' prefix='og: http://ogp.me/ns#')
     <![endif]-->
 
   body.body
+    <!--[if lt IE 10]>
+      <div class="alert alert-warning alert-dismissible fade show m-0 rounded-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </div>
+    <![endif]-->
     block header
     main.main
       block content
@@ -82,8 +90,6 @@ html.html(lang='ru' prefix='og: http://ogp.me/ns#')
     script(src='js/jquery.js')
     // Bootstrap JavaScript
     script(src='js/bootstrap.js')
-    // Old browsers reject JavaScript
-    script(src='js/jquery.reject.js')
     block scripts
     //- Slick-Slider JavaScript
     //- script(src='js/slick.js')
