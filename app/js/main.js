@@ -950,7 +950,7 @@ Raven.context(function () {
         method: 'share',
         display: 'popup',
         hashtag: '#VideoPozdravlenie2018',
-        href: 'http://video-pozdravlenie.com/',
+        href: 'https://video-pozdravlenie.com/?utm_source=facebook&utm_medium=kupon&utm_campaign=repost',
       }, function(response) {
       
         if (response && !response.error_message) {
