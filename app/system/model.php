@@ -65,7 +65,7 @@
 
       $image_id = $this -> setImage($this -> data["image"]);
 
-      $amoData = amo_route(array_merge($_POST, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
+      $amoData = amo_route(array_merge($_POST, $_COOKIE, array("price"=>$this->data['price']))); // Добавлено для интеграции c Амо
       $amoID = $amoData["lid"];
       $this->pay_link = $amoData["link"];
 
