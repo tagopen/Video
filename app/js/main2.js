@@ -28,6 +28,19 @@ Raven.context(function () {
     var SELECT_ARROW =            'select2-selection__arrow';
     var SELECT_ARROW_SEL =        '.' + SELECT_ARROW;
 
+    var TIMER =                   'js-timer';
+    var TIMER_SEL =               '.' + TIMER;
+    var TIMER_DATE =              '2017/12/10';
+
+    var COLLAPSE =                'collapse';
+    var COLLAPSE_SEL =            '.' + COLLAPSE;
+
+    var VIDEO_MODAL =             'video__modal';
+    var VIDEO_MODAL_SEL =         '#' + VIDEO_MODAL;
+    var VIDEO_IFRAME =            'modal__iframe';
+    var VIDEO_IFRAME_SEL =        '.' + 'modal__iframe';
+
+
 
     var console = window.console || { log: function () {} };
     var $window = $(window);
@@ -39,6 +52,13 @@ Raven.context(function () {
 
       this.$select2 = $(SELECT_SEL);
       this.$select2Arrow = $(SELECT_ARROW_SEL);
+
+      this.$timer = $(TIMER_SEL);
+
+      this.$collapse = $(COLLAPSE_SEL);
+
+      this.$videoModal = $(VIDEO_MODAL_SEL);
+      this.$videoModalIframe = this.$videoModal.find(VIDEO_IFRAME_SEL);
 
       this.$container = $element;
 
@@ -80,11 +100,17 @@ Raven.context(function () {
         this.initTooltip();
         this.initModal();
         this.initSelect2();
+        this.initPhoneMask();
+        this.initTimer();
+        this.initAccordion();
         this.addListener();
       },
 
       addListener: function () {
         this.$scrollTrigger.on('click', $.proxy(this.clickScrollTrigger, this));
+        this.$collapse.on('shown.bs.modal hidden.bs.modal', $.proxy(this.toggleAccordion, this));
+        this.$videoModal.on('shown.bs.modal hidden.bs.modal', $.proxy(this.videoModal, this));
+
         this.$avatarView.on('click', $.proxy(this.click, this));
         this.$avatarInput.on('change', $.proxy(this.change, this));
         this.$avatarForm.on('submit', $.proxy(this.submit, this));
@@ -171,10 +197,35 @@ Raven.context(function () {
         }
       },
 
+      initPhoneMask: function() {
+        return new Cleave('[name=phone]', {
+          blocks: [4, 2, 3, 2, 2],
+          prefix: '+380',
+          rawValueTrimPrefix: true
+        });
+      },
+
       initPreview: function () {
         var url = this.$avatar.attr('src');
 
         this.$avatarPreview.html('<img src="' + url + '">');
+      },
+
+      initTimer: function() {
+        // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
+        if ($(this.$timer).length) {
+          $(this.$timer).countdown(TIMER_DATE, function(event) {
+
+            var $this = $(this).html(event.strftime(''
+              + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
+              + '<div class="timer__item"><div class="timer__time">:</div></div>'
+              + '<div class="timer__item"><div class="timer__time">%H</div><div class="timer__text">часов</div></div>'
+              + '<div class="timer__item"><div class="timer__time">:</div></div>'
+              + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'
+              + '<div class="timer__item"><div class="timer__time">:</div></div>'
+              + '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
+          });
+        }
       },
 
       initIframe: function () {
@@ -231,11 +282,83 @@ Raven.context(function () {
           target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
           if (target.length) {
             $('html, body').animate({
-              scrollTop: (target.offset().top - 40)
+              scrollTop: (target.offset().top)
             }, 1000);
             return false;
           }
         }
+      },
+
+      initAccordion: function(){
+        // Add minus icon for collapse element which is open by default
+        $(".collapse.in").each(function(){
+          $(this).siblings(".panel-heading").find(".panel__ic").addClass("minus");
+        });
+      },
+
+      toggleAccordion: function(){          
+        // Toggle plus minus icon on show hide of collapse element
+        $(".collapse").on('show.bs.collapse', function(){
+          $(this).parent().find(".panel__ic").toggleClass("minus");
+        }).on('hide.bs.collapse', function(){
+          $(this).parent().find(".panel__ic").removeClass("minus");
+        });
+      },
+
+      videoModal: function() {
+        if (this.$videoModalIframe.attr('src') !== 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=1&showinfo=0&mute=0&iv_load_policy=3&showsearch=0'){
+             //alert("true");
+             this.$videoModalIframe.attr('src', 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=1&showinfo=0&mute=0&iv_load_policy=3&showsearch=0')
+         } else {
+            this.$videoModalIframe.attr('src', 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=0&showinfo=0&mute=1&iv_load_policy=3&showsearch=0')         
+         }
+      },
+
+      transliterate: function(text) {
+        // Символ, на который будут заменяться все спецсимволы
+        var space = '-'; 
+        // Берем значение из нужного поля и переводим в нижний регистр
+        var text = text.toLowerCase();
+             
+        // Массив для транслитерации
+        var transl = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh', 
+        'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
+        'о': 'o', 'п': 'p', 'р': 'r','с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h',
+        'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh','ъ': space, 'ы': 'y', 'ь': space, 'э': 'e', 'ю': 'yu', 'я': 'ya',
+        ' ': space, '_': space, '`': space, '~': space, '!': space, '@': space,
+        '#': space, '$': space, '%': space, '^': space, '&': space, '*': space, 
+        '(': space, ')': space,'-': space, '\=': space, '+': space, '[': space, 
+        ']': space, '\\': space, '|': space, '/': space,'.': space, ',': space,
+        '{': space, '}': space, '\'': space, '"': space, ';': space, ':': space,
+        '?': space, '<': space, '>': space, '№':space
+        }
+                        
+        var result = '';
+        var curent_sim = '';
+                        
+        for(var i=0; i < text.length; i++) {
+            // Если символ найден в массиве то меняем его
+            if(transl[text[i]] != undefined) {
+                 if(curent_sim != transl[text[i]] || curent_sim != space){
+                     result += transl[text[i]];
+                     curent_sim = transl[text[i]];
+                 }                                                                             
+            }
+            // Если нет, то оставляем так как есть
+            else {
+                result += text[i];
+                curent_sim = text[i];
+            }                              
+        }          
+                        
+        result = this.trimStr(result);
+        return result;
+      },
+
+      trimStr: function(s) {
+        s = s.replace(/^-/, '');
+        return s.replace(/-$/, '');
       },
 
       change: function () {

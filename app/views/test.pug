@@ -1,0 +1,198 @@
+extends base/_layout.pug
+block variables
+
+block header
+block content
+  include partials/_test.pug
+  
+
+
+block styles
+
+block scripts
+  script.
+     $(document).ready(function() {
+       /*
+        * Валидация формы перед отправкой
+        */
+       $('#createForm').submit(function(e) {
+         if (!validateCreateForm())
+           e.preventDefault();
+       });
+
+       function validateCreateForm() {
+         if (!validateCreateFormPhoto()) {
+           alert('Пожалуйста, загрузите фотографию!');
+           return false;
+         }
+         if ($('body').hasClass('createPageAdditional') && !validateCreateFormPhoto2()) {
+           alert('Пожалуйста, загрузите фотографию!');
+           return false;
+         }
+         if (!validateCreateFormPhone()) {
+           alert('Пожалуйста, проверьте правильность ввода телефона!');
+           return false;
+         }
+         if (!validateCreateFormEmail()) {
+           alert('Пожалуйста, проверьте правильность ввода Email! На него придет готовое поздравление.');
+           return false;
+         }
+         return true;
+       }
+
+       function validateCreateFormPhoto() {
+         if ($('#photo1').val().length < 2)
+           return false;
+         return true;
+       }
+
+       function validateCreateFormPhoto2() {
+         if ($('#photo2').val().length < 2)
+           return false;
+         return true;
+       }
+
+       function validateCreateFormPhone() {
+         var phonePart1 = $('#phonePart1').val(),
+           phonePart2 = $('#phonePart2').val(),
+           phonePart3 = $('#phonePart3').val();
+         var fullPhone = phonePart1 + phonePart2 + phonePart3;
+         if (fullPhone.length == 0)
+           return false;
+         var country = countryCodeToName(phonePart1);
+         if (isValidNumber(fullPhone, country)) {
+           $('#formattedPhone').val(formatInternational(country, fullPhone));
+           return true;
+         }
+         return false;
+       }
+
+       function validateCreateFormEmail() {
+         var email = $('#emailInput').val();
+         if (email.length == 0)
+           return false;
+         var regularExpression = /^([\\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+         return regularExpression.test(email);
+       }
+       $('#phonePart2').keyup(function(e) {
+         if ($(this).val().length == 3)
+           $('#phonePart3').focus();
+       });
+     });
+     script.
+     'use strict';
+     $(function() {
+       var $image = $('#image');
+       var width = 617;
+       var height = 795;
+       var options = {
+         viewMode: '1',
+         aspectRatio: width / height,
+         dragMode: 'move',
+         responsive: true,
+         cropBoxMovable: true, //перемещение кропбокса
+         cropBoxResizable: true, //изменение размера кропбокса
+         toggleDragModeOnDblclick: false
+         // minContainerWidth: width,   //фиксированный контейнер
+         // minContainerHeight: height, //фииксированный контейнер
+         // minCropBoxHeight: height    //фиксированный кропбокс
+       };
+       // Tooltip
+       // Cropper
+       $image.cropper(options);
+       // Buttons
+       if (!$.isFunction(document.createElement('canvas').getContext)) {
+         $('button[data-method="getCroppedCanvas"]').prop('disabled', true);
+       }
+       if (typeof document.createElement('cropper').style.transition === 'undefined') {
+         $('button[data-method="rotate"]').prop('disabled', true);
+       }
+       // Methods
+       $('.docs-buttons').on('click', '[data-method]', function() {
+         var $this = $(this);
+         var data = $this.data();
+         var $target;
+         var result;
+         if ($this.prop('disabled') || $this.hasClass('disabled')) {
+           return;
+         }
+         if ($image.data('cropper') && data.method) {
+           data = $.extend({}, data); // Clone a new one
+           if (typeof data.target !== 'undefined') {
+             $target = $(data.target);
+             if (typeof data.option === 'undefined') {
+               try {
+                 data.option = JSON.parse($target.val());
+               } catch (e) {
+                 console.log(e.message);
+               }
+             }
+           }
+           if (data.method === 'rotate') {
+             $image.cropper('clear');
+           }
+           if (data.method === 'getCroppedCanvas') {
+             result = $image.cropper(data.method, {
+               width: width,
+               height: height
+             });
+           } else
+             result = $image.cropper(data.method, data.option);
+           if (data.method === 'rotate') {
+             $image.cropper('crop');
+           }
+           if (data.method === 'getCroppedCanvas') {
+             if (result) {
+               try {
+                 var base64 = result.toDataURL("image/jpeg");
+                 $('#frameImage').attr('src', base64);
+                 $('#photo1').val(base64);
+                 $('#myModal').modal('hide');
+                 $('#uploadBtnText').html('Загрузить другое фото');
+                 $('#uploadBtn').addClass('btn-red');
+                 // console.log(base64 + "\\nWidth: " + result.width + "\nHeight: " +  result.height);
+               } catch (error) {
+                 console.log('Error: ' + error.message);
+               }
+             }
+           }
+           if ($.isPlainObject(result) && $target) {
+             try {
+               $target.val(JSON.stringify(result));
+             } catch (e) {
+               console.log(e.message);
+             }
+           }
+         }
+       });
+       // Import image
+       var $inputImage = $('#inputImage');
+       var URL = window.URL || window.webkitURL;
+       var blobURL;
+       if (URL) {
+         $inputImage.change(function() {
+           var files = this.files;
+           var file;
+           if (!$image.data('cropper')) {
+             return;
+           }
+           if (files && files.length) {
+             file = files[0];
+             if (/^image\\/\
+               w + $ / .test(file.type)) {
+               $('#myModal').modal('show');
+               blobURL = URL.createObjectURL(file);
+               $image.one('built.cropper', function() {
+                 // Revoke when load complete
+                 URL.revokeObjectURL(blobURL);
+               }).cropper('reset').cropper('replace', blobURL);
+               $inputImage.val('');
+             } else {
+               window.alert('Please choose an image file.');
+             }
+           }
+         });
+       } else {
+         $inputImage.prop('disabled', true).parent().addClass('disabled');
+       }
+     });

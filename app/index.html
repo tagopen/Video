@@ -50,7 +50,13 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
   </head>
-  <body class="body">
+  <body class="body" id="top"><!--[if lt IE 10]>
+<div class="alert alert-warning alert-dismissible fade show m-0 rounded-0" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+    <You>are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</You></div>
+<![endif]-->
     <header class="header">
       <section class="header__box">
         <div class="header__menu menu menu--main">
@@ -1165,8 +1171,6 @@
     <script src="js/jquery.js"></script>
     <!-- Bootstrap JavaScript-->
     <script src="js/bootstrap.js"></script>
-    <!-- Old browsers reject JavaScript-->
-    <script src="js/jquery.reject.js"></script>
     <!-- Cropper JavaScript-->
     <script src="js/cropper.js"></script>
     <!-- CountDown JavaScript-->
@@ -1180,10 +1184,12 @@
     <script src="js/select2.js"></script>
     <!-- Clave.js JavaScript-->
     <script src="js/cleave.js"></script>
+    <!-- Parsley validator JavaScript-->
+    <script src="js/parsley.js"></script>
     <!-- Trace Library JavaScript-->
     <script src="https://cdn.ravenjs.com/3.20.1/raven.min.js" crossorigin="anonymous"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js"></script>
+    <script src="js/main2.js"></script>
     <!-- CRM AMO-->
     <script>var amo_social_button = {id: 3324, hash: "c0f3fc79deb5c762002d0eaec20b1cdec73ad6904e7f99b643097abe976effad", locale: "ru"};</script>
     <script id="amo_social_button_script" async="async" src="https://gso.amocrm.ru/js/button.js"></script>
