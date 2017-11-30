@@ -1736,7 +1736,6 @@ button:focus {
 .btn--file {
   position: relative;
   cursor: pointer;
-  margin-bottom: 50px;
   text-align: left;
   background-color: transparent !important;
 }
@@ -3755,6 +3754,21 @@ button:focus {
   margin-bottom: 35px;
 }
 
+.tabs__btn-groups {
+  margin: 15px 0;
+}
+
+.nt-info {
+  margin: 15px 0;
+  color: #212121;
+  font: 400 14px/21px "PF Din Text Pro", sans-serif;
+  text-align: center;
+}
+
+.nt-info__icon {
+  margin-right: 5px;
+}
+
 .tabs-control {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4021,15 +4035,27 @@ button:focus {
 }
 
 .avatar-ratio {
-  padding: 0;
+  position: relative;
+  padding: 0 15px;
+  background: none;
+  overflow: hidden;
   background: none;
 }
 
-.avatar-ratio__control:checked + .avatar-ratio__text {
+.avatar-ratio:hover, .avatar-ratio:focus, .avatar-ratio:active {
+  background: none;
+}
+
+.avatar-ratio__control:checked + .avatar-ratio__text:before {
+  background: #ffc85e;
+}
+
+.avatar-ratio__control:checked + .avatar-ratio__text:hover:before, .avatar-ratio__control:checked + .avatar-ratio__text:active:before {
   background: #ffc85e;
 }
 
 .avatar-ratio__text {
+  margin: 0 -15px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -4042,7 +4068,11 @@ button:focus {
      -moz-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  justify-cotnent: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
      -moz-box-align: center;
@@ -4057,8 +4087,17 @@ button:focus {
   -webkit-border-radius: inherit;
      -moz-border-radius: inherit;
           border-radius: inherit;
-  padding: 10px;
   height: 100%;
+}
+
+.avatar-ratio__text:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   -webkit-box-shadow: inset 0 1px 5px #d28743, inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
      -moz-box-shadow: inset 0 1px 5px #d28743, inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
           box-shadow: inset 0 1px 5px #d28743, inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29);
@@ -4067,9 +4106,10 @@ button:focus {
   background-image: -moz-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
   background-image: -o-linear-gradient(bottom, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
   background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%);
+  z-index: -1;
 }
 
-.avatar-ratio__text:hover {
+.avatar-ratio__text:hover:before {
   background-image: -webkit-gradient(linear, left bottom, left top, from(#d87931), color-stop(35%, #ee8736), color-stop(78%, #ffc566), to(#fff2b5));
   background-image: -webkit-linear-gradient(bottom, #d87931 0%, #ee8736 35%, #ffc566 78%, #fff2b5 100%);
   background-image: -moz-linear-gradient(bottom, #d87931 0%, #ee8736 35%, #ffc566 78%, #fff2b5 100%);
@@ -4077,7 +4117,7 @@ button:focus {
   background-image: linear-gradient(to top, #d87931 0%, #ee8736 35%, #ffc566 78%, #fff2b5 100%);
 }
 
-.avatar-ratio__text:active {
+.avatar-ratio__text:active:before {
   background-image: -webkit-gradient(linear, left bottom, left top, from(#fab657), color-stop(35%, #ee8736), color-stop(78%, #c66f2d), to(#fff2b5)) !important;
   background-image: -webkit-linear-gradient(bottom, #fab657 0%, #ee8736 35%, #c66f2d 78%, #fff2b5 100%) !important;
   background-image: -moz-linear-gradient(bottom, #fab657 0%, #ee8736 35%, #c66f2d 78%, #fff2b5 100%) !important;

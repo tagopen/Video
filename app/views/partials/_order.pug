@@ -27,7 +27,6 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
                   label.radio-btn__box(for='rbtn12')
                     i.radio-btn__icon
                     | 2 ребенка
-      .row
         .col-24.col-md-12(data-childrean-item="0")
           fieldset.form-group
             select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
@@ -50,10 +49,6 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
             label.radio-btn__box(for='rbtn21')
               i.radio-btn__icon
               | Добавить имя ребенка
-
-          .btn-groups.text-center.text-md-left
-            button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
-
         .col-24.col-md-12(data-childrean-item="1")
           fieldset.form-group
             select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
@@ -75,27 +70,40 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
             label.radio-btn__box(for='rbtn22')
               i.radio-btn__icon
               | Добавить имя ребенка
+        .col-24
+          .btn-groups.text-center.text-md-left.tabs__btn-groups
+            button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+        .col-24.mb-5
+          a.confident__link(data-toggle="modal", href="#confident") Обработка Ваших персональных данных строго конфиденциальна
     .tabs__item
       .row
         .col-24
-          h2.heading.tabs__heading Загрузите фотографию ребенка
-          h2.heading.tabs__heading Фотография появится в книге Дедушки Мороза
+          h2.heading.tabs__heading Загрузите фотографию ребенка <br/>Фотография появится в книге Дедушки Мороза
         .col-24.col-md-12
-          .btn-groups.text-left
+          .btn-groups.text-left.tabs__btn-group
             button.form-control.btn--file.js-file(type="button") Загрузите фотографию
               +svg("clip")(class="btn__icon")
+            p.nt-info.tabs__info
+              i.fa.fa-info-circle.nt-info__icon
+              i.nt-info__text 
+                | Если у вас возникли сложности с загрузкой фотографии — звоните или пишите в Viber по номеру 
+                nobr 098 5 430 430
+                | . Мы поможем вам с оформлением заказа!
         .col-24.col-md-12          
           #crop-avatar.avatar
             // Current avatar
             .avatar-view.avatar__photo
               img.img-fluid.avatar__img(alt='Avatar')
               input#image(type="hidden", name="image")
-      .btn-groups.text-center
-        .row
-          .col-24.col-md-8.col-lg-6.text-center.text-md-left
-            button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
-          .col-24.col-md-6.text-center.text-md-left
-            a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+        .col-24
+          .btn-groups.text-center.tabs__btn-groups
+            .row
+              .col-24.col-md-8.col-lg-6.text-center.text-md-left
+                button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+                a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+
+        .col-24.mb-5
+          a.confident__link(data-toggle="modal", href="#confident") Обработка Ваших персональных данных строго конфиденциальна
     .tabs__item
       .row.flex-md-row-reverse.justify-content-between
         .col-24.col-md-12.col-lg-10.offset-lg-2
@@ -135,7 +143,7 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
         .col-24.col-md-12.col-lg-10
           h2.heading.tabs__heading Контактные данные
           fieldset.form-group.form__group--select
-            input.form-control(type='text', name='firstname', placeholder='Введите ваше имя', required)
+            input.form-control(type='text', name='firstname', placeholder='Введите ваше имя и фамилию', required)
           fieldset.form-group.form__group--select
             input.form-control(type='tel', name='phone', placeholder='Введите номер телефона', pattern="\\+380\\s\\d{2}\\s\\d{3}\\s\\d{2}\\s\\d{2}$", required)
           fieldset.form-group.form__group--select
@@ -147,7 +155,7 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
           //-  .result
         .col-24
           .success  
-          .btn-groups.form__btn-groups
+          .btn-groups.tabs__btn-groups
             .row
               .col-24.col-md-8.col-lg-6.text-center.text-md-left
                 .btn-groups

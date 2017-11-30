@@ -124,8 +124,6 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="row">
                         <div class="col-24 col-md-12" data-childrean-item="0">
                           <fieldset class="form-group">
                             <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child1[gender]" required>
@@ -159,9 +157,6 @@
                             <input class="radio-btn__control" id="rbtn21" type="checkbox" name="child1[newname][trigger]" data-new-name="#new1">
                             <label class="radio-btn__box" for="rbtn21"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
-                          <div class="btn-groups text-center text-md-left">
-                            <button class="btn btn--default btn--sm btn--step-1" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
-                          </div>
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
                           <fieldset class="form-group">
@@ -188,7 +183,7 @@
                               ?>
                               <option value="<?=$name?>"><?=$name?></option>
 
-                              <?php } ?>                     
+                              <?php } ?>     
                             </select>
                             <input class="form-control" type="text" placeholder="Введите новое имя" name="child2[newname][name]">
                           </fieldset>
@@ -197,21 +192,29 @@
                             <label class="radio-btn__box" for="rbtn22"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
                         </div>
+                        <div class="col-24">
+                          <div class="btn-groups text-center text-md-left tabs__btn-groups">
+                            <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
+                          </div>
+                        </div>
+                        <div class="col-24 mb-5"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
                       </div>
                     </div>
                     <div class="tabs__item">
                       <div class="row">
                         <div class="col-24">
-                          <h2 class="heading tabs__heading">Загрузите фотографию ребенка</h2>
-                          <h2 class="heading tabs__heading">Фотография появится в книге Дедушки Мороза</h2>
+                          <h2 class="heading tabs__heading">Загрузите фотографию ребенка <br/>Фотография появится в книге Дедушки Мороза</h2>
                         </div>
                         <div class="col-24 col-md-12">
-                          <div class="btn-groups text-left">
+                          <div class="btn-groups text-left tabs__btn-group">
                             <button class="form-control btn--file js-file" type="button">Загрузите фотографию
                               <svg class="svg svg--clip btn__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                                 <use xlink:href="img/sprite.svg#clip"></use>
                               </svg>
                             </button>
+                            <p class="nt-info tabs__info"><i class="fa fa-info-circle nt-info__icon"></i><i class="nt-info__text">
+                                 Если у вас возникли сложности с загрузкой фотографии — звоните или пишите в Viber по номеру 
+                                <nobr>098 5 430 430</nobr>. Мы поможем вам с оформлением заказа!</i></p>
                           </div>
                         </div>
                         <div class="col-24 col-md-12">         
@@ -222,14 +225,16 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="btn-groups text-center">
-                        <div class="row">
-                          <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
-                            <button class="btn btn--default btn--sm  btn--step-2" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
+                        <div class="col-24">
+                          <div class="btn-groups text-center tabs__btn-groups">
+                            <div class="row">
+                              <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
+                                <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
+                              </div>
+                            </div>
                           </div>
-                          <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
                         </div>
+                        <div class="col-24 mb-5"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
                       </div>
                     </div>
                     <div class="tabs__item">
@@ -243,26 +248,26 @@
                             </div>
                             <div class="row justify-content-between total-row d-none js-hidden-discount">
                               <div class="col-auto"><span class="tb-price">Ваша скидка:</span></div>
-                              <div class="col-auto"><span class="nt-price"><span class="js-discount-price"><?=$discount["price"]?></span> грн</span></div>
-                              <input class="js-discount" type="hidden" name="discount" value="<?=$discount["name"]?>">
+                              <div class="col-auto"><span class="nt-price"> <span class="js-discount-price"><?=$discount["price"]?></span> грн</span></div>
+                              <input class="js-discount" type="hidden" name="discount" value="<?=$discount['name']?>">
                             </div>
                             <div class="row justify-content-between total-row d-none js-new-name">
                               <div class="col-auto"><span class="tb-price">Дозапись имени:</span></div>
                               <div class="col-auto"><span class="nt-price">40 грн</span></div>
                             </div>
-                            <div class="row justify-content-between total-row  js-total-discount">
-                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 30 грн</a></div>
+                            <div class="row justify-content-between total-row js-total-discount">
+                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 17 грн</a></div>
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
-                              <div class="col-auto"><span class="nt-price js-total-price"><span class="js-total-price-val"><?= ($price - $discount["price"])?></span> грн</span><span class="nt-price d-none js-total-price"><span class="js-total-price-val"><?=($price - $discount["price"] + 40)?></span> грн</span></div>
+                              <div class="col-auto"><span class="nt-price js-total-price"> <span class="js-total-price-val"><?= ($price - $discount["price"])?></span> грн</span><span class="nt-price d-none js-total-price"><span class="js-total-price-val"><?=($price - $discount["price"] + 40)?></span> грн</span></div>
                             </div>
                           </div>
                         </div>
                         <div class="col-24 col-md-12 col-lg-10">
                           <h2 class="heading tabs__heading">Контактные данные</h2>
                           <fieldset class="form-group form__group--select">
-                            <input class="form-control" type="text" name="firstname" placeholder="Введите ваше имя" required>
+                            <input class="form-control" type="text" name="firstname" placeholder="Введите ваше имя и фамилию" required>
                           </fieldset>
                           <fieldset class="form-group form__group--select">
                             <input class="form-control" type="tel" name="phone" placeholder="Введите номер телефона" pattern="\+380\s\d{2}\s\d{3}\s\d{2}\s\d{2}$" required>
@@ -273,16 +278,16 @@
                           <p class="tabs__text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
                         </div>
                         <div class="col-24">
-                          <div class="success"></div>
-                          <div class="btn-groups form__btn-groups">
+                          <div class="success"> </div>
+                          <div class="btn-groups tabs__btn-groups">
                             <div class="row">
                               <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
                                 <div class="btn-groups">
-                                  <button class="btn btn--default btn--sm  btn--step-3" name="form" value="Order" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Перейти к оплате</button>
+                                  <button class="btn btn--default btn--sm" name="form" value="Order" type="submit" data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Файл отправляется...">Перейти к оплате</button>
                                 </div>
                               </div>
                               <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
-                              <div class="col-24 mb-4"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
+                              <div class="col-24 mb-5"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
                             </div>
                           </div>
                         </div>
@@ -366,6 +371,11 @@
     <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
       <div class="modal-dialog modal-lg"> 
         <div class="modal-content modal-content--default">
+          <button class="close modal__close modal__close--confident" type="button" data-dismiss="modal" aria-label="Close">
+            <svg class="svg svg--close close__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+              <use xlink:href="img/sprite.svg#close"></use>
+            </svg>
+          </button>
           <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
             <div class="modal-body">
               <!-- Upload image and data-->
@@ -374,31 +384,40 @@
                 <input class="avatar-data" type="hidden" name="avatar_data">
                 <input class="avatar-filename" type="hidden" name="avatar_filename">
                 <!-- Crop and preview-->
+                <div class="row text-center">
+                  <div class="col-24">
+                    <p class="nt-info"> <i class="fa fa-info-circle nt-info__icon"></i><i>Загрузите фотографию, затем отредактируйте её перемещая и изменяя размер синей рамки. Вы также можете изменить отображение фотографии на горизонтальное или вертикальное, нажав на кнопки 
+                        <nobr>«2:3» или «3:2»</nobr></i></p>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-24">
                     <div class="avatar-wrapper avatar__wrapper"></div>
                   </div>
                 </div>
                 <div class="row justify-content-center align-items-center avatar-btns">
-                  <div class="col-24 col-lg-17">
+                  <div class="col-24 col-md-16 col-lg-12">
+                    <label class="btn btn--default btn--size btn--upload btn-upload" for="avatarInput" title="Upload image file">
+                      <input class="sr-only avatar-input" id="avatarInput" type="file" name="avatar_file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="Import image with Blob URLs"><span class="fa fa-upload"></span>
+                        <nobr>Загрузить фото<span class="d-none d-sm-inline">графию</span></nobr></span>
+                    </label>
+                  </div>
+                  <div class="col-24 col-md-8 col-lg-12">
+                    <button class="btn btn--default btn--size avatar-save" type="submit">Обрезать</button>
+                  </div>
+                  <div class="col-24">
                     <div class="btn-groups btn-groups--group">
-                      <label class="btn btn--primary btn--upload btn-upload" for="avatarInput" title="Upload image file">
-                        <input class="sr-only avatar-input" id="avatarInput" type="file" name="avatar_file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="Import image with Blob URLs"><span class="fa fa-upload"></span></span>
-                      </label>
                       <button class="btn btn--primary" type="button" data-method="zoom" data-option="0.1" title="Zoom In"><span class="docs-tooltip" data-toggle="tooltip" title="" data-title="cropper.zoom(0.1)"><i class="fa fa-search-plus"></i></span></button>
                       <button class="btn btn--primary" type="button" data-method="zoom" data-option="-0.1" title="Zoom Out"><span class="docs-tooltip" data-toggle="tooltip" title="" data-title="cropper.zoom(-0.1)"><i class="fa fa-search-minus"></i></span></button>
                       <button class="btn btn--primary" type="button" data-method="rotate" data-option="90" title="Rotate 90 degrees"><i class="fa fa-rotate-left"></i></button>
                       <button class="btn btn--primary" type="button" data-method="rotate" data-option="-90" title="Rotate -90 degrees"><i class="fa fa-rotate-right"></i></button>
-                      <label class="btn btn--primary avatar__checkbox-group avatar-ratio" for="aspectRatio0">
+                      <label class="btn btn--primary avatar-ratio" for="aspectRatio0">
                         <input class="sr-only avatar-ratio__control" id="aspectRatio0" type="radio" name="aspectRatio" value="1.5" checked><span class="docs-tooltip avatar-ratio__text" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 3 / 2">3:2</span>
                       </label>
-                      <label class="btn btn--primary avatar__checkbox-group avatar-ratio" for="aspectRatio1">
+                      <label class="btn btn--primary avatar-ratio" for="aspectRatio1">
                         <input class="sr-only avatar-ratio__control" id="aspectRatio1" type="radio" name="aspectRatio" value="0.66666666666"><span class="docs-tooltip avatar-ratio__text" data-toggle="tooltip" data-animation="false" title="" data-original-title="aspectRatio: 2 / 3">2:3</span>
                       </label>
                     </div>
-                  </div>
-                  <div class="col-24 col-md-15 col-lg-7">
-                    <button class="btn btn--default btn--size avatar-save" type="submit">Обрезать</button>
                   </div>
                 </div>
               </div>
@@ -413,7 +432,7 @@
           <div class="modal-body">
             <div class="row text-center">
               <div class="col-24 align-self-start">
-                <h2 class="heading heading--neumann mb-5">Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 30 грн на вашу покупку!</h2>
+                <h2 class="heding heading--neumann mb-5">Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 30 грн на вашу покупку!</h2>
               </div>
               <div class="col-24 align-self-center">
                 <div class="btn btn--facebook" id="shareBtn" data-layout="button_count"> <i class="fa fa-facebook mr-3"></i>Я рекомендую</div>
