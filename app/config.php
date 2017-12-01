@@ -22,4 +22,3 @@
   //define('DB_DATABASE', 'b18152559_video');
   //define('DB_ENCODING', 'utf8');
 ?>
-?>
