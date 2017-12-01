@@ -38,7 +38,10 @@ Raven.context(function () {
     var VIDEO_MODAL =             'video__modal';
     var VIDEO_MODAL_SEL =         '#' + VIDEO_MODAL;
     var VIDEO_IFRAME =            'modal__iframe';
-    var VIDEO_IFRAME_SEL =        '.' + 'modal__iframe';
+    var VIDEO_IFRAME_SEL =        '.' + VIDEO_IFRAME;
+
+    var SV_ITEM_TEXT =            'sv-item__text';
+    var SV_ITEM_TEXT_SEL =        '.' + SV_ITEM_TEXT;
 
 
 
@@ -59,6 +62,8 @@ Raven.context(function () {
 
       this.$videoModal = $(VIDEO_MODAL_SEL);
       this.$videoModalIframe = this.$videoModal.find(VIDEO_IFRAME_SEL);
+
+      this.$svItemText = $(SV_ITEM_TEXT_SEL);
 
       this.$container = $element;
 
@@ -99,10 +104,12 @@ Raven.context(function () {
 
         this.initTooltip();
         this.initModal();
+        this.initSelect2Localization();
         this.initSelect2();
         this.initPhoneMask();
         this.initTimer();
         this.initAccordion();
+        this.initMatchHeight();
         this.addListener();
       },
 
@@ -129,8 +136,7 @@ Raven.context(function () {
         });
       },
 
-      initSelect2: function() {
-
+      initSelect2Localization: function() {  
         if ($.fn.select2) {
           $.fn.select2.amd.define('select2/i18n/ru',[],function () {
           // Russian
@@ -178,6 +184,9 @@ Raven.context(function () {
             };
           });
         }
+      },
+
+      initSelect2: function() {
 
         if (this.$select2.length) {
           this.$select2.select2({
@@ -226,6 +235,10 @@ Raven.context(function () {
               + '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
           });
         }
+      },
+
+      initMatchHeight: function() {
+        this.matchHeight(this.$svItemText, "576px");
       },
 
       initIframe: function () {
@@ -303,6 +316,33 @@ Raven.context(function () {
         }).on('hide.bs.collapse', function(){
           $(this).parent().find(".panel__ic").removeClass("minus");
         });
+      },
+
+      matchHeight: function($item = false, minWidth = null, maxWidth = null) {
+        var query = '',
+            min =   minWidth,
+            max =   maxWidth;
+
+        if ((maxWidth === null) && (minWidth === null)) {
+          query = 'only screen and (min-width: 0)';
+        } else if ((maxWidth === null) && (minWidth !== null)) {
+          query = 'only screen and (min-width: ' + min + 'px)';
+        } else if ((maxWidth !== null) && (minWidth === null)) {
+          query = 'only screen and (max-width: ' + max + 'px)';
+        } else if ((maxWidth !== null) && (minWidth !== null)) {
+          query = 'only screen and (min-width: ' + min + 'px) and (max-width: ' + max + 'px)';
+        }
+
+        if (matchMedia(query).matches) {
+          if ($item.length) {
+            $item.matchHeight({
+              byRow: true,
+              property: 'height',
+              target: null,
+              remove: false
+            });
+          }
+        }
       },
 
       videoModal: function() {
