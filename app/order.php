@@ -228,8 +228,8 @@
                         <div class="col-24">
                           <div class="btn-groups text-center tabs__btn-groups">
                             <div class="row">
-                              <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
-                                <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
+                              <div class="col-24 col-md-12 text-center text-md-left">
+                                <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button><a class="ml-2 quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
                               </div>
                             </div>
                           </div>
