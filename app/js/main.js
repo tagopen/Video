@@ -51,7 +51,7 @@ Raven.context(function () {
 
     // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
     if ($('.js-timer').length) {
-      $('.js-timer').countdown('2017/12/10', function(event) {
+      $('.js-timer').countdown('2017/12/5', function(event) {
 
         var $this = $(this).html(event.strftime(''
           + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
