@@ -1,5 +1,4 @@
-Raven.config('https://78be30f059544a8ea1eab0bbae62a897@sentry.io/251004').install()
-Raven.context(function () {
+
   (function($) {
     "use strict"; // Start of use strict
 
@@ -963,7 +962,6 @@ Raven.context(function () {
           $totalPrice.each(function() {
             var totalPrice = $(this).text();
             totalPrice = parseInt(totalPrice, 10);
-            console.log
             $(this).text(totalPrice - 30);
           });
         }
@@ -1162,10 +1160,437 @@ Raven.context(function () {
       utmCookie.writeUtmCookieFromParams();
     }
   });
+  
+  $(function() {
+    var console = window.console || { log: function () {} };
+    var URL = window.URL || window.webkitURL;
+    var $image = $('#image');
+    var width = 500;
+    var height = 250;
+    var $dataX = $('#dataX');
+    var $dataY = $('#dataY');
+    var $avatar = $('.avatar');
+    var $dataHeight = $('#dataHeight');
+    var $dataWidth = $('#dataWidth');
+    var $dataRotate = $('#dataRotate');
+    var $dataScaleX = $('#dataScaleX');
+    var $dataScaleY = $('#dataScaleY');
+    var options = {
+          aspectRatio: width / height,
+          preview: '.img-preview',
+          viewMode: '1',
+          responsive: true,
+          cropBoxMovable: true, //перемещение кропбокса
+          cropBoxResizable: true, //изменение размера кропбокса
+          toggleDragModeOnDblclick: false,
+          imageSmoothingEnabled: false,
+          imageSmoothingQuality: 'high',
+          crop: function (e) {
+            $dataX.val(Math.round(e.x));
+            $dataY.val(Math.round(e.y));
+            $dataHeight.val(Math.round(e.height));
+            $dataWidth.val(Math.round(e.width));
+            $dataRotate.val(e.rotate);
+            $dataScaleX.val(e.scaleX);
+            $dataScaleY.val(e.scaleY);
+          }
+        };
+    var originalImageURL = $image.attr('src');
+    var uploadedImageType = 'image/jpeg';
+    var uploadedImageURL;
+    var $avatarRatio = $('.js-ratio');
+    var $result = $("#avatar-result");
 
+    var trimStr = function(s) {
+      s = s.replace(/^-/, '');
+      return s.replace(/-$/, '');
+    }
+
+    var transliterate = function(text) {
+      // Символ, на который будут заменяться все спецсимволы
+      var space = '-'; 
+      // Берем значение из нужного поля и переводим в нижний регистр
+      var text = text.toLowerCase();
+           
+      // Массив для транслитерации
+      var transl = {
+      'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh', 
+      'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
+      'о': 'o', 'п': 'p', 'р': 'r','с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h',
+      'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh','ъ': space, 'ы': 'y', 'ь': space, 'э': 'e', 'ю': 'yu', 'я': 'ya',
+      ' ': space, '_': space, '`': space, '~': space, '!': space, '@': space,
+      '#': space, '$': space, '%': space, '^': space, '&': space, '*': space, 
+      '(': space, ')': space,'-': space, '\=': space, '+': space, '[': space, 
+      ']': space, '\\': space, '|': space, '/': space,'.': space, ',': space,
+      '{': space, '}': space, '\'': space, '"': space, ';': space, ':': space,
+      '?': space, '<': space, '>': space, '№':space
+      }
+                      
+      var result = '';
+      var curent_sim = '';
+                      
+      for(var i=0; i < text.length; i++) {
+          // Если символ найден в массиве то меняем его
+          if(transl[text[i]] != undefined) {
+               if(curent_sim != transl[text[i]] || curent_sim != space){
+                   result += transl[text[i]];
+                   curent_sim = transl[text[i]];
+               }                                                                             
+          }
+          // Если нет, то оставляем так как есть
+          else {
+              result += text[i];
+              curent_sim = text[i];
+          }                              
+      }          
+                      
+      result = trimStr(result);
+      return result;
+    }
+
+
+    var ratio = function (e) {
+      options.aspectRatio = $(this).val();
+      $image.cropper('destroy').cropper(options);
+    }
+
+    var alert = function (msg, status) {
+      var $alert = [
+
+        '<div class="alert alert-' + status + ' avatar-alert alert-dismissable fade show" role="alert">',
+          '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+          msg,
+        '</div>'
+      ].join('');
+
+      $result.html($alert);
+      if (status === "success") {
+        setTimeout(function() {
+          $result.slideUp(function() {
+            $result.html('');
+          });
+        }, 3000);
+      }
+    }
+
+    var submitFail = function (msg) {
+      alert(msg, "danger");
+    }
+
+    var submitDone = function (msg) {
+      alert(msg, "success");
+    }
+    var getNames = function() {
+      var $items = $("[data-new-name]"),
+          countgender = 0,
+          genderVal = "",
+          names = [],
+          name = "";
+      $items.each(function() {
+        var $this       = $(this),
+            targetClass = $this.data(),
+            $group      = $(targetClass.newName),
+            $input      = $group.find("input.form-control"),
+            $select     = $group.find(".select"),
+            $gender     = $group.closest("[data-childrean-item]").find(".js-gender"),
+            gender      = $gender.val();
+        
+        if(gender !== "" && !isNaN(gender)) {
+          var gender = parseInt(gender, 10);
+          genderVal = (gender === 1) ? "m" : "f";
+          countgender ++;
+        }
+
+        if ($(this).prop("checked")) {
+          names.push($input.val());
+        } else {
+          var name = $select.filter("[required]").find("option:selected").text();
+          names.push(name);
+        }
+
+      });
+
+      if (countgender > 1) {
+        genderVal = "2";
+      }
+
+      name = transliterate(names.join(" "));
+      return (genderVal + "_" + name);
+
+    }
+
+    $avatarRatio.on('change', ratio);
+
+    // Tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+
+
+    // Cropper
+    $image.cropper(options);
+
+
+    // Buttons
+    if (!$.isFunction(document.createElement('canvas').getContext)) {
+      $('button[data-method="getCroppedCanvas"]').prop('disabled', true);
+    }
+
+    if (typeof document.createElement('cropper').style.transition === 'undefined') {
+      $('button[data-method="rotate"]').prop('disabled', true);
+      $('button[data-method="scale"]').prop('disabled', true);
+    }
+
+    // Options
+    $('.docs-toggles').on('change', 'input', function () {
+      var $this = $(this);
+      var name = $this.attr('name');
+      var type = $this.prop('type');
+      var cropBoxData;
+      var canvasData;
+
+      if (!$image.data('cropper')) {
+        return;
+      }
+
+      if (type === 'checkbox') {
+        options[name] = $this.prop('checked');
+        cropBoxData = $image.cropper('getCropBoxData');
+        canvasData = $image.cropper('getCanvasData');
+
+        options.ready = function () {
+          $image.cropper('setCropBoxData', cropBoxData);
+          $image.cropper('setCanvasData', canvasData);
+        };
+      } else if (type === 'radio') {
+        options[name] = $this.val();
+      }
+
+      $image.cropper('destroy').cropper(options);
+    });
+
+
+    // Methods
+    $('.docs-buttons').on('click', '[data-method]', function () {
+      var $this = $(this);
+      var data = $this.data();
+      var cropper = $image.data('cropper');
+      var cropped;
+      var $target;
+      var result;
+
+      if ($this.prop('disabled') || $this.hasClass('disabled')) {
+        return;
+      }
+
+      if (cropper && data.method) {
+        data = $.extend({}, data); // Clone a new one
+
+        if (typeof data.target !== 'undefined') {
+          $target = $(data.target);
+
+          if (typeof data.option === 'undefined') {
+            try {
+              data.option = JSON.parse($target.val());
+            } catch (e) {
+              console.log(e.message);
+            }
+          }
+        }
+
+        cropped = cropper.cropped;
+
+        switch (data.method) {
+          case 'rotate':
+            if (cropped && options.viewMode > 0) {
+              $image.cropper('clear');
+            }
+
+            break;
+
+          case 'getCroppedCanvas':
+            if (uploadedImageType === 'image/jpeg') {
+              if (!data.option) {
+                data.option = {};
+              }
+
+              data.option.fillColor = '#fff';
+            }
+
+            break;
+        }
+
+        result = $image.cropper(data.method, data.option, data.secondOption);
+
+        switch (data.method) {
+          case 'rotate':
+            if (cropped && options.viewMode > 0) {
+              $image.cropper('crop');
+            }
+
+            break;
+
+          case 'scaleX':
+          case 'scaleY':
+            $(this).data('option', -data.option);
+            break;
+          case 'getCroppedCanvas':
+             if (result) {
+              try {
+
+                var base64 = result.toDataURL("image/jpeg");
+                var formData = new FormData();
+                $('#frameImage').attr('src', base64);
+                $('#photo1').val(base64);
+                $('#uploadBtnText').html('Загрузить другое фото');
+                $('#uploadBtn').addClass('btn-red');
+                $avatar.addClass("avatar--active");
+
+
+                 // console.log(base64 + "\\nWidth: " + result.width + "\nHeight: " +  result.height);
+              } catch (error) {
+                console.log('Error: ' + error.message);
+              }
+
+              $image.cropper('getCroppedCanvas').toBlob(function (blob) {
+
+                var croppedImg = $image.cropper('getCroppedCanvas').toDataURL(blob.type);
+
+                var formData = new FormData();
+
+                formData.append('croppedImage', croppedImg);
+
+                formData.append('croppedData', blob);
+
+                formData.append('filename', getNames());
+
+                $.ajax('/crop.php', {
+                  method: "POST",
+                  dataType: 'json',
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  beforeSend: function () {
+                    $(".loading").fadeIn();
+                  },
+
+                  success: function (data) {
+                    if ($.isPlainObject(data) && data.state === 200) {
+                      $(".loading").fadeOut();
+                      $('#myModal').modal('hide');
+                      if (data.message) {
+
+                        alert(data.message, "alert-success");
+                        document.location.href=data.pay_link;
+                        //clear all fields
+                      } else if (data.error) {
+                        alert(data.error, "alert-danger");
+                      }
+                    } else {
+                      alert('Failed to response', "danger");
+                    }
+                  },
+
+                  error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus || errorThrown, "danger");
+                  },
+
+                  complete: function () {
+                    $(".loading").fadeOut();
+                  }
+                });
+              });
+            }
+            break;
+
+          case 'destroy':
+            if (uploadedImageURL) {
+              URL.revokeObjectURL(uploadedImageURL);
+              uploadedImageURL = '';
+              $image.attr('src', originalImageURL);
+            }
+
+            break;
+        }
+
+        if ($.isPlainObject(result) && $target) {
+          try {
+            $target.val(JSON.stringify(result));
+          } catch (e) {
+            console.log(e.message);
+          }
+        }
+
+      }
+    });
+
+
+    // Keyboard
+    $(document.body).on('keydown', function (e) {
+
+      if (!$image.data('cropper') || this.scrollTop > 300) {
+        return;
+      }
+
+      switch (e.which) {
+        case 37:
+          e.preventDefault();
+          $image.cropper('move', -1, 0);
+          break;
+
+        case 38:
+          e.preventDefault();
+          $image.cropper('move', 0, -1);
+          break;
+
+        case 39:
+          e.preventDefault();
+          $image.cropper('move', 1, 0);
+          break;
+
+        case 40:
+          e.preventDefault();
+          $image.cropper('move', 0, 1);
+          break;
+      }
+
+    });
+
+
+    // Import image
+    var $inputImage = $('#inputImage');
+
+    if (URL) {
+      $inputImage.change(function () {
+        var files = this.files;
+        var file;
+
+        if (!$image.data('cropper')) {
+          return;
+        }
+
+        if (files && files.length) {
+          file = files[0];
+
+          if (/^image\/\w+$/.test(file.type)) {
+            uploadedImageType = file.type;
+            $('#myModal').modal('show');
+
+            if (uploadedImageURL) {
+              URL.revokeObjectURL(uploadedImageURL);
+            }
+
+            uploadedImageURL = URL.createObjectURL(file);
+            $image.cropper('destroy').attr('src', uploadedImageURL).cropper(options);
+            $inputImage.val('');
+          } else {
+            window.alert('Please choose an image file.');
+          }
+        }
+      });
+    } else {
+      $inputImage.prop('disabled', true).parent().addClass('disabled');
+    }
+  });
 
 
 
   })(jQuery); // End of use strict
-
-});

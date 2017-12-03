@@ -4589,3 +4589,14 @@ button:focus {
     line-height: 32px;
   }
 }
+
+/* --------------------------------------------------- */
+/* C A N V A S    C R O P    A V A T A R    S T Y L E  */
+/* --------------------------------------------------- */
+.img-container {
+  margin-bottom: 20px;
+  min-height: 200px;
+  max-height: 350px;
+  width: 100%;
+  text-align: center;
+}

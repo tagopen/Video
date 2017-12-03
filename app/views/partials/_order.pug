@@ -81,8 +81,10 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
           h2.heading.tabs__heading Загрузите фотографию ребенка <br/>Фотография появится в книге Дедушки Мороза
         .col-24.col-md-12
           .btn-groups.text-left.tabs__btn-group
-            button.form-control.btn--file.js-file(type="button") Загрузите фотографию
-              +svg("clip")(class="btn__icon")
+            label#uploadBtn.form-control.btn--file(href='#', for="inputImage")
+              input#inputImage.sr-only(type='file', name='file', accept='image/*')
+              span#uploadBtnText Загрузить фотографию
+                +svg("clip")(class="btn__icon")
             p.nt-info.tabs__info
               i.fa.fa-info-circle.nt-info__icon
               i.nt-info__text 
@@ -90,11 +92,11 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
                 nobr 098 5 430 430
                 | . Мы поможем вам с оформлением заказа!
         .col-24.col-md-12          
-          #crop-avatar.avatar
+          .avatar
             // Current avatar
             .avatar-view.avatar__photo
-              img.img-fluid.avatar__img(alt='Avatar')
-              input#image(type="hidden", name="image")
+              img#frameImage.img-fluid.avatar__img(alt='Avatar')
+              //-input#image(type="hidden", name="image")
         .col-24
           .btn-groups.text-center.tabs__btn-groups
             .row
