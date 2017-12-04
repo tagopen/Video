@@ -4185,19 +4185,13 @@ button:focus {
 
 @media only screen and (min-width: 992px) {
   .header-friday {
-    background-position: 50% center;
+    background-position: 55% center;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .header-friday {
-    background-position: 10% center;
-  }
-}
-
-@media only screen and (min-width: 1366px) {
-  .header-friday {
-    background-position: 0 center;
+    background-position: 51% center;
   }
 }
 
