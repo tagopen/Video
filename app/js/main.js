@@ -4,180 +4,13 @@ Raven.context(function () {
     "use strict"; // Start of use strict
 
 
-    $(function() {
-      $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-          $('.js-back-to-top').fadeIn()
-        } else {
-          $('.js-back-to-top').fadeOut()
-        }
-      });
-
-      $('.js-back-to-top').hide().on("click", function () {
-        $('html, body').animate({
-          scrollTop: 0
-        },
-        800);
-        return false
-      });
-    });
-
     var firstModalOpen = $("body").hasClass("modal-open");
 
-    $("#confident").on('hidden.bs.modal', function()
-    {
+    $("#confident").on('hidden.bs.modal', function() {
       if (!firstModalOpen)
         $("body").addClass("modal-open");
     });
 
-    // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
-    if ($('.js-timer').length) {
-      $('.js-timer').countdown('2017/12/10', function(event) {
-
-        var $this = $(this).html(event.strftime(''
-          + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
-          + '<div class="timer__item"><div class="timer__time">:</div></div>'
-          + '<div class="timer__item"><div class="timer__time">%H</div><div class="timer__text">часов</div></div>'
-          + '<div class="timer__item"><div class="timer__time">:</div></div>'
-          + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'
-          + '<div class="timer__item"><div class="timer__time">:</div></div>'
-          + '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
-      });
-    }
-
-    if( $( window ).width() >= 576 ) {
-      if ($('.sv-item__text').length) {
-        $('.sv-item__text').matchHeight({
-          byRow: true,
-          property: 'height',
-          target: null,
-          remove: false
-        });
-      }
-    };
-
-    $(document).ready(function(){
-      // Add minus icon for collapse element which is open by default
-      $(".collapse.in").each(function(){
-        $(this).siblings(".panel-heading").find(".panel__ic").addClass("minus");
-      });
-      
-      // Toggle plus minus icon on show hide of collapse element
-      $(".collapse").on('show.bs.collapse', function(){
-        $(this).parent().find(".panel__ic").addClass("minus");
-      }).on('hide.bs.collapse', function(){
-        $(this).parent().find(".panel__ic").removeClass("minus");
-      });
-    });
-
-    // Select2 
-    $(function() {
-      var $selectElement = $('.form-control--select');
-
-      if ($.fn.select2) {
-        $.fn.select2.amd.define('select2/i18n/ru',[],function () {
-        // Russian
-          return {
-            errorLoading: function () {
-              return 'Результат не может быть загружен.';
-            },
-            inputTooLong: function (args) {
-              var overChars = args.input.length - args.maximum;
-              var message = 'Пожалуйста, удалите ' + overChars + ' символ';
-              if (overChars >= 2 && overChars <= 4) {
-                message += 'а';
-              } else if (overChars >= 5) {
-                message += 'ов';
-              }
-              return message;
-            },
-            inputTooShort: function (args) {
-              var remainingChars = args.minimum - args.input.length;
-
-              var message = 'Пожалуйста, введите ' + remainingChars + ' или более символов';
-
-              return message;
-            },
-            loadingMore: function () {
-              return 'Загружаем ещё ресурсы…';
-            },
-            maximumSelected: function (args) {
-              var message = 'Вы можете выбрать ' + args.maximum + ' элемент';
-
-              if (args.maximum  >= 2 && args.maximum <= 4) {
-                message += 'а';
-              } else if (args.maximum >= 5) {
-                message += 'ов';
-              }
-
-              return message;
-            },
-            noResults: function () {
-              return 'Ничего не найдено';
-            },
-            searching: function () {
-              return 'Поиск…';
-            }
-          };
-        });
-      }
-
-      if ($selectElement) {
-        $selectElement.select2({
-          placeholder: "--Select something (default placeholder)--", 
-          width: 'resolve',
-          sortResults: function(results, container, query) {
-            if (query.term) {
-              // use the built in javascript sort function
-              return results.sort();
-            }
-            return results;
-          },
-          language: 'ru',
-        });
-        
-        $('.select2-selection__arrow').html('<svg class="svg svg--arrow-down select2-selection__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img"><use xlink:href="img/sprite.svg#arrow-down"></use></svg>');
-      }
-    });
-
-    // fixed panel close
-    $(function() {
-      var timeoutID = setTimeout ( function() {
-        $('.js-panel').fadeIn('300');
-         clearTimeout(timeoutID);
-      }, 5000);
-
-      $(".js-panel").on('click', '[data-close]', function() {
-        $(this).closest('.js-panel').fadeOut("300", function() {
-          $(this).detach();
-        });
-      });
-    });
-
-    // Trigger anchor scroll
-    $(function() {
-      $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-          if (target.length) {
-            $('html, body').animate({
-              scrollTop: (target.offset().top - 40)
-            }, 1000);
-            return false;
-          }
-        }
-      });
-    });
-
-    $('#video__modal').on('shown.bs.modal', function() {
-      $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=1&showinfo=0&mute=0&iv_load_policy=3&showsearch=0');
-    });
-
-    $('#video__modal').on('hidden.bs.modal', function() {
-      $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=0&showinfo=0&mute=1&iv_load_policy=3&showsearch=0');
-    });
-    
     // Tabs
     $(function() {
       var $indexControl = $("[data-tabs-index]");
@@ -951,14 +784,6 @@ Raven.context(function () {
       });
     });
   });
-
-    $(function() {
-      var cleave = new Cleave('[name=phone]', {
-        blocks: [4, 2, 3, 2, 2],
-        prefix: '+380',
-        rawValueTrimPrefix: true
-      });
-    });
 
     $(function() {
 

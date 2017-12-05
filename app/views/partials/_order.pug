@@ -9,72 +9,92 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
       .tabs-control__item
         a.tabs-control__link.tabs-control__link--3(href="#", data-tabs-control="index", data-tabs-toggle='test-tabs', data-tabs-index="2") Шаг 3
     .tabs__item.tabs__item--active
-      .row
-        .col-24
-          h2.heading.tabs__heading Сколько детей нужно поздравить?
-        .col-24
-          .tabs__radio-group
-            .row
-              .col-12.col-md-auto.text-center
-                label.radio-btn
-                  input#rbtn11.radio-btn__control(type='radio', name='childrean', data-childrean='1' value="1", checked)
-                  label.radio-btn__box(for='rbtn11')
-                    i.radio-btn__icon 
-                    | 1 ребенок
-              .col-12.col-md-auto.text-center
-                label.radio-btn
-                  input#rbtn12.radio-btn__control(type='radio', name='childrean', data-childrean='2' value="2")
-                  label.radio-btn__box(for='rbtn12')
-                    i.radio-btn__icon
-                    | 2 ребенка
-      .row
-        .col-24.col-md-12(data-childrean-item="0")
-          fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
-              option
-              option(value='1') Мужской
-              option(value='0') Женский
-          fieldset#new1.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][male]", data-gender="male" required)
-              option
-              option(value='Абрам') Абрам
-              option(value='Авраам') Авраам
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][female]", data-gender="female")
-              option
-              option(value='Аврора') Аврора
-              option(value='Агата') Агата
-            input.form-control(type='text', placeholder='Введите новое имя', name="child1[newname][name]")
+      .block-white.block-create
+        h1 Дед мороз будет поздравлять мальчика!
+        .create-frame
+          img#frameImage(src='/dist/img/kid_male.jpg', width='212', height='273')
+        .create-content
+          span
+            | Загрузите фотографию ребенка.
+            br
+            |                 Она появится в этой рамке.
+          label#uploadBtn.btn.btn-green(href='#')
+            span#uploadBtnText Загрузить фотографию
+            input#inputImage.sr-only(type='file', name='file', accept='image/*')
+          br
+          small
+            | *После создания видео, фото вашего ребенка
+            br
+            |             автоматически удалится с нашего сервера.
+            br
+            |             Мы гарантируем полную конфиденциальность.
 
-          label.radio-btn.radio-btn--size
-            input#rbtn21.radio-btn__control(type='checkbox', name='child1[newname][trigger]', data-new-name="#new1")
-            label.radio-btn__box(for='rbtn21')
-              i.radio-btn__icon
-              | Добавить имя ребенка
+      //- .row
+      //-   .col-24
+      //-     h2.heading.tabs__heading Сколько детей нужно поздравить?
+      //-   .col-24
+      //-     .tabs__radio-group
+      //-       .row
+      //-         .col-12.col-md-auto.text-center
+      //-           label.radio-btn
+      //-             input#rbtn11.radio-btn__control(type='radio', name='childrean', data-childrean='1' value="1", checked)
+      //-             label.radio-btn__box(for='rbtn11')
+      //-               i.radio-btn__icon 
+      //-               | 1 ребенок
+      //-         .col-12.col-md-auto.text-center
+      //-           label.radio-btn
+      //-             input#rbtn12.radio-btn__control(type='radio', name='childrean', data-childrean='2' value="2")
+      //-             label.radio-btn__box(for='rbtn12')
+      //-               i.radio-btn__icon
+      //-               | 2 ребенка
+      //- .row
+      //-   .col-24.col-md-12(data-childrean-item="0")
+      //-     fieldset.form-group
+      //-       select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
+      //-         option
+      //-         option(value='1') Мужской
+      //-         option(value='0') Женский
+      //-     fieldset#new1.form-group
+      //-       select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][male]", data-gender="male" required)
+      //-         option
+      //-         option(value='Абрам') Абрам
+      //-         option(value='Авраам') Авраам
+      //-       select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][female]", data-gender="female")
+      //-         option
+      //-         option(value='Аврора') Аврора
+      //-         option(value='Агата') Агата
+      //-       input.form-control(type='text', placeholder='Введите новое имя', name="child1[newname][name]")
 
-          .btn-groups.text-center.text-md-left
-            button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+      //-     label.radio-btn.radio-btn--size
+      //-       input#rbtn21.radio-btn__control(type='checkbox', name='child1[newname][trigger]', data-new-name="#new1")
+      //-       label.radio-btn__box(for='rbtn21')
+      //-         i.radio-btn__icon
+      //-         | Добавить имя ребенка
 
-        .col-24.col-md-12(data-childrean-item="1")
-          fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
-              option
-              option(value='1') Мужской
-              option(value='0') Женский
-          fieldset#new2.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][male]", data-gender="male", required)
-              option
-              option(value='Абрам') Абрам
-              option(value='Авраам') Авраам
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][female]", data-gender="female")
-              option
-              option(value='Аврора') Аврора
-              option(value='Агата') Агата
-            input.form-control(type='text', placeholder='Введите новое имя', name="child2[newname][name]")
-          label.radio-btn.radio-btn--size
-            input#rbtn22.radio-btn__control(type='checkbox', name='child2[newname][trigger]', data-new-name='#new2')
-            label.radio-btn__box(for='rbtn22')
-              i.radio-btn__icon
-              | Добавить имя ребенка
+      //-     .btn-groups.text-center.text-md-left
+      //-       button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
+
+      //-   .col-24.col-md-12(data-childrean-item="1")
+      //-     fieldset.form-group
+      //-       select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
+      //-         option
+      //-         option(value='1') Мужской
+      //-         option(value='0') Женский
+      //-     fieldset#new2.form-group
+      //-       select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][male]", data-gender="male", required)
+      //-         option
+      //-         option(value='Абрам') Абрам
+      //-         option(value='Авраам') Авраам
+      //-       select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][female]", data-gender="female")
+      //-         option
+      //-         option(value='Аврора') Аврора
+      //-         option(value='Агата') Агата
+      //-       input.form-control(type='text', placeholder='Введите новое имя', name="child2[newname][name]")
+      //-     label.radio-btn.radio-btn--size
+      //-       input#rbtn22.radio-btn__control(type='checkbox', name='child2[newname][trigger]', data-new-name='#new2')
+      //-       label.radio-btn__box(for='rbtn22')
+      //-         i.radio-btn__icon
+      //-         | Добавить имя ребенка
     .tabs__item
       .row
         .col-24
@@ -84,12 +104,12 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
           .btn-groups.text-left
             button.form-control.btn--file.js-file(type="button") Загрузите фотографию
               +svg("clip")(class="btn__icon")
-        .col-24.col-md-12          
-          #crop-avatar.avatar
-            // Current avatar
-            .avatar-view.avatar__photo
-              img.img-fluid.avatar__img(alt='Avatar')
-              input#image(type="hidden", name="image")
+        //- .col-24.col-md-12          
+        //-   #crop-avatar.avatar
+        //-     // Current avatar
+        //-     .avatar-view.avatar__photo
+        //-       img.img-fluid.avatar__img(alt='Avatar')
+        //-       input#image(type="hidden", name="image")
       .btn-groups.text-center
         .row
           .col-24.col-md-8.col-lg-6.text-center.text-md-left

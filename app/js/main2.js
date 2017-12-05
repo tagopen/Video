@@ -43,6 +43,23 @@ Raven.context(function () {
     var SV_ITEM_TEXT =            'sv-item__text';
     var SV_ITEM_TEXT_SEL =        '.' + SV_ITEM_TEXT;
 
+    var FORM =                    'js-form';
+    var FORM_SEL =                '.' + TAB;
+
+    var TAB =                     'tabs';
+    var TAB_SEL =                 '.' + TAB;
+    var TAB_ITEM =                'tabs__item';
+    var TAB_ITEM_SEL =            '.' + TAB_ITEM;
+    var TAB_ITEM_ACTIVE =         'tabs__item--active';
+    var TAB_BTN_NEXT =            'data-tabs-control=next';
+    var TAB_BTN_NEXT_SEL =        '[' + TAB_BTN_NEXT + ']';
+    var TAB_BTN_PREV =            'data-tabs-control=prev';
+    var TAB_BTN_PREV_SEL =        '[' + TAB_BTN_NEXT + ']';
+    var TAB_BTN_SUBMIT =          'type=submit';
+    var TAB_BTN_SUBMIT_SEL =      '[' + TAB_BTN_SUBMIT + ']';
+
+    var TOOLTIP =                 'data-toggle=tooltip';
+    var TOOLTIP_SEL =             '[' + TOOLTIP + ']';
 
 
     var console = window.console || { log: function () {} };
@@ -65,10 +82,56 @@ Raven.context(function () {
 
       this.$svItemText = $(SV_ITEM_TEXT_SEL);
 
+      this.$tab = $(TAB_SEL);
+      this.$tabBtnNext = this.$tab.find(TAB_BTN_NEXT_SEL);
+      this.$tabBtnPrev = this.$tab.find(TAB_BTN_PREV_SEL);
+      this.$tabSubmit = this.$tab.find(TAB_BTN_SUBMIT_SEL);
+
+      this.$tooltip = $(TOOLTIP_SEL);
+
+      this.options = {
+        aspectRatio: 3 / 2,
+        preview: '.img-preview',
+        viewMode: '1',
+        dragMode: 'move',
+        responsive: true,
+        cropBoxMovable: true,
+        cropBoxResizable: true,
+        toggleDragModeOnDblclick: false,
+        ready: function(e) {
+          console.log(e.type);
+        },
+        cropstart: function(e) {
+          console.log(e.type, e.detail.action);
+        },
+        cropmove: function(e) {
+          console.log(e.type, e.detail.action);
+        },
+        cropend: function(e) {
+          console.log(e.type, e.detail.action);
+        },
+        crop: function(e) {
+          var data = e.detail;
+
+          console.log(e.type);
+          dataX.value = Math.round(data.x);
+          dataY.value = Math.round(data.y);
+          dataHeight.value = Math.round(data.height);
+          dataWidth.value = Math.round(data.width);
+          dataRotate.value = typeof data.rotate !== 'undefined' ? data.rotate : '';
+          dataScaleX.value = typeof data.scaleX !== 'undefined' ? data.scaleX : '';
+          dataScaleY.value = typeof data.scaleY !== 'undefined' ? data.scaleY : '';
+        },
+        zoom: function(e) {
+          console.log(e.type, e.detail.ratio);
+        }
+      };
+
       this.$container = $element;
 
-      this.$avatarView = this.$container.find('.avatar-view');
-      this.$avatar = this.$avatarView.find('img');
+      this.$avatar = this.$container.find('img');
+
+
       this.$avatarModal = this.$container.find('#avatar-modal');
       this.$loading = this.$container.find('.loading');
 
@@ -118,14 +181,13 @@ Raven.context(function () {
         this.$collapse.on('shown.bs.modal hidden.bs.modal', $.proxy(this.toggleAccordion, this));
         this.$videoModal.on('shown.bs.modal hidden.bs.modal', $.proxy(this.videoModal, this));
 
-        this.$avatarView.on('click', $.proxy(this.click, this));
         this.$avatarInput.on('change', $.proxy(this.change, this));
         this.$avatarForm.on('submit', $.proxy(this.submit, this));
         this.$avatarBtns.on('click', $.proxy(this.rotate, this));
       },
 
       initTooltip: function () {
-        this.$avatarView.tooltip({
+        this.$tooltip.tooltip({
           placement: 'bottom'
         });
       },
@@ -186,6 +248,28 @@ Raven.context(function () {
         }
       },
 
+      navigateTo: function (index) {
+        // Mark the current section with the class 'current'
+        $sections
+          .removeClass(TAB_ITEM_ACTIVE)
+          .eq(index)
+            .addClass(TAB_ITEM_ACTIVE);
+        // Show only the navigation buttons that make sense for the current section:
+        this.$tabBtnPrev.toggle(index > 0);
+        var atTheEnd = index >= $sections.length - 1;
+       this.$tabBtnNext.toggle(!atTheEnd);
+        this.$tabSubmit.toggle(atTheEnd);
+      },
+
+      curIndex: function () {
+        // Return the current index by looking at which section has the class 'current'
+        return $sections.index($sections.filter(TAB_ITEM_ACTIVE));
+      },
+
+      ajaxRequestForm: function() {
+
+      },
+
       initSelect2: function() {
 
         if (this.$select2.length) {
@@ -242,6 +326,7 @@ Raven.context(function () {
       },
 
       initIframe: function () {
+
         var target = 'upload-iframe-' + (new Date()).getTime();
         var $iframe = $('<iframe>').attr({
               name: target,
@@ -323,14 +408,15 @@ Raven.context(function () {
             min =   minWidth,
             max =   maxWidth;
 
+
         if ((maxWidth === null) && (minWidth === null)) {
           query = 'only screen and (min-width: 0)';
         } else if ((maxWidth === null) && (minWidth !== null)) {
-          query = 'only screen and (min-width: ' + min + 'px)';
+          query = 'only screen and (min-width: ' + min + ')';
         } else if ((maxWidth !== null) && (minWidth === null)) {
-          query = 'only screen and (max-width: ' + max + 'px)';
+          query = 'only screen and (max-width: ' + max + ')';
         } else if ((maxWidth !== null) && (minWidth !== null)) {
-          query = 'only screen and (min-width: ' + min + 'px) and (max-width: ' + max + 'px)';
+          query = 'only screen and (min-width: ' + min + ') and (max-width: ' + max + ')';
         }
 
         if (matchMedia(query).matches) {
@@ -592,8 +678,123 @@ Raven.context(function () {
     };
 
     $(function () {
-      return new Init($('#crop-avatar'));
+      return new Init($('.img-container'));
     });
 
+     $(function() {
+       var $image = $('#image');
+       var width = 617;
+       var height = 795;
+       var $loading = $(".loading");
+       var options = {
+         viewMode: '1',
+         aspectRatio: width / height,
+         dragMode: 'move',
+         responsive: true,
+         cropBoxMovable: true, //перемещение кропбокса
+         cropBoxResizable: true, //изменение размера кропбокса
+         toggleDragModeOnDblclick: false
+         // minContainerWidth: width,   //фиксированный контейнер
+         // minContainerHeight: height, //фииксированный контейнер
+         // minCropBoxHeight: height    //фиксированный кропбокс
+       };
+       // Tooltip
+       // Cropper
+       $image.cropper(options);
+       // Buttons
+       if (!$.isFunction(document.createElement('canvas').getContext)) {
+         $('button[data-method="getCroppedCanvas"]').prop('disabled', true);
+       }
+       if (typeof document.createElement('cropper').style.transition === 'undefined') {
+         $('button[data-method="rotate"]').prop('disabled', true);
+       }
+       // Methods
+       $('.docs-buttons').on('click', '[data-method]', function() {
+         var $this = $(this);
+         var data = $this.data();
+         var $target;
+         var result;
+         if ($this.prop('disabled') || $this.hasClass('disabled')) {
+           return;
+         }
+         if ($image.data('cropper') && data.method) {
+           data = $.extend({}, data); // Clone a new one
+           if (typeof data.target !== 'undefined') {
+             $target = $(data.target);
+             if (typeof data.option === 'undefined') {
+               try {
+                 data.option = JSON.parse($target.val());
+               } catch (e) {
+                 console.log(e.message);
+               }
+             }
+           }
+           if (data.method === 'rotate') {
+             $image.cropper('clear');
+           }
+           if (data.method === 'getCroppedCanvas') {
+             result = $image.cropper(data.method, {
+               width: width,
+               height: height
+             });
+           } else
+             result = $image.cropper(data.method, data.option);
+           if (data.method === 'rotate') {
+             $image.cropper('crop');
+           }
+           if (data.method === 'getCroppedCanvas') {
+             if (result) {
+               try {
+                 var base64 = result.toDataURL("image/jpeg");
+                 $('#frameImage').attr('src', base64);
+                 $('#photo1').val(base64);
+                 $('#myModal').modal('hide');
+                 $('#uploadBtnText').html('Загрузить другое фото');
+                 $('#uploadBtn').addClass('btn-red');
+                 // console.log(base64 + "\\nWidth: " + result.width + "\nHeight: " +  result.height);
+               } catch (error) {
+                 console.log('Error: ' + error.message);
+               }
+             }
+           }
+           if ($.isPlainObject(result) && $target) {
+             try {
+               $target.val(JSON.stringify(result));
+             } catch (e) {
+               console.log(e.message);
+             }
+           }
+         }
+       });
+       // Import image
+       var $inputImage = $('#inputImage');
+       var URL = window.URL || window.webkitURL;
+       var blobURL;
+       if (URL) {
+         $inputImage.change(function() {
+           var files = this.files;
+           var file;
+           if (!$image.data('cropper')) {
+             return;
+           }
+           if (files && files.length) {
+             file = files[0];
+             if (/^image\/\w+$/.test(file.type)) {
+               $('#myModal').modal('show');
+               blobURL = URL.createObjectURL(file);
+               $image.one('built.cropper', function() {
+                 // Revoke when load complete
+                 URL.revokeObjectURL(blobURL);
+               }).cropper('reset').cropper('replace', blobURL);
+               $inputImage.val('');
+             } else {
+               window.alert('Please choose an image file.');
+             }
+           }
+         });
+       } else {
+         $inputImage.prop('disabled', true).parent().addClass('disabled');
+       }
+     });
   });
 });

@@ -999,6 +999,40 @@
         </div>
       </div>
     </div>
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content docs-buttons">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">Загрузка фотографии</h4>
+          </div>
+          <div class="modal-body">
+            <p style="    display: block;        text-align: center;        font-size: 20px;        /* margin-top: 10px; */        margin-bottom: 20px;        color: #0d395e;">Выберите нужную область фотографии и нажмите "Готово".</p>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-24">
+                  <!-- <h3 class="page-header">Demo:</h3>-->
+                  <div class="img-container"><img id="image" src="" alt="Picture"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-24">
+                  <!-- <h3 class="page-header">Toolbar:</h3>-->
+                  <!-- Zoom in/out-->
+                  <button class="btn btn-primary" type="button" data-method="zoom" data-option="0.1" title="Zoom In"><span class="docs-tooltip" data-toggle="tooltip" title="Zoom in"><span class="fa fa-search-plus"></span></span></button>
+                  <button class="btn btn-primary" type="button" data-method="zoom" data-option="-0.1" title="Zoom Out"><span class="docs-tooltip" data-toggle="tooltip" title="Zoom out"><span class="fa fa-search-minus"></span></span></button>
+                  <!-- Rotate-->
+                  <button class="btn btn-primary" type="button" data-method="rotate" data-option="-90" title="Rotate Left"><span class="docs-tooltip" data-toggle="tooltip" title="Rotate -90 deg"><span class="fa fa-rotate-left"></span></span></button>
+                  <button class="btn btn-primary" type="button" data-method="rotate" data-option="90" title="Rotate Right"><span class="docs-tooltip" data-toggle="tooltip" title="Rotate 90 deg"><span class="fa fa-rotate-right"></span></span></button>
+                  <button class="btn btn-green pull-right" type="button" data-method="getCroppedCanvas"><span class="docs-tooltip" data-toggle="tooltip" title="Готово">Готово</span></button>
+                </div>
+                <!-- /.docs-buttons-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="modal fade" id="facebook" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
