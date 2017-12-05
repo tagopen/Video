@@ -1,3 +1,4 @@
+
 (function($) {
   "use strict"; // Start of use strict
 
@@ -1228,8 +1229,8 @@
     };
     var URL = window.URL || window.webkitURL;
     var $image = $('#image');
-    var width = 300;
-    var height = 100;
+    var width = 420;
+    var height = 280;
     var $dataX = $('#dataX');
     var $dataY = $('#dataY');
     var $avatar = $('.avatar');
