@@ -178,7 +178,8 @@
                         <div class="col-24 col-md-12">
                           <div class="btn-groups text-left tabs__btn-group">
                             <label class="form-control btn--file" id="uploadBtn" href="#" for="inputImage">
-                              <input class="sr-only" id="inputImage" type="file" name="file" accept="image/*"><span id="uploadBtnText">Загрузить фотографию
+                              <input class="sr-only" id="inputImage" type="file" name="file" accept="image/*">
+                              <input class="avatar-filename" type="hidden" name="image"><span id="uploadBtnText">Загрузить фотографию
                                 <svg class="svg svg--clip btn__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                                   <use xlink:href="img/sprite.svg#clip"></use>
                                 </svg></span>
@@ -194,15 +195,12 @@
                             <div class="avatar-view avatar__photo"><img class="img-fluid avatar__img" id="frameImage" alt="Avatar"></div>
                           </div>
                         </div>
-                        <div class="col-24">
-                          <div class="btn-groups text-center tabs__btn-groups">
-                            <div class="row">
-                              <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
-                                <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
-                              </div>
-                            </div>
+                        <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
+                          <div class="btn-groups">
+                            <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
                           </div>
                         </div>
+                        <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
                         <div class="col-24 mb-5"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
                       </div>
                     </div>

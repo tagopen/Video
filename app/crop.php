@@ -44,14 +44,16 @@ class CropAvatar {
       mkdir('upload/', 0777, true);
     }
 
+    $this -> dst = 'upload/' . uniqid ($this -> filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.' . $this -> extension;
+
     $img = $this -> src;
 
     $img = str_replace('data:image/png;base64,', '', $img);
     $img = str_replace(' ', '+', $img);
     $img = base64_decode($img);
 
- 
-    $this -> dst = file_put_contents('upload/' . uniqid ($this -> filename . "_" . date('Ymd') . "-" . date('His') . "_", true) . '.' . $this -> extension, $img);
+    file_put_contents($this -> dst, $img);
+    $this -> getResult = $this -> dst;
 
   }
  
@@ -75,7 +77,7 @@ class CropAvatar {
   }
  
   public function getResult() {
-    return !empty($this -> data) ? $this -> dst : $this -> src;
+    return !empty($this -> dst) ? $this -> dst : "";
   }
  
   public function getMsg() {

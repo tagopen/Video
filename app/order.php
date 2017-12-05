@@ -208,21 +208,17 @@
                         <div class="col-24 col-md-12">
                           <div class="btn-groups text-left tabs__btn-group">
                             <label class="form-control btn--file" id="uploadBtn" href="#" for="inputImage">
-                              <input class="sr-only" id="inputImage" type="file" name="file" accept="image/*"><span id="uploadBtnText">Загрузить фотографию
+                              <input class="sr-only" id="inputImage" type="file" name="file" accept="image/*">
+                              <input class="avatar-filename" type="hidden" name="image">
+                              <span id="uploadBtnText">Загрузить фотографию
                                 <svg class="svg svg--clip btn__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                                   <use xlink:href="img/sprite.svg#clip"></use>
                                 </svg></span>
+
                             </label>
                             <p class="nt-info tabs__info"><i class="fa fa-info-circle nt-info__icon"></i><i class="nt-info__text">
                                  Если у вас возникли сложности с загрузкой фотографии — звоните или пишите в Viber по номеру 
                                 <nobr>098 5 430 430</nobr>. Мы поможем вам с оформлением заказа!</i></p>
-                            <div class="btn-groups text-center tabs__btn-groups">
-                              <div class="row">
-                                <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
-                                  <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a>
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         </div>
                         <div class="col-24 col-md-12">         
@@ -231,6 +227,12 @@
                             <div class="avatar-view avatar__photo"><img class="img-fluid avatar__img" id="frameImage" alt="Avatar"></div>
                           </div>
                         </div>
+                        <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
+                          <div class="btn-groups">
+                            <button class="btn btn--default btn--sm" data-tabs-control="next" data-tabs-toggle="test-tabs">Далее</button>
+                          </div>
+                        </div>
+                        <div class="col-24 col-md-6 text-center text-md-left"><a class="quiz__btn quiz__btn--prev test__btn--prev" href="#" data-tabs-control="prev" data-tabs-toggle="test-tabs">Назад</a></div>
                         <div class="col-24 mb-5"><a class="confident__link" data-toggle="modal" href="#confident">Обработка Ваших персональных данных строго конфиденциальна</a></div>
                       </div>
                     </div>
@@ -245,7 +247,7 @@
                             </div>
                             <div class="row justify-content-between total-row d-none js-hidden-discount">
                               <div class="col-auto"><span class="tb-price">Ваша скидка:</span></div>
-                              <div class="col-auto"><span class="nt-price"> <span class="js-discount-price"><?=$discount["price"]?></span> грн</span></div>
+                              <div class="col-auto"><span class="nt-price"> <span class="js-discount-price"><?=$discount["price"]?></span> грн</div>
                               <input class="js-discount" type="hidden" name="discount" value="<?=$discount['price']?>">
                             </div>
                             <div class="row justify-content-between total-row d-none js-new-name">
@@ -257,7 +259,7 @@
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
-                              <div class="col-auto"><span class="nt-price js-total-price"> <span class="js-total-price-val"><?= ($price - $discount["price"])?> </span> грн</span><span class="nt-price d-none js-total-price"><span class="js-total-price-val"><?=($price - $discount["price"] + 40)?></span> грн</span></div>
+                              <div class="col-auto"><span class="nt-price js-total-price"> <span class="js-total-price-val"><?= ($price - $discount["price"])?> </span> грн</span><span class="nt-price d-none js-total-price"><span class="js-total-price-val"><?= ($price - $discount["price"] + 40)?></span> грн</span></div>
                             </div>
                           </div>
                         </div>
@@ -358,7 +360,7 @@
           </button>
           <div class="modal-body modal__body">
             <div class="modal__iframe">
-              <iframe class="modal__iframe" src="https://www.youtube.com/embed/kg-qEHftDd8" frameborder="0" gesture="media" allowfullscreen></iframe>
+              <iframe class="modal__iframe" src="https://www.youtube.com/embed/lLgW4wR1vQQ" frameborder="0" gesture="media" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -602,9 +604,6 @@
     <script src="https://cdn.ravenjs.com/3.20.1/raven.min.js" crossorigin="anonymous"></script>
     <!-- Custom JavaScript-->
     <script src="js/main.js"></script>
-    <!-- CRM AMO-->
-    <script>var amo_social_button = {id: 3324, hash: "c0f3fc79deb5c762002d0eaec20b1cdec73ad6904e7f99b643097abe976effad", locale: "ru"};</script>
-    <script id="amo_social_button_script" async="async" src="https://gso.amocrm.ru/js/button.js"></script>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

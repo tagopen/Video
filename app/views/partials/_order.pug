@@ -83,6 +83,7 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
           .btn-groups.text-left.tabs__btn-group
             label#uploadBtn.form-control.btn--file(href='#', for="inputImage")
               input#inputImage.sr-only(type='file', name='file', accept='image/*')
+              input.avatar-filename(type='hidden', name='image')
               span#uploadBtnText Загрузить фотографию
                 +svg("clip")(class="btn__icon")
             p.nt-info.tabs__info
@@ -97,13 +98,12 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
             .avatar-view.avatar__photo
               img#frameImage.img-fluid.avatar__img(alt='Avatar')
               //-input#image(type="hidden", name="image")
-        .col-24
-          .btn-groups.text-center.tabs__btn-groups
-            .row
-              .col-24.col-md-8.col-lg-6.text-center.text-md-left
-                button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
-                a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
+        .col-24.col-md-8.col-lg-6.text-center.text-md-left
+          .btn-groups
+            button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
 
+        .col-24.col-md-6.text-center.text-md-left
+          a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
         .col-24.mb-5
           a.confident__link(data-toggle="modal", href="#confident") Обработка Ваших персональных данных строго конфиденциальна
     .tabs__item

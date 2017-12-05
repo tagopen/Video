@@ -1477,12 +1477,14 @@
                       $(".loading").fadeOut();
                       $('#myModal').modal('hide');
                       if (data.message) {
-
                         alert(data.message, "alert-success");
                         document.location.href=data.pay_link;
                         //clear all fields
                       } else if (data.error) {
                         alert(data.error, "alert-danger");
+                      }
+                      if (data.result) {
+                        $(".avatar-filename").val(data.result);
                       }
                     } else {
                       alert('Failed to response', "danger");
