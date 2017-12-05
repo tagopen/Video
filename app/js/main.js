@@ -1222,6 +1222,7 @@
   });
 
   $(function() {
+  
     var console = window.console || {
       log: function() {}
     };
@@ -1642,9 +1643,9 @@
             }
 
             uploadedImageURL = URL.createObjectURL(file);
-
+            $image.cropper('destroy');
             $("#myModal").on("shown.bs.modal", function() {
-              $image.cropper('destroy').attr('src', uploadedImageURL).cropper(options);
+              $image.attr('src', uploadedImageURL).cropper(options);
             });
             $inputImage.val('');
           } else {
@@ -1655,7 +1656,6 @@
     } else {
       $inputImage.prop('disabled', true).parent().addClass('disabled');
     }
-
   });
 
 
