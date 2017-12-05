@@ -1228,8 +1228,8 @@
     };
     var URL = window.URL || window.webkitURL;
     var $image = $('#image');
-    var width = 500;
-    var height = 250;
+    var width = 300;
+    var height = 100;
     var $dataX = $('#dataX');
     var $dataY = $('#dataY');
     var $avatar = $('.avatar');
