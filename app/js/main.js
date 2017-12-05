@@ -1,444 +1,442 @@
+(function($) {
+  "use strict"; // Start of use strict
 
-  (function($) {
-    "use strict"; // Start of use strict
+  // Old browser notification
+  $(function() {
+    $.reject({
+      reject: {
+        msie: 10
+      },
+      imagePath: 'img/icons/jReject/',
+      display: ['chrome', 'firefox', 'safari', 'opera'],
+      closeCookie: true,
+      cookieSettings: {
+        expires: 60 * 60 * 24 * 365
+      },
+      header: 'Ваш браузер устарел!',
+      paragraph1: 'Вы пользуетесь устаревшим браузером, который не поддерживает современные веб-стандарты и представляет угрозу вашей безопасности.',
+      paragraph2: 'Пожалуйста, установите современный браузер:',
+      closeMessage: 'Закрывая это уведомление вы соглашаетесь с тем, что сайт в вашем браузере может отображаться некорректно.',
+      closeLink: 'Закрыть это уведомление',
+    });
+  });
 
-    // Old browser notification
-    $(function() {
-      $.reject({
-        reject: {
-          msie: 10
-        },
-        imagePath: 'img/icons/jReject/',
-        display: [ 'chrome','firefox','safari','opera' ],
-        closeCookie: true,
-        cookieSettings: {
-          expires: 60*60*24*365
-        },
-        header: 'Ваш браузер устарел!',
-        paragraph1: 'Вы пользуетесь устаревшим браузером, который не поддерживает современные веб-стандарты и представляет угрозу вашей безопасности.',
-        paragraph2: 'Пожалуйста, установите современный браузер:',
-        closeMessage: 'Закрывая это уведомление вы соглашаетесь с тем, что сайт в вашем браузере может отображаться некорректно.',
-        closeLink: 'Закрыть это уведомление',
-      });
+  $(function() {
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 200) {
+        $('.js-back-to-top').fadeIn()
+      } else {
+        $('.js-back-to-top').fadeOut()
+      }
     });
 
-    $(function() {
-      $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-          $('.js-back-to-top').fadeIn()
-        } else {
-          $('.js-back-to-top').fadeOut()
-        }
-      });
-
-      $('.js-back-to-top').hide().on("click", function () {
-        $('html, body').animate({
+    $('.js-back-to-top').hide().on("click", function() {
+      $('html, body').animate({
           scrollTop: 0
         },
         800);
-        return false
+      return false
+    });
+  });
+
+  var firstModalOpen = $("body").hasClass("modal-open");
+
+  $("#confident").on('hidden.bs.modal', function() {
+    if (!firstModalOpen)
+      $("body").addClass("modal-open");
+  });
+
+  // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
+  if ($('.js-timer').length) {
+    $('.js-timer').countdown('2017/12/6', function(event) {
+
+      var $this = $(this).html(event.strftime('' +
+        '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>' +
+        '<div class="timer__item"><div class="timer__time">:</div></div>' +
+        '<div class="timer__item"><div class="timer__time">%H</div><div class="timer__text">часов</div></div>' +
+        '<div class="timer__item"><div class="timer__time">:</div></div>' +
+        '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>' +
+        '<div class="timer__item"><div class="timer__time">:</div></div>' +
+        '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
+    });
+  }
+
+  if ($(window).width() >= 576) {
+    if ($('.sv-item__text').length) {
+      $('.sv-item__text').matchHeight({
+        byRow: true,
+        property: 'height',
+        target: null,
+        remove: false
       });
+    }
+  };
+
+  $(document).ready(function() {
+    // Add minus icon for collapse element which is open by default
+    $(".collapse.in").each(function() {
+      $(this).siblings(".panel-heading").find(".panel__ic").addClass("minus");
     });
 
-    var firstModalOpen = $("body").hasClass("modal-open");
-
-    $("#confident").on('hidden.bs.modal', function()
-    {
-      if (!firstModalOpen)
-        $("body").addClass("modal-open");
+    // Toggle plus minus icon on show hide of collapse element
+    $(".collapse").on('show.bs.collapse', function() {
+      $(this).parent().find(".panel__ic").addClass("minus");
+    }).on('hide.bs.collapse', function() {
+      $(this).parent().find(".panel__ic").removeClass("minus");
     });
+  });
 
-    // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
-    if ($('.js-timer').length) {
-      $('.js-timer').countdown('2017/12/6', function(event) {
+  // Select2 
+  $(function() {
+    var $selectElement = $('.form-control--select');
 
-        var $this = $(this).html(event.strftime(''
-          + '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>'
-          + '<div class="timer__item"><div class="timer__time">:</div></div>'
-          + '<div class="timer__item"><div class="timer__time">%H</div><div class="timer__text">часов</div></div>'
-          + '<div class="timer__item"><div class="timer__time">:</div></div>'
-          + '<div class="timer__item"><div class="timer__time">%M</div><div class="timer__text">минут</div></div>'
-          + '<div class="timer__item"><div class="timer__time">:</div></div>'
-          + '<div class="timer__item"><div class="timer__time">%S</div><div class="timer__text">секунд</div></div>'));
+    if ($.fn.select2) {
+      $.fn.select2.amd.define('select2/i18n/ru', [], function() {
+        // Russian
+        return {
+          errorLoading: function() {
+            return 'Результат не может быть загружен.';
+          },
+          inputTooLong: function(args) {
+            var overChars = args.input.length - args.maximum;
+            var message = 'Пожалуйста, удалите ' + overChars + ' символ';
+            if (overChars >= 2 && overChars <= 4) {
+              message += 'а';
+            } else if (overChars >= 5) {
+              message += 'ов';
+            }
+            return message;
+          },
+          inputTooShort: function(args) {
+            var remainingChars = args.minimum - args.input.length;
+
+            var message = 'Пожалуйста, введите ' + remainingChars + ' или более символов';
+
+            return message;
+          },
+          loadingMore: function() {
+            return 'Загружаем ещё ресурсы…';
+          },
+          maximumSelected: function(args) {
+            var message = 'Вы можете выбрать ' + args.maximum + ' элемент';
+
+            if (args.maximum >= 2 && args.maximum <= 4) {
+              message += 'а';
+            } else if (args.maximum >= 5) {
+              message += 'ов';
+            }
+
+            return message;
+          },
+          noResults: function() {
+            return 'Ничего не найдено';
+          },
+          searching: function() {
+            return 'Поиск…';
+          }
+        };
       });
     }
 
-    if( $( window ).width() >= 576 ) {
-      if ($('.sv-item__text').length) {
-        $('.sv-item__text').matchHeight({
-          byRow: true,
-          property: 'height',
-          target: null,
-          remove: false
-        });
-      }
-    };
-
-    $(document).ready(function(){
-      // Add minus icon for collapse element which is open by default
-      $(".collapse.in").each(function(){
-        $(this).siblings(".panel-heading").find(".panel__ic").addClass("minus");
-      });
-      
-      // Toggle plus minus icon on show hide of collapse element
-      $(".collapse").on('show.bs.collapse', function(){
-        $(this).parent().find(".panel__ic").addClass("minus");
-      }).on('hide.bs.collapse', function(){
-        $(this).parent().find(".panel__ic").removeClass("minus");
-      });
-    });
-
-    // Select2 
-    $(function() {
-      var $selectElement = $('.form-control--select');
-
-      if ($.fn.select2) {
-        $.fn.select2.amd.define('select2/i18n/ru',[],function () {
-        // Russian
-          return {
-            errorLoading: function () {
-              return 'Результат не может быть загружен.';
-            },
-            inputTooLong: function (args) {
-              var overChars = args.input.length - args.maximum;
-              var message = 'Пожалуйста, удалите ' + overChars + ' символ';
-              if (overChars >= 2 && overChars <= 4) {
-                message += 'а';
-              } else if (overChars >= 5) {
-                message += 'ов';
-              }
-              return message;
-            },
-            inputTooShort: function (args) {
-              var remainingChars = args.minimum - args.input.length;
-
-              var message = 'Пожалуйста, введите ' + remainingChars + ' или более символов';
-
-              return message;
-            },
-            loadingMore: function () {
-              return 'Загружаем ещё ресурсы…';
-            },
-            maximumSelected: function (args) {
-              var message = 'Вы можете выбрать ' + args.maximum + ' элемент';
-
-              if (args.maximum  >= 2 && args.maximum <= 4) {
-                message += 'а';
-              } else if (args.maximum >= 5) {
-                message += 'ов';
-              }
-
-              return message;
-            },
-            noResults: function () {
-              return 'Ничего не найдено';
-            },
-            searching: function () {
-              return 'Поиск…';
-            }
-          };
-        });
-      }
-
-      if ($selectElement) {
-        $selectElement.select2({
-          placeholder: "--Select something (default placeholder)--", 
-          width: 'resolve',
-          sortResults: function(results, container, query) {
-            if (query.term) {
-              // use the built in javascript sort function
-              return results.sort();
-            }
-            return results;
-          },
-          language: 'ru',
-        });
-        
-        $('.select2-selection__arrow').html('<svg class="svg svg--arrow-down select2-selection__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img"><use xlink:href="img/sprite.svg#arrow-down"></use></svg>');
-      }
-    });
-
-    // fixed panel close
-    $(function() {
-      var timeoutID = setTimeout ( function() {
-        $('.js-panel').fadeIn('300');
-         clearTimeout(timeoutID);
-      }, 5000);
-
-      $(".js-panel").on('click', '[data-close]', function() {
-        $(this).closest('.js-panel').fadeOut("300", function() {
-          $(this).detach();
-        });
-      });
-    });
-
-    // Trigger anchor scroll
-    $(function() {
-      $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-          if (target.length) {
-            $('html, body').animate({
-              scrollTop: (target.offset().top - 40)
-            }, 1000);
-            return false;
+    if ($selectElement) {
+      $selectElement.select2({
+        placeholder: "--Select something (default placeholder)--",
+        width: 'resolve',
+        sortResults: function(results, container, query) {
+          if (query.term) {
+            // use the built in javascript sort function
+            return results.sort();
           }
-        }
+          return results;
+        },
+        language: 'ru',
+      });
+
+      $('.select2-selection__arrow').html('<svg class="svg svg--arrow-down select2-selection__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img"><use xlink:href="img/sprite.svg#arrow-down"></use></svg>');
+    }
+  });
+
+  // fixed panel close
+  $(function() {
+    var timeoutID = setTimeout(function() {
+      $('.js-panel').fadeIn('300');
+      clearTimeout(timeoutID);
+    }, 5000);
+
+    $(".js-panel").on('click', '[data-close]', function() {
+      $(this).closest('.js-panel').fadeOut("300", function() {
+        $(this).detach();
       });
     });
+  });
 
-    $('#video__modal').on('shown.bs.modal', function() {
-      $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/lLgW4wR1vQQ?ecver=1&autoplay=1&showinfo=0&mute=0&iv_load_policy=3&showsearch=0');
-    });
-
-    $('#video__modal').on('hidden.bs.modal', function() {
-      $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/lLgW4wR1vQQ?ecver=1&autoplay=0&showinfo=0&mute=1&iv_load_policy=3&showsearch=0');
-    });
-    
-    // Tabs
-    $(function() {
-      var $indexControl = $("[data-tabs-index]");
-
-      function getQueryVariable(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split('&');
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split('=');
-            if (decodeURIComponent(pair[0]) == variable) {
-                return decodeURIComponent(pair[1]);
-            }
+  // Trigger anchor scroll
+  $(function() {
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: (target.offset().top - 40)
+          }, 1000);
+          return false;
         }
-        return ;
+      }
+    });
+  });
+
+  $('#video__modal').on('shown.bs.modal', function() {
+    $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/lLgW4wR1vQQ?ecver=1&autoplay=1&showinfo=0&mute=0&iv_load_policy=3&showsearch=0');
+  });
+
+  $('#video__modal').on('hidden.bs.modal', function() {
+    $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/lLgW4wR1vQQ?ecver=1&autoplay=0&showinfo=0&mute=1&iv_load_policy=3&showsearch=0');
+  });
+
+  // Tabs
+  $(function() {
+    var $indexControl = $("[data-tabs-index]");
+
+    function getQueryVariable(variable) {
+      var query = window.location.search.substring(1);
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+          return decodeURIComponent(pair[1]);
+        }
+      }
+      return;
+    }
+
+
+    $("[data-tabs-control]").on('click', function(e) {
+      var control = $(this).data('tabs-control'),
+        index = $(this).data('tabs-index'),
+        target = $(this).data('tabs-toggle'),
+        $tabs = $("[data-tabs=" + target + "]");
+
+      if (typeof index !== undefined) {
+
       }
 
+      $tabs.each(function() {
+        var $item = $(this).find('.tabs__item'),
+          $currentItem = $item.filter('.tabs__item--active'),
+          activeItem = $currentItem.index() - 1;
 
-      $("[data-tabs-control]").on('click', function(e) {
-        var control = $(this).data('tabs-control'),
-            index = $(this).data('tabs-index'),
-            target = $(this).data('tabs-toggle'),
-            $tabs = $("[data-tabs=" + target + "]");
-
-        if (typeof index !== undefined) {
-
+        // Tabs control button
+        if (control === 'prev') {
+          activeItem = activeItem - 1;
+          $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
+        } else if (control === 'next') {
+          activeItem = activeItem + 1;
+          $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
+        } else if (control === 'index') {
+          activeItem = parseInt(index, 10);
+          $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
         }
 
-        $tabs.each(function() {
-          var  $item = $(this).find('.tabs__item'),
-               $currentItem = $item.filter('.tabs__item--active'),
-               activeItem = $currentItem.index() - 1;
+        $item.removeClass('tabs__item--active').eq(activeItem).addClass('tabs__item--active');
 
-          // Tabs control button
-          if (control === 'prev') {
-            activeItem = activeItem - 1;
-            $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
-          } else if (control === 'next') {
-            activeItem = activeItem + 1;
-            $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
-          } else if (control === 'index') {
-            activeItem = parseInt(index, 10);
-            $indexControl.removeClass('tabs-control__link--active').eq(activeItem).addClass('tabs-control__link--active');
-          }
-
-          $item.removeClass('tabs__item--active').eq(activeItem).addClass('tabs__item--active');
-          
-        });
+      });
       e.preventDefault();
-      });
+    });
 
-      if(getQueryVariable('gender') !== undefined){
-        var $childreanItem = $("[data-childrean-item]"),
-            $gender = $childreanItem.eq(0).find(".js-gender"),
-            $male = $childreanItem.eq(0).find("[data-gender=male]"),
-            $female = $childreanItem.eq(0).find("[data-gender=female]"),
-            gender = parseInt(getQueryVariable('gender'), 10),
-            male = getQueryVariable('male'),
-            female = getQueryVariable('female');
+    if (getQueryVariable('gender') !== undefined) {
+      var $childreanItem = $("[data-childrean-item]"),
+        $gender = $childreanItem.eq(0).find(".js-gender"),
+        $male = $childreanItem.eq(0).find("[data-gender=male]"),
+        $female = $childreanItem.eq(0).find("[data-gender=female]"),
+        gender = parseInt(getQueryVariable('gender'), 10),
+        male = getQueryVariable('male'),
+        female = getQueryVariable('female');
 
 
-        $indexControl.get(1).click();
-        $gender.val(gender).trigger('change.select2');
-    
-        $male.val(male).trigger('change.select2');
-        $female.val(female).trigger('change.select2');
+      $indexControl.get(1).click();
+      $gender.val(gender).trigger('change.select2');
 
+      $male.val(male).trigger('change.select2');
+      $female.val(female).trigger('change.select2');
+
+    }
+  });
+
+  $(function() {
+    var $genders = $("[data-gender]"),
+      triggerChecked = false,
+      changeName = function($item) {
+        var $this = $item,
+          target = $this.data("gender"),
+          $select = $(target),
+          $selectContainer = $select.next(".select2-container"),
+          genderVal = $this.val()
+
+        if ($this.prop("checked")) {
+          $select.prop('required', true);
+          $selectContainer.fadeIn();
+          $select.siblings(".select").prop('required', false);
+          $selectContainer.siblings(".select2-container").fadeOut(0);
+          triggerChecked = true;
+        }
+      }
+
+    $genders.each(function() {
+      changeName($(this));
+    });
+
+    if (!triggerChecked) {
+      var $item = $genders.eq(0);
+      $item.prop("checked", true);
+      changeName($item);
+    }
+
+    $genders.on("click change", function() {
+      changeName($(this));
+    });
+  });
+
+  // Show more childrean
+  $(function() {
+    var $items = $("[data-childrean-item]"),
+      $control = $("[data-childrean]"),
+      childrean = 0,
+      showChildrean = function showChildrean(childrean) {
+        var items = parseInt(childrean, 10);
+
+        if (!items) {
+          $items.fadeOut();
+          return;
+        }
+
+        for (var i = 0; i < $items.length; i++) {
+          if (i < items) {
+            $items.eq(i).fadeIn();
+          } else {
+            $items.eq(i).fadeOut();
+          }
+        }
+      };
+
+    $control.each(function() {
+      if ($(this).prop("checked")) {
+        childrean = $(this).data("childrean");
       }
     });
 
-    $(function() {
-      var $genders = $("[data-gender]"),
-          triggerChecked = false,
-          changeName = function($item) {
-              var $this = $item,
-                  target = $this.data("gender"),
-                  $select = $(target),
-                  $selectContainer = $select.next(".select2-container"),
-                  genderVal = $this.val()
+    showChildrean(childrean);
 
-              if ($this.prop("checked")) {
-                $select.prop('required', true);
-                $selectContainer.fadeIn();
-                $select.siblings(".select").prop('required', false);
-                $selectContainer.siblings(".select2-container").fadeOut(0);
-                triggerChecked = true;
-              }
+    $control.on("click change", function() {
+      childrean = $(this).data("childrean");
+      showChildrean(childrean);
+    });
+
+  });
+
+  // Add new name
+  $(function() {
+    var $checkbox = $("[data-new-name]"),
+      $childreanNums = $("[data-childrean]"),
+      $totalPrice = $(".js-total-price"),
+      newName = function() {
+        var $childrean = $("[data-childrean-item]"),
+          $label = $(".js-new-name"),
+          triggerLabel = false;
+        $childreanNums.each(function() {
+          var $check = $(this);
+          if ($check.prop("checked")) {
+            if ($check.val() == 2) {
+              $label.removeClass("d-none");
+              $totalPrice.filter(".d-none").removeClass("d-none").siblings().addClass("d-none");
+              triggerLabel = true;
+            } else {
+              $checkbox.eq(1).prop("checked", false);
+            }
+          }
+        });
+
+
+
+        $childrean.each(function() {
+          var $check = $(this).find("[data-new-name]"),
+            target = $check.data("new-name"),
+            $group = $(target),
+            $input = $group.find("input.form-control"),
+            $select = $group.find(".select"),
+            $selectContainer = $select.next(".select2-container"),
+            $gender = $(this).find(".js-gender"),
+            genderVal = $gender.val(),
+            selectIndex = 0;
+
+          if (genderVal !== "" && !isNaN(genderVal)) {
+            var gender = parseInt(genderVal, 10);
+            selectIndex = (gender === 1) ? 0 : 1;
           }
 
-      $genders.each(function() {
-        changeName($(this));
-      });
+          if ($check.prop("checked")) {
+            $input.fadeIn();
+            $input.prop('required', true);
+            $select.prop('required', false);
+            $selectContainer.fadeOut(0);
+            $label.removeClass("d-none");
+            $totalPrice.removeClass("d-none").eq(0).addClass("d-none");
+            triggerLabel = true;
+          } else {
+            $input.fadeOut(0);
+            $input.prop('required', false);
+            $select.eq(selectIndex).prop('required', true);
+            $selectContainer.eq(selectIndex).fadeIn();
+            $select.eq(+!selectIndex).prop('required', false);
+            $selectContainer.eq(+!selectIndex).fadeOut(0);
+          }
+        });
 
-      if (!triggerChecked) {
-        var $item = $genders.eq(0);
-        $item.prop("checked", true);
-        changeName($item);
-      }
-
-      $genders.on("click change", function() {
-        changeName($(this));
-      });
-    });
-
-    // Show more childrean
-    $(function() {
-      var $items = $("[data-childrean-item]"),
-          $control = $("[data-childrean]"),
-          childrean = 0,
-          showChildrean = function showChildrean(childrean) {
-            var items = parseInt(childrean, 10);
-            
-            if (!items) {
-              $items.fadeOut();
-              return;
-            }
-
-            for (var i = 0; i < $items.length; i++) {
-              if (i < items) {
-                $items.eq(i).fadeIn();
-              } else {
-                $items.eq(i).fadeOut();
-              }
-            }
-          };
-
-      $control.each(function() {
-        if ($(this).prop("checked")) {
-          childrean = $(this).data("childrean");
+        if (!triggerLabel) {
+          $label.addClass("d-none");
+          $totalPrice.addClass("d-none").eq(0).removeClass("d-none");
         }
-      });
+      };
 
-      showChildrean(childrean);
+    newName();
 
-      $control.on("click change", function() {
-        childrean = $(this).data("childrean");
-        showChildrean(childrean);
-      });
-
-    });
-    
-    // Add new name
-    $(function() {
-      var $checkbox = $("[data-new-name]"),
-          $childreanNums = $("[data-childrean]"),
-          $totalPrice     = $(".js-total-price"),
-          newName = function() {
-            var $childrean = $("[data-childrean-item]"),
-                $label = $(".js-new-name"),
-                triggerLabel = false;
-            $childreanNums.each(function() {
-              var $check = $(this);
-              if ($check.prop("checked")) {
-                if($check.val() == 2) {
-                  $label.removeClass("d-none");
-                  $totalPrice.filter(".d-none").removeClass("d-none").siblings().addClass("d-none");
-                  triggerLabel = true;
-                } else {
-                  $checkbox.eq(1).prop("checked", false);
-                }
-              }
-            });
-
-
-
-            $childrean.each(function() {
-              var $check = $(this).find("[data-new-name]"),
-                  target = $check.data("new-name"),
-                  $group = $(target),
-                  $input = $group.find("input.form-control"),
-                  $select = $group.find(".select"),
-                  $selectContainer = $select.next(".select2-container"),
-                  $gender     = $(this).find(".js-gender"),
-                  genderVal = $gender.val(),
-                  selectIndex = 0;
-
-              if(genderVal !== "" && !isNaN(genderVal)) {
-                var gender = parseInt(genderVal, 10);
-                selectIndex = (gender === 1) ? 0 : 1;
-              }
-
-              if ($check.prop("checked")) {
-                $input.fadeIn();
-                $input.prop('required', true);
-                $select.prop('required', false);
-                $selectContainer.fadeOut(0);
-                $label.removeClass("d-none");
-                $totalPrice.removeClass("d-none").eq(0).addClass("d-none");
-                triggerLabel = true;
-              } else {
-                $input.fadeOut(0);
-                $input.prop('required', false);
-                $select.eq(selectIndex).prop('required', true);
-                $selectContainer.eq(selectIndex).fadeIn();
-                $select.eq(+!selectIndex).prop('required', false);
-                $selectContainer.eq(+!selectIndex).fadeOut(0);
-              }
-            });
-
-            if (!triggerLabel) { 
-              $label.addClass("d-none"); 
-              $totalPrice.addClass("d-none").eq(0).removeClass("d-none");
-            }
-          };
-
+    $checkbox.on("click change", function() {
       newName();
-
-      $checkbox.on("click change", function() {
-        newName();
-      });
-
-      $childreanNums.on("change", function() {
-        newName();
-      });
-
-      $(".js-gender").on("change", function() {
-        newName();
-      });
-
     });
-    
-    // show promo
-    $(function() {
-      var $promoLink = $('.js-promo');
 
-      $promoLink.each(function() {
-        var $this = $(this),
+    $childreanNums.on("change", function() {
+      newName();
+    });
+
+    $(".js-gender").on("change", function() {
+      newName();
+    });
+
+  });
+
+  // show promo
+  $(function() {
+    var $promoLink = $('.js-promo');
+
+    $promoLink.each(function() {
+      var $this = $(this),
         target = $this.attr("href"),
         $promoInput = $(target);
 
-        $promoInput.hide();
-        $promoLink.removeClass("sr-only");
-      });
-      $promoLink.on("click", function() {
-        var $this = $(this),
+      $promoInput.hide();
+      $promoLink.removeClass("sr-only");
+    });
+    $promoLink.on("click", function() {
+      var $this = $(this),
         target = $this.attr("href"),
         $promoInput = $(target);
 
-        $promoInput.fadeIn();
-        $promoLink.addClass("sr-only");
-      });
+      $promoInput.fadeIn();
+      $promoLink.addClass("sr-only");
     });
+  });
 
-    (function (factory) {
+  (function(factory) {
     if (typeof define === 'function' && define.amd) {
       // AMD. Register as anonymous module.
       define(['jquery'], factory);
@@ -449,11 +447,13 @@
       // Browser globals.
       factory(jQuery);
     }
-  })(function ($) {
+  })(function($) {
 
     'use strict';
 
-    var console = window.console || { log: function () {} };
+    var console = window.console || {
+      log: function() {}
+    };
 
     function CropAvatar($element, $modalEl) {
       var _this = this;
@@ -485,9 +485,10 @@
       this.$avatarWrapper = this.$avatarModal.find('.avatar-wrapper');
 
       this.options = {
-        aspectRatio: 3/2,/*
-        minCropBoxWidth: 300,
-        minCropBoxHeight: 200,*/
+        aspectRatio: 3 / 2,
+        /*
+                minCropBoxWidth: 300,
+                minCropBoxHeight: 200,*/
         viewMode: 1,
         restore: false,
         guides: false,
@@ -495,15 +496,15 @@
         autoCropArea: 0.65,
         zoomOnWheel: false,
         checkOrientation: false,
-        crop: function (e) {
+        crop: function(e) {
 
           var json = [
-                '{"x":' + e.x,
-                '"y":' + e.y,
-                '"height":' + e.height,
-                '"width":' + e.width,
-                '"rotate":' + e.rotate + '}'
-              ].join();
+            '{"x":' + e.x,
+            '"y":' + e.y,
+            '"height":' + e.height,
+            '"width":' + e.width,
+            '"rotate":' + e.rotate + '}'
+          ].join();
           _this.$avatarData.val(json);
         },
       };
@@ -520,7 +521,7 @@
         formData: !!window.FormData
       },
 
-      init: function () {
+      init: function() {
         this.support.datauri = this.support.fileList && this.support.blobURLs;
 
         if (!this.support.formData) {
@@ -531,7 +532,7 @@
         this.addListener();
       },
 
-      addListener: function () {
+      addListener: function() {
         this.$btnToggle.on('click', $.proxy(this.click, this));
         this.$avatarInput.on('change', $.proxy(this.change, this));
         this.$avatarForm.on('submit', $.proxy(this.submit, this));
@@ -540,25 +541,25 @@
 
       },
 
-      initModal: function () {
+      initModal: function() {
         this.$avatarModal.modal({
           show: false
         });
       },
 
-      initIframe: function () {
+      initIframe: function() {
         var target = 'upload-iframe-' + (new Date()).getTime();
         var $iframe = $('<iframe>').attr({
-              name: target,
-              src: ''
-            });
+          name: target,
+          src: ''
+        });
         var _this = this;
 
         // Ready ifrmae
-        $iframe.one('load', function () {
+        $iframe.one('load', function() {
 
           // respond response
-          $iframe.on('load', function () {
+          $iframe.on('load', function() {
             var data;
 
             try {
@@ -588,12 +589,12 @@
         this.$avatarForm.attr('target', target).after($iframe.hide());
       },
 
-      click: function () {
+      click: function() {
         this.$avatarModal.modal('show');
         this.getNames();
       },
 
-      change: function () {
+      change: function() {
         var files;
         var file;
 
@@ -621,7 +622,7 @@
         }
       },
 
-      submit: function () {
+      submit: function() {
         if (!this.$avatarSrc.val() && !this.$avatarInput.val()) {
           return false;
         }
@@ -632,7 +633,7 @@
         }
       },
 
-      rotate: function (e) {
+      rotate: function(e) {
         var data;
 
         if (this.active) {
@@ -652,23 +653,23 @@
 
       getNames: function(e) {
         var $items = this.$newnames,
-            countgender = 0,
-            genderVal = "",
-            names = [],
-            name = "";
+          countgender = 0,
+          genderVal = "",
+          names = [],
+          name = "";
         $items.each(function() {
-          var $this       = $(this),
-              targetClass = $this.data(),
-              $group      = $(targetClass.newName),
-              $input      = $group.find("input.form-control"),
-              $select     = $group.find(".select"),
-              $gender     = $group.closest("[data-childrean-item]").find(".js-gender"),
-              gender      = $gender.val();
-          
-          if(gender !== "" && !isNaN(gender)) {
+          var $this = $(this),
+            targetClass = $this.data(),
+            $group = $(targetClass.newName),
+            $input = $group.find("input.form-control"),
+            $select = $group.find(".select"),
+            $gender = $group.closest("[data-childrean-item]").find(".js-gender"),
+            gender = $gender.val();
+
+          if (gender !== "" && !isNaN(gender)) {
             var gender = parseInt(gender, 10);
             genderVal = (gender === 1) ? "m" : "f";
-            countgender ++;
+            countgender++;
           }
 
           if ($(this).prop("checked")) {
@@ -691,42 +692,99 @@
 
       transliterate: function(text) {
         // Символ, на который будут заменяться все спецсимволы
-        var space = '-'; 
+        var space = '-';
         // Берем значение из нужного поля и переводим в нижний регистр
         var text = text.toLowerCase();
-             
+
         // Массив для транслитерации
         var transl = {
-        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh', 
-        'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
-        'о': 'o', 'п': 'p', 'р': 'r','с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h',
-        'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh','ъ': space, 'ы': 'y', 'ь': space, 'э': 'e', 'ю': 'yu', 'я': 'ya',
-        ' ': space, '_': space, '`': space, '~': space, '!': space, '@': space,
-        '#': space, '$': space, '%': space, '^': space, '&': space, '*': space, 
-        '(': space, ')': space,'-': space, '\=': space, '+': space, '[': space, 
-        ']': space, '\\': space, '|': space, '/': space,'.': space, ',': space,
-        '{': space, '}': space, '\'': space, '"': space, ';': space, ':': space,
-        '?': space, '<': space, '>': space, '№':space
+          'а': 'a',
+          'б': 'b',
+          'в': 'v',
+          'г': 'g',
+          'д': 'd',
+          'е': 'e',
+          'ё': 'e',
+          'ж': 'zh',
+          'з': 'z',
+          'и': 'i',
+          'й': 'j',
+          'к': 'k',
+          'л': 'l',
+          'м': 'm',
+          'н': 'n',
+          'о': 'o',
+          'п': 'p',
+          'р': 'r',
+          'с': 's',
+          'т': 't',
+          'у': 'u',
+          'ф': 'f',
+          'х': 'h',
+          'ц': 'c',
+          'ч': 'ch',
+          'ш': 'sh',
+          'щ': 'sh',
+          'ъ': space,
+          'ы': 'y',
+          'ь': space,
+          'э': 'e',
+          'ю': 'yu',
+          'я': 'ya',
+          ' ': space,
+          '_': space,
+          '`': space,
+          '~': space,
+          '!': space,
+          '@': space,
+          '#': space,
+          '$': space,
+          '%': space,
+          '^': space,
+          '&': space,
+          '*': space,
+          '(': space,
+          ')': space,
+          '-': space,
+          '\=': space,
+          '+': space,
+          '[': space,
+          ']': space,
+          '\\': space,
+          '|': space,
+          '/': space,
+          '.': space,
+          ',': space,
+          '{': space,
+          '}': space,
+          '\'': space,
+          '"': space,
+          ';': space,
+          ':': space,
+          '?': space,
+          '<': space,
+          '>': space,
+          '№': space
         }
-                        
+
         var result = '';
         var curent_sim = '';
-                        
-        for(var i=0; i < text.length; i++) {
-            // Если символ найден в массиве то меняем его
-            if(transl[text[i]] != undefined) {
-                 if(curent_sim != transl[text[i]] || curent_sim != space){
-                     result += transl[text[i]];
-                     curent_sim = transl[text[i]];
-                 }                                                                             
+
+        for (var i = 0; i < text.length; i++) {
+          // Если символ найден в массиве то меняем его
+          if (transl[text[i]] != undefined) {
+            if (curent_sim != transl[text[i]] || curent_sim != space) {
+              result += transl[text[i]];
+              curent_sim = transl[text[i]];
             }
-            // Если нет, то оставляем так как есть
-            else {
-                result += text[i];
-                curent_sim = text[i];
-            }                              
-        }          
-                        
+          }
+          // Если нет, то оставляем так как есть
+          else {
+            result += text[i];
+            curent_sim = text[i];
+          }
+        }
+
         result = this.trimStr(result);
         return result;
       },
@@ -737,7 +795,7 @@
       },
 
 
-      isImageFile: function (file) {
+      isImageFile: function(file) {
         if (file.type) {
           return /^image\/\w+$/.test(file.type);
         } else {
@@ -745,7 +803,7 @@
         }
       },
 
-      startCropper: function () {
+      startCropper: function() {
         var _this = this;
 
         if (this.active) {
@@ -759,11 +817,11 @@
         }
 
         //this.$avatarModal.one('hidden.bs.modal', function () {
-         // _this.stopCropper();
+        // _this.stopCropper();
         //});
       },
 
-      stopCropper: function () {
+      stopCropper: function() {
         if (this.active) {
           this.$img.cropper('destroy');
           this.$img.remove();
@@ -771,11 +829,11 @@
         }
       },
 
-      ajaxUpload: function () {
+      ajaxUpload: function() {
         var url = this.$avatarForm.attr('action');
         var data = new FormData(this.$avatarForm[0]);
         var _this = this;
-        
+
         $.ajax(url, {
           type: 'post',
           data: data,
@@ -783,33 +841,33 @@
           processData: false,
           contentType: false,
 
-          beforeSend: function () {
+          beforeSend: function() {
             _this.submitStart();
           },
 
-          success: function (data) {
+          success: function(data) {
             _this.submitDone(data);
           },
 
-          error: function (XMLHttpRequest, textStatus, errorThrown) {
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
             _this.submitFail(textStatus || errorThrown);
           },
 
-          complete: function () {
+          complete: function() {
             _this.submitEnd();
           }
         });
       },
 
-      syncUpload: function () {
+      syncUpload: function() {
         this.$avatarSave.click();
       },
 
-      submitStart: function () {
+      submitStart: function() {
         this.$loading.fadeIn();
       },
 
-      submitDone: function (data) {
+      submitDone: function(data) {
 
         if ($.isPlainObject(data) && data.state === 200) {
           if (data.result) {
@@ -833,15 +891,15 @@
         }
       },
 
-      submitFail: function (msg) {
+      submitFail: function(msg) {
         this.alert(msg);
       },
 
-      submitEnd: function () {
+      submitEnd: function() {
         this.$loading.fadeOut();
       },
 
-      cropDone: function () {
+      cropDone: function() {
         this.$avatarForm.get(0).reset();
         this.$avatar.attr('src', this.url);
         this.$avatarSrcImage.val(this.url);
@@ -850,98 +908,100 @@
         this.$container.addClass(this.containerActiveClass);
       },
 
-      alert: function (msg) {
+      alert: function(msg) {
         var $alert = [
-              '<div class="alert alert-danger avatar-alert alert-dismissable fade show" role="alert">',
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
-                msg,
-              '</div>'
-            ].join('');
+          '<div class="alert alert-danger avatar-alert alert-dismissable fade show" role="alert">',
+          '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+          msg,
+          '</div>'
+        ].join('');
 
         this.$avatarUpload.after($alert);
       }
     };
 
-    $(function () {
+    $(function() {
       return new CropAvatar($('#crop-avatar'), $('#avatar-modal'));
     });
 
   });
 
-    $("[name=\"promocode\"]").on("keydown paste", function() {
-      var element = this;
-      setTimeout(function () {
-        var value = $.trim($(element).val());
-        $(element).val( value );
-      }, 100);
-    });
+  $("[name=\"promocode\"]").on("keydown paste", function() {
+    var element = this;
+    setTimeout(function() {
+      var value = $.trim($(element).val());
+      $(element).val(value);
+    }, 100);
+  });
 
-    $("[name=\"promocode\"]").on("focusout", function() {
-      var $form = $(".form");
-      var $promo = $(this);
-      var $result = $promo.siblings(".result")
-      var url = $form.attr('action');
-      var data = new FormData($form[0]);
+  $("[name=\"promocode\"]").on("focusout", function() {
+    var $form = $(".form");
+    var $promo = $(this);
+    var $result = $promo.siblings(".result")
+    var url = $form.attr('action');
+    var data = new FormData($form[0]);
 
-      var alert = function (msg, status) {
-        var $alert = [
+    var alert = function(msg, status) {
+      var $alert = [
 
-          '<div class="alert alert-' + status + ' avatar-alert alert-dismissable fade show" role="alert">',
-            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
-            msg,
-          '</div>'
-        ].join('');
+        '<div class="alert alert-' + status + ' avatar-alert alert-dismissable fade show" role="alert">',
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+        msg,
+        '</div>'
+      ].join('');
 
-        $result.html($alert);
-        if (status === "success") {
-          setTimeout(function() {
-            $result.slideUp(function() {
-              $result.html('');
-            });
-          }, 3000);
+      $result.html($alert);
+      if (status === "success") {
+        setTimeout(function() {
+          $result.slideUp(function() {
+            $result.html('');
+          });
+        }, 3000);
+      }
+    }
+
+    var submitFail = function(msg) {
+      alert(msg, "danger");
+    }
+
+    var submitDone = function(msg) {
+      alert(msg, "success");
+    }
+
+    $.ajax(url, {
+      type: 'post',
+      data: data.get["promocode"],
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+
+      success: function(data) {
+        if (data.error) {
+          submitFail(data.error);
+        } else if (data.message) {
+          submitDone(data.message);
+          $promo.prop("disabled", true);
         }
-      }
+      },
 
-      var submitFail = function (msg) {
-        alert(msg, "danger");
-      }
-
-      var submitDone = function (msg) {
-        alert(msg, "success");
-      }
-      
-      $.ajax(url, {
-        type: 'post',
-        data: data.get["promocode"],
-        dataType: 'json',
-        processData: false,
-        contentType: false,
-
-        success: function (data) {
-          if (data.error) {
-            submitFail(data.error);
-          } else if(data.message) {
-            submitDone(data.message);
-            $promo.prop("disabled", true);
-          }
-        },
-
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-          submitFail(textStatus || errorThrown);
-        },
-      });
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        submitFail(textStatus || errorThrown);
+      },
     });
+  });
 
 
 
 
   $(function() {
-    $.ajaxSetup({ cache: true });
-    $.getScript('//connect.facebook.net/ru_RU/sdk.js', function(){
+    $.ajaxSetup({
+      cache: true
+    });
+    $.getScript('//connect.facebook.net/ru_RU/sdk.js', function() {
       FB.init({
         appId: '2026650054277944',
         version: 'v2.7' // or v2.1, v2.2, v2.3, ...
-      });     
+      });
     });
 
     $('#shareBtn').on("click", function() {
@@ -951,7 +1011,7 @@
         hashtag: '#VideoPozdravlenie2018',
         href: 'https://video-pozdravlenie.com/?utm_source=facebook&utm_medium=kupon&utm_campaign=repost',
       }, function(response) {
-      
+
         if (response && !response.error_message) {
           $("#facebook").modal("hide");
           $(".js-discount").val("facebook");
@@ -969,98 +1029,98 @@
     });
   });
 
-    $(function() {
-      var cleave = new Cleave('[name=phone]', {
-        blocks: [4, 2, 3, 2, 2],
-        prefix: '+380',
-        rawValueTrimPrefix: true
-      });
+  $(function() {
+    var cleave = new Cleave('[name=phone]', {
+      blocks: [4, 2, 3, 2, 2],
+      prefix: '+380',
+      rawValueTrimPrefix: true
     });
+  });
 
-    $(function() {
+  $(function() {
 
     $('.js-avatar-form')
-    .on('submit', function (e) {
-      var $form = $(this);
+      .on('submit', function(e) {
+        var $form = $(this);
 
 
-      var submitStart = function () {
-       $(".loading").fadeIn();
-      }
+        var submitStart = function() {
+          $(".loading").fadeIn();
+        }
 
 
-      var submitEnd = function () {
-        $(".loading").fadeOut();
-      }
+        var submitEnd = function() {
+          $(".loading").fadeOut();
+        }
 
-      var alert = function (msg, classItem) {
+        var alert = function(msg, classItem) {
 
-        // Success message
-        $form.find('.success').html("<div class='alert " + classItem + "'>");
-        $form.find('.success > .' + classItem).html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-          .append("</button>");
-        $form.find('.success >  .' + classItem)
-          .append("<strong>" + msg + "</strong>");
-        $form.find('.success >  .' + classItem)
-          .append('</div>');
+          // Success message
+          $form.find('.success').html("<div class='alert " + classItem + "'>");
+          $form.find('.success > .' + classItem).html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+            .append("</button>");
+          $form.find('.success >  .' + classItem)
+            .append("<strong>" + msg + "</strong>");
+          $form.find('.success >  .' + classItem)
+            .append('</div>');
 
-      }
+        }
 
-      if (e.isDefaultPrevented()) {
-        // handle the invalid form...
-      } else {
-        e.preventDefault();
-        $form.find("[type=submit]").prop("disabled", true).button('loading'); //prevent submit behaviour and display preloading
-        $form.find('.success').html("");
+        if (e.isDefaultPrevented()) {
+          // handle the invalid form...
+        } else {
+          e.preventDefault();
+          $form.find("[type=submit]").prop("disabled", true).button('loading'); //prevent submit behaviour and display preloading
+          $form.find('.success').html("");
 
-        var url = $form.attr('action');
-        var form = $form.find("[type=submit]").val();
-        var data = new FormData($form[0]);
+          var url = $form.attr('action');
+          var form = $form.find("[type=submit]").val();
+          var data = new FormData($form[0]);
 
-        data.append("form", form);
-        
-        $.ajax(url, {
-          type: 'post',
-          data: data,
-          dataType: 'json',
-          processData: false,
-          contentType: false,
-          cache: false,
-          error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert(textStatus || errorThrown, "alert-danger");
-            $form.find("[type=submit]").prop("disabled", false).button('reset'); 
+          data.append("form", form);
 
-            submitEnd();
-          },
+          $.ajax(url, {
+            type: 'post',
+            data: data,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            cache: false,
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+              alert(textStatus || errorThrown, "alert-danger");
+              $form.find("[type=submit]").prop("disabled", false).button('reset');
 
-          beforeSend: function () {
-            submitStart();
-          },
+              submitEnd();
+            },
 
-          submitEnd: function () {
-            submitEnd();
-          },
-          success: function(data) {
-            if ($.isPlainObject(data) && data.state === 200) {
-              if (data.message) {
+            beforeSend: function() {
+              submitStart();
+            },
 
-                alert(data.message, "alert-success");
-                document.location.href=data.pay_link;
-                //clear all fields
-                $form.trigger("reset");
-              } else if (data.error) {
-                alert(data.error, "alert-danger");
+            submitEnd: function() {
+              submitEnd();
+            },
+            success: function(data) {
+              if ($.isPlainObject(data) && data.state === 200) {
+                if (data.message) {
+
+                  alert(data.message, "alert-success");
+                  document.location.href = data.pay_link;
+                  //clear all fields
+                  $form.trigger("reset");
+                } else if (data.error) {
+                  alert(data.error, "alert-danger");
+                }
+              } else {
+                alert('Failed to response', "alert-danger");
               }
-            } else {
-              alert('Failed to response', "alert-danger");
+              $form.find("[type=submit]").prop("disabled", false).button('reset');
+
+              submitEnd();
             }
-            $form.find("[type=submit]").prop("disabled", false).button('reset'); 
-            
-            submitEnd();
-          }
-        });
-      }
-    }); 
+          });
+        }
+      });
   });
 
   $(function() {
@@ -1068,10 +1128,11 @@
       cookieNamePrefix: "",
 
       utmParams: ["utm_source",
-                  "utm_medium",
-                  "utm_campaign",
-                  "utm_term",
-                  "utm_content"],
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content"
+      ],
 
       cookieExpiryDays: 1,
 
@@ -1079,26 +1140,25 @@
       createCookie: function(name, value, days) {
         if (days) {
           var date = new Date();
-          date.setTime(date.getTime()+(days*24*60*60*1000));
-          var expires = "; expires="+date.toGMTString();
-        }
-        else var expires = "";
-        document.cookie = this.cookieNamePrefix + name+"="+value+expires+"; path=/";
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          var expires = "; expires=" + date.toGMTString();
+        } else var expires = "";
+        document.cookie = this.cookieNamePrefix + name + "=" + value + expires + "; path=/";
       },
 
       readCookie: function(name) {
         var nameEQ = this.cookieNamePrefix + name + "=";
         var ca = document.cookie.split(';');
-        for(var i=0; i < ca.length; i++) {
+        for (var i = 0; i < ca.length; i++) {
           var c = ca[i];
-          while (c.charAt(0)==' ') c = c.substring(1,c.length);
-          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
         }
         return null;
       },
 
       eraseCookie: function(name) {
-        this.createCookie(name,"",-1);
+        this.createCookie(name, "", -1);
       },
 
       getParameterByName: function(name) {
@@ -1106,7 +1166,7 @@
         var regexS = "[\\?&]" + name + "=([^&#]*)";
         var regex = new RegExp(regexS);
         var results = regex.exec(window.location.search);
-        if(results == null) {
+        if (results == null) {
           return "";
         } else {
           return decodeURIComponent(results[1].replace(/\+/g, " "));
@@ -1160,9 +1220,11 @@
       utmCookie.writeUtmCookieFromParams();
     }
   });
-  
+
   $(function() {
-    var console = window.console || { log: function () {} };
+    var console = window.console || {
+      log: function() {}
+    };
     var URL = window.URL || window.webkitURL;
     var $image = $('#image');
     var width = 500;
@@ -1176,25 +1238,25 @@
     var $dataScaleX = $('#dataScaleX');
     var $dataScaleY = $('#dataScaleY');
     var options = {
-          aspectRatio: width / height,
-          preview: '.img-preview',
-          viewMode: '1',
-          responsive: true,
-          cropBoxMovable: true, //перемещение кропбокса
-          cropBoxResizable: true, //изменение размера кропбокса
-          toggleDragModeOnDblclick: false,
-          imageSmoothingEnabled: false,
-          imageSmoothingQuality: 'high',
-          crop: function (e) {
-            $dataX.val(Math.round(e.x));
-            $dataY.val(Math.round(e.y));
-            $dataHeight.val(Math.round(e.height));
-            $dataWidth.val(Math.round(e.width));
-            $dataRotate.val(e.rotate);
-            $dataScaleX.val(e.scaleX);
-            $dataScaleY.val(e.scaleY);
-          }
-        };
+      aspectRatio: width / height,
+      preview: '.img-preview',
+      viewMode: '1',
+      responsive: true,
+      cropBoxMovable: true, //перемещение кропбокса
+      cropBoxResizable: true, //изменение размера кропбокса
+      toggleDragModeOnDblclick: false,
+      imageSmoothingEnabled: false,
+      imageSmoothingQuality: 'high',
+      crop: function(e) {
+        $dataX.val(Math.round(e.x));
+        $dataY.val(Math.round(e.y));
+        $dataHeight.val(Math.round(e.height));
+        $dataWidth.val(Math.round(e.width));
+        $dataRotate.val(e.rotate);
+        $dataScaleX.val(e.scaleX);
+        $dataScaleY.val(e.scaleY);
+      }
+    };
     var originalImageURL = $image.attr('src');
     var uploadedImageType = 'image/jpeg';
     var uploadedImageURL;
@@ -1208,10 +1270,10 @@
 
     var transliterate = function(text) {
       // Символ, на который будут заменяться все спецсимволы
-      var space = '-'; 
+      var space = '-';
       // Берем значение из нужного поля и переводим в нижний регистр
       var text = text.toLowerCase();
-           
+
       // Массив для транслитерации
       var transl = {
       'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh', 
@@ -1225,41 +1287,41 @@
       '{': space, '}': space, '\'': space, '"': space, ';': space, ':': space,
       '?': space, '<': space, '>': space, '№':space
       }
-                      
+
       var result = '';
       var curent_sim = '';
-                      
-      for(var i=0; i < text.length; i++) {
-          // Если символ найден в массиве то меняем его
-          if(transl[text[i]] != undefined) {
-               if(curent_sim != transl[text[i]] || curent_sim != space){
-                   result += transl[text[i]];
-                   curent_sim = transl[text[i]];
-               }                                                                             
+
+      for (var i = 0; i < text.length; i++) {
+        // Если символ найден в массиве то меняем его
+        if (transl[text[i]] != undefined) {
+          if (curent_sim != transl[text[i]] || curent_sim != space) {
+            result += transl[text[i]];
+            curent_sim = transl[text[i]];
           }
-          // Если нет, то оставляем так как есть
-          else {
-              result += text[i];
-              curent_sim = text[i];
-          }                              
-      }          
-                      
+        }
+        // Если нет, то оставляем так как есть
+        else {
+          result += text[i];
+          curent_sim = text[i];
+        }
+      }
+
       result = trimStr(result);
       return result;
     }
 
 
-    var ratio = function (e) {
+    var ratio = function(e) {
       options.aspectRatio = $(this).val();
       $image.cropper('destroy').cropper(options);
     }
 
-    var alert = function (msg, status) {
+    var alert = function(msg, status) {
       var $alert = [
 
         '<div class="alert alert-' + status + ' avatar-alert alert-dismissable fade show" role="alert">',
-          '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
-          msg,
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+        msg,
         '</div>'
       ].join('');
 
@@ -1273,32 +1335,32 @@
       }
     }
 
-    var submitFail = function (msg) {
+    var submitFail = function(msg) {
       alert(msg, "danger");
     }
 
-    var submitDone = function (msg) {
+    var submitDone = function(msg) {
       alert(msg, "success");
     }
     var getNames = function() {
       var $items = $("[data-new-name]"),
-          countgender = 0,
-          genderVal = "",
-          names = [],
-          name = "";
+        countgender = 0,
+        genderVal = "",
+        names = [],
+        name = "";
       $items.each(function() {
-        var $this       = $(this),
-            targetClass = $this.data(),
-            $group      = $(targetClass.newName),
-            $input      = $group.find("input.form-control"),
-            $select     = $group.find(".select"),
-            $gender     = $group.closest("[data-childrean-item]").find(".js-gender"),
-            gender      = $gender.val();
-        
-        if(gender !== "" && !isNaN(gender)) {
+        var $this = $(this),
+          targetClass = $this.data(),
+          $group = $(targetClass.newName),
+          $input = $group.find("input.form-control"),
+          $select = $group.find(".select"),
+          $gender = $group.closest("[data-childrean-item]").find(".js-gender"),
+          gender = $gender.val();
+
+        if (gender !== "" && !isNaN(gender)) {
           var gender = parseInt(gender, 10);
           genderVal = (gender === 1) ? "m" : "f";
-          countgender ++;
+          countgender++;
         }
 
         if ($(this).prop("checked")) {
@@ -1340,7 +1402,7 @@
     }
 
     // Options
-    $('.docs-toggles').on('change', 'input', function () {
+    $('.docs-toggles').on('change', 'input', function() {
       var $this = $(this);
       var name = $this.attr('name');
       var type = $this.prop('type');
@@ -1356,7 +1418,7 @@
         cropBoxData = $image.cropper('getCropBoxData');
         canvasData = $image.cropper('getCanvasData');
 
-        options.ready = function () {
+        options.ready = function() {
           $image.cropper('setCropBoxData', cropBoxData);
           $image.cropper('setCanvasData', canvasData);
         };
@@ -1369,7 +1431,7 @@
 
 
     // Methods
-    $('.docs-buttons').on('click', '[data-method]', function () {
+    $('.docs-buttons').on('click', '[data-method]', function() {
       var $this = $(this);
       var data = $this.data();
       var cropper = $image.data('cropper');
@@ -1433,9 +1495,10 @@
             $(this).data('option', -data.option);
             break;
           case 'getCroppedCanvas':
-             if (result) {
+            if (result) {
               try {
 
+                $(".loading").fadeIn();
                 var base64 = result.toDataURL("image/jpeg");
                 var formData = new FormData();
                 $('#frameImage').attr('src', base64);
@@ -1443,14 +1506,13 @@
                 $('#uploadBtnText').html('Загрузить другое фото');
                 $('#uploadBtn').addClass('btn-red');
                 $avatar.addClass("avatar--active");
-
-
-                 // console.log(base64 + "\\nWidth: " + result.width + "\nHeight: " +  result.height);
+                // console.log(base64 + "\\nWidth: " + result.width + "\nHeight: " +  result.height);
               } catch (error) {
                 console.log('Error: ' + error.message);
+                $(".loading").fadeOut();
               }
 
-              $image.cropper('getCroppedCanvas').toBlob(function (blob) {
+              $image.cropper('getCroppedCanvas').toBlob(function(blob) {
 
                 var croppedImg = $image.cropper('getCroppedCanvas').toDataURL(blob.type);
 
@@ -1468,17 +1530,13 @@
                   data: formData,
                   processData: false,
                   contentType: false,
-                  beforeSend: function () {
-                    $(".loading").fadeIn();
-                  },
-
-                  success: function (data) {
+                  success: function(data) {
                     if ($.isPlainObject(data) && data.state === 200) {
                       $(".loading").fadeOut();
                       $('#myModal').modal('hide');
                       if (data.message) {
                         alert(data.message, "alert-success");
-                        document.location.href=data.pay_link;
+                        document.location.href = data.pay_link;
                         //clear all fields
                       } else if (data.error) {
                         alert(data.error, "alert-danger");
@@ -1489,13 +1547,17 @@
                     } else {
                       alert('Failed to response', "danger");
                     }
+
+                    $(".loading").fadeIn();
                   },
 
-                  error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert(textStatus || errorThrown, "danger");
+
+                    $(".loading").fadeIn();
                   },
 
-                  complete: function () {
+                  complete: function() {
                     $(".loading").fadeOut();
                   }
                 });
@@ -1526,7 +1588,7 @@
 
 
     // Keyboard
-    $(document.body).on('keydown', function (e) {
+    $(document.body).on('keydown', function(e) {
 
       if (!$image.data('cropper') || this.scrollTop > 300) {
         return;
@@ -1556,12 +1618,11 @@
 
     });
 
-
     // Import image
     var $inputImage = $('#inputImage');
-
+    var $image = $('#image');
     if (URL) {
-      $inputImage.change(function () {
+      $inputImage.change(function() {
         var files = this.files;
         var file;
 
@@ -1581,7 +1642,10 @@
             }
 
             uploadedImageURL = URL.createObjectURL(file);
-            $image.cropper('destroy').attr('src', uploadedImageURL).cropper(options);
+
+            $("#myModal").on("shown.bs.modal", function() {
+              $image.cropper('destroy').attr('src', uploadedImageURL).cropper(options);
+            });
             $inputImage.val('');
           } else {
             window.alert('Please choose an image file.');
@@ -1591,8 +1655,9 @@
     } else {
       $inputImage.prop('disabled', true).parent().addClass('disabled');
     }
+
   });
 
 
 
-  })(jQuery); // End of use strict
+})(jQuery); // End of use strict
