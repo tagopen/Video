@@ -82,6 +82,7 @@ gulp.task('scripts', () => {
       'node_modules/jquery-countdown/dist/jquery.countdown.js',
       'node_modules/cropper/dist/cropper.js',
       'node_modules/cleave.js/dist/cleave.js',
+      'node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js',
       //'node_modules/onepage-scroll/jquery.onepage-scroll.js',
       //'node_modules/jquery.cookie/jquery.cookie.js',
       //'node_modules/matchHeight/dist/jquery.matchHeight.js',
