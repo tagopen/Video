@@ -1549,13 +1549,13 @@
                       alert('Failed to response', "danger");
                     }
 
-                    $(".loading").fadeIn();
+                    $(".loading").fadeOut();
                   },
 
                   error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert(textStatus || errorThrown, "danger");
 
-                    $(".loading").fadeIn();
+                    $(".loading").fadeOut();
                   },
 
                   complete: function() {
