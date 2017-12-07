@@ -1671,14 +1671,16 @@
     }
 
     var utm = ['utm_source', 'utm_medium', 'utm_term', 'utm_campaign', 'utm_content'];
-    var getParams = undefined;
+    var getParams = '';
 
     for (var i = 0; i < utm.length; i++) {
       var value = getCookie(utm[i]);
       if (value !== undefined) {
-        (getParams !== undefined) ?  '&' + getParams += utm[i] + '=' + value :  getParams = utm[i] + '=' + value;
+        getParams += '&' + utm[i] + '=' + value;
       }
     }
+
+    getParams.slice(0, -1);
 
     var separator = (window.location.href.indexOf("?")===-1)?"?":"&";
     window.history.pushState("", "", window.location.href + separator + getParams);
