@@ -1249,6 +1249,9 @@
       toggleDragModeOnDblclick: false,
       imageSmoothingEnabled: false,
       imageSmoothingQuality: 'high',
+      dragMode: false,
+      movable: false,
+      zoomOnTouch: false,
       crop: function(e) {
         $dataX.val(Math.round(e.x));
         $dataY.val(Math.round(e.y));
@@ -1657,6 +1660,28 @@
     } else {
       $inputImage.prop('disabled', true).parent().addClass('disabled');
     }
+  });
+
+  $(function() {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    var utm = ['utm_source', 'utm_medium', 'utm_term', 'utm_campaign', 'utm_content'];
+    var getParams = undefined;
+
+    for (var i = 0; i < utm.length; i++) {
+      var value = getCookie(utm[i]);
+      if (value !== undefined) {
+        (getParams !== undefined) ?  '&' + getParams += utm[i] + '=' + value :  getParams = utm[i] + '=' + value;
+      }
+    }
+
+    var separator = (window.location.href.indexOf("?")===-1)?"?":"&";
+    window.history.pushState("", "", window.location.href + separator + getParams);
   });
 
 
