@@ -1939,9 +1939,6 @@ button:focus {
     height: 100vh;
     min-height: 768px;
   }
-  .header__content {
-    height: 100%;
-  }
 }
 
 .intro {
@@ -2153,6 +2150,9 @@ button:focus {
 }
 
 @media only screen and (min-width: 992px) {
+  .header__content {
+    height: 100%;
+  }
   .h-content__subtitle {
     text-align: left;
     font: 300 italic 26px/40px "PF Din Text Pro", sans-serif;
