@@ -48,7 +48,7 @@ const path = {
     img: dirs.src + '/img/**/*.*',
     spritePng: dirs.src + '/img/icons/png/**/*.png',
     spriteSvg: dirs.src + '/img/icons/svg/**/*.svg',
-    fonts: dirs.src + '/fonts/**/*.{woff,woff2}',
+    fonts: [dirs.src + '/fonts/**/*.{woff,woff2}', '!' + dirs.src + '/fonts/**/font-awesome.*'],
     mail: dirs.src + '/mail/**/*'
   },
   clean: dirs.dest,
@@ -129,7 +129,7 @@ gulp.task('pug:watch', ['pug'], function(done) {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src([path.watch.fonts])
+  return gulp.src(path.watch.fonts)
     .pipe($.font2css.default())
     .pipe($.concat({
       path: 'fonts.css',
