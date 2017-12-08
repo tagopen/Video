@@ -1901,3 +1901,78 @@ button
   max-height: 350px
   width: 100%
   text-align: center
+
+.grid
+  max-width: 69em
+  list-style: none
+  margin: 30px auto
+  padding: 0
+  li
+    display: block
+    float: left
+    padding: 7px
+    width: 33%
+    opacity: 0
+    &.shown
+      opacity: 1
+
+.no-js .grid li, .no-cssanimations .grid li
+  opacity: 1
+
+.grid
+  li
+    a, img
+      outline: none
+      border: none
+      display: block
+      max-width: 100%
+  &--effect-7
+    perspective: 1300px
+    li.animate
+      transform-style: preserve-3d
+      transform: rotateY(-180deg)
+      animation: helix .8s ease-in-out forwards
+
+/* Effect 7: helix (based on http://lab.hakim.se/scroll-effects/ by @hakimel) */
+
+@-webkit-keyframes helix
+  0%
+
+  100%
+    -webkit-transform: rotateY(0deg)
+    opacity: 1
+
+
+@keyframes helix
+  0%
+
+  100%
+    -webkit-transform: rotateY(0deg)
+    transform: rotateY(0deg)
+    opacity: 1
+
+
+@keyframes popUp
+  0%
+
+  70%
+    -webkit-transform: scale(1.1)
+    transform: scale(1.1)
+    opacity: .8
+    -webkit-animation-timing-function: ease-out
+    animation-timing-function: ease-out
+
+  100%
+    -webkit-transform: scale(1)
+    transform: scale(1)
+    opacity: 1
+
+
+@media screen and (max-width: 900px)
+  .grid li
+    width: 50%
+
+@media screen and (max-width: 400px)
+  .grid li
+    width: 100%
+

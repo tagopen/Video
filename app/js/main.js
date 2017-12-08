@@ -1675,7 +1675,7 @@
 
     for (var i = 0; i < utm.length; i++) {
       var value = getCookie(utm[i]);
-      if (value !== undefined) {
+      if (value !== undefined && value !== '') {
         getParams += '&' + utm[i] + '=' + value;
       }
     }
@@ -1686,6 +1686,12 @@
     window.history.pushState("", "", window.location.href + separator + getParams);
   });
 
-
+  $(function() {
+    new AnimOnScroll( document.getElementById( 'grid' ), {
+      minDuration : 0.4,
+      maxDuration : 0.7,
+      viewportFactor : 0.2
+    } );
+  });
 
 })(jQuery); // End of use strict
