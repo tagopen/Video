@@ -4602,7 +4602,7 @@ button:focus {
   padding: 0;
 }
 
-.grid li {
+.grid__item {
   display: block;
   float: left;
   padding: 7px;
@@ -4610,30 +4610,24 @@ button:focus {
   opacity: 0;
 }
 
-.grid li.shown {
+.grid__item.shown {
   opacity: 1;
 }
 
-.no-js .grid li, .no-cssanimations .grid li {
+.no-js .grid__item,
+.no-cssanimations .grid__item {
   opacity: 1;
-}
-
-.grid li a, .grid li img {
-  outline: none;
-  border: none;
-  display: block;
-  max-width: 100%;
 }
 
 /* Effect 1: opacity */
-.grid--effect-1 li.animate {
+.grid--effect-1 .grid__item.animate {
   -webkit-animation: fadeIn 0.65s ease forwards;
      -moz-animation: fadeIn 0.65s ease forwards;
        -o-animation: fadeIn 0.65s ease forwards;
           animation: fadeIn 0.65s ease forwards;
 }
 
-.grid--effect-2 li.animate {
+.grid--effect-2 .grid__item.animate {
   -webkit-transform: translateY(200px);
      -moz-transform: translateY(200px);
        -o-transform: translateY(200px);
@@ -4644,7 +4638,7 @@ button:focus {
           animation: moveUp 0.65s ease forwards;
 }
 
-.grid--effect-3 li.animate {
+.grid--effect-3 .grid__item.animate {
   -webkit-transform: scale(0.6);
      -moz-transform: scale(0.6);
        -o-transform: scale(0.6);
@@ -5098,14 +5092,14 @@ button:focus {
   }
 }
 
-@media screen and (max-width: 900px) {
-  .grid li {
-    width: 50%;
+@media only screen and (min-width: 768px) {
+  .grid__item {
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 400px) {
-  .grid li {
-    width: 100%;
+@media only screen and (min-width: 992px) {
+  .grid__item {
+    width: 50%;
   }
 }

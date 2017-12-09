@@ -1908,7 +1908,7 @@ button
   list-style: none
   margin: 30px auto
   padding: 0
-  li
+  &__item
     display: block
     float: left
     padding: 7px
@@ -1917,29 +1917,24 @@ button
     &.shown
       opacity: 1
 
-.no-js .grid li, .no-cssanimations .grid li
-  opacity: 1
-
-.grid
-  li
-    a, img
-      outline: none
-      border: none
-      display: block
-      max-width: 100%
+.no-js,
+.no-cssanimations
+  .grid 
+    &__item
+      opacity: 1
 
 /* Effect 1: opacity */
 
 .grid
-  &--effect-1 
-    li.animate
+  &--effect-1 &
+    &__item.animate
       animation: fadeIn 0.65s ease forwards
-  &--effect-2 
-    li.animate
+  &--effect-2 &
+    &__item.animate
       transform: translateY(200px)
       animation: moveUp 0.65s ease forwards
-  &--effect-3 
-    li.animate
+  &--effect-3 &
+    &__item.animate
       transform: scale(0.6)
       animation: scaleUp 0.65s ease-in-out forwards
   &--effect-4
@@ -2051,12 +2046,14 @@ button
   100%
     transform: scale(1)
     opacity: 1
-    
-@media screen and (max-width: 900px)
-  .grid li
-    width: 50%
 
-@media screen and (max-width: 400px)
-  .grid li
-    width: 100%
++r(768)
+  .grid
+    &__item
+      width: 100%
+
++r(992)
+  .grid
+    &__item
+      width: 50%
 
