@@ -578,13 +578,18 @@
         </div>
       </div>
     </div>
+
     <!-- build:js js/bundle.min.js-->
     <!-- Popper JavaScript-->
     <script src="js/popper.js"></script>
     <!-- jQuery-->
     <script src="js/jquery.js"></script>
+    <!-- Modernizr JavaScript-->
+    <script src="js/modernizr.custom.js"></script>
     <!-- Bootstrap JavaScript-->
     <script src="js/bootstrap.js"></script>
+    <!-- Wowjs JavaScript-->
+    <script src="js/wow.js"></script>
     <!-- Old browsers reject JavaScript-->
     <script src="js/jquery.reject.js"></script>
     <!-- Cropper JavaScript-->
@@ -602,6 +607,14 @@
     <script src="js/cleave.js"></script>
     <!-- Polifill toBlob JavaScript-->
     <script src="js/canvas-to-blob.js"></script>
+    <!-- Masonry JavaScript-->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- Images Loaded JavaScript-->
+    <script src="js/imagesloaded.pkgd.js"></script>
+    <!-- Classie JavaScript-->
+    <script src="js/classie.js"></script>
+    <!-- Animation on Scroll JavaScript-->
+    <script src="js/AnimOnScroll.js"></script>
     <!-- Trace Library JavaScript-->
     <script src="https://cdn.ravenjs.com/3.20.1/raven.min.js" crossorigin="anonymous"></script>
     <!-- Custom JavaScript-->
