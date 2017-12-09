@@ -10724,7 +10724,6 @@ button:focus {
 
 .grid__item {
   display: block;
-  padding: 10px;
   opacity: 0;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 100%;
@@ -10732,9 +10731,6 @@ button:focus {
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
   max-width: 100%;
-  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
-     -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .grid__item.shown {
@@ -10784,13 +10780,18 @@ button:focus {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
+  padding: 10px;
   -webkit-box-align: center;
   -webkit-align-items: center;
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   text-align: left;
-  padding: 10px;
+  margin: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
   font-family: Century Gothic, sans-serif;
 }
 
@@ -10836,11 +10837,28 @@ button:focus {
 
 .rm-review__name {
   text-decoration: none;
-  color: #3480dc;
+  color: #1c468f;
+  font: 500 18px/27px "PF Din Text Pro", sans-serif;
 }
 
 .rm-review__name:hover, .rm-review__name:focus {
   text-decoration: none;
+}
+
+.rm-review__text {
+  color: #212121;
+  font: 400 16px/24px "PF Din Text Pro", sans-serif;
+}
+
+.rm-review__descr {
+  color: #aa9596;
+  font: 400 16px/24px "PF Din Text Pro", sans-serif;
+  margin: 10px 0 10px;
+}
+
+.rm-review__date {
+  color: #aa9596;
+  font: 400 16px/27px "PF Din Text Pro", sans-serif;
 }
 
 .rm-review__review {
@@ -10852,6 +10870,14 @@ button:focus {
   max-width: 100%;
 }
 
+.rm-review__link {
+  color: #1c468f;
+}
+
+.rm-review__link:hover, .rm-review__link:focus {
+  text-decoration: none;
+}
+
 .rm-review__rating {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
@@ -10860,11 +10886,7 @@ button:focus {
           flex: 0 0 auto;
   width: auto;
   max-width: none;
-  color: #3480dc;
-}
-
-.rm-review__descr {
-  text-align: center;
+  color: #1c468f;
 }
 
 .rm-review__content {

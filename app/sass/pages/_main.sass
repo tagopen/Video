@@ -1913,11 +1913,9 @@ button
   padding: 0
   &__item
     display: block
-    padding: 10px
     opacity: 0
     flex: 0 0 100%
     max-width: 100%
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, .15) inset, 0 3px 6px rgba(0, 0, 0, .1)
     &.shown
       opacity: 1
     +r(768)
@@ -1936,9 +1934,12 @@ button
   display: flex
   flex-direction: row
   flex-wrap: wrap
+  padding: 10px
   align-items: center
   text-align: left
-  padding: 10px
+  margin: 10px
+  background: #fff
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .15) inset, 0 3px 6px rgba(0, 0, 0, .1)
   font-family: Century Gothic, sans-serif
   &__photo
     flex: 0 0 50px
@@ -1954,21 +1955,34 @@ button
     padding-left: 10px
   &__name
     text-decoration: none
-    color: rgb(52, 128, 220)
+    color: #1c468f
+    font: 500 18px/27px $main-font
     &:hover,
     &:focus
       text-decoration: none
+  &__text
+    color: #212121    
+    font: 400 16px/24px $main-font
+  &__descr
+    color: #aa9596  
+    font: 400 16px/24px $main-font
+    margin: 10px 0 10px
   &__date
+    color: #aa9596
+    font: 400 16px/27px $main-font
   &__review
     flex: 0 0 100%
     max-width: 100%
+  &__link
+    color: #1c468f  
+    &:hover,
+    &:focus
+      text-decoration: none
   &__rating
     flex: 0 0 auto
     width: auto
     max-width: none
-    color: rgb(52, 128, 220)
-  &__descr
-    text-align: center
+    color: #1c468f
   &__content
     flex: 0 0 100%
     max-width: 100%
