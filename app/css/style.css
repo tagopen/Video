@@ -10724,7 +10724,7 @@ button:focus {
 
 .grid__item {
   display: block;
-  padding: 7px;
+  padding: 10px;
   opacity: 0;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 100%;
@@ -10732,6 +10732,9 @@ button:focus {
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
   max-width: 100%;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .grid__item.shown {
@@ -10787,6 +10790,8 @@ button:focus {
       -ms-flex-align: center;
           align-items: center;
   text-align: left;
+  padding: 10px;
+  font-family: Century Gothic, sans-serif;
 }
 
 .rm-review__photo {
@@ -10826,10 +10831,12 @@ button:focus {
       -ms-flex-align: start;
           align-items: flex-start;
   margin: auto;
+  padding-left: 10px;
 }
 
 .rm-review__name {
   text-decoration: none;
+  color: #3480dc;
 }
 
 .rm-review__name:hover, .rm-review__name:focus {
@@ -10853,6 +10860,7 @@ button:focus {
           flex: 0 0 auto;
   width: auto;
   max-width: none;
+  color: #3480dc;
 }
 
 .rm-review__descr {

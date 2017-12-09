@@ -1913,10 +1913,11 @@ button
   padding: 0
   &__item
     display: block
-    padding: 7px
+    padding: 10px
     opacity: 0
     flex: 0 0 100%
     max-width: 100%
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .15) inset, 0 3px 6px rgba(0, 0, 0, .1)
     &.shown
       opacity: 1
     +r(768)
@@ -1937,6 +1938,8 @@ button
   flex-wrap: wrap
   align-items: center
   text-align: left
+  padding: 10px
+  font-family: Century Gothic, sans-serif
   &__photo
     flex: 0 0 50px
     max-width: 50px
@@ -1948,8 +1951,10 @@ button
     flex-direction: column
     align-items: flex-start
     margin: auto
+    padding-left: 10px
   &__name
     text-decoration: none
+    color: rgb(52, 128, 220)
     &:hover,
     &:focus
       text-decoration: none
@@ -1961,6 +1966,7 @@ button
     flex: 0 0 auto
     width: auto
     max-width: none
+    color: rgb(52, 128, 220)
   &__descr
     text-align: center
   &__content
