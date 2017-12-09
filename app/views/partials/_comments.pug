@@ -15,12 +15,12 @@ section.comments
                   .rm-review__profile
                     a.rm-review__name(href=item.name.href)!=item.name.text
                     time.rm-review__date.rm-date(datetime=item.date.time)!= item.date.text
-                  .rm-review__descr 
-                    | просмотреть 
-                    a.rm-review__link(href=item.link.href)!= item.link.text
                   .rm-rating.rm-review__rating
                     each ration in item.rating
                       i.fa.fa-star.rm-rating__icon
+                  .rm-review__descr 
+                    | просмотреть 
+                    a.rm-review__link(href=item.link.href)!= item.link.text
                   .rm-review__content
                     each text in item.text
                       p.rm-review__text!= text
