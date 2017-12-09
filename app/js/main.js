@@ -1229,8 +1229,8 @@
     };
     var URL = window.URL || window.webkitURL;
     var $image = $('#image');
-    var width = 420;
-    var height = 280;
+    var width = 900;
+    var height = 600;
     var $dataX = $('#dataX');
     var $dataY = $('#dataY');
     var $avatar = $('.avatar');
@@ -1317,7 +1317,17 @@
 
 
     var ratio = function(e) {
-      options.aspectRatio = $(this).val();
+      var val = parseFloat($(this).val());
+
+      options.aspectRatio = val;
+      if (val > 1) {
+        width = 900;
+        height = 600;
+      } else {
+        width = 600;
+        height = 900;
+      }
+
       $image.cropper('destroy').cropper(options);
     }
 
@@ -1519,7 +1529,7 @@
 
               $image.cropper('getCroppedCanvas').toBlob(function(blob) {
 
-                var croppedImg = $image.cropper('getCroppedCanvas').toDataURL(blob.type);
+                var croppedImg = $image.cropper('getCroppedCanvas', {width: width, height: height}).toDataURL(blob.type);
 
                 var formData = new FormData();
 
@@ -1689,11 +1699,13 @@
   });
 
   $(function() {
-    new AnimOnScroll( document.getElementById( 'grid' ), {
-      minDuration : 0.4,
-      maxDuration : 0.7,
-      viewportFactor : 0.2
-    } );
+    if (document.getElementById( 'grid' )) {
+      new AnimOnScroll( document.getElementById( 'grid' ), {
+        minDuration : 0.4,
+        maxDuration : 0.7,
+        viewportFactor : 0.2
+      } );
+    }
   });
 
 
