@@ -9,7 +9,7 @@ section#preview.preview
         img.preview__img(src=img.src, alt=img.alt)
       .col-24.col-md-19.col-lg-12
         - var form = page.preview.form
-        form.form--desk.form(action="order.php", method="get")
+        form.form--desk.form.js-wow.flipInX(action="order.php", method="get")
           fieldset.form-group
             .row.justify-content-around
               .d-inline-flex.pl-2.pr-2

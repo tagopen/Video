@@ -29,13 +29,13 @@ header.header
               img.img-fluid.h-content__img(src!= page.header.content.img.src, alt!= headContent.img.alt)
           .col-24.col-lg-16.align-self-center
             .h-content__box
-              h1.h-content__title!= headContent.title
-              h2.h-content__subtitle!= headContent.subtitle
+              h1.h-content__title.js-wow.fadeInLeft!= headContent.title
+              h2.h-content__subtitle.js-wow.fadeInLeft(data-wow-delay=0.2)!= headContent.subtitle
               .row.justify-content-center.justify-content-lg-start
                 .col-24.col-md-18.col-lg-24 
                   ul.h-content__list.h-list
                     each item, i in headContent.list
-                      li.h-list__item!= item.text
+                      li.h-list__item.js-wow.fadeInLeft(data-wow-delay=0.4 + 0.2 * i + "s")!= item.text
                         i.ic.ic--check.h-list__icon
               .btn-groups.text-center.text-lg-left
                 a.btn.btn--default.h-content__btn.js-scroll-trigger(href= headContent.btn.target)!= headContent.btn.text

@@ -6,9 +6,9 @@ section.service
     .row.justify-content-center
       .col-24.col-lg-22
         .row.justify-content-center.align-items-center
-          each item in page.service.items
+          each item, i in page.service.items
             .col-24.col-sm-12.col-md-8.col-lg-8
-              .sv-item.service__item
+              .sv-item.service__item.js-wow.fadeInLeft(data-wow-delay=0.2 + 0.2 * i + "s")
                 .sv-item__photo
                   +svg(item.icon)(class="sv-item__icon")
                 p.sv-item__text!= item.text

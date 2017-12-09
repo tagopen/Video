@@ -1676,15 +1676,16 @@
     for (var i = 0; i < utm.length; i++) {
       var value = getCookie(utm[i]);
       console.log(value);
-      if (value !== undefined && value != '') {
+      if (value !== undefined) {
         getParams += '&' + utm[i] + '=' + value;
       }
     }
+    if (getParams !== '') {
+      getParams.slice(0, -1);
 
-    getParams.slice(0, -1);
-
-    var separator = (window.location.href.indexOf("?")===-1)?"?":"&";
-    window.history.pushState("", "", window.location.href + separator + getParams);
+      var separator = (window.location.href.indexOf("?")===-1)?"?":"&";
+      window.history.pushState("", "", window.location.href + separator + getParams);
+    }
   });
 
   $(function() {
@@ -1693,6 +1694,18 @@
       maxDuration : 0.7,
       viewportFactor : 0.2
     } );
+  });
+
+
+  // Init Wowjs
+  $(window).on("load", function() {
+    var wow = new WOW({
+        boxClass:     'js-wow',      // animated element css class (default is wow)
+        animateClass: 'animated', // animation css class (default is animated)
+        offset:       0,          // distance to the element when triggering the animation (default is 0)
+        mobile:       false       // trigger animations on mobile devices (true is default)
+    });
+    wow.init();
   });
 
 })(jQuery); // End of use strict

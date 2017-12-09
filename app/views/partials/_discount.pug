@@ -30,7 +30,7 @@ section.discount
       .col-24.col-md-8.col-lg-6.order-md-1
         .price.discount__price
           each item, i in page.discount.price
-            .price__item(class="price__item--" + (i + 1))
+            .price__item.js-wow.fadeInRightBig(class="price__item--" + (i + 1), data-wow-delay=0.2 + 0.2 * i + "s")
               span.price__value(data-label=item.text)
                 != item.number
               span.price__currency!= item.currency
