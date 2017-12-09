@@ -1902,6 +1902,7 @@ button
   width: 100%
   text-align: center
 
++comment("masonry style")
 .grid
   max-width: 69em
   list-style: none
@@ -1926,48 +1927,131 @@ button
       border: none
       display: block
       max-width: 100%
+
+/* Effect 1: opacity */
+
+.grid
+  &--effect-1 
+    li.animate
+      animation: fadeIn 0.65s ease forwards
+  &--effect-2 
+    li.animate
+      transform: translateY(200px)
+      animation: moveUp 0.65s ease forwards
+  &--effect-3 
+    li.animate
+      transform: scale(0.6)
+      animation: scaleUp 0.65s ease-in-out forwards
+  &--effect-4
+    perspective: 1300px
+    li.animate
+      transform-style: preserve-3d
+      transform: translateZ(400px) translateY(300px) rotateX(-90deg)
+      animation: fallPerspective .8s ease-in-out forwards
+  &--effect-5
+    perspective: 1300px
+    li.animate
+      transform-style: preserve-3d
+      transform-origin: 50% 50% -300px
+      transform: rotateX(-180deg)
+      animation: fly .8s ease-in-out forwards
+  &--effect-6
+    perspective: 1300px
+    li.animate
+      transform-style: preserve-3d
+      transform-origin: 0% 0%
+      transform: rotateX(-80deg)
+      animation: flip .8s ease-in-out forwards
   &--effect-7
     perspective: 1300px
     li.animate
       transform-style: preserve-3d
       transform: rotateY(-180deg)
       animation: helix .8s ease-in-out forwards
+  &--effect-8
+    perspective: 1300px
+    li.animate
+      transform-style: preserve-3d
+      transform: scale(0.4)
+      animation: popUp .8s ease-in forwards
 
-/* Effect 7: helix (based on http://lab.hakim.se/scroll-effects/ by @hakimel) */
+/* Effect 1: Fade In*/
 
-@-webkit-keyframes helix
+@keyframes fadeIn
   0%
-
   100%
-    -webkit-transform: rotateY(0deg)
     opacity: 1
 
 
-@keyframes helix
+/* Effect 2: Move Up*/
+@keyframes moveUp
   0%
-
   100%
-    -webkit-transform: rotateY(0deg)
-    transform: rotateY(0deg)
+    transform: translateY(0)
     opacity: 1
 
 
-@keyframes popUp
+/* Effect 3: Scale up*/
+@keyframes scaleUp
   0%
-
-  70%
-    -webkit-transform: scale(1.1)
-    transform: scale(1.1)
-    opacity: .8
-    -webkit-animation-timing-function: ease-out
-    animation-timing-function: ease-out
-
   100%
-    -webkit-transform: scale(1)
     transform: scale(1)
     opacity: 1
 
 
+/* Effect 4: fall perspective*/
+@keyframes fallPerspective
+  0%
+  100%
+    -webkit-transform: translateZ(0px) translateY(0px) rotateX(0deg)
+    transform: translateZ(0px) translateY(0px) rotateX(0deg)
+    opacity: 1
+
+/* Effect 5: fly (based on http://lab.hakim.se/scroll-effects/ by @hakimel)*/
+@-webkit-keyframes fly
+  0%
+  100%
+    opacity: 1
+
+@keyframes fly
+  0%
+
+  100%
+    -webkit-transform: rotateX(0deg)
+    transform: rotateX(0deg)
+    opacity: 1
+
+
+/* Effect 6: flip (based on http://lab.hakim.se/scroll-effects/ by @hakimel)*/
+@keyframes flip
+  0%
+
+  100%
+    transform: rotateX(0deg)
+    opacity: 1
+
+
+/* Effect 7: helix (based on http://lab.hakim.se/scroll-effects/ by @hakimel)*/
+@keyframes helix
+  0%
+
+  100%
+    transform: rotateY(0deg)
+    opacity: 1
+
+/* Effect 8:*/
+@keyframes popUp
+  0%
+
+  70%
+    transform: scale(1.1)
+    opacity: .8
+    animation-timing-function: ease-out
+
+  100%
+    transform: scale(1)
+    opacity: 1
+    
 @media screen and (max-width: 900px)
   .grid li
     width: 50%

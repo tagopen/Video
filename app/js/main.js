@@ -1675,6 +1675,7 @@
 
     for (var i = 0; i < utm.length; i++) {
       var value = getCookie(utm[i]);
+      console.log(value);
       if (value !== undefined && value !== '') {
         getParams += '&' + utm[i] + '=' + value;
       }
