@@ -9306,6 +9306,10 @@ button:focus {
   .comments {
     padding: 12px 0;
   }
+  .comments__box {
+    max-height: 600px;
+    overflow-y: scroll;
+  }
   .comments__heading {
     margin-bottom: 65px;
   }
