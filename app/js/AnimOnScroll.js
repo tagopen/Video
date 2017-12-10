@@ -83,25 +83,42 @@
 			// The viewportFactor defines how much of the appearing item has to be visible in order to trigger the animation
 			// if we'd use a value of 0, this would mean that it would add the animation class as soon as the item is in the viewport. 
 			// If we were to use the value of 1, the animation would only be triggered when we see all of the item in the viewport (100% of it)
-			viewportFactor : 0
+			viewportFactor : 0,
+			shownElements: 6,
+			responsiveBtnMore: false
 		},
 		_init : function() {
 			this.items = Array.prototype.slice.call( document.querySelectorAll( '#' + this.el.id + ' > li' ) );
 			this.itemsCount = this.items.length;
 			this.itemsRenderedCount = 0;
 			this.didScroll = false;
+			this.masonryLayout = {};
+			this.btnMore = document.querySelector("[data-more]") || false;
 
 			var self = this;
 
 			imagesLoaded( this.el, function() {
+
+				if (self.options.responsiveBtnMore) {
+					self.items.forEach( function( el, i ) {
+						if( i >= self.options.shownElements ) {
+							classie.add( el, 'd-none' );
+						} else {
+							classie.add( el, 'shown' );
+							self._checkTotalRendered();
+						}
+					} );
+					self._initMasonry(self);
+
+					if (self.btnMore) {
+						self.btnMore.addEventListener( 'click', function() {
+							self._onShowMore();
+						}, false );
+					}
+				}
 				
-				// initialize masonry
-				new Masonry( self.el, {
-					itemSelector: 'li',
-					transitionDuration : 0
-				} );
-				
-				if( Modernizr.cssanimations ) {
+				if( Modernizr.cssanimations && !self.options.responsiveBtnMore) {
+					self._initMasonry(self);
 					// the items already shown...
 					self.items.forEach( function( el, i ) {
 						if( inViewport( el ) ) {
@@ -121,12 +138,41 @@
 
 			});
 		},
+		_initMasonry: function(self) {
+			// initialize masonry
+			this.masonryLayout = new Masonry( self.el, {
+				itemSelector: 'li',
+				transitionDuration : 0
+			} );
+		},
 		_onScrollFn : function() {
 			var self = this;
 			if( !this.didScroll ) {
 				this.didScroll = true;
 				setTimeout( function() { self._scrollPage(); }, 60 );
 			}
+		},
+		_onShowMore : function() {
+			var self = this;
+
+			var itemsRenderedNext = this.itemsRenderedCount + this.options.shownElements;
+
+			this.items.forEach( function( el, i ) {
+				if (!classie.has( el, 'shown' ) && !classie.has( el, 'animate' ) && itemsRenderedNext > i) {
+					classie.removeClass( el, 'd-none' );
+					self._checkTotalRendered();
+				}
+			});
+
+			self.masonryLayout.layout();
+
+			this.items.forEach( function( el, i ) {
+				if( !classie.has( el, 'shown' ) && !classie.has( el, 'animate' ) && itemsRenderedNext > i) {
+					setTimeout( function() {
+						classie.add( el, 'animate' );
+					}, 25 );
+				}
+			});
 		},
 		_scrollPage : function() {
 			var self = this;
@@ -168,6 +214,8 @@
 			++this.itemsRenderedCount;
 			if( this.itemsRenderedCount === this.itemsCount ) {
 				window.removeEventListener( 'scroll', this._onScrollFn );
+				this.btnMore.outerHTML = "";
+				delete this.btnMore;
 			}
 		}
 	}
