@@ -1705,7 +1705,8 @@
         maxDuration : 0.7,
         viewportFactor : 0.2,
         shownElements: 5,
-        responsiveBtnMore: true
+        responsiveBtnMore: true,
+        showAll: true
       } );
     }
   });

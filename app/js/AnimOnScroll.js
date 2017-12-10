@@ -85,7 +85,8 @@
 			// If we were to use the value of 1, the animation would only be triggered when we see all of the item in the viewport (100% of it)
 			viewportFactor : 0,
 			shownElements: 6,
-			responsiveBtnMore: false
+			responsiveBtnMore: false,
+			showAll: false
 		},
 		_init : function() {
 			this.items = Array.prototype.slice.call( document.querySelectorAll( '#' + this.el.id + ' > li' ) );
@@ -158,19 +159,36 @@
 			var itemsRenderedNext = this.itemsRenderedCount + this.options.shownElements;
 
 			this.items.forEach( function( el, i ) {
-				if (!classie.has( el, 'shown' ) && !classie.has( el, 'animate' ) && itemsRenderedNext > i) {
-					classie.removeClass( el, 'd-none' );
-					self._checkTotalRendered();
+				if (!classie.has( el, 'shown' ) && !classie.has( el, 'animate' )) {
+					if (self.options.showAll) {
+						classie.removeClass( el, 'd-none' );
+						self._checkTotalRendered();
+						return;
+					}
+
+					if ( itemsRenderedNext > i) {
+						classie.removeClass( el, 'd-none' );
+						self._checkTotalRendered();
+					}
 				}
 			});
 
 			self.masonryLayout.layout();
 
 			this.items.forEach( function( el, i ) {
-				if( !classie.has( el, 'shown' ) && !classie.has( el, 'animate' ) && itemsRenderedNext > i) {
-					setTimeout( function() {
-						classie.add( el, 'animate' );
-					}, 25 );
+				if( !classie.has( el, 'shown' ) && !classie.has( el, 'animate' )) {
+					if (self.options.showAll) {
+						setTimeout( function() {
+							classie.add( el, 'animate' );
+						}, 25 );
+						return;
+					}
+
+					if (itemsRenderedNext > i) {
+						setTimeout( function() {
+							classie.add( el, 'animate' );
+						}, 25 );
+					}
 				}
 			});
 		},
