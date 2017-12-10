@@ -10707,13 +10707,13 @@ button:focus {
      -moz-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-     -moz-box-orient: horizontal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
      -moz-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
@@ -10725,12 +10725,6 @@ button:focus {
 .grid__item {
   display: block;
   opacity: 0;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 100%;
-     -moz-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
-  max-width: 100%;
 }
 
 .grid__item.shown {
@@ -10792,7 +10786,6 @@ button:focus {
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 3px 6px rgba(0, 0, 0, 0.1);
-  font-family: Century Gothic, sans-serif;
 }
 
 .rm-review__photo {
