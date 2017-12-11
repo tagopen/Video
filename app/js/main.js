@@ -1017,7 +1017,7 @@
           $("#facebook").modal("hide");
           $(".js-discount").val("facebook");
           $(".js-hidden-discount").removeClass("d-none");
-          $(".js-discount-price").text("-30");
+          $(".js-discount-price").text("-35");
           var $totalPrice = $(".js-total-price-val");
           $('.js-total-discount').remove();
           $totalPrice.each(function() {
