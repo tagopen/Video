@@ -41,6 +41,14 @@
       .modal-body.modal__body
         .modal__iframe
           iframe.modal__iframe(src="https://www.youtube.com/embed/lLgW4wR1vQQ" frameborder="0" gesture="media" allowfullscreen)
+#video__modal-full.modal.fade(tabindex='-1', role='dialog', aria-labelledby='callbackLabel', aria-hidden='true')
+  .modal-dialog.modal-video(role='document')
+    .modal-content.modal-video__content
+      button.close.modal__close.modal__close--video(type='button', data-dismiss='modal', aria-label='Close')
+        +svg("close")(class="close__icon")
+      .modal-body.modal__body
+        .modal__iframe
+          iframe.modal__iframe(src="https://www.youtube.com/embed/lLgW4wR1vQQ" frameborder="0" gesture="media" allowfullscreen)            
 // Cropping modal
 #myModal.modal.fade(aria-hidden='true', aria-labelledby='avatar-modal-label', role='dialog', tabindex='-1')
   .modal-dialog.modal-lg(role='document')

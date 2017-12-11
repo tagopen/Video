@@ -195,6 +195,14 @@
     $("#video__modal .modal__iframe").attr('src', 'https://www.youtube.com/embed/lLgW4wR1vQQ?ecver=1&autoplay=0&showinfo=0&mute=1&iv_load_policy=3&showsearch=0');
   });
 
+  $('#video__modal-full').on('shown.bs.modal', function() {
+    $("#video__modal-full .modal__iframe").attr('src', 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=1&showinfo=0&mute=0&iv_load_policy=3&showsearch=0');
+  });
+
+  $('#video__modal-full').on('hidden.bs.modal', function() {
+    $("#video__modal-full .modal__iframe").attr('src', 'https://www.youtube.com/embed/kg-qEHftDd8?ecver=1&autoplay=0&showinfo=0&mute=1&iv_load_policy=3&showsearch=0');
+  });
+
   // Tabs
   $(function() {
     var $indexControl = $("[data-tabs-index]");
