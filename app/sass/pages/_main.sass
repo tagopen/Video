@@ -1062,7 +1062,24 @@ button
       line-height: 34px
 
 +comment("section comments style")
-
+.comments__title-box 
+  text-align: center
+.comments__title 
+  margin: 10px 15px 20px 0
+  font: 500 23px/26px $main-font
+  color: #555555
+.comments__subtitle 
+  font: 400 18px/24px $main-font
+  color: #555555
+.comments__ded 
+  display: inline-block
+  height: 100px
+  width: 100px
+  border-radius: 50%
+  background-image: url(https://graph.facebook.com/Videopozdravlenie2018/picture?type=normal)
+  background-position: 0 0
+  background-position: 50% 50%
+  background-repeat: no-repeat
 .comments
   padding: 45px 0 50px
   &__heading
@@ -1072,9 +1089,13 @@ button
 +r(768)
   .comments
     padding: 12px 0
+    &__title
+      display: flex
+      justify-content: space-between
     &__heading
       margin-bottom: 65px
-
+  .comments__title-box 
+    text-align: left    
 +comment("section service style")
 .service
   padding-top: 100px
