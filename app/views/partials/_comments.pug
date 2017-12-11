@@ -5,14 +5,7 @@ section.comments
         h2.heading.heading--curl.comments__heading!= page.comments.heading
       .col-24
         .comments__box
-          .comments__heading-box
-            .row
-              .col-3.text-left
-                .comments__ded
-              .col-21
-                .comments__title-box
-                  .comments__title Новогоднее видео поздравление от Дедушки Мороза 
-                  .comments__subtitle <b>@VideoPozdravlenie2018</b> Дедушка Мороз обратится по имени, посмотрит фото ребенка и поздравит его с Новым Годом 
+          //-iframe(src='//www.displaysocialmedia.com/app/embed/index.php?embed_id=5042', frameborder='0', width='100%', height='768')
           ul#grid.grid.grid--effect-3
             each item in page.comments.items
               li.grid__item
@@ -31,3 +24,4 @@ section.comments
                   .rm-review__content
                     each text in item.text
                       p.rm-review__text!= text
+          button.btn.btn--default(data-more="#grid") Показать еще
