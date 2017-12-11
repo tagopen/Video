@@ -11,6 +11,7 @@ block variables
 doctype html
 html.html(lang='ru' prefix='og: http://ogp.me/ns#')
   head
+    block head
     title!= (typeof page.title !== "undefined") ? page.title  : relativePath + " - " + content.site.title
     meta(http-equiv='Content-Type' content='text/html;charset=' + content.site.meta.charset)/
 
