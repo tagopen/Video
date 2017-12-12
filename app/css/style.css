@@ -8083,6 +8083,7 @@ button:focus {
 
 .menu {
   padding-top: 15px;
+  z-index: 1;
 }
 
 @media only screen and (min-width: 992px) {

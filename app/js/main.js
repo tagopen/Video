@@ -1035,7 +1035,7 @@
           $totalPrice.each(function() {
             var totalPrice = $(this).text();
             totalPrice = parseInt(totalPrice, 10);
-            $(this).text(totalPrice - 30);
+            $(this).text(totalPrice - 35);
           });
         }
       });
@@ -1044,9 +1044,8 @@
 
   $(function() {
     var cleave = new Cleave('[name=phone]', {
-      blocks: [4, 2, 3, 2, 2],
-      prefix: '+380',
-      rawValueTrimPrefix: true
+      phone: true,
+      phoneRegionCode: 'UA'
     });
   });
 
