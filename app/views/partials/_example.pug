@@ -1,16 +1,16 @@
 section.example
-  .container
-    .row.justify-content-end.justify-content-lg-start.align-items-center.text-center.text-md-left
-      .col-24.col-md-auto.offset-lg-2.order-1
+  .container.example__container
+    .row.justify-content-center.justify-content-lg-start.align-items-center.text-center.text-md-left
+      .col-22.col-lg-18
+        .example__box
+          .row
+            .col-24.col-md-18
+              h2.example__heading!= page.example.heading
+            .col-24.col-md-6.text-md-right
+              .example__year!= page.example.year
+      .col-22
         .example__video.vd-video
           img.img-fluid.vd-video__img(src!= page.example.img.src, alt!= page.example.img.alt)
           .vd-video__descr
-            a.vd-video__play.mp-play(data-toggle="modal" href="#video__modal-full")
+            a.vd-video__play.mp-play.mp-play--big(data-toggle="modal" href="#video__modal-full")
               i.fa.fa-play.mp-play__icon(aria-hidden="true") 
-      .col-24.col-md-auto.offset-lg-1.order-md-1
-        h2.heading.example__heading!= page.example.heading
-          br
-          i.ic.ic--linear.heading__line
-        .year.example__year
-          span.year__text.hidden-accessible!= page.example.year
-          i.ic.ic--year.year__icon

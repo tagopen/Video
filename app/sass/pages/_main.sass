@@ -304,8 +304,11 @@ button
 +r(768)
   .header
     &__box
-      height: 100vh
       min-height: 768px
++r(1024)
+  .header
+    &__box
+      height: 100vh      
 .intro
   display: flex  
   flex-direction: column  
@@ -479,6 +482,19 @@ button
     height: 140px
     z-index: 5
     background: #fff
+  &New
+    position: relative
+    padding-bottom: 50px
+    &:before
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      height: 60%
+      width: 100%
+      background: url(../img/snowbg.png) no-repeat
+      background-size: 100% 100%
+      background-position: center bottom
   &__bg
     position: absolute
     display: inline-block
@@ -491,13 +507,72 @@ button
     z-index: 20
   &__row
     height: 100%  
-  
+  &__box
+    cursor: pointer
+    position: relative
+    &:hover,
+    &:focus
+      .video__zone
+        top: 25px
+  &__kus
+    z-index: 31
+    position: absolute
+    top: 153px
+    left: 164px
+  &__zone
+    position: absolute
+    top: 12px
+    left: 47%
+    margin-left: -100px
+    width: 235px
+    height: 126px  
+    transform: scale(0.6)
+    transition: all .4s ease
++r(480)
+  .video
+    &__zone    
+      top: 40px
+      transform: scale(0.8)
 +r(768)
   .video
     padding-top: 180px
+    &New
+      padding-bottom: 100px
+      &:before
+        height: 50%
+    &__kus
+      transform: scale(0.9)
+      top: 101px
+      left: 80px
+    &__zone
+      top: 34px
+      left: 50%
+      transform: scale(0.8)
 +r(992)
   .video
     padding-top: 40px
+    &New
+      &:before
+        height: 60%
+    &__kus
+      transform: scale(1)
+      top: 123px
+      left: 126px
+    &__zone
+      top: 42px
+      transform: scale(1)
++r(1200)
+  .video
+    &New
+      margin-top: 0
+      padding-bottom: 125px
+      &:before
+        height: 70%
+    &__kus
+      top: 150px
+      left: 169px
+    &__zone
+      top: 72px      
 +comment("section split style")
 .split
   position: relative
@@ -756,16 +831,16 @@ button
   &__type
     position: relative
     display: inline-block
-    font: 500 24px/30px $font-neumann
+    font: 400 32px/40px $font-vetren
     color: #212121
     margin-bottom: 20px
   &__icon
     position: absolute 
     top: 0
     &--left
-      left: -60px
+      left: -6px
     &--right
-      right: -60px  
+      right: -6px  
   &__info
     font: 400 18px/27px $main-font
     color: #212121    
@@ -834,7 +909,9 @@ button
     max-width: 400px
     margin: 45px -55px 0
   &__heading
-    margin-bottom: 25px
+    margin-bottom: 15px
+    color: #212121
+    font: 400 26px/32px $main-font
   &__box
     position: relative
   &__icon
@@ -844,7 +921,20 @@ button
     margin-left: -42px
     margin-top: -80px
   &__year
-    margin-bottom: 48px
+    font: 400 60px/66px $font-vetren
+    color: #e2e1e2
+    letter-spacing: 15px
++r(768)
+  .example
+    &__container
+      background: url(../img/morozbg.png) no-repeat
+      background-size: cover
+    &__heading
+      line-height: 60px    
++r(992)
+  .example
+    &__heading
+      font: 400 30px/60px $main-font
 .year
   font: 400 120px/125px $font-neumann
   color: #f0ae64
@@ -862,6 +952,33 @@ button
   text-align: center
   z-index: 30
   text-decoration: none
+  &--small
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-left: -42px
+    margin-top: -42px
+  &--big
+    height: 128px
+    width: 128px
+    background-color: #ea8f40
+    box-shadow: 0 11px 32px rgba(255, 126, 0, 0.65)
+    .mp-play__icon
+      color: #e78d3f
+      font-size: 30px
+    &:before
+      display: inline-block
+      position: absolute
+      content: ''
+      left: 50%
+      top: 50%
+      margin-top: -45px
+      margin-left: -45px
+      width: 90px
+      height: 90px
+      background-color: #f9cd97
+      box-shadow: 0 7px 24px rgba(0, 0, 0, 0.15)
+      border-radius: 50%
   &:hover,
   &:focus
     text-decoration: none
@@ -872,7 +989,13 @@ button
     position: relative
     right: -4px
     font-size: 22px
-    color: #814f06 
+    color: #814f06
+.vd-video__text--new  
+  text-align: center
+  padding-top: 50px !important   
++r(992)
+  .vd-video__text--new  
+    padding-top: 120px !important   
 .vd-video
   position: relative
   display: inline-block
@@ -970,7 +1093,8 @@ button
     &__time
       font: 400 58px/68px $font-neumann    
 .cd-heading
-  font: 400 22px/36px $font-neumann
+  font: 400 26px/36px $font-vetren
+  letter-spacing: 5px
   color: #fab655
   text-transform: uppercase
   letter-spacing: 1.1px
@@ -1235,7 +1359,7 @@ button
   &__img
     z-index: 1
 .dm-descr
-  font: 400 24px/36px $font-neumann
+  font: 400 34px/40px $font-vetren
   color: #212121
 +r(768)
   .dream
@@ -1260,7 +1384,8 @@ button
       max-width: none
 +comment("section footer style")
 .footer
-  padding: 85px 0 20px
+  margin-top: -90px
+  padding: 65px 0 65px
   background: #fff url(../img/footer-bg.png) no-repeat scroll 50% 0
   background-size: cover
 .partner
@@ -1271,8 +1396,11 @@ button
   color: #212121
 +r(768)
   .footer
-    background-size: auto
-
+    padding: 120px 0 100px
++r(992)
+  .footer
+    margin-top: -165px
+    padding: 180px 0 90px    
 +comment("section modal style")
 .modal
   &-content

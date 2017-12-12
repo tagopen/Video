@@ -353,12 +353,11 @@
           $label = $(".js-new-name"),
           triggerLabel = false;
         $childreanNums.each(function() {
-          var $this = $(this);
-          if ($this.prop("checked")) {
-            if ($this.val() == 2) {
+          var $check = $(this);
+          if ($check.prop("checked")) {
+            if ($check.val() == 2) {
               $label.removeClass("d-none");
-              $totalPrice.eq(1).removeClass("d-none");
-              $totalPrice.eq(0).addClass("d-none");
+              $totalPrice.filter(".d-none").removeClass("d-none").siblings().addClass("d-none");
               triggerLabel = true;
             } else {
               $checkbox.eq(1).prop("checked", false);
@@ -390,8 +389,7 @@
             $select.prop('required', false);
             $selectContainer.fadeOut(0);
             $label.removeClass("d-none");
-            $totalPrice.eq(1).removeClass("d-none");
-            $totalPrice.eq(0).addClass("d-none");
+            $totalPrice.removeClass("d-none").eq(0).addClass("d-none");
             triggerLabel = true;
           } else {
             $input.fadeOut(0);
@@ -405,9 +403,7 @@
 
         if (!triggerLabel) {
           $label.addClass("d-none");
-          
-          $totalPrice.eq(0).removeClass("d-none");
-          $totalPrice.eq(1).addClass("d-none");
+          $totalPrice.addClass("d-none").eq(0).removeClass("d-none");
         }
       };
 
@@ -1035,7 +1031,7 @@
           $totalPrice.each(function() {
             var totalPrice = $(this).text();
             totalPrice = parseInt(totalPrice, 10);
-            $(this).text(totalPrice - 35);
+            $(this).text(totalPrice - 30);
           });
         }
       });
@@ -1044,8 +1040,9 @@
 
   $(function() {
     var cleave = new Cleave('[name=phone]', {
-      phone: true,
-      phoneRegionCode: 'UA'
+      blocks: [4, 2, 3, 2, 2],
+      prefix: '+380',
+      rawValueTrimPrefix: true
     });
   });
 

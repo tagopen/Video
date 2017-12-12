@@ -1,0 +1,13 @@
+section.videoNew
+  .container         
+    .row.justify-content-center.justify-content-md-start.flex-md-row-reverse
+      .col-24.col-md-9.col-lg-11
+        .vd-video__text.vd-video__text--new.gg-text.text-md-left.gg-text--white!= page.video.text
+      .col-24.col-md-15.col-lg-13
+        .video__box
+          img.img-fluid.video__kus.d-none.d-md-block(src="img/kus.png", alt!= page.video.img.alt)
+          img.img-fluid.vd-video__img(src="img/meshok.png", alt!= page.video.img.alt)   
+          .video__zone
+            img.img-fluid.video__image(src="img/zone.png", alt!= page.video.img.alt) 
+            a.vd-video__play.mp-play.mp-play--small(data-toggle="modal" href="#video__modal")
+              i.fa.fa-play.mp-play__icon(aria-hidden="true")     
