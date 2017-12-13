@@ -10525,7 +10525,10 @@ button:focus {
 /* ---------------------------------------- */
 .header-friday {
   position: relative;
-  background: url(../img/fridaybg1920.jpg) no-repeat;
+  background: url(../img/fridaybg1920-2.jpg) no-repeat;
+  -moz-background-size: cover;
+    -o-background-size: cover;
+       background-size: cover;
 }
 
 .header-friday__video {
