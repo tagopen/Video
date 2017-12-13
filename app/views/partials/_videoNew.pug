@@ -7,7 +7,7 @@ section.videoNew
         .video__box
           img.img-fluid.video__kus.d-none.d-md-block(src="img/kus.png", alt!= page.video.img.alt)
           img.img-fluid.vd-video__img(src="img/meshok.png", alt!= page.video.img.alt)   
-          .video__zone
+          a.video__zone(data-toggle="modal" href="#video__modal")
             img.img-fluid.video__image(src="img/zone.png", alt!= page.video.img.alt) 
-            a.vd-video__play.mp-play.mp-play--small(data-toggle="modal" href="#video__modal")
+            .vd-video__play.mp-play.mp-play--small
               i.fa.fa-play.mp-play__icon(aria-hidden="true")     

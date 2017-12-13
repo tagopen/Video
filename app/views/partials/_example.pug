@@ -9,8 +9,8 @@ section.example
             .col-24.col-md-6.text-md-right
               .example__year!= page.example.year
       .col-22
-        .example__video.vd-video
+        a.example__video.vd-video(data-toggle="modal" href="#video__modal-full")
           img.img-fluid.vd-video__img(src!= page.example.img.src, alt!= page.example.img.alt)
           .vd-video__descr
-            a.vd-video__play.mp-play.mp-play--big(data-toggle="modal" href="#video__modal-full")
+            .vd-video__play.mp-play.mp-play--big
               i.fa.fa-play.mp-play__icon(aria-hidden="true") 
