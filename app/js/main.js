@@ -2,6 +2,8 @@
 (function($) {
   "use strict"; // Start of use strict
 
+  var cropImageAjax = undefined;
+
   // Old browser notification
   $(function() {
     $.reject({
@@ -1082,52 +1084,73 @@
           $form.find("[type=submit]").prop("disabled", true).button('loading'); //prevent submit behaviour and display preloading
           $form.find('.success').html("");
 
-          var url = $form.attr('action');
-          var form = $form.find("[type=submit]").val();
-          var data = new FormData($form[0]);
+          $('#loading').fadeIn();
 
-          data.append("form", form);
+          var formAjax = function() {
 
-          $.ajax(url, {
-            type: 'post',
-            data: data,
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            cache: false,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-              alert(textStatus || errorThrown, "alert-danger");
-              $form.find("[type=submit]").prop("disabled", false).button('reset');
+            var url = $form.attr('action');
+            var form = $form.find("[type=submit]").val();
+            var data = new FormData($form[0]);
 
-              submitEnd();
-            },
+            data.append("form", form);
 
-            beforeSend: function() {
-              submitStart();
-            },
+            $.ajax(url, {
+              type: 'post',
+              data: data,
+              dataType: 'json',
+              processData: false,
+              contentType: false,
+              cache: false,
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus || errorThrown, "alert-danger");
+                $form.find("[type=submit]").prop("disabled", false).button('reset');
 
-            submitEnd: function() {
-              submitEnd();
-            },
-            success: function(data) {
-              if ($.isPlainObject(data) && data.state === 200) {
-                if (data.message) {
+                submitEnd();
+              },
 
-                  alert(data.message, "alert-success");
-                  document.location.href = data.pay_link;
-                  //clear all fields
-                  $form.trigger("reset");
-                } else if (data.error) {
-                  alert(data.error, "alert-danger");
+              beforeSend: function() {
+                submitStart();
+              },
+
+              submitEnd: function() {
+                submitEnd();
+              },
+              success: function(data) {
+                if ($.isPlainObject(data) && data.state === 200) {
+                  if (data.message) {
+
+                    alert(data.message, "alert-success");
+                    document.location.href = data.pay_link;
+                    //clear all fields
+                    $form.trigger("reset");
+                  } else if (data.error) {
+                    alert(data.error, "alert-danger");
+                  }
+                } else {
+                  alert('Failed to response', "alert-danger");
                 }
-              } else {
-                alert('Failed to response', "alert-danger");
-              }
-              $form.find("[type=submit]").prop("disabled", false).button('reset');
+                $form.find("[type=submit]").prop("disabled", false).button('reset');
 
-              submitEnd();
+                submitEnd();
+              }
+            });
+          }
+
+          var downloadTimer = setInterval(function() {
+            if (cropImageAjax !== undefined) {
+              if (cropImageAjax === 0) {
+                alert("изображение не загружено", "alert-danger");
+                $('#loading').fadeOut();
+                return;
+              }
+
+              clearInterval(downloadTimer);
+              formAjax();
+              $('#loading').fadeOut();
             }
-          });
+          }, 1000);
+
+
         }
       });
   });
@@ -1520,8 +1543,6 @@
           case 'getCroppedCanvas':
             if (result) {
               try {
-
-                $(".loading").fadeIn();
                 var base64 = result.toDataURL("image/jpeg");
                 var formData = new FormData();
                 $('#frameImage').attr('src', base64);
@@ -1532,7 +1553,6 @@
                 // console.log(base64 + "\\nWidth: " + result.width + "\nHeight: " +  result.height);
               } catch (error) {
                 console.log('Error: ' + error.message);
-                $(".loading").fadeOut();
               }
 
               $image.cropper('getCroppedCanvas').toBlob(function(blob) {
@@ -1553,9 +1573,11 @@
                   data: formData,
                   processData: false,
                   contentType: false,
+                  beforeSend: function(xhr) {
+                    cropImageAjax = undefined;
+                  },
                   success: function(data) {
                     if ($.isPlainObject(data) && data.state === 200) {
-                      $(".loading").fadeOut();
                       $('#myModal').modal('hide');
                       if (data.message) {
                         alert(data.message, "alert-success");
@@ -1572,18 +1594,17 @@
                     }
 
                     $(".loading").fadeOut();
+                     cropImageAjax = 1;
                   },
 
                   error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert(textStatus || errorThrown, "danger");
 
-                    $(".loading").fadeOut();
+                    cropImageAjax = 0;
                   },
-
-                  complete: function() {
-                    $(".loading").fadeOut();
-                  }
                 });
+
+                $('#myModal').modal('hide');
               });
             }
             break;
