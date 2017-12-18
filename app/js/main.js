@@ -1018,6 +1018,7 @@
         method: 'share',
         display: 'popup',
         hashtag: '#VideoPozdravlenie2018',
+        quote: "Потрясающий подарок для ребенка!! Такое видео точно запомнится! Очень рекомендую :) Переходите на сайт и посмотрите сами!",
         href: 'https://video-pozdravlenie.com/?utm_source=facebook&utm_medium=kupon&utm_campaign=repost',
       }, function(response) {
 
