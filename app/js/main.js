@@ -49,7 +49,7 @@
 
   // jQuery.countdown http://hilios.github.io/jQuery.countdown/examples/legacy-style.html
   if ($('.js-timer').length) {
-    $('.js-timer').countdown('2017/12/20', function(event) {
+    $('.js-timer').countdown('2017/12/26', function(event) {
 
       var $this = $(this).html(event.strftime('' +
         '<div class="timer__item"><div class="timer__time">%D</div><div class="timer__text">дней</div></div>' +
