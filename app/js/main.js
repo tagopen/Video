@@ -1026,13 +1026,13 @@
           $("#facebook").modal("hide");
           $(".js-discount").val("facebook");
           $(".js-hidden-discount").removeClass("d-none");
-          $(".js-discount-price").text("-35");
+          $(".js-discount-price").text("-40");
           var $totalPrice = $(".js-total-price-val");
           $('.js-total-discount').remove();
           $totalPrice.each(function() {
             var totalPrice = $(this).text();
             totalPrice = parseInt(totalPrice, 10);
-            $(this).text(totalPrice - 30);
+            $(this).text(totalPrice - 40);
           });
         }
       });
