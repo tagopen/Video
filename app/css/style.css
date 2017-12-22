@@ -10525,7 +10525,7 @@ button:focus {
 /* ---------------------------------------- */
 .header-friday {
   position: relative;
-  background: url(../img/fridaybg1920-2.jpg) no-repeat;
+  background: url(../img/fridaybg1920-3.jpg) no-repeat;
   -moz-background-size: cover;
     -o-background-size: cover;
        background-size: cover;
@@ -10540,13 +10540,13 @@ button:focus {
 
 @media only screen and (min-width: 992px) {
   .header-friday {
-    background-position: 55% top;
+    background-position: 43% top;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .header-friday {
-    background-position: 51% top;
+    background-position: 46% top;
   }
 }
 
