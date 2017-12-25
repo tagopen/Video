@@ -49,6 +49,19 @@
       }
     }
 
+    public function getChildreanName2() {
+      $male = DB::query("SELECT cd.firstname FROM childrean2 AS cd WHERE cd.gender=%i AND cd.status=%s", 1, "1");
+      $female = DB::query("SELECT cd.firstname FROM childrean2 AS cd WHERE cd.gender=%i AND cd.status=%s", 0, "1");
+      if ($male && $female) {
+        return array(
+          "male" => $male,
+          "female" => $female
+          );
+      } else {
+        return;
+      }
+    }
+
     public function getProductPrice() {
 
       $results = DB::query("SELECT ps.* FROM product_special AS ps WHERE ps.date_start <= %t AND ps.date_end >= %t ", date("Y-m-d"), date("Y-m-d"));

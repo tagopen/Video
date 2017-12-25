@@ -8,8 +8,11 @@
   $view = new viewClass;
   $discount = $view -> getDiscount();
   $names = $view -> getChildreanName();
+  $names2 = $view -> getChildreanName2();
   $male = $names["male"];
   $female = $names["female"];
+  $male2 = $names2["male"];
+  $female2 = $names2["female"];
   $price = $view -> getProductPrice();
 ?>
 <!DOCTYPE html>
@@ -169,7 +172,7 @@
                           <fieldset class="form-group" id="new2">
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][male]" data-gender="male" required>
                               <option></option>
-                              <?php foreach ($male as $value) {
+                              <?php foreach ($male2 as $value) {
                                 $name = $value["firstname"];
                               ?>
                               <option value="<?=$name?>"><?=$name?></option>
@@ -178,7 +181,7 @@
                             </select>
                             <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][female]" data-gender="female">
                               <option></option>
-                              <?php foreach ($female as $value) {
+                              <?php foreach ($female2 as $value) {
                                 $name = $value["firstname"];
                               ?>
                               <option value="<?=$name?>"><?=$name?></option>
