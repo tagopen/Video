@@ -10,7 +10,7 @@ section.discount
         .countdown.discount__countdown
           - var timer = page.discount.timer
           h3.cd-heading.countdown__heading!= timer.heading
-          .timer.js-timer
+          .timer(data-countdown="2017/12/26", data-countdown-format="D|H|M|S")
             .timer__item
               .timer__time!= timer.days.number
               .timer__text!= timer.days.text

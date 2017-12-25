@@ -1,4 +1,4 @@
-form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalidate)
+form.form.js-avatar-form.h-100(action='system/model.php', method='post', data-parsley-validate, data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled], :hidden", data-parsley-errors-messages-disabled, data-parsley-validate-if-empty)
 
   .tabs.h-100(data-tabs="test-tabs")
     .tabs__control.tabs-control
@@ -29,16 +29,16 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
                     | 2 ребенка
         .col-24.col-md-12(data-childrean-item="0")
           fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
+            select.form-control.form-control--select.select.js-gender(data-select, data-placeholder='Выберите пол ребенка', name="child1[gender]", required)
               option
               option(value='1') Мужской
               option(value='0') Женский
           fieldset#new1.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][male]", data-gender="male" required)
+            select.form-control.form-control--select.select(data-select, data-select-search="true", data-placeholder='Выберите имя из списка', name="child1[name][male]", data-gender="male" required)
               option
               option(value='Абрам') Абрам
               option(value='Авраам') Авраам
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child1[name][female]", data-gender="female")
+            select.form-control.form-control--select.select(data-select, data-select-search="true", data-placeholder='Выберите имя из списка', name="child1[name][female]", data-gender="female")
               option
               option(value='Аврора') Аврора
               option(value='Агата') Агата
@@ -51,16 +51,16 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
               | Добавить имя ребенка
         .col-24.col-md-12(data-childrean-item="1")
           fieldset.form-group
-            select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
+            select.form-control.form-control--select.select.js-gender(data-select, data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
               option
               option(value='1') Мужской
               option(value='0') Женский
           fieldset#new2.form-group
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][male]", data-gender="male", required)
+            select.form-control.form-control--select.select(data-select,  data-select-search="true", data-placeholder='Выберите имя из списка', name="child2[name][male]", data-gender="male", required)
               option
               option(value='Абрам') Абрам
               option(value='Авраам') Авраам
-            select.form-control.form-control--select.select(data-placeholder='Выберите имя из списка', name="child2[name][female]", data-gender="female")
+            select.form-control.form-control--select.select(data-select,  data-select-search="true", data-placeholder='Выберите имя из списка', name="child2[name][female]", data-gender="female")
               option
               option(value='Аврора') Аврора
               option(value='Агата') Агата
@@ -156,13 +156,12 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
           //-  input#promo.form-control.form-control--promo(type='text', name='promocode', placeholder='Введите промокод, если он есть у вас')
           //-  .result
         .col-24
-          .success  
+          .result  
           .btn-groups.tabs__btn-groups
             .row
               .col-24.col-md-8.col-lg-6.text-center.text-md-left
                 .btn-groups
                   button.btn.btn--default.btn--sm(name='form', value='Order', type='submit', data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Файл отправляется...") Перейти к оплате
-
               .col-24.col-md-6.text-center.text-md-left
                 a.quiz__btn.quiz__btn--prev.test__btn--prev(href='#', data-tabs-control='prev', data-tabs-toggle='test-tabs') Назад
               .col-24.mb-5

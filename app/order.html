@@ -80,7 +80,7 @@
           <div class="container h-100">
             <div class="row justify-content-center flex-lg-row-reverse h-100">
               <div class="col-24 h-100">
-                <form class="form js-avatar-form h-100" action="system/model.php" method="post" novalidate>
+                <form class="form js-avatar-form h-100" action="system/model.php" method="post" data-parsley-validate data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled], :hidden" data-parsley-errors-messages-disabled data-parsley-validate-if-empty>
                   <div class="tabs h-100" data-tabs="test-tabs">
                     <div class="tabs__control tabs-control">
                       <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--1 tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
@@ -112,19 +112,19 @@
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="0">
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child1[gender]" required>
+                            <select class="form-control form-control--select select js-gender" data-select data-placeholder="Выберите пол ребенка" name="child1[gender]" required>
                               <option></option>
                               <option value="1">Мужской</option>
                               <option value="0">Женский</option>
                             </select>
                           </fieldset>
                           <fieldset class="form-group" id="new1">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child1[name][male]" data-gender="male" required>
+                            <select class="form-control form-control--select select" data-select data-select-search="true" data-placeholder="Выберите имя из списка" name="child1[name][male]" data-gender="male" required>
                               <option></option>
                               <option value="Абрам">Абрам</option>
                               <option value="Авраам">Авраам</option>
                             </select>
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child1[name][female]" data-gender="female">
+                            <select class="form-control form-control--select select" data-select data-select-search="true" data-placeholder="Выберите имя из списка" name="child1[name][female]" data-gender="female">
                               <option></option>
                               <option value="Аврора">Аврора</option>
                               <option value="Агата">Агата</option>
@@ -138,19 +138,19 @@
                         </div>
                         <div class="col-24 col-md-12" data-childrean-item="1">
                           <fieldset class="form-group">
-                            <select class="form-control form-control--select select js-gender" data-placeholder="Выберите пол ребенка" name="child2[gender]" required>
+                            <select class="form-control form-control--select select js-gender" data-select data-placeholder="Выберите пол ребенка" name="child2[gender]" required>
                               <option></option>
                               <option value="1">Мужской</option>
                               <option value="0">Женский</option>
                             </select>
                           </fieldset>
                           <fieldset class="form-group" id="new2">
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][male]" data-gender="male" required>
+                            <select class="form-control form-control--select select" data-select data-select-search="true" data-placeholder="Выберите имя из списка" name="child2[name][male]" data-gender="male" required>
                               <option></option>
                               <option value="Абрам">Абрам</option>
                               <option value="Авраам">Авраам</option>
                             </select>
-                            <select class="form-control form-control--select select" data-placeholder="Выберите имя из списка" name="child2[name][female]" data-gender="female">
+                            <select class="form-control form-control--select select" data-select data-select-search="true" data-placeholder="Выберите имя из списка" name="child2[name][female]" data-gender="female">
                               <option></option>
                               <option value="Аврора">Аврора</option>
                               <option value="Агата">Агата</option>
@@ -245,7 +245,7 @@
                           <p class="tabs__text">На указаный вами e-mail придёт ссылка для скачивания видеопоздравления. Чтобы избежать попадания нашего письма в спам, рекомендуем не указывать адрес корпоративной почты, а указывать ваш личный E-mail</p>
                         </div>
                         <div class="col-24">
-                          <div class="success"> </div>
+                          <div class="result"> </div>
                           <div class="btn-groups tabs__btn-groups">
                             <div class="row">
                               <div class="col-24 col-md-8 col-lg-6 text-center text-md-left">
@@ -581,12 +581,11 @@
     <script src="js/jquery.countdown.js"></script>
     <!-- Match Height JavaScript-->
     <script src="js/jquery.matchHeight.js">   </script>
-    <!-- Validator JavaScript-->
-    <script src="js/validator.js"></script>
-    <script src="js/contact_me.js"> </script>
+    <!-- Form validator JavaScript-->
+    <script src="js/parsley.js"></script>
     <!-- Select2 JavaScript-->
     <script src="js/select2.js"></script>
-    <!-- Clave.js JavaScript-->
+    <!-- Input mask JavaScript-->
     <script src="js/cleave.js"></script>
     <script src="js/cleave-phone.ua.js"></script>
     <!-- Polifill toBlob JavaScript-->
@@ -602,7 +601,7 @@
     <!-- Trace Library JavaScript-->
     <script src="https://cdn.ravenjs.com/3.20.1/raven.min.js" crossorigin="anonymous"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js"></script>
+    <script src="js/main2.js"></script>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

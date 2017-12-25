@@ -25,11 +25,11 @@ section#preview.preview
                     i.radio-btn__icon
                     | Девочка
           fieldset.form-group
-            select#male.form-control.form-control--select.select(data-placeholder=form.selectM.placeholder, name="male", required)
+            select#male.form-control.form-control--select.select(data-placeholder=form.selectM.placeholder, name="male", data-select, data-select-search="true")
               option
               each option, i in form.selectM.items
                 option(value=option)!= option
-            select#female.form-control.form-control--select.select(name="female", data-placeholder=form.selectF.placeholder)
+            select#female.form-control.form-control--select.select(name="female", data-placeholder=form.selectF.placeholder, data-select, data-select-search="true")
               option
               each option, i in form.selectF.items
                 option(value=option)!= option

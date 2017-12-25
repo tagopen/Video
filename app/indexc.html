@@ -153,7 +153,7 @@
                     </div>
                   </fieldset>
                   <fieldset class="form-group">
-                    <select class="form-control form-control--select select" id="male" data-placeholder="Выберите имя из списка" name="male" required>
+                    <select class="form-control form-control--select select" id="male" data-placeholder="Выберите имя из списка" name="male" data-select data-select-search="true">
                       <option></option>
                       <option value="Абрам">Абрам</option>
                       <option value="Авраам">Авраам</option>
@@ -346,7 +346,7 @@
                       <option value="Ярик">Ярик</option>
                       <option value="Шамиль">Шамиль</option>
                     </select>
-                    <select class="form-control form-control--select select" id="female" name="female" data-placeholder="Выберите имя из списка">
+                    <select class="form-control form-control--select select" id="female" name="female" data-placeholder="Выберите имя из списка" data-select data-select-search="true">
                       <option></option>
                       <option value="Авророчка">Авророчка</option>
                       <option value="Агаточка">Агаточка</option>
@@ -623,7 +623,7 @@
             <div class="col-24 col-md-16 col-lg-10 order-1">
               <div class="countdown discount__countdown">
                 <h3 class="cd-heading countdown__heading">До повышения цены:</h3>
-                <div class="timer js-timer">
+                <div class="timer" data-countdown="2017/12/26" data-countdown-format="D|H|M|S">
                   <div class="timer__item">
                     <div class="timer__time">5</div>
                     <div class="timer__text">дней</div>
@@ -1390,12 +1390,11 @@
     <script src="js/jquery.countdown.js"></script>
     <!-- Match Height JavaScript-->
     <script src="js/jquery.matchHeight.js">   </script>
-    <!-- Validator JavaScript-->
-    <script src="js/validator.js"></script>
-    <script src="js/contact_me.js"> </script>
+    <!-- Form validator JavaScript-->
+    <script src="js/parsley.js"></script>
     <!-- Select2 JavaScript-->
     <script src="js/select2.js"></script>
-    <!-- Clave.js JavaScript-->
+    <!-- Input mask JavaScript-->
     <script src="js/cleave.js"></script>
     <script src="js/cleave-phone.ua.js"></script>
     <!-- Polifill toBlob JavaScript-->
@@ -1411,7 +1410,7 @@
     <!-- Trace Library JavaScript-->
     <script src="https://cdn.ravenjs.com/3.20.1/raven.min.js" crossorigin="anonymous"></script>
     <!-- Custom JavaScript-->
-    <script src="js/main.js"></script>
+    <script src="js/main2.js"></script>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

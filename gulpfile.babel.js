@@ -78,7 +78,7 @@ gulp.task('scripts', () => {
       'node_modules/popper.js/dist/umd/popper.js',
       'node_modules/bootstrap/dist/js/bootstrap.js',
       'node_modules/jquery/dist/jquery.js',
-      'node_modules/bootstrap-validator/dist/validator.js',
+      'node_modules/parsleyjs/dist/parsley.js',
       'node_modules/jquery-countdown/dist/jquery.countdown.js',
       'node_modules/cropper/dist/cropper.js',
       'node_modules/cleave.js/dist/cleave.js',
