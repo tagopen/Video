@@ -57,7 +57,9 @@ var GRVE = GRVE || {};
       GRVE.maskPhone.init();
       GRVE.anchorScroll.init('a.js-scroll-trigger[href*="#"]:not([href="#"])');
       GRVE.promo.init();
+      GRVE.cookie.init();
       //GRVE.tabs.init();
+      GRVE.facebook.init();
       GRVE.reviews.init();
       GRVE.pageSettings.init();
       GRVE.basicElements.init();
@@ -323,7 +325,111 @@ var GRVE = GRVE || {};
   // # Cookie
   GRVE.cookie = {
     init: function() {
+      this.cookieNamePrefix = "";
+      this.utmParams = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content"
+      ];
+      this.cookieExpiryDays = 1;
 
+      this.writeReferrerOnce();
+
+      if (this.utmPresentInUrl()) {
+        this.writeUtmCookieFromParams();
+      } else {
+        this.setUtmInUrl();
+      }
+
+    },
+    // From http://www.quirksmode.org/js/cookies.html
+    createCookie: function(name, value, days) {
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+      } else var expires = "";
+      document.cookie = this.cookieNamePrefix + name + "=" + value + expires + "; path=/";
+    },
+    readCookie: function(name) {
+      var nameEQ = this.cookieNamePrefix + name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    },
+    eraseCookie: function(name) {
+      this.createCookie(name, "", -1);
+    },
+    getParameterByName: function(name) {
+      name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+      var regexS = "[\\?&]" + name + "=([^&#]*)";
+      var regex = new RegExp(regexS);
+      var results = regex.exec(window.location.search);
+      if (results == null) {
+        return "";
+      } else {
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+    },
+    setUtmInUrl: function() {
+      var getParams = '';
+
+      for (var i = 0; i < this.utmParams.length; i++) {
+        var value = this.readCookie(this.utmParams[i]);
+
+        if (value !== null) {
+          getParams += '&' + this.utmParams[i] + '=' + value;
+        }
+      }
+
+      if (getParams !== '') {
+        
+        getParams = getParams.slice(1, getParams.length);
+
+        var separator = (window.location.href.indexOf("?")===-1) ? "?" : "&";
+        window.history.pushState("", "", window.location.href + separator + getParams);
+      }
+    },
+    utmPresentInUrl: function() {
+      var present = false;
+      for (var i = 0; i < this.utmParams.length; i++) {
+        var param = this.utmParams[i];
+        var value = this.getParameterByName(param);
+        if (value != "" && value != undefined) {
+          present = true;
+        }
+      }
+      return present;
+    },
+    writeUtmCookieFromParams: function() {
+      for (var i = 0; i < this.utmParams.length; i++) {
+        var param = this.utmParams[i];
+        var value = this.getParameterByName(param);
+        this.createCookie(param, value, this.cookieExpiryDays)
+      }
+    },
+    writeCookieOnce: function(name, value) {
+      var existingValue = this.readCookie(name);
+      if (!existingValue) {
+        this.createCookie(name, value, this.cookieExpiryDays);
+      }
+    },
+    writeReferrerOnce: function() {
+      var value = document.referrer;
+      if (value === "" || value === undefined) {
+        this.writeCookieOnce("referrer", "direct");
+      } else {
+        this.writeCookieOnce("referrer", value);
+      }
+    },
+    referrer: function() {
+      return this.readCookie("referrer");
     }
   };
 
@@ -371,7 +477,7 @@ var GRVE = GRVE || {};
     },
     ajaxCheck: function() {
       var $form = $(".js-form");
-      GRVE.ajaxSend.init($form, 'promo');
+      GRVE.ajaxSend.send($form, 'promo');
     }
   };
 
@@ -411,7 +517,43 @@ var GRVE = GRVE || {};
 
   // # Tabs
   // ============================================================================= //
- /* GRVE.tabs = {
+  GRVE.facebook = {
+    init: function() {
+      this.facebookShare('#shareBtn');
+    },
+    facebookShare: function(selector) {
+      $.ajaxSetup({
+        cache: true
+      });
+
+      $.getScript('//connect.facebook.net/ru_RU/sdk.js', function() {
+        FB.init({
+          appId: '2026650054277944',
+          version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+        });
+      });
+
+      $(selector).on("click", function() {
+        FB.ui({
+          method: 'share',
+          display: 'popup',
+          hashtag: '#VideoPozdravlenie2018',
+          quote: "Потрясающий подарок для ребенка!! Такое видео точно запомнится! Очень рекомендую :) Переходите на сайт и посмотрите сами!",
+          href: '//video-pozdravlenie.com/?utm_source=facebook&utm_medium=kupon&utm_campaign=repost',
+        }, function(response) {
+
+          if (response && !response.error_message) {
+            // do smth
+          }
+        });
+      });
+    }
+  };
+
+
+  // # Tabs
+  // ============================================================================= //
+  GRVE.tabs = {
     init: function() {
       this.$tabs =               $('[data-tabs]');
 
@@ -475,15 +617,17 @@ var GRVE = GRVE || {};
         });
       });
     }
-  }*/
+  }
 
   // # AjaxSend
   // ============================================================================= //
   GRVE.ajaxSend = {
-    init: function($form, formName=undefined) {
+    init: function() {
+      this.send($('.js-avatar-form'), )
+    },
+    send: function($form, formName=undefined) {
       this.$result =         $form.find('.result');
       this.$submit =         $form.find("[type=submit]");
-      this.redirect =        $form.data('redirect');
 
       var url =         $form.attr('action');
       var data =        new FormData($form[0]);
@@ -523,8 +667,8 @@ var GRVE = GRVE || {};
               self.submitFail(data.error);
             } else if (data.message) {
               self.submitDone(data.message);
-              if (!formName && self.redirect) {
-                document.location.href = self.redirect;
+              if (!formName && data.redirect) {
+                document.location.href = data.redirect;
               }
               if (!formName) {
                 $form.trigger("reset");

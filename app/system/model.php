@@ -438,7 +438,7 @@
     'message' => $obj -> getMsg(),
     'error' => $obj -> getError(),
     'result' => $obj -> getResult(),
-    'pay_link' => $obj -> getPayLink(),
+    'redirect' => $obj -> getPayLink(),
   );
 
   echo json_encode($response);
