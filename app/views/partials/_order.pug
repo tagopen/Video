@@ -42,13 +42,13 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
               option
               option(value='Аврора') Аврора
               option(value='Агата') Агата
-            input.form-control(type='text', placeholder='Введите новое имя', name="child1[newname][name]")
+            //-input.form-control(type='text', placeholder='Введите новое имя', name="child1[newname][name]")
 
-          label.radio-btn.radio-btn--size
-            input#rbtn21.radio-btn__control(type='checkbox', name='child1[newname][trigger]', data-new-name="#new1")
-            label.radio-btn__box(for='rbtn21')
-              i.radio-btn__icon
-              | Добавить имя ребенка
+          //-label.radio-btn.radio-btn--size
+          //-  input#rbtn21.radio-btn__control(type='checkbox', name='child1[newname][trigger]', data-new-name="#new1")
+          //-  label.radio-btn__box(for='rbtn21')
+          //-    i.radio-btn__icon
+          //-    | Добавить имя ребенка
         .col-24.col-md-12(data-childrean-item="1")
           fieldset.form-group
             select.form-control.form-control--select.select.js-gender(data-placeholder='Выберите пол ребенка',  name="child2[gender]", required)
@@ -64,12 +64,12 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
               option
               option(value='Аврора') Аврора
               option(value='Агата') Агата
-            input.form-control(type='text', placeholder='Введите новое имя', name="child2[newname][name]")
-          label.radio-btn.radio-btn--size
-            input#rbtn22.radio-btn__control(type='checkbox', name='child2[newname][trigger]', data-new-name='#new2')
-            label.radio-btn__box(for='rbtn22')
-              i.radio-btn__icon
-              | Добавить имя ребенка
+            //-input.form-control(type='text', placeholder='Введите новое имя', name="child2[newname][name]")
+          //-label.radio-btn.radio-btn--size
+          //-  input#rbtn22.radio-btn__control(type='checkbox', name='child2[newname][trigger]', data-new-name='#new2')
+          //-  label.radio-btn__box(for='rbtn22')
+          //-    i.radio-btn__icon
+          //-    | Добавить имя ребенка
         .col-24
           .btn-groups.text-center.text-md-left.tabs__btn-groups
             button.btn.btn--default.btn--sm(data-tabs-control='next', data-tabs-toggle='test-tabs') Далее
@@ -126,7 +126,7 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
               input.js-discount(type="hidden", name="discount")
             .row.justify-content-between.total-row.d-none.js-new-name
               .col-auto
-                span.tb-price Дозапись имени:
+                span.tb-price 2 ребенка:
               .col-auto
                 span.nt-price 40 грн
             .row.justify-content-between.total-row.js-total-discount

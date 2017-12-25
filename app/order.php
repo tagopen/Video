@@ -151,9 +151,9 @@
 
                               <?php } ?>
                             </select>
-                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child1[newname][name]">
+                            <input class="form-control  d-none" type="text" placeholder="Введите новое имя" name="child1[newname][name]">
                           </fieldset>
-                          <label class="radio-btn radio-btn--size">
+                          <label class="radio-btn radio-btn--size d-none">
                             <input class="radio-btn__control" id="rbtn21" type="checkbox" name="child1[newname][trigger]" data-new-name="#new1">
                             <label class="radio-btn__box" for="rbtn21"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
@@ -185,9 +185,9 @@
 
                               <?php } ?>    
                             </select>
-                            <input class="form-control" type="text" placeholder="Введите новое имя" name="child2[newname][name]">
+                            <input class="form-control d-none" type="text" placeholder="Введите новое имя" name="child2[newname][name]">
                           </fieldset>
-                          <label class="radio-btn radio-btn--size">
+                          <label class="radio-btn radio-btn--size d-none">
                             <input class="radio-btn__control" id="rbtn22" type="checkbox" name="child2[newname][trigger]" data-new-name="#new2">
                             <label class="radio-btn__box" for="rbtn22"><i class="radio-btn__icon"></i>Добавить имя ребенка</label>
                           </label>
@@ -251,7 +251,7 @@
                               <input class="js-discount" type="hidden" name="discount" value="<?=$discount['price']?>">
                             </div>
                             <div class="row justify-content-between total-row d-none js-new-name">
-                              <div class="col-auto"><span class="tb-price">Дозапись имени:</span></div>
+                              <div class="col-auto"><span class="tb-price">2 ребенка:</span></div>
                               <div class="col-auto"><span class="nt-price">40 грн</span></div>
                             </div>
                             <div class="row justify-content-between total-row js-total-discount">
