@@ -109,7 +109,7 @@
                         <div class="col-24">
                           <h2 class="heading tabs__heading">Сколько детей нужно поздравить?</h2>
                         </div>
-                        <div class="col-24">
+                        <div class="col-24 d-none">
                           <div class="tabs__radio-group">
                             <div class="row">
                               <div class="col-12 col-md-auto text-center">
@@ -258,7 +258,13 @@
                               <div class="col-auto"><span class="nt-price">40 грн</span></div>
                             </div>
                             <div class="row justify-content-between total-row js-total-discount">
-                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 40 грн</a></div>
+                              <div class="col-24">
+                                <div class="btn-groups"><a class="link total-discount" href="#facebook" data-toggle="modal"> 
+                                  <span class="total-discount__text">Получить скидку 40 грн</span>
+                                  <svg class="svg svg--percent total-discount__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+                                    <use xlink:href="img/sprite.svg#percent"></use>
+                                  </svg></a></div>
+                              </div>
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
@@ -425,7 +431,7 @@
                 <h2 class="heding heading--neumann mb-5">Поделитесь нашим сайтом в социальных сетях, чтобы получить дополнительную скидку 40 грн на вашу покупку!</h2>
               </div>
               <div class="col-24 align-self-center">
-                <div class="btn btn--facebook" id="shareBtn" data-layout="button_count"> <i class="fa fa-facebook mr-3"></i>Я рекомендую</div>
+                <div class="btn btn--facebook" id="shareBtn" data-layout="button_count"> <i class="fa fa-facebook-official mr-3"></i>Я рекомендую</div>
               </div>
               <div class="col-24 align-self-end mt-5"><a class="link-gray" href="#dismiss" data-dismiss="modal">Нет, спасибо</a></div>
             </div>

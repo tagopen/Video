@@ -1,4 +1,4 @@
-form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalidate)
+Rform.form.js-avatar-form.h-100(action='system/model.php', method='post', novalidate)
 
   .tabs.h-100(data-tabs="test-tabs")
     .tabs__control.tabs-control
@@ -130,8 +130,11 @@ form.form.js-avatar-form.h-100(action='system/model.php', method='post', novalid
               .col-auto
                 span.nt-price 40 грн
             .row.justify-content-between.total-row.js-total-discount
-              .col-auto
-                a.link.total-discount(href="#facebook", data-toggle="modal") Получить скидку 35 грн
+              .col-24
+                .btn-groups
+                  a.link.total-discount(href="#facebook", data-toggle="modal") 
+                    .total-discount__text Получить скидку 35 грн
+                    +svg("percent")(class="total-discount__icon")
             .row.justify-content-between.total-row
               .col-auto
                 span.tb-price Итоговая цена:

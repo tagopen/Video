@@ -1608,14 +1608,62 @@ button
 .total-row
   margin-bottom: 20px  
 .total-discount
-  color: #fab655
+  @extend .btn
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  color: #fff
   font: 500 18px/20px $main-font
-  border-bottom: 1px dashed #fab655  
+  border-bottom: 1px dashed #fab655
+  padding: 15px 30px 
+  min-height: 61px
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), inset 0 0 2px rgba(227, 145, 101, 0.29)
+  background-image: linear-gradient(to top, #bc692b 0%, #cf752f 35%, #f4ab59 78%, #fcd29d 100%)
+  background-position: 50% 0%
+  border-radius: 61px 
+  text-decoration: none
+  border: none
   transition: all .2s ease  
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    margin: auto
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    height: 100%
+    border-radius: inherit
+    transition: all .15s ease-out
+    z-index: -1
+  &:before
+    bottom: -10px
+    width: 100%
+    box-shadow: 0 1px 21px rgba(0, 0, 0, 0.13)
+    border: 1px solid #c47b54
+    background-color: #d28743
+  &:after
+    bottom: -10px
+    width: calc(100% - 15px)
+    box-shadow: 0 15px 51px rgba(250, 182, 85, 0.7)
+    z-index: -2
+  &:active
+    top: 3px
+    &:before,
+    &:after
+      transform: translateY(-3px)  
   &:hover,
   &:focus
+    color: #fff
     text-decoration: none
-    border-bottom: 1px dashed #0056b3    
+  &__text
+    border-bottom: 1px solid #fff
+  &__icon
+    font-size: 20px
 .tb-price
   font: 400 italic 18px/28px $main-font
   color: #212121 

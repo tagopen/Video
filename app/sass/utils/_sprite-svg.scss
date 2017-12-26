@@ -43,6 +43,15 @@ $svg-kids-offset-y: px;
 $svg-kids-image: "../img/sprite.svg";
 $svg-kids: ( "kids", em(32), em(26.11), px, px, "../img/sprite.svg" );
 
+// percent
+$svg-percent-name: "percent";
+$svg-percent-width: em(21);
+$svg-percent-height: em(21);
+$svg-percent-offset-x: px;
+$svg-percent-offset-y: px;
+$svg-percent-image: "../img/sprite.svg";
+$svg-percent: ( "percent", em(21), em(21), px, px, "../img/sprite.svg" );
+
 // pic
 $svg-pic-name: "pic";
 $svg-pic-width: em(32);
@@ -83,4 +92,4 @@ $svg-timer: ( "timer", em(28.71), em(32), px, px, "../img/sprite.svg" );
 $svg-spritesheet-width: px;
 $svg-spritesheet-height: px;
 $svg-spritesheet-image: "../img/sprite.svg";
-$svg-spritesheet-sprites: ( $svg-arrow-down,  $svg-clip,  $svg-close,  $svg-gift,  $svg-kids,  $svg-pic,  $svg-santa,  $svg-snow-globe,  $svg-timer,  );
+$svg-spritesheet-sprites: ( $svg-arrow-down,  $svg-clip,  $svg-close,  $svg-gift,  $svg-kids,  $svg-percent,  $svg-pic,  $svg-santa,  $svg-snow-globe,  $svg-timer,  );

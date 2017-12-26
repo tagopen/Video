@@ -80,7 +80,7 @@
           <div class="container h-100">
             <div class="row justify-content-center flex-lg-row-reverse h-100">
               <div class="col-24 h-100">
-                <form class="form js-avatar-form h-100" action="system/model.php" method="post" novalidate>
+                <Rform class="form js-avatar-form h-100" action="system/model.php" method="post" novalidate>
                   <div class="tabs h-100" data-tabs="test-tabs">
                     <div class="tabs__control tabs-control">
                       <div class="tabs-control__item"><a class="tabs-control__link tabs-control__link--1 tabs-control__link--active" href="#" data-tabs-control="index" data-tabs-toggle="test-tabs" data-tabs-index="0">Шаг 1</a></div>
@@ -213,7 +213,13 @@
                               <div class="col-auto"><span class="nt-price">40 грн</span></div>
                             </div>
                             <div class="row justify-content-between total-row js-total-discount">
-                              <div class="col-auto"><a class="link total-discount" href="#facebook" data-toggle="modal">Получить скидку 35 грн</a></div>
+                              <div class="col-24">
+                                <div class="btn-groups"><a class="link total-discount" href="#facebook" data-toggle="modal"> 
+                                    <div class="total-discount__text">Получить скидку 35 грн</div>
+                                    <svg class="svg svg--percent total-discount__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+                                      <use xlink:href="img/sprite.svg#percent"></use>
+                                    </svg></a></div>
+                              </div>
                             </div>
                             <div class="row justify-content-between total-row">
                               <div class="col-auto"><span class="tb-price">Итоговая цена:</span></div>
@@ -251,7 +257,7 @@
                       </div>
                     </div>
                   </div>
-                </form>
+                </Rform>
               </div>
             </div>
           </div>
