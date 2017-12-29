@@ -154,7 +154,7 @@
 
                               <?php } ?>
                             </select>
-                            <input class="form-control  d-none" type="text" placeholder="Введите новое имя" name="child1[newname][name]">
+                            <input class="form-control d-none" type="text" placeholder="Введите новое имя" name="child1[newname][name]">
                           </fieldset>
                           <label class="radio-btn radio-btn--size d-none">
                             <input class="radio-btn__control" id="rbtn21" type="checkbox" name="child1[newname][trigger]" data-new-name="#new1">
